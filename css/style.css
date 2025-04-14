@@ -468,11 +468,7 @@ body::after {
   right: 0;
   padding: 30px 10px;
   z-index: 99;
-  transition: visibility .8s ease 0s;
-  pointer-events: none
-}
-.popup--yt {
-  padding-top: 11.25rem
+  transition: visibility .8s ease 0s
 }
 .popup_show {
   z-index: 52;
