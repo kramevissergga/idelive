@@ -2013,6 +2013,9 @@
             document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
         }
     }
+    document.querySelectorAll(".bid-inq")?.forEach((item => {
+        _slideUp(item, 0);
+    }));
     window.addEventListener("load", (function() {
         updateHeaderHeights();
     }));
@@ -2052,6 +2055,12 @@
                 _slideToggle(body);
                 btn.classList.toggle("_open");
             }
+        }
+        if (e.target.closest("[data-bid-open]")) {
+            const btn = e.target.closest("[data-bid-open]");
+            const container = btn.closest(".inquires__card");
+            const block = container.querySelector(".bid-inq");
+            if (block && block.hidden) _slideDown(block);
         }
         if (e.target.closest("[data-add-inputs]")) {
             const originalBlock = document.querySelector("[data-inputs]");

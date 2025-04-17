@@ -2395,7 +2395,7 @@ body::after {
   padding: .375rem 1rem;
   font-size: 1rem
 }
-.inquires__info:not(:last-child) {
+.inquires__info:not(:last-child):not(:has(+.bid-inq)) {
   margin-bottom: 2.5rem
 }
 .inquires__mobile-card:not(:last-child) {
@@ -2685,6 +2685,9 @@ body::after {
 }
 .rate-item__button {
   font-size: 1rem
+}
+.bid-inq {
+  padding-top: 2.5rem
 }
 .bid-inq__main {
   display: flex;
