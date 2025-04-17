@@ -108,10 +108,164 @@
             }), delay);
         }
     };
+    function spoilers() {
+        const spoilersArray = document.querySelectorAll("[data-spoilers]");
+        if (spoilersArray.length > 0) {
+            document.addEventListener("click", setspoilerAction);
+            const spoilersRegular = Array.from(spoilersArray).filter((function(item, index, self) {
+                return !item.dataset.spoilers.split(",")[0];
+            }));
+            if (spoilersRegular.length) initspoilers(spoilersRegular);
+            let mdQueriesArray = dataMediaQueries(spoilersArray, "spoilers");
+            if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                    initspoilers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+                initspoilers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+            }));
+            function initspoilers(spoilersArray, matchMedia = false) {
+                spoilersArray.forEach((spoilersBlock => {
+                    spoilersBlock = matchMedia ? spoilersBlock.item : spoilersBlock;
+                    if (matchMedia.matches || !matchMedia) {
+                        spoilersBlock.classList.add("_spoiler-init");
+                        initspoilerBody(spoilersBlock);
+                    } else {
+                        spoilersBlock.classList.remove("_spoiler-init");
+                        initspoilerBody(spoilersBlock, false);
+                    }
+                }));
+            }
+            function initspoilerBody(spoilersBlock, hidespoilerBody = true) {
+                let spoilerItems = spoilersBlock.querySelectorAll("details");
+                if (spoilerItems.length) spoilerItems.forEach((spoilerItem => {
+                    let spoilerTitle = spoilerItem.querySelector("summary");
+                    if (hidespoilerBody) {
+                        spoilerTitle.removeAttribute("tabindex");
+                        if (!spoilerItem.hasAttribute("data-open")) {
+                            spoilerItem.open = false;
+                            spoilerTitle.nextElementSibling.hidden = true;
+                        } else {
+                            spoilerTitle.classList.add("_spoiler-active");
+                            spoilerItem.open = true;
+                        }
+                    } else {
+                        spoilerTitle.setAttribute("tabindex", "-1");
+                        spoilerTitle.classList.remove("_spoiler-active");
+                        spoilerItem.open = true;
+                        spoilerTitle.nextElementSibling.hidden = false;
+                    }
+                }));
+            }
+            function setspoilerAction(e) {
+                const el = e.target;
+                if (el.closest("summary") && el.closest("[data-spoilers]")) {
+                    e.preventDefault();
+                    if (el.closest("[data-spoilers]").classList.contains("_spoiler-init")) {
+                        const spoilerTitle = el.closest("summary");
+                        const spoilerBlock = spoilerTitle.closest("details");
+                        const spoilersBlock = spoilerTitle.closest("[data-spoilers]");
+                        const onespoiler = spoilersBlock.hasAttribute("data-one-spoiler");
+                        const scrollspoiler = spoilerBlock.hasAttribute("data-spoiler-scroll");
+                        const spoilerSpeed = spoilersBlock.dataset.spoilersSpeed ? parseInt(spoilersBlock.dataset.spoilersSpeed) : 500;
+                        if (!spoilersBlock.querySelectorAll("._slide").length) {
+                            if (onespoiler && !spoilerBlock.open) hidespoilersBody(spoilersBlock);
+                            !spoilerBlock.open ? spoilerBlock.open = true : setTimeout((() => {
+                                spoilerBlock.open = false;
+                            }), spoilerSpeed);
+                            spoilerTitle.classList.toggle("_spoiler-active");
+                            let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
+                            _slideToggle(spoilerTitle.nextElementSibling, spoilerSpeed, direction);
+                            if (scrollspoiler && spoilerTitle.classList.contains("_spoiler-active")) {
+                                const scrollspoilerValue = spoilerBlock.dataset.spoilerScroll;
+                                const scrollspoilerOffset = +scrollspoilerValue ? +scrollspoilerValue : 0;
+                                const scrollspoilerNoHeader = spoilerBlock.hasAttribute("data-spoiler-scroll-noheader") ? document.querySelector(".header").offsetHeight : 0;
+                                window.scrollTo({
+                                    top: spoilerBlock.offsetTop - (scrollspoilerOffset + scrollspoilerNoHeader),
+                                    behavior: "smooth"
+                                });
+                            }
+                        }
+                    }
+                }
+                if (!el.closest("[data-spoilers]")) {
+                    const spoilersClose = document.querySelectorAll("[data-spoiler-close]");
+                    if (spoilersClose.length) spoilersClose.forEach((spoilerClose => {
+                        const spoilersBlock = spoilerClose.closest("[data-spoilers]");
+                        const spoilerCloseBlock = spoilerClose.parentNode;
+                        if (spoilersBlock.classList.contains("_spoiler-init")) {
+                            const spoilerSpeed = spoilersBlock.dataset.spoilersSpeed ? parseInt(spoilersBlock.dataset.spoilersSpeed) : 500;
+                            spoilerClose.classList.remove("_spoiler-active");
+                            let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
+                            _slideUp(spoilerItem.open ? spoilerTitle.nextElementSibling : null, 500, direction);
+                            setTimeout((() => {
+                                spoilerCloseBlock.open = false;
+                            }), spoilerSpeed);
+                        }
+                    }));
+                }
+            }
+            function hidespoilersBody(spoilersBlock) {
+                const spoilerActiveBlock = spoilersBlock.querySelector("details[open]");
+                if (spoilerActiveBlock && !spoilersBlock.querySelectorAll("._slide").length) {
+                    const spoilerActiveTitle = spoilerActiveBlock.querySelector("summary");
+                    const spoilerSpeed = spoilersBlock.dataset.spoilersSpeed ? parseInt(spoilersBlock.dataset.spoilersSpeed) : 500;
+                    spoilerActiveTitle.classList.remove("_spoiler-active");
+                    let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
+                    _slideUp(spoilerActiveTitle.nextElementSibling, spoilerSpeed, direction);
+                    setTimeout((() => {
+                        spoilerActiveBlock.open = false;
+                    }), spoilerSpeed);
+                }
+            }
+        }
+    }
     function functions_FLS(message) {
         setTimeout((() => {
             if (window.FLS) console.log(message);
         }), 0);
+    }
+    function uniqArray(array) {
+        return array.filter((function(item, index, self) {
+            return self.indexOf(item) === index;
+        }));
+    }
+    function dataMediaQueries(array, dataSetValue) {
+        const media = Array.from(array).filter((function(item, index, self) {
+            if (item.dataset[dataSetValue]) return item.dataset[dataSetValue].split(",")[0];
+        }));
+        if (media.length) {
+            const breakpointsArray = [];
+            media.forEach((item => {
+                const params = item.dataset[dataSetValue];
+                const breakpoint = {};
+                const paramsArray = params.split(",");
+                breakpoint.value = paramsArray[0];
+                breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
+                breakpoint.item = item;
+                breakpointsArray.push(breakpoint);
+            }));
+            let mdQueries = breakpointsArray.map((function(item) {
+                return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
+            }));
+            mdQueries = uniqArray(mdQueries);
+            const mdQueriesArray = [];
+            if (mdQueries.length) {
+                mdQueries.forEach((breakpoint => {
+                    const paramsArray = breakpoint.split(",");
+                    const mediaBreakpoint = paramsArray[1];
+                    const mediaType = paramsArray[2];
+                    const matchMedia = window.matchMedia(paramsArray[0]);
+                    const itemsArray = breakpointsArray.filter((function(item) {
+                        if (item.value === mediaBreakpoint && item.type === mediaType) return true;
+                    }));
+                    mdQueriesArray.push({
+                        itemsArray,
+                        matchMedia
+                    });
+                }));
+                return mdQueriesArray;
+            }
+        }
     }
     class Popup {
         constructor(options) {
@@ -1873,7 +2027,7 @@
         if (e.target.closest("[data-menu-toggle]")) {
             bodyLockToggle(0);
             document.documentElement.classList.toggle("menu-open");
-        } else if (!e.target.closest(".mobile-menu")) {
+        } else if (!e.target.closest(".mobile-menu") && document.documentElement.classList.contains("menu-open")) {
             bodyUnlock(0);
             document.documentElement.classList.remove("menu-open");
         }
@@ -1899,9 +2053,21 @@
                 btn.classList.toggle("_open");
             }
         }
+        if (e.target.closest("[data-add-inputs]")) {
+            const originalBlock = document.querySelector("[data-inputs]");
+            if (!originalBlock) return;
+            const clone = originalBlock.cloneNode(true);
+            clone.querySelectorAll("input").forEach((input => {
+                input.value = "";
+                if (input.type === "checkbox" || input.type === "radio") input.checked = false;
+            }));
+            const container = originalBlock.parentNode;
+            container.appendChild(clone);
+        }
     }));
     document.addEventListener("selectCallback", (e => {
         e.detail.select.dispatchEvent(new Event("change"));
     }));
     window["FLS"] = false;
+    spoilers();
 })();
