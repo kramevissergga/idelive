@@ -2185,6 +2185,22 @@ body::after {
   display: flex;
   flex-direction: column
 }
+.profile__header {
+  display: flex;
+  align-items: start;
+  gap: .9375rem
+}
+.profile__header .nav-profile {
+  flex-grow: 1
+}
+.profile__orders {
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: .75rem
+}
 .profile__inquires--fill {
   flex-grow: 1;
   min-height: 23.4375rem
@@ -2844,6 +2860,11 @@ body::after {
   gap: 2rem;
   align-items: end
 }
+.form-bid-inq__block:not(:last-child) {
+  padding-bottom: 1.875rem;
+  border-bottom: .0625rem solid #dddee2;
+  margin-bottom: 1.875rem
+}
 .form-bid-inq__item {
   position: relative
 }
@@ -3037,6 +3058,9 @@ body::after {
 .spoiler-inq__request:not(:last-child) {
   margin-bottom: 1.5rem
 }
+.spoiler-inq__updates {
+  padding-top: 1.25rem
+}
 .cargo-inf {
   display: flex;
   flex-direction: column;
@@ -3089,7 +3113,7 @@ body::after {
 .tabs-inq__navigation {
   display: flex;
   align-items: center;
-  gap: 2.625rem;
+  gap: 1.25rem 2.625rem;
   flex-wrap: wrap
 }
 .tabs-inq__navigation:not(:last-child) {
@@ -3427,6 +3451,9 @@ body::after {
   color: #7b7f97;
   line-height: 1.2
 }
+.updates-inq {
+  overflow: hidden
+}
 .updates-inq__status:not(:last-child),
 .updates-inq__tracking:not(:last-child) {
   margin-bottom: 3.75rem
@@ -3437,8 +3464,7 @@ body::after {
   align-items: center
 }
 .updates-inq__status .select {
-  width: 100%;
-  max-width: 21.5625rem
+  width: 100%
 }
 .updates-inq__status-title {
   font-size: 1.25rem;
@@ -3454,9 +3480,6 @@ body::after {
 .updates-inq__field .file-input {
   font-size: .875rem
 }
-.updates-inq__success {
-  justify-self: end
-}
 .tracking-inq__title {
   font-size: 1.25rem;
   font-weight: 500;
@@ -3468,21 +3491,18 @@ body::after {
 .tracking-inq__body {
   display: flex;
   gap: .625rem;
-  justify-content: space-between
+  justify-content: space-between;
+  position: relative
 }
 .tracking-inq__line {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 95.704949%
+  position: relative
 }
 .tracking-inq__line::before {
   content: "";
   position: absolute;
   top: .3125rem;
   left: .625rem;
-  width: calc(100% - 1.25rem);
+  width: var(--tracking-width);
   height: 1.25rem;
   background: linear-gradient(90deg,#ccd2e3 25%,#d5d1fb 100%)
 }
@@ -3491,7 +3511,7 @@ body::after {
   position: absolute;
   top: .3125rem;
   left: .625rem;
-  width: calc(var(--progress));
+  width: var(--accent-width);
   height: 1.25rem;
   background: linear-gradient(90deg,#dcd7f6 0,#64db78 100%)
 }
@@ -3514,14 +3534,22 @@ body::after {
   width: 1.8125rem;
   height: 1.8125rem;
   border: .375rem solid #fff;
-  background-color: #64db78;
+  background-color: #dddee2;
   border-radius: 50%;
   position: relative;
   z-index: 2;
   flex-shrink: 0;
   margin-bottom: .9375rem
 }
-.tracking-inq__item .step.completed:last-of-type {
+.tracking-inq__item.completed h4 {
+  font-weight: 500;
+  color: #2a2e4a
+}
+.tracking-inq__item.completed .step {
+  background-color: #64db78
+}
+.tracking-inq__item.completed:has(+.tracking-inq__item:not(.completed)) .step,
+.tracking-inq__item.completed:last-child {
   box-shadow: 0 .1875rem .1875rem rgba(47,99,55,.4)
 }
 .card-inquires-m__active-actions {
@@ -4124,6 +4152,11 @@ body::after {
     margin-right: -.625rem
   }
 }
+@media (min-width:37.49875em) {
+  .updates-inq__success {
+    justify-self: end
+  }
+}
 @media (min-width:47.99875em) {
   .bid-popup__back {
     display: none
@@ -4179,6 +4212,9 @@ body::after {
   .uploading__items {
     padding-right: 2rem;
     max-height: 12.625rem
+  }
+  .updates-inq__status .select {
+    max-width: 21.5625rem
   }
 }
 @media (min-width:61.99875em) {
@@ -4334,18 +4370,18 @@ body::after {
     box-shadow: 0 .125rem .375rem 0 rgba(42,46,74,.25);
     text-decoration: none
   }
+  .tabs-inq__navigation {
+    gap: 1.25rem
+  }
+  .tabs-inq__title {
+    font-size: 1rem
+  }
   .files-inq {
     grid-template-columns: 1fr;
     max-width: 31.25rem
   }
   .updates-inq__fields {
     grid-template-columns: repeat(2,1fr)
-  }
-  .tracking-inq__item h4 {
-    font-size: .75rem
-  }
-  .tracking-inq__item p {
-    font-size: .75rem
   }
 }
 @media (max-width:47.99875em) {
@@ -4569,6 +4605,14 @@ body::after {
   .auth__type-label {
     text-align: center
   }
+  .profile__orders {
+    padding-top: 1.5625rem;
+    justify-content: end;
+    text-align: right
+  }
+  .profile__orders:not(:last-child) {
+    margin-bottom: 1.8125rem
+  }
   .nav-profile__item {
     font-size: 1rem
   }
@@ -4753,6 +4797,56 @@ body::after {
     font-size: .875rem;
     text-align: center
   }
+  .updates-inq__tracking:not(:last-child) {
+    margin-bottom: 2rem
+  }
+  .updates-inq__status {
+    flex-direction: column;
+    gap: .5rem;
+    align-items: start
+  }
+  .updates-inq__status:not(:last-child) {
+    margin-bottom: 1rem
+  }
+  .updates-inq__status-title {
+    font-size: 1rem
+  }
+  .updates-inq__field .field__label,
+  .updates-inq__field input {
+    font-size: 1rem
+  }
+  .tracking-inq__title {
+    font-size: 1rem
+  }
+  .tracking-inq__body {
+    flex-direction: column;
+    justify-content: start;
+    gap: 1.25rem
+  }
+  .tracking-inq__line::before {
+    width: 1.25rem;
+    height: var(--tracking-height);
+    top: .625rem;
+    left: .25rem;
+    background: linear-gradient(180deg,#ccd2e3 25%,#d5d1fb 100%)
+  }
+  .tracking-inq__line::after {
+    width: 1.25rem;
+    height: var(--accent-height);
+    top: .625rem;
+    left: .25rem;
+    background: linear-gradient(180deg,#dcd7f6 0,#64db78 100%)
+  }
+  .tracking-inq__item {
+    display: flex;
+    gap: 1.875rem
+  }
+  .tracking-inq__item .step {
+    margin-bottom: 0;
+    width: 1.6875rem;
+    height: 1.6875rem;
+    border-width: .3125rem
+  }
 }
 @media (max-width:47.99875em)and (max-width:23.4375em) {
   .feedback-hero__text {
@@ -4770,6 +4864,13 @@ body::after {
   .contacts-footer__social {
     width: 100%;
     justify-content: space-between
+  }
+  .updates-inq__fields {
+    grid-template-columns: 1fr;
+    gap: 1rem
+  }
+  .updates-inq__success:not(:first-child) {
+    margin-top: .5rem
   }
 }
 @media (max-width:34.37375em) {
@@ -5020,6 +5121,20 @@ body::after {
 @media (max-width:68.74875em)and (min-width:47.99875em) {
   .profile {
     padding: 0 1.25rem
+  }
+}
+@media (min-width:37.49875em)and (max-width:61.99875em) {
+  .updates-inq__success {
+    grid-column: span 2;
+    justify-self: center
+  }
+}
+@media (max-width:61.99875em)and (min-width:47.99875em) {
+  .tracking-inq__item h4 {
+    font-size: .75rem
+  }
+  .tracking-inq__item p {
+    font-size: .75rem
   }
 }
 @media (any-hover:hover) {

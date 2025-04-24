@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250424150408">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250424175205">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -440,17 +440,24 @@
 						</button>
 					</div>
 					<div class="profile__body">
-						<div class="profile__nav nav-profile">
-							<a href="#" class="nav-profile__item ">
-								Inquiries 
-							</a>
-							<a href="#" class="nav-profile__item _active">
-								Active delivery
-							</a>
-							<a href="#" class="nav-profile__item">
-								Completed delivery
-							</a>
+						<div class="profile__header">
+							<div class="profile__nav nav-profile">
+								<a href="#" class="nav-profile__item ">
+									Inquiries 
+								</a>
+								<a href="#" class="nav-profile__item _active">
+									Active delivery
+								</a>
+								<a href="#" class="nav-profile__item">
+									Completed delivery
+								</a>
+							</div>
+							<div data-da=".inquires__content--mobile, 767.98, first" class="profile__orders">
+								Total orders:
+								<span>03</span>
+							</div>
 						</div>
+
 						<div class="profile__inquires inquires inquires--active-del">
 							<div class="inquires__content inquires__content--pc">
 								<div style="--card-color: #D50000" class="inquires__card">
@@ -939,7 +946,7 @@
 																		12.02.25
 																	</p>
 																</div>
-																<div class="tracking-inq__item">
+																<div class="tracking-inq__item completed">
 																	<span class="step">
 
 																	</span>
@@ -950,7 +957,7 @@
 																		ETD 12.02.25
 																	</p>
 																</div>
-																<div class="tracking-inq__item">
+																<div class="tracking-inq__item completed">
 																	<span class="step">
 
 																	</span>
@@ -961,7 +968,7 @@
 																		ATA 25.02.25
 																	</p>
 																</div>
-																<div class="tracking-inq__item">
+																<div class="tracking-inq__item completed">
 																	<span class="step">
 
 																	</span>
@@ -972,7 +979,7 @@
 																	<p>
 																		ATA 25.02.25
 																</div>
-																<div class="tracking-inq__item">
+																<div class="tracking-inq__item completed">
 																	<span class="step">
 
 																	</span>
@@ -984,7 +991,7 @@
 																		26.02.25
 																	</p>
 																</div>
-																<div class="tracking-inq__item">
+																<div class="tracking-inq__item ">
 																	<span class="step">
 
 																	</span>
@@ -1254,7 +1261,7 @@
 								</div>
 							</div>
 							<div class="inquires__content inquires__content--mobile">
-								<div data-spoilers style="--card-color: #D50000" class="inquires__mobile-card card-inquires-m">
+								<div data-spoilers data-one-spoiler style="--card-color: #D50000" class="inquires__mobile-card card-inquires-m">
 									<div class="card-inquires-m__header">
 										<div class="card-inquires-m__title">
 											ID number: <span>0001</span>
@@ -1709,17 +1716,195 @@
 											</div>
 										</details>
 										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Invoice</summary>
+											<summary class="spoiler-inq__title _icon-ch-down">Updates</summary>
 											<div class="spoiler-inq__body">
-												<div class="measurements__files files-inq">
-													<form action="#" method="POST" enctype="multipart/form-data" class="files-inq__file-upload file-upload">
-														<div class="file-upload__title">
-															File upload
+												<div class="spoiler-inq__updates updates-inq">
+													<div class="updates-inq__tracking tracking-inq">
+														<h2 class="tracking-inq__title">
+															Tracking history
+														</h2>
+														<div class="tracking-inq__line">
 														</div>
-														<div class="file-upload__text">
-															Attach a photos measurements
+														<div class="tracking-inq__body">
+															<div class="tracking-inq__item completed">
+																<span class="step">
+
+																</span>
+																<div class="tracking-inq__content">
+																	<h4>
+																		Pick up from the supplier
+																	</h4>
+																	<p>
+																		09.02.25
+																	</p>
+																</div>
+
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Consolidation warehouse</h4>
+																	<p>11.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Container loading</h4>
+																	<p>12.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>ETD / ATD</h4>
+																	<p>ETD 12.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>ETA / ATA</h4>
+																	<p>ATA 25.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Unloading from the ship</h4>
+																	<p>ATA 25.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item completed">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Custom clearance, *inspection</h4>
+																	<p>26.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Pick up from the seaport</h4>
+																	<p>28.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Sorting warehouse</h4>
+																	<p>29.02.25</p>
+																</div>
+															</div>
+															<div class="tracking-inq__item">
+																<span class="step"></span>
+																<div class="tracking-inq__content">
+																	<h4>Final address</h4>
+																	<p>29.02.25</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="updates-inq__status">
+														<h2 class="updates-inq__status-title">
+															Status order:
+														</h2>
+														<select>
+															<option value="" selected>Select order status</option>
+															<option value="2">At the Chinese warehouse</option>
+															<option value="3">Pick up from supplier</option>
+															<option value="4">Container loading</option>
+															<option value="5">
+																ETD
+															</option>
+															<option value="5">
+																ATD
+															</option>
+															<option value="5">
+																ETA
+															</option>
+															<option value="5">
+																ATA
+															</option>
+															<option value="5">
+																unloading from the ship
+															</option>
+															<option value="5">
+																Customs clearance
+															</option>
+															<option value="5">
+																Meet inspection
+															</option>
+															<option value="5">
+																Pick up from the seaport
+															</option>
+															<option value="5">
+																Consolidation warehouse
+															</option>
+															<option value="5">
+																Final address
+															</option>
+														</select>
+													</div>
+													<div class="updates-inq__fields">
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																ETD/ATD
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the date">
+																<label class="field__date _icon-calendar">
+																	<input type="date">
+																</label>
+															</div>
 														</div>
 														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																ETA/ATA
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the date">
+																<label class="field__date _icon-calendar">
+																	<input type="date">
+																</label>
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Shipping line
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Tracking number
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																PRO number
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Estimated time of the delivery / Appointment date
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Confirmation about the inspection
+															</div>
 															<div class="field__input">
 																<label class="file-input _icon-pin">
 																	Upload document
@@ -1727,77 +1912,130 @@
 																</label>
 															</div>
 														</div>
-													</form>
-													<div class="measurements__uploading uploading">
-														<div class="uploading__label">
-															Uploading
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																POD/BOL/ISA
+															</div>
+															<div class="field__input">
+																<label class="file-input _icon-pin">
+																	Upload document
+																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+																</label>
+															</div>
 														</div>
-														<div data-simplebar class="uploading__items">
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 37%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	37% done
-																</div>
-															</div>
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 66%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	66% done
-																</div>
-															</div>
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 5%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	5% done
-																</div>
-															</div>
+														<div class="updates-inq__success success-info">
+															<svg class="icon">
+																<use xlink:href="img/icons.svg#check-circle"></use>
+															</svg>
+															Changes retained
 														</div>
 													</div>
-													<form action="#" method="POST" enctype="multipart/form-data" class="measurements__comment-block comment-block">
-														<div class="comment-block__field field">
+												</div>
+											</div>
+										</details>
+										<details class="card-inquires-m__spoiler spoiler-inq">
+											<summary class="spoiler-inq__title _icon-ch-down">Product information</summary>
+											<div class="spoiler-inq__body">
+												<div class="spoiler-inq__updates updates-inq">
+													<div class="updates-inq__fields">
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																ID number:
+															</div>
 															<div class="field__input">
-																<textarea placeholder="Comments"></textarea>
+																<input type="text" placeholder="Enter the information">
 															</div>
 														</div>
-														<div class="comment-block__footer">
-															<button class="comment-block__button button button--purple">
-																Send
-															</button>
-															<div class="comment-block__label">
-																Message sent to the customer
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Product name:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
 															</div>
 														</div>
-													</form>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																HS Code:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																SKU:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Unit Price:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Total Price:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information" name="date">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Quantity:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information" name="date">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Tax Rate (%):
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information" name="date">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Material:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information" name="date">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Remarks:
+															</div>
+															<div class="field__input">
+																<input type="text" placeholder="Enter the information" name="date">
+															</div>
+														</div>
+														<div class="updates-inq__field field">
+															<div class="field__label field__label--inq">
+																Certificate:
+															</div>
+															<div class="field__input">
+																<label class="file-input _icon-pin">
+																	Upload document
+																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+																</label>
+															</div>
+														</div>
+														<div class="updates-inq__success success-info">
+															<svg class="icon">
+																<use xlink:href="img/icons.svg#check-circle"></use>
+															</svg>
+															Changes retained
+														</div>
+													</div>
 												</div>
 											</div>
 										</details>
@@ -1884,7 +2122,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250424150408"></script>
+	<script src="js/app.min.js?_v=20250424175205"></script>
 </body>
 
 </html>

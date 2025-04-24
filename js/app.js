@@ -180,8 +180,8 @@
                                 spoilerBlock.open = false;
                             }), spoilerSpeed);
                             spoilerTitle.classList.toggle("_spoiler-active");
-                            let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
-                            _slideToggle(spoilerTitle.nextElementSibling, spoilerSpeed, direction);
+                            _slideToggle(spoilerTitle.nextElementSibling, spoilerSpeed);
+                            fireDetailsEvent(spoilerBlock);
                             if (scrollspoiler && spoilerTitle.classList.contains("_spoiler-active")) {
                                 const scrollspoilerValue = spoilerBlock.dataset.spoilerScroll;
                                 const scrollspoilerOffset = +scrollspoilerValue ? +scrollspoilerValue : 0;
@@ -202,8 +202,7 @@
                         if (spoilersBlock.classList.contains("_spoiler-init")) {
                             const spoilerSpeed = spoilersBlock.dataset.spoilersSpeed ? parseInt(spoilersBlock.dataset.spoilersSpeed) : 500;
                             spoilerClose.classList.remove("_spoiler-active");
-                            let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
-                            _slideUp(spoilerItem.open ? spoilerTitle.nextElementSibling : null, 500, direction);
+                            _slideUp(spoilerClose.nextElementSibling, spoilerSpeed);
                             setTimeout((() => {
                                 spoilerCloseBlock.open = false;
                             }), spoilerSpeed);
@@ -217,13 +216,22 @@
                     const spoilerActiveTitle = spoilerActiveBlock.querySelector("summary");
                     const spoilerSpeed = spoilersBlock.dataset.spoilersSpeed ? parseInt(spoilersBlock.dataset.spoilersSpeed) : 500;
                     spoilerActiveTitle.classList.remove("_spoiler-active");
-                    let direction = spoilersBlock.closest("[data-hrz]") && window.matchMedia("(min-width: 68.74875em)").matches ? "horizontal" : "vertical";
-                    _slideUp(spoilerActiveTitle.nextElementSibling, spoilerSpeed, direction);
+                    _slideUp(spoilerActiveTitle.nextElementSibling, spoilerSpeed);
                     setTimeout((() => {
                         spoilerActiveBlock.open = false;
                     }), spoilerSpeed);
                 }
             }
+        }
+        function fireDetailsEvent(spoilerBlock) {
+            const event = new CustomEvent("detailsChanged", {
+                bubbles: true,
+                detail: {
+                    open: spoilerBlock.open,
+                    element: spoilerBlock
+                }
+            });
+            spoilerBlock.dispatchEvent(event);
         }
     }
     function tabs() {
@@ -237,6 +245,44 @@
                 tabsBlock.setAttribute("data-tabs-index", index);
                 tabsBlock.addEventListener("click", setTabsAction);
                 initTabs(tabsBlock);
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement) {
+                    const splide = new Splide(splideElement, {
+                        speed: 300,
+                        pagination: false,
+                        updateOnMove: true,
+                        flickMaxPages: 1,
+                        flickPower: 100
+                    }).mount();
+                    splideElement.splideInstance = splide;
+                    splide.on("mounted move", (newIndex => {
+                        setActiveTab(tabsBlock, newIndex);
+                        updateSelect(tabsBlock, newIndex);
+                    }));
+                    const tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+                    tabsTitles.forEach(((title, tabIndex) => {
+                        title.addEventListener("click", (() => {
+                            splide.go(tabIndex);
+                        }));
+                    }));
+                    const activeIndex = Array.from(tabsTitles).findIndex((title => title.classList.contains("_tab-active")));
+                    if (activeIndex >= 0) splide.go(activeIndex);
+                }
+                const tabsSelect = tabsBlock.querySelector(".select_tabs");
+                if (tabsSelect) {
+                    document.addEventListener("selectCallback", (e => {
+                        if (e.detail.select === tabsSelect.querySelector("select")) {
+                            const selectedOption = e.detail.select.selectedOptions[0];
+                            const value = selectedOption.value;
+                            if (!selectedOption.hasAttribute("data-href")) {
+                                const tabIndex = parseInt(value, 10) - 1;
+                                if (splideElement && splideElement.splideInstance) splideElement.splideInstance.go(tabIndex); else setActiveTab(tabsBlock, tabIndex);
+                            }
+                        }
+                    }));
+                    const activeTabIndex = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).findIndex((title => title.classList.contains("_tab-active")));
+                    if (activeTabIndex >= 0) tabsSelect.value = activeTabIndex + 1;
+                }
             }));
             let mdQueriesArray = dataMediaQueries(tabs, "tabs");
             if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
@@ -259,16 +305,16 @@
                     if (matchMedia.matches) {
                         tabsContent.append(tabsTitleItems[index]);
                         tabsContent.append(tabsContentItem);
-                        tabsMediaItem.classList.add("_tab-spoller");
+                        tabsMediaItem.classList.add("_tab-spoiler");
                     } else {
                         tabsTitles.append(tabsTitleItems[index]);
-                        tabsMediaItem.classList.remove("_tab-spoller");
+                        tabsMediaItem.classList.remove("_tab-spoiler");
                     }
                 }));
             }));
         }
         function initTabs(tabsBlock) {
-            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles] button");
             let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
             const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
             const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
@@ -281,25 +327,41 @@
                 tabsContentItem.setAttribute("data-tabs-item", "");
                 if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
                 tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+                tabsContentItem.inert = !tabsTitles[index].classList.contains("_tab-active");
             }));
+            const splideElement = tabsBlock.querySelector("._splide-tabs");
+            if (splideElement && splideElement.splideInstance) {
+                const activeIndex = Array.from(tabsTitles).findIndex((title => title.classList.contains("_tab-active")));
+                if (activeIndex >= 0) splideElement.splideInstance.go(activeIndex);
+            }
         }
         function setTabsStatus(tabsBlock) {
             let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
             let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
             const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
-            function isTabsAnamate(tabsBlock) {
+            function isTabsAnimate(tabsBlock) {
                 if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
             }
-            const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+            const tabsBlockAnimate = isTabsAnimate(tabsBlock);
             if (tabsContent.length > 0) {
                 const isHash = tabsBlock.hasAttribute("data-tabs-hash");
                 tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
                 tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
                 tabsContent.forEach(((tabsContentItem, index) => {
                     if (tabsTitles[index].classList.contains("_tab-active")) {
-                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else {
+                            tabsContentItem.hidden = false;
+                            tabsContentItem.inert = false;
+                        }
                         if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
-                    } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                    } else {
+                        const iframes = tabsContentItem.querySelectorAll("iframe");
+                        iframes.forEach((iframe => iframe.remove()));
+                        if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else {
+                            tabsContentItem.hidden = true;
+                            tabsContentItem.inert = true;
+                        }
+                    }
                 }));
             }
         }
@@ -308,14 +370,40 @@
             if (el.closest("[data-tabs-title]")) {
                 const tabTitle = el.closest("[data-tabs-title]");
                 const tabsBlock = tabTitle.closest("[data-tabs]");
-                if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement && splideElement.splideInstance) {
+                    const splide = splideElement.splideInstance;
+                    const tabIndex = Array.from(tabTitle.parentElement.children).indexOf(tabTitle);
+                    splide.go(tabIndex);
+                } else if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
                     let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
                     tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
                     tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
                     tabTitle.classList.add("_tab-active");
                     setTabsStatus(tabsBlock);
+                    const activeTabIndex = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).indexOf(tabTitle);
+                    updateSelect(tabsBlock, activeTabIndex);
                 }
+                const tabSwitchEvent = new CustomEvent("tabSwitch");
+                tabsBlock.dispatchEvent(tabSwitchEvent);
                 e.preventDefault();
+            }
+        }
+        function setActiveTab(tabsBlock, index) {
+            const tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+            const tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+            tabsTitles.forEach(((title, i) => {
+                title.classList.toggle("_tab-active", i === index);
+                tabsContent[i].hidden = i !== index;
+                tabsContent[i].inert = i !== index;
+            }));
+            updateSelect(tabsBlock, index);
+        }
+        function updateSelect(tabsBlock, index) {
+            const tabsSelect = tabsBlock.querySelector(".tabs-select");
+            if (tabsSelect) {
+                tabsSelect.value = index + 1;
+                modules_flsModules.select.selectBuild(tabsSelect);
             }
         }
     }
@@ -3411,9 +3499,9 @@
         } ]);
         return _Splide;
     }();
-    var Splide = _Splide;
-    Splide.defaults = {};
-    Splide.STATES = STATES;
+    var splide_esm_Splide = _Splide;
+    splide_esm_Splide.defaults = {};
+    splide_esm_Splide.STATES = STATES;
     var CLASS_RENDERED = "is-rendered";
     var RENDERER_DEFAULT_CONFIG = {
         listTag: "ul",
@@ -3812,7 +3900,7 @@
     document.addEventListener("DOMContentLoaded", (function() {
         var heroSliderEl = document.querySelector(".hero__slider");
         if (heroSliderEl) {
-            var heroSlider = new Splide(heroSliderEl, {
+            var heroSlider = new splide_esm_Splide(heroSliderEl, {
                 perPage: 1,
                 arrows: false,
                 pagination: true,
@@ -5039,23 +5127,6 @@
             dateInput.value = "";
         }));
     }));
-    document.querySelectorAll(".tracking-inq__line").forEach((line => {
-        const steps = parseInt(line.getAttribute("data-steps"), 10);
-        const completed = parseInt(line.getAttribute("data-completed"), 10);
-        for (let i = 0; i < steps; i++) {
-            const stepDiv = document.createElement("div");
-            stepDiv.classList.add("step");
-            if (i < completed) stepDiv.classList.add("completed");
-            line.appendChild(stepDiv);
-        }
-        const completedSteps = line.querySelectorAll(".step.completed");
-        if (completedSteps.length > 0) {
-            const last = completedSteps[completedSteps.length - 1];
-            const center = last.offsetLeft + last.offsetWidth / 2;
-            const percent = center / line.offsetWidth * 100;
-            line.style.setProperty("--progress", `${percent}%`);
-        }
-    }));
     document.addEventListener("DOMContentLoaded", (() => {
         const progressBlocks = document.querySelectorAll(".circle-progress");
         progressBlocks.forEach((block => {
@@ -5066,6 +5137,94 @@
             if (textEl) textEl.textContent = `${value}%`;
         }));
     }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        initTrackingLines();
+        window.addEventListener("resize", script_throttle(updateAllTrackingLines, 200));
+        const tabsBlocks = document.querySelectorAll("[data-tabs]");
+        tabsBlocks?.forEach((tabsBlock => {
+            tabsBlock.addEventListener("tabSwitch", (function() {
+                const lines = tabsBlock.querySelectorAll(".tracking-inq");
+                if (lines) lines.forEach((line => {
+                    updateTrackingLine(line);
+                }));
+            }));
+        }));
+        const spBlocks = document.querySelectorAll("details");
+        spBlocks?.forEach((spBlock => {
+            spBlock.addEventListener("detailsChanged", (function(e) {
+                const lines = e.detail.element.querySelectorAll(".tracking-inq");
+                console.log(lines);
+                if (lines) lines.forEach((line => {
+                    updateTrackingLine(line);
+                }));
+            }));
+        }));
+    }));
+    function initTrackingLines() {
+        const trackingContainers = document.querySelectorAll(".updates-inq__tracking");
+        trackingContainers?.forEach((container => {
+            updateTrackingLine(container);
+        }));
+    }
+    function updateAllTrackingLines() {
+        const trackingContainers = document.querySelectorAll(".updates-inq__tracking");
+        trackingContainers?.forEach((container => {
+            updateTrackingLine(container);
+        }));
+    }
+    function updateTrackingLine(container) {
+        const trackingBody = container.querySelector(".tracking-inq__body");
+        const trackingItems = container.querySelectorAll(".tracking-inq__item");
+        const trackingLine = container.querySelector(".tracking-inq__line");
+        if (!trackingBody || !trackingLine || trackingItems.length === 0) return;
+        const isVertical = window.matchMedia("(max-width: 767.98px)").matches;
+        const lastItem = trackingItems[trackingItems.length - 1];
+        const bodyRect = trackingBody.getBoundingClientRect();
+        const itemRect = lastItem.getBoundingClientRect();
+        if (isVertical) {
+            const distance = itemRect.top - bodyRect.top;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.top - bodyRect.top;
+            }
+            trackingLine.style.setProperty("--tracking-height", `${distance}px`);
+            trackingLine.style.setProperty("--accent-height", `${accentDistance}px`);
+        } else {
+            const distance = itemRect.left - bodyRect.left;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.left - bodyRect.left;
+            }
+            trackingLine.style.setProperty("--tracking-width", `${distance}px`);
+            trackingLine.style.setProperty("--accent-width", `${accentDistance}px`);
+        }
+    }
+    function script_throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout((function() {
+                    if (Date.now() - lastRan >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }), limit - (Date.now() - lastRan));
+            }
+        };
+    }
     window["FLS"] = false;
     spoilers();
     tabs();
