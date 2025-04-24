@@ -1,6 +1,13 @@
 (() => {
     "use strict";
     const modules_flsModules = {};
+    function functions_getHash() {
+        if (location.hash) return location.hash.replace("#", "");
+    }
+    function setHash(hash) {
+        hash = hash ? `#${hash}` : window.location.href.split("#")[0];
+        history.pushState("", "", hash);
+    }
     let _slideUp = (target, duration = 500, showmore = 0, margin = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -216,6 +223,99 @@
                         spoilerActiveBlock.open = false;
                     }), spoilerSpeed);
                 }
+            }
+        }
+    }
+    function tabs() {
+        const tabs = document.querySelectorAll("[data-tabs]");
+        let tabsActiveHash = [];
+        if (tabs.length > 0) {
+            const hash = functions_getHash();
+            if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
+            tabs.forEach(((tabsBlock, index) => {
+                tabsBlock.classList.add("_tab-init");
+                tabsBlock.setAttribute("data-tabs-index", index);
+                tabsBlock.addEventListener("click", setTabsAction);
+                initTabs(tabsBlock);
+            }));
+            let mdQueriesArray = dataMediaQueries(tabs, "tabs");
+            if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                    setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+                setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+            }));
+        }
+        function setTitlePosition(tabsMediaArray, matchMedia) {
+            tabsMediaArray.forEach((tabsMediaItem => {
+                tabsMediaItem = tabsMediaItem.item;
+                let tabsTitles = tabsMediaItem.querySelector("[data-tabs-titles]");
+                let tabsTitleItems = tabsMediaItem.querySelectorAll("[data-tabs-title]");
+                let tabsContent = tabsMediaItem.querySelector("[data-tabs-body]");
+                let tabsContentItems = tabsMediaItem.querySelectorAll("[data-tabs-item]");
+                tabsTitleItems = Array.from(tabsTitleItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                tabsContentItems = Array.from(tabsContentItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                tabsContentItems.forEach(((tabsContentItem, index) => {
+                    if (matchMedia.matches) {
+                        tabsContent.append(tabsTitleItems[index]);
+                        tabsContent.append(tabsContentItem);
+                        tabsMediaItem.classList.add("_tab-spoller");
+                    } else {
+                        tabsTitles.append(tabsTitleItems[index]);
+                        tabsMediaItem.classList.remove("_tab-spoller");
+                    }
+                }));
+            }));
+        }
+        function initTabs(tabsBlock) {
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+            let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
+            const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+            const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
+            if (tabsActiveHashBlock) {
+                const tabsActiveTitle = tabsBlock.querySelector("[data-tabs-titles]>._tab-active");
+                tabsActiveTitle ? tabsActiveTitle.classList.remove("_tab-active") : null;
+            }
+            if (tabsContent.length) tabsContent.forEach(((tabsContentItem, index) => {
+                tabsTitles[index].setAttribute("data-tabs-title", "");
+                tabsContentItem.setAttribute("data-tabs-item", "");
+                if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
+                tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+            }));
+        }
+        function setTabsStatus(tabsBlock) {
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+            let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+            const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+            function isTabsAnamate(tabsBlock) {
+                if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
+            }
+            const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+            if (tabsContent.length > 0) {
+                const isHash = tabsBlock.hasAttribute("data-tabs-hash");
+                tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                tabsContent.forEach(((tabsContentItem, index) => {
+                    if (tabsTitles[index].classList.contains("_tab-active")) {
+                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                        if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
+                    } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                }));
+            }
+        }
+        function setTabsAction(e) {
+            const el = e.target;
+            if (el.closest("[data-tabs-title]")) {
+                const tabTitle = el.closest("[data-tabs-title]");
+                const tabsBlock = tabTitle.closest("[data-tabs]");
+                if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                    let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
+                    tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
+                    tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
+                    tabTitle.classList.add("_tab-active");
+                    setTabsStatus(tabsBlock);
+                }
+                e.preventDefault();
             }
         }
     }
@@ -4856,7 +4956,10 @@
             const btn = e.target.closest("[data-bid-open]");
             const container = btn.closest(".inquires__card");
             const block = container.querySelector(".bid-inq");
-            if (block && block.hidden) _slideDown(block);
+            if (block) {
+                _slideToggle(block);
+                btn.classList.toggle("_active");
+            }
         }
         if (e.target.closest("[data-add-inputs]")) {
             const originalBlock = document.querySelector("[data-inputs]");
@@ -4869,10 +4972,88 @@
             const container = originalBlock.parentNode;
             container.appendChild(clone);
         }
+        if (e.target.closest(".measurements__add")) {
+            const btn = e.target.closest(".measurements__add");
+            const table = btn.closest(".measurements__table");
+            const tbody = table.querySelector("table tbody");
+            const newRow = document.createElement("tr");
+            for (let i = 0; i < 9; i++) {
+                const td = document.createElement("td");
+                const input = document.createElement("input");
+                input.type = "number";
+                td.appendChild(input);
+                newRow.appendChild(td);
+            }
+            tbody.appendChild(newRow);
+        }
     }));
     document.addEventListener("selectCallback", (e => {
         e.detail.select.dispatchEvent(new Event("change"));
     }));
+    const dateInputs = document.querySelectorAll(".field__date input");
+    dateInputs?.forEach((dateInput => {
+        const block = dateInput.closest(".field__input");
+        const textInput = block.querySelector("input[type='text']");
+        dateInput.addEventListener("change", (e => {
+            const rawDate = e.target.value;
+            if (rawDate) {
+                const date = new Date(rawDate);
+                const day = String(date.getDate()).padStart(2, "0");
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const year = date.getFullYear();
+                textInput.value = `${day}.${month}.${year}`;
+            }
+        }));
+        dateInput.addEventListener("input", (e => {
+            if (!e.target.value) textInput.value = "";
+        }));
+        textInput.addEventListener("input", (() => {
+            const raw = textInput.value;
+            const cursorPos = textInput.selectionStart;
+            let digits = raw.replace(/\D/g, "").slice(0, 8);
+            let formatted = "";
+            if (digits.length >= 1) formatted += digits.slice(0, 2);
+            if (digits.length >= 3) formatted += "." + digits.slice(2, 4);
+            if (digits.length >= 5) formatted += "." + digits.slice(4, 8);
+            let newCursorPos = cursorPos;
+            const prevDots = (raw.slice(0, cursorPos).match(/\./g) || []).length;
+            const newDots = (formatted.slice(0, cursorPos).match(/\./g) || []).length;
+            newCursorPos += newDots - prevDots;
+            textInput.value = formatted;
+            textInput.setSelectionRange(newCursorPos, newCursorPos);
+            if (digits.length === 8) {
+                const day = digits.slice(0, 2);
+                const month = digits.slice(2, 4);
+                const year = digits.slice(4, 8);
+                const m = Math.min(Math.max(parseInt(month), 1), 12).toString().padStart(2, "0");
+                const maxDay = new Date(year, m, 0).getDate();
+                const d = Math.min(Math.max(parseInt(day), 1), maxDay).toString().padStart(2, "0");
+                dateInput.value = `${year}-${m}-${d}`;
+            } else dateInput.value = "";
+        }));
+        textInput.addEventListener("click", (() => {
+            textInput.value = "";
+            dateInput.value = "";
+        }));
+    }));
+    document.querySelectorAll(".tracking-inq__line").forEach((line => {
+        const steps = parseInt(line.getAttribute("data-steps"), 10);
+        const completed = parseInt(line.getAttribute("data-completed"), 10);
+        for (let i = 0; i < steps; i++) {
+            const stepDiv = document.createElement("div");
+            stepDiv.classList.add("step");
+            if (i < completed) stepDiv.classList.add("completed");
+            line.appendChild(stepDiv);
+        }
+        const completedSteps = line.querySelectorAll(".step.completed");
+        if (completedSteps.length > 0) {
+            const last = completedSteps[completedSteps.length - 1];
+            const center = last.offsetLeft + last.offsetWidth / 2;
+            const percent = center / line.offsetWidth * 100;
+            line.style.setProperty("--progress", `${percent}%`);
+        }
+    }));
     window["FLS"] = false;
     spoilers();
+    tabs();
 })();
