@@ -4954,7 +4954,7 @@
         }
         if (e.target.closest("[data-bid-open]")) {
             const btn = e.target.closest("[data-bid-open]");
-            const container = btn.closest(".inquires__card");
+            const container = btn.closest(".inquires__card, .card-inquires-m");
             const block = container.querySelector(".bid-inq");
             if (block) {
                 _slideToggle(block);
@@ -4962,15 +4962,18 @@
             }
         }
         if (e.target.closest("[data-add-inputs]")) {
-            const originalBlock = document.querySelector("[data-inputs]");
-            if (!originalBlock) return;
-            const clone = originalBlock.cloneNode(true);
-            clone.querySelectorAll("input").forEach((input => {
-                input.value = "";
-                if (input.type === "checkbox" || input.type === "radio") input.checked = false;
-            }));
-            const container = originalBlock.parentNode;
-            container.appendChild(clone);
+            const wrapper = e.target.closest("[data-inputs-wrapper]");
+            if (wrapper) {
+                const originalBlock = wrapper.querySelector("[data-inputs]");
+                if (!originalBlock) return;
+                const clone = originalBlock.cloneNode(true);
+                clone.querySelectorAll("input").forEach((input => {
+                    input.value = "";
+                    if (input.type === "checkbox" || input.type === "radio") input.checked = false;
+                }));
+                const container = originalBlock.parentNode;
+                container.appendChild(clone);
+            }
         }
         if (e.target.closest(".measurements__add")) {
             const btn = e.target.closest(".measurements__add");
@@ -5052,6 +5055,16 @@
             const percent = center / line.offsetWidth * 100;
             line.style.setProperty("--progress", `${percent}%`);
         }
+    }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const progressBlocks = document.querySelectorAll(".circle-progress");
+        progressBlocks.forEach((block => {
+            const value = +block.getAttribute("data-value");
+            const circle = block.querySelector(".progress--circle");
+            const textEl = block.querySelector(".circle-progress__value p");
+            if (circle) circle.style.strokeDashoffset = 100 - value;
+            if (textEl) textEl.textContent = `${value}%`;
+        }));
     }));
     window["FLS"] = false;
     spoilers();

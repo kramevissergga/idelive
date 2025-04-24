@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250424065503">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250424150408">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -13,12 +13,13 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header">
+		<header class="header header--unauth">
 			<div class="header__container">
-				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
+
 				<div class="header__logo">
 					<img src="img/logo.svg" alt="Image" class="ibg ibg--contain">
 				</div>
+				<span class="separator"></span>
 				<nav data-da=".mobile-menu__block--menu, 1099.98, last" class="header__menu">
 					<ul>
 						<li>
@@ -48,9 +49,6 @@
 						</li>
 					</ul>
 				</nav>
-				<div class="header__label">
-					Cargo
-				</div>
 				<div class="header__actions">
 					<div data-da=".mobile-menu__footer, 1099.98, last" class="header__lang">
 						<select data-class-modif="lang">
@@ -59,94 +57,26 @@
 							<option value="3">UK</option>
 						</select>
 					</div>
-					<a href="#" class="header__notif _icon-bell _active"></a>
-					<div class="header__profile profile-comp">
-						<a href="#" class="profile-comp__pic">
-							<img src="img/user.webp" alt="Image" class="ibg">
-						</a>
-						<div class="profile-comp__label">
-							<a href="#">Ronald Richards</a>
-						</div>
-					</div>
+					<a href="#" class="header__button button">Sign in</a>
 				</div>
+				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
 			</div>
-			<div class="mobile-menu">
-				<div class="mobile-menu__header">
-					<div class="mobile-menu__profile profile-comp">
-						<a href="#" class="profile-comp__pic">
-							<img src="img/user.webp" alt="Image" class="ibg">
-						</a>
-						<div class="profile-comp__label">
-							Welcome back, <br>
-							<a href="#">Roland</a>
-						</div>
+			<div class="mobile-menu mobile-menu--unauth">
+				<div class="mobile-menu__header ">
+					<div class="mobile-menu__logo">
+						<img src="img/logo.svg" alt="Image" class="ibg ibg--contain">
 					</div>
 					<button data-menu-toggle class="mobile-menu__close _icon-cross">
 
 					</button>
 				</div>
-				<div class="mobile-menu__block">
-					<h4 class="mobile-menu__title">
-						Account
-					</h4>
-					<div class="mobile-menu__aside-nav aside-nav">
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#dashboard"></use>
-							</svg>
-							<span>Dashboard</span>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#notifications"></use>
-							</svg>
-							<span>Notifications</span>
-							<div class="count">8</div>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#cargo"></use>
-							</svg>
-							<span>Cargo</span>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#documents"></use>
-							</svg>
-							<span>Documents</span></a>
-						<a href="#" class="aside-nav__item _active">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#messages"></use>
-							</svg>
-							<span>Messages</span>
-							<div class="count">1</div>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#profile"></use>
-							</svg>
-							<span>Profile</span></a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#settings"></use>
-							</svg>
-							<span>Settings</span></a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#payment"></use>
-							</svg>
-							<span>Payment</span></a>
-					</div>
-				</div>
-				<div class="mobile-menu__block mobile-menu__block--menu">
-					<h4 class="mobile-menu__title">
-						Products
-					</h4>
+				<div class="mobile-menu__block  mobile-menu__block--menu">
 				</div>
 				<div class="mobile-menu__footer">
-					<button class="mobile-menu__logout logout-btn _icon-upload">
-						Log out
-					</button>
+					<div class="mobile-menu__buttons">
+						<a href="#" class="mobile-menu__button button">Sign in</a>
+						<a href="#" class="mobile-menu__button button button--border">Sign up</a>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -527,7 +457,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250424065503"></script>
+	<script src="js/app.min.js?_v=20250424150408"></script>
 </body>
 
 </html>
