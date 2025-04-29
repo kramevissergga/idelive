@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250424175205">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250429060517">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -239,6 +239,218 @@
 								BidDeliv
 							</button>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="decline-popup" aria-hidden="true" class="popup">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div data-inputs-wrapper class="bid-popup bid-popup--decline">
+						<button data-close class="bid-popup__back-circle _icon-cross"></button>
+						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
+						<form action="#" class="bid-popup__form">
+							<h3 class="bid-popup__title">
+								Let us know about your problem, we will solve it quickly
+							</h3>
+							<div class="bid-popup__wrapper">
+								<div class="bid-popup__label">
+									Write to us
+								</div>
+								<div class="bid-popup__field field">
+									<div class="field__input">
+										<textarea placeholder="Tell us why you don't agree with the measurements"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="bid-popup__wrapper">
+								<div class="bid-popup__label">
+									Attach a photo
+								</div>
+								<div class="upload-bid__field field">
+									<div class="field__input">
+										<label class="file-input _icon-pin">
+											Upload document
+											<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+										</label>
+									</div>
+								</div>
+							</div>
+							<button class="bid-popup__send button">
+								Send
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="confirm1-popup" aria-hidden="true" class="popup">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div data-inputs-wrapper class="bid-popup bid-popup--decline">
+						<button data-close class="bid-popup__back-circle _icon-cross"></button>
+						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
+						<form action="#" class="bid-popup__form">
+							<h3 class="bid-popup__title bid-popup__title--thin-margin">
+								Please confirm your selection
+							</h3>
+							<div class="bid-popup__details-label">
+								You can change the type of delivery or continue with the selected option
+							</div>
+							<div class="bid-popup__wrapper bid-popup__wrapper--big-margin">
+								<div class="bid-popup__field field">
+
+									<select data-class-modif="prices">
+										<option value="" selected>Choose another type of service</option>
+										<option value="2">Air express <span>4000 USD</span></option>
+										<option value="3">Fast sea<span>3500 USD</span></option>
+										<option value="4">Fast sea truck<span>3000 USD</span></option>
+									</select>
+								</div>
+							</div>
+							<div class="bid-popup__info">
+								<div class="bid-popup__info-label">
+									Type of delivery: <span>Air</span>
+								</div>
+								<div class="bid-popup__info-label">
+									Price:v <span>3000 USD</span>
+								</div>
+							</div>
+							<button class="bid-popup__send button">
+								Confirm
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="confirm2-popup" aria-hidden="true" class="popup">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div data-inputs-wrapper class="bid-popup bid-popup--confirm2">
+						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
+						<form action="#" class="bid-popup__form">
+							<h3 class="bid-popup__title bid-popup__title--thin-margin">
+								Please fill out the information below
+							</h3>
+							<div class="bid-popup__details-label bid-popup__details-label--mobile">
+								You can change the type of delivery or continue with the selected option
+							</div>
+							<div class="bid-popup__group">
+								<h3 class="bid-popup__title bid-popup__title--group">
+									Delivery address
+								</h3>
+								<div class="bid-popup__wrapper">
+									<div class="bid-popup__label">
+										Amazon
+									</div>
+									<select data-search>
+										<option value="" selected>Select or enter address amazon</option>
+										<option value="2">Air express </option>
+										<option value="3">Fast sea</option>
+										<option value="4">Fast sea truck</option>
+									</select>
+								</div>
+								<div class="bid-popup__wrapper">
+									<div class="bid-popup__label">
+										Amazon
+									</div>
+									<div class="bid-popup__field field">
+										<div class="field__input ">
+											<input placeholder="Enter FBA / Shipment ID" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="bid-popup__wrapper">
+									<div class="bid-popup__label">
+										Walmart
+									</div>
+									<select data-search>
+										<option value="" selected>Select or enter address Walmart</option>
+										<option value="2">Air express </option>
+										<option value="3">Fast sea</option>
+										<option value="4">Fast sea truck</option>
+									</select>
+								</div>
+							</div>
+							<div class="bid-popup__group">
+								<h3 class="bid-popup__title bid-popup__title--group">
+									Privat address
+								</h3>
+								<div class="bid-popup__triple-block">
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											City*
+										</div>
+										<select data-search>
+											<option value="" selected>Enter city</option>
+											<option value="2">Air express </option>
+											<option value="3">Fast sea</option>
+											<option value="4">Fast sea truck</option>
+										</select>
+									</div>
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											Index*
+										</div>
+										<div class="bid-popup__field field">
+											<div class="field__input ">
+												<input placeholder="Enter index" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											Street name / number*
+										</div>
+										<div class="bid-popup__field field">
+											<div class="field__input ">
+												<input placeholder="Enter street name / number" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											Contact person*
+										</div>
+										<div class="bid-popup__field field">
+											<div class="field__input ">
+												<input placeholder="Enter street name / number" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											Phone number*
+										</div>
+										<div class="bid-popup__field field">
+											<div class="field__input ">
+												<input placeholder="Enter phone number" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="bid-popup__wrapper">
+										<div class="bid-popup__label">
+											E-mail
+										</div>
+										<div class="bid-popup__field field">
+											<div class="field__input ">
+												<input placeholder="Enter e-mail" type="email">
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="bid-popup__footer">
+								<button data-close class="bid-popup__button bid-popup__button--pc button button--border">
+									Back
+								</button>
+								<button class="bid-popup__button button">
+									Send
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -1253,7 +1465,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250424175205"></script>
+	<script src="js/app.min.js?_v=20250429060517"></script>
 </body>
 
 </html>

@@ -38,6 +38,7 @@
                     }
                 }));
             }), duration);
+            updateAllTrackingLines();
         }
     };
     let _slideDown = (target, duration = 500, showmore = 0) => {
@@ -72,6 +73,7 @@
                     }
                 }));
             }), duration);
+            updateAllTrackingLines();
         }
     };
     let _slideToggle = (target, duration = 500) => {
@@ -455,6 +457,49 @@
             }
         }
     }
+    window.addEventListener("resize", (() => {
+        updateAllTrackingLines();
+    }));
+    function updateAllTrackingLines() {
+        const trackingContainers = document.querySelectorAll(".tracking-inq");
+        trackingContainers?.forEach((container => {
+            updateTrackingLine(container);
+        }));
+    }
+    updateAllTrackingLines();
+    function updateTrackingLine(container) {
+        const trackingBody = container.querySelector(".tracking-inq__body");
+        const trackingItems = container.querySelectorAll(".tracking-inq__item");
+        const trackingLine = container.querySelector(".tracking-inq__line");
+        if (!trackingBody || !trackingLine || trackingItems.length === 0) return;
+        const isVertical = window.matchMedia("(max-width: 767.98px)").matches;
+        const lastItem = trackingItems[trackingItems.length - 1];
+        const bodyRect = trackingBody.getBoundingClientRect();
+        const itemRect = lastItem.getBoundingClientRect();
+        if (isVertical) {
+            const distance = itemRect.top - bodyRect.top;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.top - bodyRect.top;
+            }
+            trackingLine.style.setProperty("--tracking-height", `${distance}px`);
+            trackingLine.style.setProperty("--accent-height", `${accentDistance}px`);
+        } else {
+            const distance = itemRect.left - bodyRect.left;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.left - bodyRect.left;
+            }
+            trackingLine.style.setProperty("--tracking-width", `${distance}px`);
+            trackingLine.style.setProperty("--accent-width", `${accentDistance}px`);
+        }
+    }
     class Popup {
         constructor(options) {
             let config = {
@@ -767,6 +812,51 @@
             return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
         }
     };
+    function formRating() {
+        const ratings = document.querySelectorAll("[data-rating]");
+        if (ratings) ratings.forEach((rating => {
+            const ratingValue = +rating.dataset.ratingValue;
+            const ratingSize = +rating.dataset.ratingSize ? +rating.dataset.ratingSize : 5;
+            formRatingInit(rating, ratingSize);
+            ratingValue ? formRatingSet(rating, ratingValue) : null;
+            document.addEventListener("click", formRatingAction);
+        }));
+        function formRatingAction(e) {
+            const targetElement = e.target;
+            if (targetElement.closest(".rating__input")) {
+                const currentElement = targetElement.closest(".rating__input");
+                const ratingValue = +currentElement.value;
+                const rating = currentElement.closest(".rating");
+                const ratingSet = rating.dataset.rating === "set";
+                ratingSet ? formRatingGet(rating, ratingValue) : null;
+            }
+        }
+        function formRatingInit(rating, ratingSize) {
+            let ratingItems = ``;
+            for (let index = 0; index < ratingSize; index++) {
+                index === 0 ? ratingItems += `<div class="rating__items">` : null;
+                ratingItems += `\n\t\t\t\t<label class="rating__item">\n\t\t\t\t\t<input class="rating__input" type="radio" name="rating" value="${index + 1}">\n\t\t\t\t</label>`;
+                index === ratingSize ? ratingItems += `</div">` : null;
+            }
+            rating.insertAdjacentHTML("beforeend", ratingItems);
+        }
+        function formRatingGet(rating, ratingValue) {
+            const resultRating = ratingValue;
+            formRatingSet(rating, resultRating);
+        }
+        function formRatingSet(rating, value) {
+            const ratingItems = rating.querySelectorAll(".rating__item");
+            const resultFullItems = parseInt(value);
+            const resultPartItem = value - resultFullItems;
+            rating.hasAttribute("data-rating-title") ? rating.title = value : null;
+            ratingItems.forEach(((ratingItem, index) => {
+                ratingItem.classList.remove("rating__item--active");
+                ratingItem.querySelector("span") ? ratingItems[index].querySelector("span").remove() : null;
+                if (index <= resultFullItems - 1) ratingItem.classList.add("rating__item--active");
+                if (index === resultFullItems && resultPartItem) ratingItem.insertAdjacentHTML("beforeend", `<span style="width:${resultPartItem * 100}%"></span>`);
+            }));
+        }
+    }
     class SelectConstructor {
         constructor(props, data = null) {
             let defaultConfig = {
@@ -965,7 +1055,7 @@
             selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : "";
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectText}">` : "";
-            selectOptionContentHTML += selectOption.textContent;
+            selectOptionContentHTML += selectOption.innerHTML;
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             return selectOptionContentHTML;
@@ -5003,7 +5093,9 @@
     window.addEventListener("load", (function() {
         updateHeaderHeights();
     }));
-    window.addEventListener("resize", updateHeaderHeights);
+    window.addEventListener("resize", (() => {
+        updateHeaderHeights();
+    }));
     document.addEventListener("selectCallback", (e => {
         e.detail.select.dispatchEvent(new Event("change"));
     }));
@@ -5046,6 +5138,7 @@
             const block = container.querySelector(".bid-inq");
             if (block) {
                 _slideToggle(block);
+                if (block.querySelector(".tracking-inq")) ;
                 btn.classList.toggle("_active");
             }
         }
@@ -5137,95 +5230,8 @@
             if (textEl) textEl.textContent = `${value}%`;
         }));
     }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        initTrackingLines();
-        window.addEventListener("resize", script_throttle(updateAllTrackingLines, 200));
-        const tabsBlocks = document.querySelectorAll("[data-tabs]");
-        tabsBlocks?.forEach((tabsBlock => {
-            tabsBlock.addEventListener("tabSwitch", (function() {
-                const lines = tabsBlock.querySelectorAll(".tracking-inq");
-                if (lines) lines.forEach((line => {
-                    updateTrackingLine(line);
-                }));
-            }));
-        }));
-        const spBlocks = document.querySelectorAll("details");
-        spBlocks?.forEach((spBlock => {
-            spBlock.addEventListener("detailsChanged", (function(e) {
-                const lines = e.detail.element.querySelectorAll(".tracking-inq");
-                console.log(lines);
-                if (lines) lines.forEach((line => {
-                    updateTrackingLine(line);
-                }));
-            }));
-        }));
-    }));
-    function initTrackingLines() {
-        const trackingContainers = document.querySelectorAll(".updates-inq__tracking");
-        trackingContainers?.forEach((container => {
-            updateTrackingLine(container);
-        }));
-    }
-    function updateAllTrackingLines() {
-        const trackingContainers = document.querySelectorAll(".updates-inq__tracking");
-        trackingContainers?.forEach((container => {
-            updateTrackingLine(container);
-        }));
-    }
-    function updateTrackingLine(container) {
-        const trackingBody = container.querySelector(".tracking-inq__body");
-        const trackingItems = container.querySelectorAll(".tracking-inq__item");
-        const trackingLine = container.querySelector(".tracking-inq__line");
-        if (!trackingBody || !trackingLine || trackingItems.length === 0) return;
-        const isVertical = window.matchMedia("(max-width: 767.98px)").matches;
-        const lastItem = trackingItems[trackingItems.length - 1];
-        const bodyRect = trackingBody.getBoundingClientRect();
-        const itemRect = lastItem.getBoundingClientRect();
-        if (isVertical) {
-            const distance = itemRect.top - bodyRect.top;
-            let accentDistance = 0;
-            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
-            if (completedItems.length > 0) {
-                const lastCompleted = completedItems[completedItems.length - 1];
-                const completedRect = lastCompleted.getBoundingClientRect();
-                accentDistance = completedRect.top - bodyRect.top;
-            }
-            trackingLine.style.setProperty("--tracking-height", `${distance}px`);
-            trackingLine.style.setProperty("--accent-height", `${accentDistance}px`);
-        } else {
-            const distance = itemRect.left - bodyRect.left;
-            let accentDistance = 0;
-            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
-            if (completedItems.length > 0) {
-                const lastCompleted = completedItems[completedItems.length - 1];
-                const completedRect = lastCompleted.getBoundingClientRect();
-                accentDistance = completedRect.left - bodyRect.left;
-            }
-            trackingLine.style.setProperty("--tracking-width", `${distance}px`);
-            trackingLine.style.setProperty("--accent-width", `${accentDistance}px`);
-        }
-    }
-    function script_throttle(func, limit) {
-        let lastFunc;
-        let lastRan;
-        return function() {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
-                func.apply(context, args);
-                lastRan = Date.now();
-            } else {
-                clearTimeout(lastFunc);
-                lastFunc = setTimeout((function() {
-                    if (Date.now() - lastRan >= limit) {
-                        func.apply(context, args);
-                        lastRan = Date.now();
-                    }
-                }), limit - (Date.now() - lastRan));
-            }
-        };
-    }
     window["FLS"] = false;
     spoilers();
     tabs();
+    formRating();
 })();

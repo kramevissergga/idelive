@@ -652,57 +652,50 @@
 						</button>
 					</div>
 					<div class="profile__body">
-						<div class="profile__nav nav-profile">
-							<a href="#" class="nav-profile__item _active">
-								Inquiries 
-							</a>
-							<a href="#" class="nav-profile__item">
-								Active delivery
-							</a>
-							<a href="#" class="nav-profile__item">
-								Completed delivery
-							</a>
-						</div>
-						<div class="profile__inquires inquires">
-							<div class="inquires__header">
-								<div class="inquires__tabs">
-									<a href="#" class="inquires__tabs-item _active">
-										Waiting: 01
-									</a>
-									<a href="#" class="inquires__tabs-item">
-										Processed: 00
-									</a>
-									<a href="#" class="inquires__tabs-item">
-										Finished: 00
-									</a>
-								</div>
-								<button data-popup="#popup-bid" data-da="{.profile__body}, 767.98, last" class="inquires__start-bid button button--gradient">
-									Start BidDeliv
-								</button>
+						<div class="profile__header">
+							<div class="profile__nav nav-profile">
+								<a href="#" class="nav-profile__item ">
+									Inquiries 
+								</a>
+								<a href="#" class="nav-profile__item _active">
+									Active delivery
+								</a>
+								<a href="#" class="nav-profile__item">
+									Completed delivery
+								</a>
 							</div>
+							<div data-da=".inquires__content--mobile, 767.98, first" class="profile__orders">
+								Total orders:
+								<span>03</span>
+							</div>
+						</div>
+						<div class="profile__inquires inquires inquires--active-del">
 							<div class="inquires__content inquires__content--pc">
-								<div class="inquires__card">
+								<div style="--card-color: #D50000" class="inquires__card">
 									<div class="inquires__table">
 										<table>
 											<thead>
 												<tr>
 													<th>
-														<span>ID number:</span>
+														<span>Order number:</span>
 													</th>
 													<th>
-														<span>Total boxes:</span>
-													</th>
-													<th>
-														<span>Total weight</span>
-													</th>
-													<th>
-														<span>Total CBM:</span>
+														<span>Tracking number:</span>
 													</th>
 													<th>
 														<span>Type of products:</span>
 													</th>
 													<th>
-														<span>Final destination:</span>
+														<span>Complete</span>
+													</th>
+													<th>
+														<span>Delivery date:</span>
+													</th>
+													<th>
+														<span>Destination:</span>
+													</th>
+													<th>
+														<span>Payment:</span>
 													</th>
 												</tr>
 											</thead>
@@ -710,25 +703,35 @@
 												<tr>
 													<td>
 														<span class="number">
-															000000001
+															0000123
 														</span>
 													</td>
 													<td>
-														<span>600</span>
-													</td>
-													<td>
-														<span>1200 kg</span>
-													</td>
-													<td>
-														<span>1200</span>
+														<span>12748947040AA1B678</span>
 													</td>
 													<td>
 														<span>Household appliances</span>
 													</td>
 													<td>
+														<div class="complete-progress">
+															<div class="complete-progress__label">
+																70%
+															</div>
+															<div style="--progress: 70%" class="complete-progress__line"></div>
+														</div>
+													</td>
+													<td>
+														<span>09.02.25 - 19.02.25</span>
+													</td>
+													<td>
 														<span>
 															1234 Maple Street,
 															Los Angeles, CA 90001, USA
+														</span>
+													</td>
+													<td>
+														<span style="color: #D50000;">
+															Unpaid
 														</span>
 													</td>
 												</tr>
@@ -737,52 +740,311 @@
 									</div>
 									<div class="inquires__info info-inq">
 										<div class="info-inq__status">
-											Price calculation in process
+											Pick up from the supplier
 										</div>
-										<div class="info-inq__label">
-											You have time to edit the request, then it will be passed on for calculation
-											<span>09:03</span>
+										<div style="--card-color: #7B7F97" class="info-inq__status">
+											<p>Consolidation warehouse / <span>Measurements</span></p>
 										</div>
+										<div class="separator"></div>
 										<div class="info-inq__buttons">
-											<button class="info-inq__edit _icon-edit button button--border">
-												Edit
+											<button class="info-inq__min-btn info-inq__min-btn--border button button--border">
+												Online chat
 											</button>
-											<button class="info-inq__min-btn button">
-												Cancel
+											<button data-bid-open class="info-inq__details-btn _icon-triangle">
+												More details
 											</button>
+										</div>
+									</div>
+									<div class="inquires__bid bid-inq">
+										<div class="bid-inq__tracking tracking-inq">
+											<h2 class="tracking-inq__title">
+												Tracking history
+											</h2>
+											<div class="tracking-inq__line">
+											</div>
+											<div class="tracking-inq__body">
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														Pick up from the supplier
+													</h4>
+													<p>
+														09.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														Consolidation warehouse
+													</h4>
+													<p>
+														11.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														Container
+														loading
+													</h4>
+													<p>
+														12.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														ETD / ATD
+													</h4>
+													<p>
+														ETD 12.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														ETA / ATA
+													</h4>
+													<p>
+														ATA 25.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														Unloading
+														from the ship
+													</h4>
+													<p>
+														ATA 25.02.25
+												</div>
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<h4>
+														Custom clearance,
+														*inspection
+													</h4>
+													<p>
+														26.02.25
+													</p>
+													<div class="tracking-inq__insp">
+														<div style="color: #D50000;" class="tracking-inq__insp-label">
+															meet the inspection
+														</div>
+														<a href="#" class="tracking-inq__insp-link file-link _icon-file">inspection</a>
+													</div>
+												</div>
+												<div class="tracking-inq__item ">
+													<span class="step">
+
+													</span>
+													<h4>
+														Pick up from the seaport
+														<p>
+															28.02.25
+														</p>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step">
+
+													</span>
+													<h4>
+														Sorting warehouse
+													</h4>
+													<p>
+														29.02.25
+													</p>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step">
+													</span>
+													<h4>
+														Final address
+													</h4>
+													<p>
+														29.02.25
+													</p>
+													<div style="color: #D50000;" class="tracking-inq__color-label">
+														Waiting
+														for POD
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="bid-inq__meas meas-bid">
+											<div class="meas-bid__main">
+												<h4 style="color: #D50000;" class="meas-bid__title">
+													Measurements
+												</h4>
+												<div data-simplebar class="meas-bid__scroll">
+													<div class="meas-bid__boxes">
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="meas-bid__box">
+															<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+														</div>
+													</div>
+												</div>
+												<a href="#" class="meas-bid__download _icon-download">Download measurements</a>
+											</div>
+											<div class="meas-bid__info">
+												<h4 class="meas-bid__title">
+													Total for shipment:
+												</h4>
+												<div class="meas-bid__details">
+													<div class="meas-bid__label">
+														Quantity:
+														<span>
+															16
+														</span>
+													</div>
+													<div class="meas-bid__label">
+														CBM:
+														<span>
+															0,673
+														</span>
+													</div>
+													<div class="meas-bid__label">
+														KG:
+														<span>
+															205
+														</span>
+													</div>
+												</div>
+												<div class="meas-bid__msg">
+													<div class="meas-bid__field field">
+														<div class="field__label">
+															Message from the carrier company
+														</div>
+														<div class="field__input">
+															<textarea placeholder="Message"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="meas-bid__actions">
+												<div class="meas-bid__actions-label">
+													Carrier sent measurements, confirm them
+													or reject them if you don't agree with them.
+												</div>
+												<div class="meas-bid__buttons">
+													<a href="#" class="meas-bid__button button button--border">Decline</a>
+													<a href="#" class="meas-bid__button button">Confirm</a>
+												</div>
+											</div>
+										</div>
+										<div class="bid-inq__footer">
+											<div class="bid-inq__upload upload-bid">
+												<div class="upload-bid__body">
+													<h5 class="upload-bid__title block-title">
+														Documents
+													</h5>
+													<div class="upload-bid__field field">
+														<div class="field__input">
+															<label class="file-input _icon-pin">
+																Upload document
+																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+															</label>
+														</div>
+													</div>
+												</div>
+												<div data-simplebar class="upload-bid__files">
+													<a href="#" class="upload-bid__link file-link _icon-file">insurance policy</a>
+													<a href="#" class="upload-bid__link file-link _icon-file">invoice</a>
+
+												</div>
+											</div>
+											<div class="bid-inq__profile profile-bid">
+												<h5 class="profile-bid__title block-title">
+													Carrier
+												</h5>
+												<div class="profile-bid__body">
+													<a href="#" class="profile-bid__image">
+														<img src="img/user.webp" alt="Image" class="ibg">
+													</a>
+													<div class="profile-bid__label">
+														<a href="#">Josh Michael</a>
+														<span>4.5</span>
+													</div>
+												</div>
+											</div>
+											<div class="bid-inq__feedback">
+												<h5 class="bid-inq__feedback-title block-title">
+													How was your delivery experience?
+												</h5>
+												<div data-rating="set" class="rating"></div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="inquires__content inquires__content--mobile">
-								<div class="inquires__mobile-card card-inquires-m">
+								<div data-spoilers data-one-spoiler style="--card-color: #D50000" class="inquires__mobile-card card-inquires-m">
 									<div class="card-inquires-m__header">
 										<div class="card-inquires-m__title">
 											ID number: <span>0001</span>
 										</div>
-										<div class="card-inquires-m__time _icon-clock">
-											<svg class="sprite">
-												<use xlink:href="img/icons.svg#clock"></use>
+										<!-- Міняти data-value -->
+										<div data-value="21" class="card-inquires-m__circle-progress circle-progress">
+											<svg viewBox="0 0 100 100">
+												<circle stroke="#EAEAEA" stroke-width="5" cx="50" cy="50" r="45" fill="none" />
+												<circle class="progress--circle" stroke="var(--card-color, #64DB78)" stroke-width="7" cx="50" cy="50" r="45" fill="none" pathLength="100" />
 											</svg>
-											09:03
+											<div class="circle-progress__value">
+												<p>0%</p>
+											</div>
 										</div>
 
 									</div>
+									<div class="card-inquires-m__cargo-inf cargo-inf">
+										<div class="cargo-inf__block">
+											<span>
+												Tracking number:
+											</span>
+											12748947040AA1B678
+										</div>
+									</div>
 									<dl class="card-inquires-m__details">
 										<div>
-											<dt>Total boxes:</dt>
-											<dd>600</dd>
+											<dt>Delivery date:</dt>
+											<dd>09.02.25</dd>
 										</div>
 										<div>
-											<dt>Total weight:</dt>
-											<dd>1200 kg</dd>
-										</div>
-										<div>
-											<dt>Total CBM:</dt>
-											<dd>1200</dd>
+											<dt>Payment:</dt>
+											<dd style="color: #D50000;">Unpaid</dd>
 										</div>
 									</dl>
 									<div class="card-inquires-m__address">
+										<b>
+											Fast sea truck
+										</b>
 										<span>
 											Household appliances
 										</span>
@@ -791,22 +1053,200 @@
 										</span>
 									</div>
 									<div class="card-inquires-m__info info-inq">
-										<div class="info-inq__status info-inq__status--thin">
-											Price calculation in process
+										<div style="--card-color: #64DB78" class="info-inq__status">
+											<p>Pick up from the supplier / <span style="color: #D50000;">meet the inspection</span></p>
 										</div>
-										<div class="info-inq__label">
-											You have time to edit the request, then it will be passed on for calculation
-											<span>09:03</span>
-										</div>
-										<div class="info-inq__buttons">
-											<button class="info-inq__edit _icon-edit button button--border">
-												Edit
-											</button>
-											<button class="info-inq__min-btn button">
-												Cancel
-											</button>
+										<div style="--card-color: #7B7F97" class="info-inq__status info-inq__status--gray">
+											Waiting for the measurements
 										</div>
 									</div>
+									<div class="card-inquires-m__active-actions">
+										<button class="info-inq__min-btn info-inq__min-btn--border button button--border">
+											Online chat
+										</button>
+										<button data-bid-open class="info-inq__details-btn _icon-triangle">
+											More details
+										</button>
+									</div>
+									<div class="card-inquires-m__bid-inq bid-inq">
+										<div data-spoilers data-spoilers-speed="0" class="updates-inq__tracking tracking-inq">
+											<h2 class="tracking-inq__title">
+												Tracking history
+											</h2>
+											<div class="tracking-inq__line">
+											</div>
+											<div class="tracking-inq__body">
+												<div class="tracking-inq__item completed">
+													<span class="step">
+
+													</span>
+													<div class="tracking-inq__content">
+														<h4>
+															Pick up from the supplier
+														</h4>
+														<p>
+															09.02.25
+														</p>
+													</div>
+
+												</div>
+												<div class="tracking-inq__item completed _warn">
+													<span class="step "></span>
+													<div class="tracking-inq__content">
+														<details>
+															<summary>
+																<h4 class="_icon-ch-down">
+																	Consolidation warehouse
+																</h4>
+																<p>
+																	11.02.25
+																</p>
+															</summary>
+															<div class="tracking-inq__hidden">
+																<div class="tracking-inq__meas meas-bid">
+																	<div data-simplebar class="meas-bid__scroll">
+																		<div class="meas-bid__boxes">
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.webp" alt="Image">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="meas-bid__mob-actions">
+																		<a href="#" class="meas-bid__download _icon-download">
+																			Measurements
+																		</a>
+																		<button class="meas-bid__msg-btn _active _icon-chat">
+
+																		</button>
+																	</div>
+																	<div class="meas-bid__actions">
+																		<div class="meas-bid__actions-label">
+																			Carrier sent measurements, confirm them
+																			or reject them if you don't agree with them.
+																		</div>
+																		<div class="meas-bid__buttons">
+																			<a href="#" class="meas-bid__button button button--border">Decline</a>
+																			<a href="#" class="meas-bid__button button">Confirm</a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+														</details>
+													</div>
+												</div>
+												<div class="tracking-inq__item ">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Container loading</h4>
+														<p>12.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>ETD / ATD</h4>
+														<p>ETD 12.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>ETA / ATA</h4>
+														<p>ATA 25.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Unloading from the ship</h4>
+														<p>ATA 25.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<details>
+															<summary>
+																<h4 class="_icon-ch-down">Custom clearance</h4>
+																<p>26.02.25</p>
+															</summary>
+															<div class="tracking-inq__hidden">
+																<div class="tracking-inq__files">
+																	<a href="#" class="tracking-inq__file blank-link _icon-blank">inspe...pdf</a>
+																</div>
+															</div>
+														</details>
+
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Pick up from the seaport</h4>
+														<p>28.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Sorting warehouse</h4>
+														<p>29.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Final address</h4>
+														<p>29.02.25</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="bid-inq__footer">
+											<div class="bid-inq__upload upload-bid">
+												<div class="upload-bid__body">
+													<h5 class="upload-bid__title block-title">
+														Documents <span>(Attach a PDF)</span>
+													</h5>
+													<div class="upload-bid__field field">
+														<div class="field__input">
+															<label class="file-input _icon-pin">
+																Upload document
+																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="upload-bid__files">
+													<a href="#" class="upload-bid__link blank-link _icon-blank">insura...pdf</a>
+													<a href="#" class="upload-bid__link blank-link _icon-blank">invoice</a>
+												</div>
+											</div>
+											<div class="bid-inq__feedback">
+												<h5 class="bid-inq__feedback-title block-title">
+													How was your delivery experience?
+												</h5>
+												<div data-rating="set" class="rating"></div>
+											</div>
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>
