@@ -1,597 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<title>iDelive</title>
-	<meta charset="UTF-8">
-	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250429060517">
-	<link rel="shortcut icon" href="favicon.ico">
-	<!-- <meta name="robots" content="noindex, nofollow"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-</head>
+@@include('html/_head.htm',{
+"title":"iDelive"
+})
 
 <body>
 	<div class="wrapper">
-		<div id="popup-bid" aria-hidden="true" class="popup">
-			<div class="popup__wrapper">
-				<div class="popup__content">
-					<div data-inputs-wrapper class="bid-popup">
-						<button class="bid-popup__back _icon-arrow-bold-left">Back</button>
-						<form action="#" class="bid-popup__form">
-							<div class="bid-popup__header">
-								<div class="bid-popup__label">
-									Shipping method*
-								</div>
-								<div class="bid-popup__type-radios type-radios">
-									<label class="type-radios__item">
-										<input checked type="radio" name="type">
-										Land
-									</label>
-									<label class="type-radios__item">
-										<input type="radio" name="type">
-										Air
-									</label>
-									<label class="type-radios__item">
-										<input type="radio" name="type">
-										Sea
-									</label>
-								</div>
-								<label class="bid-popup__checkbox checkbox">
-									<span class="icon"></span>
-									Calculate all the options
-									<input type="checkbox">
-								</label>
-							</div>
-							<div class="bid-popup__block">
-								<div class="bid-popup__address-block">
-									<div class="bid-popup__label">
-										From*
-									</div>
-									<select data-class-modif="triangle">
-										<option value="" selected>Country</option>
-										<option value="1">Country 1</option>
-										<option value="2">Country 2</option>
-										<option value="3">Country 3</option>
-									</select>
-									<div class="bid-popup__field field">
-										<div class="field__input">
-											<input placeholder="Enter full address" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="bid-popup__address-block">
-									<div class="bid-popup__label">
-										To*
-									</div>
-									<select data-class-modif="triangle">
-										<option value="" selected>Country</option>
-										<option value="1">Country 1</option>
-										<option value="2">Country 2</option>
-										<option value="3">Country 3</option>
-									</select>
-									<div class="bid-popup__field field">
-										<div class="field__input">
-											<input placeholder="Enter full address" type="text">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="bid-popup__block">
-								<div class="bid-popup__ship-type">
-									<div class="bid-popup__label">
-										Shipment type*
-									</div>
-									<div class="bid-popup__ship-block">
-										<label class="bid-popup__radiobox radiobox">
-											<span class="icon"></span>
-											<input type="radio" name="ship-type">
-											Box
-										</label>
-										<label class="bid-popup__radiobox radiobox">
-											<span class="icon"></span>
-											<input type="radio" name="ship-type">
-											Pallets
-										</label>
-									</div>
-								</div>
-								<div class="bid-popup__field field">
-									<div class="bid-popup__label">
-										Weight*
-									</div>
-									<div class="field__input ">
-										<input placeholder="Enter full address" type="text">
-										<select data-class-modif="input">
-											<option value="1" selected>Ibs</option>
-											<option value="2">Kg</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="bid-popup__body">
-								<div data-simplebar class="bid-popup__scroll">
-									<div data-inputs class="bid-popup__body-block">
-										<div class="bid-popup__wrapper">
-											<div class="bid-popup__label">
-												Dimensions*
-											</div>
-											<div class="bid-popup__dimensions">
-												<div class="bid-popup__field field ">
-													<div class="field__input ">
-														<input placeholder="Length" type="text">
-														<select data-class-modif="input">
-															<option value="1" selected>In</option>
-															<option value="2">M</option>
-														</select>
-													</div>
-												</div>
-												<div class="bid-popup__field field">
-													<div class="field__input ">
-														<input placeholder="Width" type="text">
-														<select data-class-modif="input">
-															<option value="1" selected>In</option>
-															<option value="2">M</option>
-														</select>
-													</div>
-												</div>
-												<div class="bid-popup__field field">
-													<div class="field__input ">
-														<input placeholder="Height" type="text">
-														<select data-class-modif="input">
-															<option value="1" selected>In</option>
-															<option value="2">M</option>
-														</select>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="bid-popup__wrapper">
-											<div class="bid-popup__details">
-												<div class="bid-popup__field bid-popup__field--quantity field">
-													<div class="bid-popup__label">
-														Quantity
-													</div>
-													<div class="field__input">
-														<input placeholder="1" type="text">
-													</div>
-												</div>
-												<div class="bid-popup__field field">
-													<div class="bid-popup__label">
-														Gross weight
-													</div>
-													<div class="field__input field__input--border-between">
-														<input placeholder="0" type="text">
-														<select data-class-modif="input">
-															<option value="1" selected>Kg</option>
-															<option value="2">In</option>
-														</select>
-													</div>
-												</div>
-												<div class="bid-popup__or">
-													or
-												</div>
-												<div class="bid-popup__field field">
-													<div class="field__input field__input--border-between">
-														<input placeholder="Volume" type="text">
-														<div class="field__input-label">
-															CBM
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="bid-popup__wrapper">
-											<div class="bid-popup__label">
-												Cargo*
-											</div>
-											<div class="bid-popup__cargo">
-												<div class="bid-popup__field field">
-													<div class="field__input">
-														<input placeholder="Enter product" type="text">
-													</div>
-												</div>
-												<div class="bid-popup__field field">
-													<div class="field__input">
-														<label class="file-input _icon-pin">
-															Photo cargo
-															<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="bid-popup__wrapper">
-											<div class="bid-popup__code">
-												<div class="bid-popup__field field">
-													<div class="bid-popup__label">
-														HS Code
-													</div>
-													<div class="field__input">
-														<input placeholder="Enter code" type="text">
-													</div>
-												</div>
-												<div class="bid-popup__field field">
-													<div class="bid-popup__label">
-														Invoice, packing list
-													</div>
-													<div class="field__input">
-														<label class="file-input _icon-pin">
-															Attach invoice, packing list
-															<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-						<div class="bid-popup__add">
-							<button data-add-inputs type="button" class="_icon-plus"></button>
-							Add dimensions and product
-						</div>
-						<div class="bid-popup__footer">
-							<button data-close class="bid-popup__button bid-popup__button--pc button button--border">
-								Close
-							</button>
-							<button class="bid-popup__button button _icon-arrow-right">
-								BidDeliv
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="decline-popup" aria-hidden="true" class="popup">
-			<div class="popup__wrapper">
-				<div class="popup__content">
-					<div data-inputs-wrapper class="bid-popup bid-popup--decline">
-						<button data-close class="bid-popup__back-circle _icon-cross"></button>
-						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
-						<form action="#" class="bid-popup__form">
-							<h3 class="bid-popup__title">
-								Let us know about your problem, we will solve it quickly
-							</h3>
-							<div class="bid-popup__wrapper">
-								<div class="bid-popup__label">
-									Write to us
-								</div>
-								<div class="bid-popup__field field">
-									<div class="field__input">
-										<textarea placeholder="Tell us why you don't agree with the measurements"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="bid-popup__wrapper">
-								<div class="bid-popup__label">
-									Attach a photo
-								</div>
-								<div class="upload-bid__field field">
-									<div class="field__input">
-										<label class="file-input _icon-pin">
-											Upload document
-											<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-										</label>
-									</div>
-								</div>
-							</div>
-							<button class="bid-popup__send button">
-								Send
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="confirm1-popup" aria-hidden="true" class="popup">
-			<div class="popup__wrapper">
-				<div class="popup__content">
-					<div data-inputs-wrapper class="bid-popup bid-popup--decline">
-						<button data-close class="bid-popup__back-circle _icon-cross"></button>
-						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
-						<form action="#" class="bid-popup__form">
-							<h3 class="bid-popup__title bid-popup__title--thin-margin">
-								Please confirm your selection
-							</h3>
-							<div class="bid-popup__details-label">
-								You can change the type of delivery or continue with the selected option
-							</div>
-							<div class="bid-popup__wrapper bid-popup__wrapper--big-margin">
-								<div class="bid-popup__field field">
-
-									<select data-class-modif="prices">
-										<option value="" selected>Choose another type of service</option>
-										<option value="2">Air express <span>4000 USD</span></option>
-										<option value="3">Fast sea<span>3500 USD</span></option>
-										<option value="4">Fast sea truck<span>3000 USD</span></option>
-									</select>
-								</div>
-							</div>
-							<div class="bid-popup__info">
-								<div class="bid-popup__info-label">
-									Type of delivery: <span>Air</span>
-								</div>
-								<div class="bid-popup__info-label">
-									Price:v <span>3000 USD</span>
-								</div>
-							</div>
-							<button class="bid-popup__send button">
-								Confirm
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="confirm2-popup" aria-hidden="true" class="popup">
-			<div class="popup__wrapper">
-				<div class="popup__content">
-					<div data-inputs-wrapper class="bid-popup bid-popup--confirm2">
-						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
-						<form action="#" class="bid-popup__form">
-							<h3 class="bid-popup__title bid-popup__title--thin-margin">
-								Please fill out the information below
-							</h3>
-							<div class="bid-popup__details-label bid-popup__details-label--mobile">
-								You can change the type of delivery or continue with the selected option
-							</div>
-							<div class="bid-popup__group">
-								<h3 class="bid-popup__title bid-popup__title--group">
-									Delivery address
-								</h3>
-								<div class="bid-popup__wrapper">
-									<div class="bid-popup__label">
-										Amazon
-									</div>
-									<select data-search>
-										<option value="" selected>Select or enter address amazon</option>
-										<option value="2">Air express </option>
-										<option value="3">Fast sea</option>
-										<option value="4">Fast sea truck</option>
-									</select>
-								</div>
-								<div class="bid-popup__wrapper">
-									<div class="bid-popup__label">
-										Amazon
-									</div>
-									<div class="bid-popup__field field">
-										<div class="field__input ">
-											<input placeholder="Enter FBA / Shipment ID" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="bid-popup__wrapper">
-									<div class="bid-popup__label">
-										Walmart
-									</div>
-									<select data-search>
-										<option value="" selected>Select or enter address Walmart</option>
-										<option value="2">Air express </option>
-										<option value="3">Fast sea</option>
-										<option value="4">Fast sea truck</option>
-									</select>
-								</div>
-							</div>
-							<div class="bid-popup__group">
-								<h3 class="bid-popup__title bid-popup__title--group">
-									Privat address
-								</h3>
-								<div class="bid-popup__triple-block">
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											City*
-										</div>
-										<select data-search>
-											<option value="" selected>Enter city</option>
-											<option value="2">Air express </option>
-											<option value="3">Fast sea</option>
-											<option value="4">Fast sea truck</option>
-										</select>
-									</div>
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											Index*
-										</div>
-										<div class="bid-popup__field field">
-											<div class="field__input ">
-												<input placeholder="Enter index" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											Street name / number*
-										</div>
-										<div class="bid-popup__field field">
-											<div class="field__input ">
-												<input placeholder="Enter street name / number" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											Contact person*
-										</div>
-										<div class="bid-popup__field field">
-											<div class="field__input ">
-												<input placeholder="Enter street name / number" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											Phone number*
-										</div>
-										<div class="bid-popup__field field">
-											<div class="field__input ">
-												<input placeholder="Enter phone number" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="bid-popup__wrapper">
-										<div class="bid-popup__label">
-											E-mail
-										</div>
-										<div class="bid-popup__field field">
-											<div class="field__input ">
-												<input placeholder="Enter e-mail" type="email">
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div class="bid-popup__footer">
-								<button data-close class="bid-popup__button bid-popup__button--pc button button--border">
-									Back
-								</button>
-								<button class="bid-popup__button button">
-									Send
-								</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<header class="header">
-			<div class="header__container">
-				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
-				<div class="header__logo">
-					<img src="img/logo.svg" alt="Image" class="ibg ibg--contain">
-				</div>
-				<nav data-da=".mobile-menu__block--menu, 1099.98, last" class="header__menu">
-					<ul>
-						<li>
-							<a href="#">
-								DataFreight
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								LogiTalk
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								ChainTrust
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								Ai WMS
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								Government
-							</a>
-						</li>
-					</ul>
-				</nav>
-				<div class="header__label">
-					Cargo
-				</div>
-				<div class="header__actions">
-					<div data-da=".mobile-menu__footer, 1099.98, last" class="header__lang">
-						<select data-class-modif="lang">
-							<option value="1" selected>EN</option>
-							<option value="2">DE</option>
-							<option value="3">UK</option>
-						</select>
-					</div>
-					<a href="#" class="header__notif _icon-bell _active"></a>
-					<div class="header__profile profile-comp">
-						<a href="#" class="profile-comp__pic">
-							<img src="img/user.webp" alt="Image" class="ibg">
-						</a>
-						<div class="profile-comp__label">
-							<a href="#">Ronald Richards</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="mobile-menu">
-				<div class="mobile-menu__header">
-					<div class="mobile-menu__profile profile-comp">
-						<a href="#" class="profile-comp__pic">
-							<img src="img/user.webp" alt="Image" class="ibg">
-						</a>
-						<div class="profile-comp__label">
-							Welcome back, <br>
-							<a href="#">Roland</a>
-						</div>
-					</div>
-					<button data-menu-toggle class="mobile-menu__close _icon-cross">
-
-					</button>
-				</div>
-				<div class="mobile-menu__block">
-					<h4 class="mobile-menu__title">
-						Account
-					</h4>
-					<div class="mobile-menu__aside-nav aside-nav">
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#dashboard"></use>
-							</svg>
-							<span>Dashboard</span>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#notifications"></use>
-							</svg>
-							<span>Notifications</span>
-							<div class="count">8</div>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#cargo"></use>
-							</svg>
-							<span>Cargo</span>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#documents"></use>
-							</svg>
-							<span>Documents</span></a>
-						<a href="#" class="aside-nav__item _active">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#messages"></use>
-							</svg>
-							<span>Messages</span>
-							<div class="count">1</div>
-						</a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#profile"></use>
-							</svg>
-							<span>Profile</span></a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#settings"></use>
-							</svg>
-							<span>Settings</span></a>
-						<a href="#" class="aside-nav__item">
-							<svg class="sprite">
-								<use xlink:href="img/icons.svg#payment"></use>
-							</svg>
-							<span>Payment</span></a>
-					</div>
-				</div>
-				<div class="mobile-menu__block mobile-menu__block--menu">
-					<h4 class="mobile-menu__title">
-						Products
-					</h4>
-				</div>
-				<div class="mobile-menu__footer">
-					<button class="mobile-menu__logout logout-btn _icon-upload">
-						Log out
-					</button>
-				</div>
-			</div>
-		</header>
+		@@include('html/_popup.htm',{})
+		@@include('html/_header.htm',{})
 		<main class="page">
 			<div class="page__profile profile">
 				<div class="profile__wrapper">
@@ -895,7 +311,7 @@
 														<div class="field__input">
 															<label class="file-input _icon-pin">
 																Upload document
-																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+																<input type="file" name="myImage" accept="image/png, image/gif, image/jpeg" />
 															</label>
 														</div>
 													</div>
@@ -912,7 +328,7 @@
 												</h5>
 												<div class="profile-bid__body">
 													<a href="#" class="profile-bid__image">
-														<img src="img/user.webp" alt="Image" class="ibg">
+														<img src="img/user.png" alt="Image" class="ibg">
 													</a>
 													<div class="profile-bid__label">
 														<a href="#">Josh Michael</a>
@@ -931,7 +347,8 @@
 								</div>
 							</div>
 							<div class="inquires__content inquires__content--mobile">
-								<div data-spoilers data-one-spoiler style="--card-color: #D50000" class="inquires__mobile-card card-inquires-m">
+								<div data-spoilers data-one-spoiler style="--card-color: #D50000"
+									class="inquires__mobile-card card-inquires-m">
 									<div class="card-inquires-m__header">
 										<div class="card-inquires-m__title">
 											ID number: <span>0001</span>
@@ -940,7 +357,8 @@
 										<div data-value="21" class="card-inquires-m__circle-progress circle-progress">
 											<svg viewBox="0 0 100 100">
 												<circle stroke="#EAEAEA" stroke-width="5" cx="50" cy="50" r="45" fill="none" />
-												<circle class="progress--circle" stroke="var(--card-color, #64DB78)" stroke-width="7" cx="50" cy="50" r="45" fill="none" pathLength="100" />
+												<circle class="progress--circle" stroke="var(--card-color, #64DB78)" stroke-width="7" cx="50"
+													cy="50" r="45" fill="none" pathLength="100" />
 											</svg>
 											<div class="circle-progress__value">
 												<p>0%</p>
@@ -978,8 +396,8 @@
 										</span>
 									</div>
 									<div class="card-inquires-m__info info-inq">
-										<div class="info-inq__status">
-											Pick up from the supplier
+										<div style="--card-color: #64DB78" class="info-inq__status">
+											<p>Pick up from the supplier / <span style="color: #D50000;">meet the inspection</span></p>
 										</div>
 										<div style="--card-color: #7B7F97" class="info-inq__status info-inq__status--gray">
 											Waiting for the measurements
@@ -994,723 +412,183 @@
 										</button>
 									</div>
 									<div class="card-inquires-m__bid-inq bid-inq">
-										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Supplier information</summary>
-											<div class="spoiler-inq__body">
-												<div class="spoiler-inq__supplier supplier">
-													<div class="supplier__body">
-														<div class="supplier__info">
-															<div class="supplier__info-item">
-																<h4>
-																	Name of the supplier:
-																</h4>
-																<p>
-																	Name of the supplier
-																</p>
-															</div>
-															<div class="supplier__info-item">
-																<h4>
-																	Cargo:
-																</h4>
-																<p>
-																	Household appliances
-																</p>
-															</div>
-															<div class="supplier__info-item">
-																<h4>
-																	Email:
-																</h4>
-																<p>
-																	example.supplier@china.com
-																</p>
-															</div>
-															<div class="supplier__info-item">
-																<h4>
-																	Wechat:
-																</h4>
-																<div class="supplier__box">
-																	<p>
-																		Username on Wechat
-																	</p>
-																	<button class="supplier__img-btn _icon-pic">
-																	</button>
-																</div>
+										<div data-spoilers data-spoilers-speed="0" class="updates-inq__tracking tracking-inq">
+											<h2 class="tracking-inq__title">
+												Tracking history
+											</h2>
+											<div class="tracking-inq__line">
+											</div>
+											<div class="tracking-inq__body">
+												<div class="tracking-inq__item completed">
+													<span class="step">
 
-															</div>
-															<div class="supplier__info-item supplier__info-item--big">
-																<h4>
-																	Address: 
-																</h4>
-																<p>
-																	1234 Maple Street, Los Angeles, CA 90001, USA
-																</p>
-															</div>
-															<div class="supplier__info-item">
-																<h4>
-																	Phone number:
-																</h4>
-																<p>
-																	+86 21 1234 5678
-																</p>
-															</div>
-														</div>
+													</span>
+													<div class="tracking-inq__content">
+														<h4>
+															Pick up from the supplier
+														</h4>
+														<p>
+															09.02.25
+														</p>
 													</div>
-													<form action="#" method="POST" enctype="multipart/form-data" class="supplier__form">
-														<div class="supplier__dates">
-															<div class="supplier__field field">
-																<div class="field__label field__label--inq">
-																	Pick up from the supplier
-																</div>
-																<div class="field__input">
-																	<input type="text" placeholder="Enter the date">
-																	<label class="field__date _icon-calendar">
-																		<input type="date">
-																	</label>
-																</div>
-															</div>
-															<div class="supplier__field field">
-																<div class="field__label field__label--inq">
+
+												</div>
+												<div class="tracking-inq__item completed _warn">
+													<span class="step "></span>
+													<div class="tracking-inq__content">
+														<details>
+															<summary>
+																<h4 class="_icon-ch-down">
 																	Consolidation warehouse
-																</div>
-																<div class="field__input">
-																	<input type="text" placeholder="Enter the date">
-																	<label class="field__date _icon-calendar">
-																		<input type="date">
-																	</label>
-																</div>
-															</div>
-															<div class="supplier__label">
-																Select the dates, the customer will see them on the Tracking history
-															</div>
-														</div>
-														<div class="supplier__success success-info">
-															<svg class="icon">
-																<use xlink:href="img/icons.svg#check-circle"></use>
-															</svg>
-															Changes retained
-														</div>
-													</form>
-												</div>
-											</div>
-										</details>
-										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Measurements</summary>
-											<div class="spoiler-inq__body">
-												<div class="tabs-inq__measurements measurements">
-													<div data-inputs-wrapper class="measurements__cargo cargo-meas">
-														<div data-inputs class="cargo-meas__block">
-															<div class="cargo-meas__fields">
-																<div class="cargo-meas__field field">
-																	<div class="field__label field__label--inq">
-																		Quantity
-																	</div>
-																	<div class="field__input">
-																		<input type="text" placeholder="Quantity">
-																	</div>
-																</div>
-																<div class="cargo-meas__field field">
-																	<div class="field__label field__label--inq">
-																		Height, cm
-																	</div>
-																	<div class="field__input">
-																		<input type="text" placeholder="Height">
-																	</div>
-																</div>
-																<div class="cargo-meas__field field">
-																	<div class="field__label field__label--inq">
-																		Lenght, cm
-																	</div>
-																	<div class="field__input">
-																		<input type="text" placeholder="Lenght">
-																	</div>
-																</div>
-																<div class="cargo-meas__field field">
-																	<div class="field__label field__label--inq">
-																		Width, cm
-																	</div>
-																	<div class="field__input">
-																		<input type="text" placeholder="Width">
-																	</div>
-																</div>
-																<div class="cargo-meas__field field">
-																	<div class="field__label field__label--inq">
-																		Weight, cm
-																	</div>
-																	<div class="field__input">
-																		<input type="text" placeholder="Weight">
-																	</div>
-																</div>
-																<button data-add-inputs class="cargo-meas__add">
-																	+Add cargo
-																</button>
-															</div>
-															<table class="cargo-meas__table">
-																<tbody>
-																	<tr>
-																		<td>Total CBM:</td>
-																		<td>0, 459</td>
-																	</tr>
-																	<tr>
-																		<td>Total Volume weight (CBM):</td>
-																		<td>0, 413</td>
-																	</tr>
-																	<tr>
-																		<td>Total kg:</td>
-																		<td>150</td>
-																	</tr>
-																	<tr>
-																		<td>Total Volume weight (kg):</td>
-																		<td>76, 50</td>
-																	</tr>
-																</tbody>
-															</table>
-														</div>
-													</div>
-													<div class="measurements__total">
-														<div class="measurements__table">
-															<div class="measurements__table-wrapper">
-																<table>
-																	<thead>
-																		<tr>
-																			<th colspan="2" class="accent">
-																				<span>Total for shipment:</span>
-																			</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr>
-																			<td>Quantity:</td>
-																			<td>16</td>
-																		</tr>
-																		<tr>
-																			<td>CBM:</td>
-																			<td>0, 673</td>
-																		</tr>
-																		<tr>
-																			<td>KG</td>
-																			<td>205</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</div>
-														</div>
-														<span></span>
-														<div class="measurements__total-label">
-															Enter your measurement values into the table. The table automatically calculates the
-															values using the formulas
-															<span class="_icon-info"></span>
-														</div>
-													</div>
-													<div class="measurements__files files-inq">
-														<form action="#" method="POST" enctype="multipart/form-data" class="files-inq__file-upload file-upload">
-															<div class="file-upload__title">
-																File upload
-															</div>
-															<div class="file-upload__text">
-																Attach a photos measurements
-															</div>
-															<div class="updates-inq__field field">
-																<div class="field__input">
-																	<label class="file-input _icon-pin">
-																		Upload document
-																		<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-																	</label>
-																</div>
-															</div>
-														</form>
-														<div class="measurements__uploading uploading">
-															<div class="uploading__label">
-																Uploading
-															</div>
-															<div data-simplebar class="uploading__items">
-																<div class="uploading__item">
-																	<div class="uploading__boby _icon-pic">
-																		<div class="uploading__title">
-																			Photo2.webp
+																</h4>
+																<p>
+																	11.02.25
+																</p>
+															</summary>
+															<div class="tracking-inq__hidden">
+																<div class="tracking-inq__meas meas-bid">
+																	<div data-simplebar class="meas-bid__scroll">
+																		<div class="meas-bid__boxes">
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
+																			<div class="meas-bid__box">
+																				<img class="ibg ibg--contain" src="img/inquires/box.png" alt="Image">
+																			</div>
 																		</div>
-																		<button class="uploading__remove _icon-cross">
+																	</div>
+																	<div class="meas-bid__mob-actions">
+																		<a href="#" class="meas-bid__download _icon-download">
+																			Measurements
+																		</a>
+																		<button class="meas-bid__msg-btn _active _icon-chat">
 
 																		</button>
 																	</div>
-																	<div style="--progress: 37%" class="uploading__bar">
-
-																	</div>
-																	<div class="uploading__status">
-																		37% done
-																	</div>
-																</div>
-																<div class="uploading__item">
-																	<div class="uploading__boby _icon-pic">
-																		<div class="uploading__title">
-																			Photo2.webp
+																	<div class="meas-bid__actions">
+																		<div class="meas-bid__actions-label">
+																			Carrier sent measurements, confirm them
+																			or reject them if you don't agree with them.
 																		</div>
-																		<button class="uploading__remove _icon-cross">
-
-																		</button>
-																	</div>
-																	<div style="--progress: 66%" class="uploading__bar">
-
-																	</div>
-																	<div class="uploading__status">
-																		66% done
-																	</div>
-																</div>
-																<div class="uploading__item">
-																	<div class="uploading__boby _icon-pic">
-																		<div class="uploading__title">
-																			Photo2.webp
+																		<div class="meas-bid__buttons">
+																			<a href="#" class="meas-bid__button button button--border">Decline</a>
+																			<a href="#" class="meas-bid__button button">Confirm</a>
 																		</div>
-																		<button class="uploading__remove _icon-cross">
+																	</div>
+																</div>
+															</div>
 
-																		</button>
-																	</div>
-																	<div style="--progress: 5%" class="uploading__bar">
+														</details>
+													</div>
+												</div>
+												<div class="tracking-inq__item ">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Container loading</h4>
+														<p>12.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>ETD / ATD</h4>
+														<p>ETD 12.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>ETA / ATA</h4>
+														<p>ATA 25.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Unloading from the ship</h4>
+														<p>ATA 25.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<details>
+															<summary>
+																<h4 class="_icon-ch-down">Custom clearance</h4>
+																<p>26.02.25</p>
+															</summary>
+															<div class="tracking-inq__hidden">
+																<div class="tracking-inq__files">
+																	<a href="#" class="tracking-inq__file blank-link _icon-blank">inspe...pdf</a>
+																</div>
+															</div>
+														</details>
 
-																	</div>
-																	<div class="uploading__status">
-																		5% done
-																	</div>
-																</div>
-															</div>
-														</div>
-														<form action="#" method="POST" enctype="multipart/form-data" class="measurements__comment-block comment-block">
-															<div class="comment-block__field field">
-																<div class="field__input">
-																	<textarea placeholder="Comments"></textarea>
-																</div>
-															</div>
-															<div class="comment-block__footer">
-																<button class="comment-block__button button button--purple">
-																	Send
-																</button>
-																<div class="comment-block__label">
-																	Message sent to the customer
-																</div>
-															</div>
-														</form>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Pick up from the seaport</h4>
+														<p>28.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Sorting warehouse</h4>
+														<p>29.02.25</p>
+													</div>
+												</div>
+												<div class="tracking-inq__item">
+													<span class="step"></span>
+													<div class="tracking-inq__content">
+														<h4>Final address</h4>
+														<p>29.02.25</p>
 													</div>
 												</div>
 											</div>
-										</details>
-										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Invoice</summary>
-											<div class="spoiler-inq__body">
-												<div class="measurements__files files-inq">
-													<form action="#" method="POST" enctype="multipart/form-data" class="files-inq__file-upload file-upload">
-														<div class="file-upload__title">
-															File upload
-														</div>
-														<div class="file-upload__text">
-															Attach a photos measurements
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__input">
-																<label class="file-input _icon-pin">
-																	Upload document
-																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-																</label>
-															</div>
-														</div>
-													</form>
-													<div class="measurements__uploading uploading">
-														<div class="uploading__label">
-															Uploading
-														</div>
-														<div data-simplebar class="uploading__items">
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 37%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	37% done
-																</div>
-															</div>
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 66%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	66% done
-																</div>
-															</div>
-															<div class="uploading__item">
-																<div class="uploading__boby _icon-pic">
-																	<div class="uploading__title">
-																		Photo2.webp
-																	</div>
-																	<button class="uploading__remove _icon-cross">
-
-																	</button>
-																</div>
-																<div style="--progress: 5%" class="uploading__bar">
-
-																</div>
-																<div class="uploading__status">
-																	5% done
-																</div>
-															</div>
-														</div>
-													</div>
-													<form action="#" method="POST" enctype="multipart/form-data" class="measurements__comment-block comment-block">
-														<div class="comment-block__field field">
-															<div class="field__input">
-																<textarea placeholder="Comments"></textarea>
-															</div>
-														</div>
-														<div class="comment-block__footer">
-															<button class="comment-block__button button button--purple">
-																Send
-															</button>
-															<div class="comment-block__label">
-																Message sent to the customer
-															</div>
-														</div>
-													</form>
-												</div>
-											</div>
-										</details>
-										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Updates</summary>
-											<div class="spoiler-inq__body">
-												<div class="spoiler-inq__updates updates-inq">
-													<div class="updates-inq__tracking tracking-inq">
-														<h2 class="tracking-inq__title">
-															Tracking history
-														</h2>
-														<div class="tracking-inq__line">
-														</div>
-														<div class="tracking-inq__body">
-															<div class="tracking-inq__item completed">
-																<span class="step">
-
-																</span>
-																<div class="tracking-inq__content">
-																	<h4>
-																		Pick up from the supplier
-																	</h4>
-																	<p>
-																		09.02.25
-																	</p>
-																</div>
-
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Consolidation warehouse</h4>
-																	<p>11.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Container loading</h4>
-																	<p>12.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>ETD / ATD</h4>
-																	<p>ETD 12.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>ETA / ATA</h4>
-																	<p>ATA 25.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Unloading from the ship</h4>
-																	<p>ATA 25.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item completed">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Custom clearance, *inspection</h4>
-																	<p>26.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Pick up from the seaport</h4>
-																	<p>28.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Sorting warehouse</h4>
-																	<p>29.02.25</p>
-																</div>
-															</div>
-															<div class="tracking-inq__item">
-																<span class="step"></span>
-																<div class="tracking-inq__content">
-																	<h4>Final address</h4>
-																	<p>29.02.25</p>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="updates-inq__status">
-														<h2 class="updates-inq__status-title">
-															Status order:
-														</h2>
-														<select>
-															<option value="" selected>Select order status</option>
-															<option value="2">At the Chinese warehouse</option>
-															<option value="3">Pick up from supplier</option>
-															<option value="4">Container loading</option>
-															<option value="5">
-																ETD
-															</option>
-															<option value="5">
-																ATD
-															</option>
-															<option value="5">
-																ETA
-															</option>
-															<option value="5">
-																ATA
-															</option>
-															<option value="5">
-																unloading from the ship
-															</option>
-															<option value="5">
-																Customs clearance
-															</option>
-															<option value="5">
-																Meet inspection
-															</option>
-															<option value="5">
-																Pick up from the seaport
-															</option>
-															<option value="5">
-																Consolidation warehouse
-															</option>
-															<option value="5">
-																Final address
-															</option>
-														</select>
-													</div>
-													<div class="updates-inq__fields">
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																ETD/ATD
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the date">
-																<label class="field__date _icon-calendar">
-																	<input type="date">
-																</label>
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																ETA/ATA
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the date">
-																<label class="field__date _icon-calendar">
-																	<input type="date">
-																</label>
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Shipping line
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Tracking number
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																PRO number
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Estimated time of the delivery / Appointment date
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Confirmation about the inspection
-															</div>
-															<div class="field__input">
-																<label class="file-input _icon-pin">
-																	Upload document
-																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-																</label>
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																POD/BOL/ISA
-															</div>
-															<div class="field__input">
-																<label class="file-input _icon-pin">
-																	Upload document
-																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-																</label>
-															</div>
-														</div>
-														<div class="updates-inq__success success-info">
-															<svg class="icon">
-																<use xlink:href="img/icons.svg#check-circle"></use>
-															</svg>
-															Changes retained
+										</div>
+										<div class="bid-inq__footer">
+											<div class="bid-inq__upload upload-bid">
+												<div class="upload-bid__body">
+													<h5 class="upload-bid__title block-title">
+														Documents <span>(Attach a PDF)</span>
+													</h5>
+													<div class="upload-bid__field field">
+														<div class="field__input">
+															<label class="file-input _icon-pin">
+																Upload document
+																<input type="file" name="myImage" accept="image/png, image/gif, image/jpeg" />
+															</label>
 														</div>
 													</div>
 												</div>
-											</div>
-										</details>
-										<details class="card-inquires-m__spoiler spoiler-inq">
-											<summary class="spoiler-inq__title _icon-ch-down">Product information</summary>
-											<div class="spoiler-inq__body">
-												<div class="spoiler-inq__updates updates-inq">
-													<div class="updates-inq__fields">
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																ID number:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Product name:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																HS Code:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																SKU:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Unit Price:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Total Price:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information" name="date">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Quantity:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information" name="date">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Tax Rate (%):
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information" name="date">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Material:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information" name="date">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Remarks:
-															</div>
-															<div class="field__input">
-																<input type="text" placeholder="Enter the information" name="date">
-															</div>
-														</div>
-														<div class="updates-inq__field field">
-															<div class="field__label field__label--inq">
-																Certificate:
-															</div>
-															<div class="field__input">
-																<label class="file-input _icon-pin">
-																	Upload document
-																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-																</label>
-															</div>
-														</div>
-														<div class="updates-inq__success success-info">
-															<svg class="icon">
-																<use xlink:href="img/icons.svg#check-circle"></use>
-															</svg>
-															Changes retained
-														</div>
-													</div>
+												<div class="upload-bid__files">
+													<a href="#" class="upload-bid__link blank-link _icon-blank">insura...pdf</a>
+													<a href="#" class="upload-bid__link blank-link _icon-blank">invoice</a>
 												</div>
 											</div>
-										</details>
+											<div class="bid-inq__feedback">
+												<h5 class="bid-inq__feedback-title block-title">
+													How was your delivery experience?
+												</h5>
+												<div data-rating="set" class="rating"></div>
+											</div>
+										</div>
 									</div>
-
 
 								</div>
 							</div>
@@ -1719,80 +597,9 @@
 				</div>
 			</div>
 		</main>
-		<footer class="footer">
-			<div class="footer__container">
-				<div class="footer__body">
-					<div class="footer__logo">
-						<img src="img/logo.svg" alt="Image" class="ibg ibg--contain">
-					</div>
-					<div class="footer__contacts contacts-footer">
-						<div class="contacts-footer__header">
-							<h3 class="contacts-footer__title">
-								Get in touch
-							</h3>
-							<ul class="contacts-footer__social">
-								<li>
-									<a href="#">
-										Facebook
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										Instagram
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										Telegram
-									</a>
-								</li>
-							</ul>
-						</div>
-						<form action="#" class="contacts-footer__form">
-							<input type="email" name="email" placeholder="Enter your email">
-							<button class="button">Subscribe</button>
-						</form>
-					</div>
-				</div>
-				<ul class="footer__menu">
-					<li>
-						<a href="#">
-							DataFreight
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							LogiTalk
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							SmartWarehouse
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							ChainTrust
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							GovConnect
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							Contact us
-						</a>
-					</li>
-				</ul>
-				<div class="footer__copy">
-					© AiDeliv.com 2024. All rights reserved
-				</div>
-			</div>
-		</footer>
+		@@include('html/_footer.htm',{})
 	</div>
-	<script src="js/app.min.js?_v=20250429060517"></script>
+	@@include('html/_js.htm', {})
 </body>
 
 </html>
