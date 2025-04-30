@@ -38,6 +38,7 @@
                     }
                 }));
             }), duration);
+            updateAllTrackingLines();
         }
     };
     let _slideDown = (target, duration = 500, showmore = 0) => {
@@ -72,6 +73,7 @@
                     }
                 }));
             }), duration);
+            updateAllTrackingLines();
         }
     };
     let _slideToggle = (target, duration = 500) => {
@@ -115,14 +117,6 @@
             }), delay);
         }
     };
-    function menuInit() {
-        if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
-            if (bodyLockStatus && e.target.closest(".icon-menu")) {
-                bodyLockToggle(0);
-                document.documentElement.classList.toggle("menu-open");
-            }
-        }));
-    }
     function spoilers() {
         const spoilersArray = document.querySelectorAll("[data-spoilers]");
         if (spoilersArray.length > 0) {
@@ -189,6 +183,7 @@
                             }), spoilerSpeed);
                             spoilerTitle.classList.toggle("_spoiler-active");
                             _slideToggle(spoilerTitle.nextElementSibling, spoilerSpeed);
+                            fireDetailsEvent(spoilerBlock);
                             if (scrollspoiler && spoilerTitle.classList.contains("_spoiler-active")) {
                                 const scrollspoilerValue = spoilerBlock.dataset.spoilerScroll;
                                 const scrollspoilerOffset = +scrollspoilerValue ? +scrollspoilerValue : 0;
@@ -230,6 +225,16 @@
                 }
             }
         }
+        function fireDetailsEvent(spoilerBlock) {
+            const event = new CustomEvent("detailsChanged", {
+                bubbles: true,
+                detail: {
+                    open: spoilerBlock.open,
+                    element: spoilerBlock
+                }
+            });
+            spoilerBlock.dispatchEvent(event);
+        }
     }
     function tabs() {
         const tabs = document.querySelectorAll("[data-tabs]");
@@ -242,6 +247,44 @@
                 tabsBlock.setAttribute("data-tabs-index", index);
                 tabsBlock.addEventListener("click", setTabsAction);
                 initTabs(tabsBlock);
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement) {
+                    const splide = new Splide(splideElement, {
+                        speed: 300,
+                        pagination: false,
+                        updateOnMove: true,
+                        flickMaxPages: 1,
+                        flickPower: 100
+                    }).mount();
+                    splideElement.splideInstance = splide;
+                    splide.on("mounted move", (newIndex => {
+                        setActiveTab(tabsBlock, newIndex);
+                        updateSelect(tabsBlock, newIndex);
+                    }));
+                    const tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+                    tabsTitles.forEach(((title, tabIndex) => {
+                        title.addEventListener("click", (() => {
+                            splide.go(tabIndex);
+                        }));
+                    }));
+                    const activeIndex = Array.from(tabsTitles).findIndex((title => title.classList.contains("_tab-active")));
+                    if (activeIndex >= 0) splide.go(activeIndex);
+                }
+                const tabsSelect = tabsBlock.querySelector(".select_tabs");
+                if (tabsSelect) {
+                    document.addEventListener("selectCallback", (e => {
+                        if (e.detail.select === tabsSelect.querySelector("select")) {
+                            const selectedOption = e.detail.select.selectedOptions[0];
+                            const value = selectedOption.value;
+                            if (!selectedOption.hasAttribute("data-href")) {
+                                const tabIndex = parseInt(value, 10) - 1;
+                                if (splideElement && splideElement.splideInstance) splideElement.splideInstance.go(tabIndex); else setActiveTab(tabsBlock, tabIndex);
+                            }
+                        }
+                    }));
+                    const activeTabIndex = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).findIndex((title => title.classList.contains("_tab-active")));
+                    if (activeTabIndex >= 0) tabsSelect.value = activeTabIndex + 1;
+                }
             }));
             let mdQueriesArray = dataMediaQueries(tabs, "tabs");
             if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
@@ -264,16 +307,16 @@
                     if (matchMedia.matches) {
                         tabsContent.append(tabsTitleItems[index]);
                         tabsContent.append(tabsContentItem);
-                        tabsMediaItem.classList.add("_tab-spoller");
+                        tabsMediaItem.classList.add("_tab-spoiler");
                     } else {
                         tabsTitles.append(tabsTitleItems[index]);
-                        tabsMediaItem.classList.remove("_tab-spoller");
+                        tabsMediaItem.classList.remove("_tab-spoiler");
                     }
                 }));
             }));
         }
         function initTabs(tabsBlock) {
-            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles] button");
             let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
             const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
             const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
@@ -286,25 +329,41 @@
                 tabsContentItem.setAttribute("data-tabs-item", "");
                 if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
                 tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+                tabsContentItem.inert = !tabsTitles[index].classList.contains("_tab-active");
             }));
+            const splideElement = tabsBlock.querySelector("._splide-tabs");
+            if (splideElement && splideElement.splideInstance) {
+                const activeIndex = Array.from(tabsTitles).findIndex((title => title.classList.contains("_tab-active")));
+                if (activeIndex >= 0) splideElement.splideInstance.go(activeIndex);
+            }
         }
         function setTabsStatus(tabsBlock) {
             let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
             let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
             const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
-            function isTabsAnamate(tabsBlock) {
+            function isTabsAnimate(tabsBlock) {
                 if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
             }
-            const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+            const tabsBlockAnimate = isTabsAnimate(tabsBlock);
             if (tabsContent.length > 0) {
                 const isHash = tabsBlock.hasAttribute("data-tabs-hash");
                 tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
                 tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
                 tabsContent.forEach(((tabsContentItem, index) => {
                     if (tabsTitles[index].classList.contains("_tab-active")) {
-                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else {
+                            tabsContentItem.hidden = false;
+                            tabsContentItem.inert = false;
+                        }
                         if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
-                    } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                    } else {
+                        const iframes = tabsContentItem.querySelectorAll("iframe");
+                        iframes.forEach((iframe => iframe.remove()));
+                        if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else {
+                            tabsContentItem.hidden = true;
+                            tabsContentItem.inert = true;
+                        }
+                    }
                 }));
             }
         }
@@ -313,153 +372,42 @@
             if (el.closest("[data-tabs-title]")) {
                 const tabTitle = el.closest("[data-tabs-title]");
                 const tabsBlock = tabTitle.closest("[data-tabs]");
-                if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement && splideElement.splideInstance) {
+                    const splide = splideElement.splideInstance;
+                    const tabIndex = Array.from(tabTitle.parentElement.children).indexOf(tabTitle);
+                    splide.go(tabIndex);
+                } else if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
                     let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
                     tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
                     tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
                     tabTitle.classList.add("_tab-active");
                     setTabsStatus(tabsBlock);
+                    const activeTabIndex = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).indexOf(tabTitle);
+                    updateSelect(tabsBlock, activeTabIndex);
                 }
+                const tabSwitchEvent = new CustomEvent("tabSwitch");
+                tabsBlock.dispatchEvent(tabSwitchEvent);
                 e.preventDefault();
             }
         }
-    }
-    function showMore() {
-        window.addEventListener("load", (function(e) {
-            const showMoreBlocks = document.querySelectorAll("[data-showmore]");
-            let showMoreBlocksRegular;
-            let mdQueriesArray;
-            if (showMoreBlocks.length) {
-                showMoreBlocksRegular = Array.from(showMoreBlocks).filter((function(item, index, self) {
-                    return !item.dataset.showmoreMedia;
-                }));
-                showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
-                document.addEventListener("click", showMoreActions);
-                window.addEventListener("resize", showMoreActions);
-                mdQueriesArray = dataMediaQueries(showMoreBlocks, "showmoreMedia");
-                if (mdQueriesArray && mdQueriesArray.length) {
-                    mdQueriesArray.forEach((mdQueriesItem => {
-                        mdQueriesItem.matchMedia.addEventListener("change", (function() {
-                            initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-                        }));
-                    }));
-                    initItemsMedia(mdQueriesArray);
-                }
+        function setActiveTab(tabsBlock, index) {
+            const tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+            const tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+            tabsTitles.forEach(((title, i) => {
+                title.classList.toggle("_tab-active", i === index);
+                tabsContent[i].hidden = i !== index;
+                tabsContent[i].inert = i !== index;
+            }));
+            updateSelect(tabsBlock, index);
+        }
+        function updateSelect(tabsBlock, index) {
+            const tabsSelect = tabsBlock.querySelector(".tabs-select");
+            if (tabsSelect) {
+                tabsSelect.value = index + 1;
+                modules_flsModules.select.selectBuild(tabsSelect);
             }
-            function initItemsMedia(mdQueriesArray) {
-                mdQueriesArray.forEach((mdQueriesItem => {
-                    initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-                }));
-            }
-            function initItems(showMoreBlocks, matchMedia) {
-                showMoreBlocks.forEach((showMoreBlock => {
-                    initItem(showMoreBlock, matchMedia);
-                }));
-            }
-            function initItem(showMoreBlock, matchMedia = false) {
-                showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock;
-                const tabsParent = showMoreBlock.closest("[data-tabs]");
-                if (tabsParent && !tabsParent.hasListener) {
-                    tabsParent.addEventListener("tabSwitch", (function() {
-                        var showMoreContent = showMoreBlock.querySelector("[data-showmore-content]");
-                        if (showMoreContent && showMoreContent.hidden) showMoreContent.hidden = false;
-                        showMoreActions({
-                            type: "resize"
-                        });
-                    }));
-                    tabsParent.hasListener = true;
-                }
-                const spoilerParent = showMoreBlock.closest("details");
-                if (spoilerParent && !spoilerParent.hasListener) {
-                    spoilerParent.addEventListener("spoilerToggle", (function() {
-                        var showMoreContent = showMoreBlock.querySelector("[data-showmore-content]");
-                        if (showMoreContent && showMoreContent.hidden) showMoreContent.hidden = false;
-                        showMoreActions({
-                            type: "resize"
-                        });
-                    }));
-                    spoilerParent.hasListener = true;
-                }
-                let showMoreContent = showMoreBlock.querySelectorAll("[data-showmore-content]");
-                let showMoreButton = showMoreBlock.querySelectorAll("[data-showmore-button]");
-                showMoreContent = Array.from(showMoreContent).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
-                showMoreButton = Array.from(showMoreButton).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
-                const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
-                if (matchMedia.matches || !matchMedia) {
-                    if (hiddenHeight < getOriginalHeight(showMoreContent)) {
-                        _slideUp(showMoreContent, 0, showMoreBlock.classList.contains("_showmore-active") ? getOriginalHeight(showMoreContent) : hiddenHeight);
-                        showMoreButton.hidden = false;
-                        showMoreBlock.classList.remove("_contain");
-                    } else {
-                        _slideDown(showMoreContent, 0, hiddenHeight);
-                        showMoreButton.hidden = true;
-                        showMoreBlock.classList.add("_contain");
-                    }
-                    if (getOriginalHeight(showMoreContent) <= hiddenHeight) showMoreButton.hidden = true;
-                } else {
-                    _slideDown(showMoreContent, 0, hiddenHeight);
-                    showMoreButton.hidden = true;
-                }
-            }
-            function getHeight(showMoreBlock, showMoreContent) {
-                let hiddenHeight = 0;
-                const showMoreType = showMoreBlock.dataset.showmore ? showMoreBlock.dataset.showmore : "size";
-                const rowGap = parseFloat(getComputedStyle(showMoreContent).rowGap) || 0;
-                if (showMoreType === "items") {
-                    const showMoreTypeValue = parseInt(showMoreContent.dataset.showmoreContent) || 3;
-                    const showMoreItems = Array.from(showMoreContent.children);
-                    if (showMoreItems.length > 0) {
-                        for (let index = 0; index < showMoreTypeValue && index < showMoreItems.length; index++) {
-                            const showMoreItem = showMoreItems[index];
-                            const itemStyles = getComputedStyle(showMoreItem);
-                            const marginTop = parseFloat(itemStyles.marginTop) || 0;
-                            const marginBottom = parseFloat(itemStyles.marginBottom) || 0;
-                            hiddenHeight += showMoreItem.offsetHeight + marginTop + marginBottom;
-                        }
-                        if (showMoreItems.length > 1) hiddenHeight += (showMoreTypeValue - 1) * rowGap;
-                    }
-                } else {
-                    const showMoreTypeValue = parseInt(showMoreContent.dataset.showmoreContent) || 150;
-                    hiddenHeight = Math.min(showMoreTypeValue, showMoreContent.scrollHeight);
-                }
-                return hiddenHeight;
-            }
-            function getOriginalHeight(showMoreContent) {
-                let parentHidden;
-                let hiddenHeight = showMoreContent.offsetHeight;
-                let margin = showMoreContent.dataset.showmoreMb ? +showMoreContent.dataset.showmoreMb : 0;
-                showMoreContent.style.removeProperty("height");
-                if (showMoreContent.closest(`[hidden]`)) {
-                    parentHidden = showMoreContent.closest(`[hidden]`);
-                    parentHidden.hidden = false;
-                }
-                let originalHeight = showMoreContent.offsetHeight;
-                parentHidden ? parentHidden.hidden = true : null;
-                showMoreContent.style.height = `${hiddenHeight + margin}px`;
-                return originalHeight;
-            }
-            function showMoreActions(e) {
-                const targetEvent = e.target;
-                const targetType = e.type;
-                if (targetType === "click") {
-                    if (targetEvent.closest("[data-showmore-button]")) {
-                        const showMoreButton = targetEvent.closest("[data-showmore-button]");
-                        const showMoreBlock = showMoreButton.closest("[data-showmore]");
-                        const showMoreContent = showMoreBlock.querySelector("[data-showmore-content]");
-                        let margin = showMoreContent.dataset.showmoreMb ? +showMoreContent.dataset.showmoreMb : 0;
-                        const showMoreSpeed = showMoreBlock.dataset.showmoreButton ? showMoreBlock.dataset.showmoreButton : "500";
-                        const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
-                        if (!showMoreContent.classList.contains("_slide")) {
-                            if (showMoreBlock.classList.contains("_showmore-active")) _slideUp(showMoreContent, showMoreSpeed, hiddenHeight, margin); else _slideDown(showMoreContent, showMoreSpeed, hiddenHeight);
-                            showMoreBlock.classList.toggle("_showmore-active");
-                        }
-                    }
-                } else if (targetType === "resize") {
-                    showMoreBlocksRegular && showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
-                    mdQueriesArray && mdQueriesArray.length ? initItemsMedia(mdQueriesArray) : null;
-                }
-            }
-        }));
+        }
     }
     function functions_FLS(message) {
         setTimeout((() => {
@@ -509,6 +457,295 @@
             }
         }
     }
+    window.addEventListener("resize", (() => {
+        updateAllTrackingLines();
+    }));
+    function updateAllTrackingLines() {
+        const trackingContainers = document.querySelectorAll(".tracking-inq");
+        trackingContainers?.forEach((container => {
+            updateTrackingLine(container);
+        }));
+    }
+    updateAllTrackingLines();
+    function updateTrackingLine(container) {
+        const trackingBody = container.querySelector(".tracking-inq__body");
+        const trackingItems = container.querySelectorAll(".tracking-inq__item");
+        const trackingLine = container.querySelector(".tracking-inq__line");
+        if (!trackingBody || !trackingLine || trackingItems.length === 0) return;
+        const isVertical = window.matchMedia("(max-width: 767.98px)").matches;
+        const lastItem = trackingItems[trackingItems.length - 1];
+        const bodyRect = trackingBody.getBoundingClientRect();
+        const itemRect = lastItem.getBoundingClientRect();
+        if (isVertical) {
+            const distance = itemRect.top - bodyRect.top;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.top - bodyRect.top;
+            }
+            trackingLine.style.setProperty("--tracking-height", `${distance}px`);
+            trackingLine.style.setProperty("--accent-height", `${accentDistance}px`);
+        } else {
+            const distance = itemRect.left - bodyRect.left;
+            let accentDistance = 0;
+            const completedItems = container.querySelectorAll(".tracking-inq__item.completed");
+            if (completedItems.length > 0) {
+                const lastCompleted = completedItems[completedItems.length - 1];
+                const completedRect = lastCompleted.getBoundingClientRect();
+                accentDistance = completedRect.left - bodyRect.left;
+            }
+            trackingLine.style.setProperty("--tracking-width", `${distance}px`);
+            trackingLine.style.setProperty("--accent-width", `${accentDistance}px`);
+        }
+    }
+    class Popup {
+        constructor(options) {
+            let config = {
+                logging: true,
+                init: true,
+                attributeOpenButton: "data-popup",
+                attributeCloseButton: "data-close",
+                fixElementSelector: "[data-lp]",
+                youtubeAttribute: "data-popup-youtube",
+                youtubePlaceAttribute: "data-popup-youtube-place",
+                setAutoplayYoutube: true,
+                classes: {
+                    popup: "popup",
+                    popupContent: "popup__content",
+                    popupActive: "popup_show",
+                    bodyActive: "popup-show"
+                },
+                focusCatch: true,
+                closeEsc: true,
+                bodyLock: true,
+                hashSettings: {
+                    location: false,
+                    goHash: false
+                },
+                on: {
+                    beforeOpen: function() {},
+                    afterOpen: function() {},
+                    beforeClose: function() {},
+                    afterClose: function() {}
+                }
+            };
+            this.youTubeCode;
+            this.isOpen = false;
+            this.targetOpen = {
+                selector: false,
+                element: false
+            };
+            this.previousOpen = {
+                selector: false,
+                element: false
+            };
+            this.lastClosed = {
+                selector: false,
+                element: false
+            };
+            this._dataValue = false;
+            this.hash = false;
+            this._reopen = false;
+            this._selectorOpen = false;
+            this.lastFocusEl = false;
+            this._focusEl = [ "a[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "button:not([disabled]):not([aria-hidden])", "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "area[href]", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])' ];
+            this.options = {
+                ...config,
+                ...options,
+                classes: {
+                    ...config.classes,
+                    ...options?.classes
+                },
+                hashSettings: {
+                    ...config.hashSettings,
+                    ...options?.hashSettings
+                },
+                on: {
+                    ...config.on,
+                    ...options?.on
+                }
+            };
+            this.bodyLock = false;
+            this.options.init ? this.initPopups() : null;
+        }
+        initPopups() {
+            this.popupLogging(`Прокинувся`);
+            this.eventsPopup();
+        }
+        eventsPopup() {
+            document.addEventListener("click", function(e) {
+                const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
+                if (buttonOpen) {
+                    e.preventDefault();
+                    this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
+                    this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
+                    if (this._dataValue !== "error") {
+                        if (!this.isOpen) this.lastFocusEl = buttonOpen;
+                        this.targetOpen.selector = `${this._dataValue}`;
+                        this._selectorOpen = true;
+                        this.open();
+                        return;
+                    } else this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
+                    return;
+                }
+                const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
+                if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
+                    e.preventDefault();
+                    this.close();
+                    return;
+                }
+            }.bind(this));
+            document.addEventListener("keydown", function(e) {
+                if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
+                    e.preventDefault();
+                    this.close();
+                    return;
+                }
+                if (this.options.focusCatch && e.which == 9 && this.isOpen) {
+                    this._focusCatch(e);
+                    return;
+                }
+            }.bind(this));
+            if (this.options.hashSettings.goHash) {
+                window.addEventListener("hashchange", function() {
+                    if (window.location.hash) this._openToHash(); else this.close(this.targetOpen.selector);
+                }.bind(this));
+                window.addEventListener("load", function() {
+                    if (window.location.hash) this._openToHash();
+                }.bind(this));
+            }
+        }
+        open(selectorValue) {
+            if (bodyLockStatus) {
+                this.bodyLock = document.documentElement.classList.contains("lock") && !this.isOpen ? true : false;
+                if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
+                    this.targetOpen.selector = selectorValue;
+                    this._selectorOpen = true;
+                }
+                if (this.isOpen) {
+                    this._reopen = true;
+                    this.close();
+                }
+                if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
+                if (!this._reopen) this.previousActiveElement = document.activeElement;
+                this.targetOpen.element = document.querySelector(this.targetOpen.selector);
+                if (this.targetOpen.element) {
+                    if (this.youTubeCode) {
+                        const codeVideo = this.youTubeCode;
+                        const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
+                        const iframe = document.createElement("iframe");
+                        iframe.setAttribute("allowfullscreen", "");
+                        const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
+                        iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
+                        iframe.setAttribute("src", urlVideo);
+                        if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+                            this.targetOpen.element.querySelector(".popup__text").setAttribute(`${this.options.youtubePlaceAttribute}`, "");
+                        }
+                        this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+                    }
+                    if (this.options.hashSettings.location) {
+                        this._getHash();
+                        this._setHash();
+                    }
+                    this.options.on.beforeOpen(this);
+                    document.dispatchEvent(new CustomEvent("beforePopupOpen", {
+                        detail: {
+                            popup: this
+                        }
+                    }));
+                    this.targetOpen.element.classList.add(this.options.classes.popupActive);
+                    document.documentElement.classList.add(this.options.classes.bodyActive);
+                    if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
+                    this.targetOpen.element.setAttribute("aria-hidden", "false");
+                    this.previousOpen.selector = this.targetOpen.selector;
+                    this.previousOpen.element = this.targetOpen.element;
+                    this._selectorOpen = false;
+                    this.isOpen = true;
+                    setTimeout((() => {
+                        this._focusTrap();
+                    }), 50);
+                    this.options.on.afterOpen(this);
+                    document.dispatchEvent(new CustomEvent("afterPopupOpen", {
+                        detail: {
+                            popup: this
+                        }
+                    }));
+                    this.popupLogging(`Відкрив попап`);
+                } else this.popupLogging(`Йой, такого попапу немає. Перевірте коректність введення. `);
+            }
+        }
+        close(selectorValue) {
+            if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") this.previousOpen.selector = selectorValue;
+            if (!this.isOpen || !bodyLockStatus) return;
+            this.options.on.beforeClose(this);
+            document.dispatchEvent(new CustomEvent("beforePopupClose", {
+                detail: {
+                    popup: this
+                }
+            }));
+            if (this.youTubeCode) if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = "";
+            this.previousOpen.element.classList.remove(this.options.classes.popupActive);
+            this.previousOpen.element.setAttribute("aria-hidden", "true");
+            if (!this._reopen) {
+                document.documentElement.classList.remove(this.options.classes.bodyActive);
+                !this.bodyLock ? bodyUnlock() : null;
+                this.isOpen = false;
+            }
+            this._removeHash();
+            if (this._selectorOpen) {
+                this.lastClosed.selector = this.previousOpen.selector;
+                this.lastClosed.element = this.previousOpen.element;
+            }
+            this.options.on.afterClose(this);
+            document.dispatchEvent(new CustomEvent("afterPopupClose", {
+                detail: {
+                    popup: this
+                }
+            }));
+            setTimeout((() => {
+                this._focusTrap();
+            }), 50);
+            this.popupLogging(`Закрив попап`);
+        }
+        _getHash() {
+            if (this.options.hashSettings.location) this.hash = this.targetOpen.selector.includes("#") ? this.targetOpen.selector : this.targetOpen.selector.replace(".", "#");
+        }
+        _openToHash() {
+            let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
+            const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
+            this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ? buttons.getAttribute(this.options.youtubeAttribute) : null;
+            if (buttons && classInHash) this.open(classInHash);
+        }
+        _setHash() {
+            history.pushState("", "", this.hash);
+        }
+        _removeHash() {
+            history.pushState("", "", window.location.href.split("#")[0]);
+        }
+        _focusCatch(e) {
+            const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+            const focusArray = Array.prototype.slice.call(focusable);
+            const focusedIndex = focusArray.indexOf(document.activeElement);
+            if (e.shiftKey && focusedIndex === 0) {
+                focusArray[focusArray.length - 1].focus();
+                e.preventDefault();
+            }
+            if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+                focusArray[0].focus();
+                e.preventDefault();
+            }
+        }
+        _focusTrap() {
+            const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+            if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
+        }
+        popupLogging(message) {
+            this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
+        }
+    }
+    modules_flsModules.popup = new Popup({});
     let formValidate = {
         getErrors(form) {
             let error = 0;
@@ -575,6 +812,51 @@
             return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
         }
     };
+    function formRating() {
+        const ratings = document.querySelectorAll("[data-rating]");
+        if (ratings) ratings.forEach((rating => {
+            const ratingValue = +rating.dataset.ratingValue;
+            const ratingSize = +rating.dataset.ratingSize ? +rating.dataset.ratingSize : 5;
+            formRatingInit(rating, ratingSize);
+            ratingValue ? formRatingSet(rating, ratingValue) : null;
+            document.addEventListener("click", formRatingAction);
+        }));
+        function formRatingAction(e) {
+            const targetElement = e.target;
+            if (targetElement.closest(".rating__input")) {
+                const currentElement = targetElement.closest(".rating__input");
+                const ratingValue = +currentElement.value;
+                const rating = currentElement.closest(".rating");
+                const ratingSet = rating.dataset.rating === "set";
+                ratingSet ? formRatingGet(rating, ratingValue) : null;
+            }
+        }
+        function formRatingInit(rating, ratingSize) {
+            let ratingItems = ``;
+            for (let index = 0; index < ratingSize; index++) {
+                index === 0 ? ratingItems += `<div class="rating__items">` : null;
+                ratingItems += `\n\t\t\t\t<label class="rating__item">\n\t\t\t\t\t<input class="rating__input" type="radio" name="rating" value="${index + 1}">\n\t\t\t\t</label>`;
+                index === ratingSize ? ratingItems += `</div">` : null;
+            }
+            rating.insertAdjacentHTML("beforeend", ratingItems);
+        }
+        function formRatingGet(rating, ratingValue) {
+            const resultRating = ratingValue;
+            formRatingSet(rating, resultRating);
+        }
+        function formRatingSet(rating, value) {
+            const ratingItems = rating.querySelectorAll(".rating__item");
+            const resultFullItems = parseInt(value);
+            const resultPartItem = value - resultFullItems;
+            rating.hasAttribute("data-rating-title") ? rating.title = value : null;
+            ratingItems.forEach(((ratingItem, index) => {
+                ratingItem.classList.remove("rating__item--active");
+                ratingItem.querySelector("span") ? ratingItems[index].querySelector("span").remove() : null;
+                if (index <= resultFullItems - 1) ratingItem.classList.add("rating__item--active");
+                if (index === resultFullItems && resultPartItem) ratingItem.insertAdjacentHTML("beforeend", `<span style="width:${resultPartItem * 100}%"></span>`);
+            }));
+        }
+    }
     class SelectConstructor {
         constructor(props, data = null) {
             let defaultConfig = {
@@ -773,7 +1055,7 @@
             selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : "";
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectText}">` : "";
-            selectOptionContentHTML += selectOption.textContent;
+            selectOptionContentHTML += selectOption.innerHTML;
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             selectOptionContentHTML += selectOptionData ? `</span>` : "";
             return selectOptionContentHTML;
@@ -3307,9 +3589,9 @@
         } ]);
         return _Splide;
     }();
-    var Splide = _Splide;
-    Splide.defaults = {};
-    Splide.STATES = STATES;
+    var splide_esm_Splide = _Splide;
+    splide_esm_Splide.defaults = {};
+    splide_esm_Splide.STATES = STATES;
     var CLASS_RENDERED = "is-rendered";
     var RENDERER_DEFAULT_CONFIG = {
         listTag: "ul",
@@ -3676,898 +3958,1029 @@
             return html;
         };
     }();
-    /*!
- * @splidejs/splide-extension-grid
- * Version  : 0.4.1
- * License  : MIT
- * Copyright: 2022 Naotoshi Fujita
- */
-    function empty$1(array) {
-        array.length = 0;
-    }
-    function slice$1(arrayLike, start, end) {
-        return Array.prototype.slice.call(arrayLike, start, end);
-    }
-    function apply$1(func) {
-        return func.bind.apply(func, [ null ].concat(slice$1(arguments, 1)));
-    }
-    function typeOf$1(type, subject) {
-        return typeof subject === type;
-    }
-    var isArray$1 = Array.isArray;
-    apply$1(typeOf$1, "function");
-    apply$1(typeOf$1, "string");
-    apply$1(typeOf$1, "undefined");
-    function toArray$1(value) {
-        return isArray$1(value) ? value : [ value ];
-    }
-    function forEach$1(values, iteratee) {
-        toArray$1(values).forEach(iteratee);
-    }
-    var ownKeys$1 = Object.keys;
-    function forOwn$1(object, iteratee, right) {
-        if (object) {
-            var keys = ownKeys$1(object);
-            keys = right ? keys.reverse() : keys;
-            for (var i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                if (key !== "__proto__") if (iteratee(object[key], key) === false) break;
-            }
-        }
-        return object;
-    }
-    function assign$1(object) {
-        slice$1(arguments, 1).forEach((function(source) {
-            forOwn$1(source, (function(value, key) {
-                object[key] = source[key];
-            }));
-        }));
-        return object;
-    }
-    var PROJECT_CODE$1 = "splide";
-    function splide_extension_grid_esm_EventBinder() {
-        var listeners = [];
-        function bind(targets, events, callback, options) {
-            forEachEvent(targets, events, (function(target, event, namespace) {
-                var isEventTarget = "addEventListener" in target;
-                var remover = isEventTarget ? target.removeEventListener.bind(target, event, callback, options) : target["removeListener"].bind(target, callback);
-                isEventTarget ? target.addEventListener(event, callback, options) : target["addListener"](callback);
-                listeners.push([ target, event, namespace, callback, remover ]);
-            }));
-        }
-        function unbind(targets, events, callback) {
-            forEachEvent(targets, events, (function(target, event, namespace) {
-                listeners = listeners.filter((function(listener) {
-                    if (listener[0] === target && listener[1] === event && listener[2] === namespace && (!callback || listener[3] === callback)) {
-                        listener[4]();
-                        return false;
-                    }
-                    return true;
-                }));
-            }));
-        }
-        function dispatch(target, type, detail) {
-            var e;
-            var bubbles = true;
-            if (typeof CustomEvent === "function") e = new CustomEvent(type, {
-                bubbles,
-                detail
-            }); else {
-                e = document.createEvent("CustomEvent");
-                e.initCustomEvent(type, bubbles, false, detail);
-            }
-            target.dispatchEvent(e);
-            return e;
-        }
-        function forEachEvent(targets, events, iteratee) {
-            forEach$1(targets, (function(target) {
-                target && forEach$1(events, (function(events2) {
-                    events2.split(" ").forEach((function(eventNS) {
-                        var fragment = eventNS.split(".");
-                        iteratee(target, fragment[0], fragment[1]);
-                    }));
-                }));
-            }));
-        }
-        function destroy() {
-            listeners.forEach((function(data) {
-                data[4]();
-            }));
-            empty$1(listeners);
-        }
-        return {
-            bind,
-            unbind,
-            dispatch,
-            destroy
-        };
-    }
-    var splide_extension_grid_esm_EVENT_VISIBLE = "visible";
-    var splide_extension_grid_esm_EVENT_HIDDEN = "hidden";
-    var splide_extension_grid_esm_EVENT_REFRESH = "refresh";
-    var splide_extension_grid_esm_EVENT_UPDATED = "updated";
-    var splide_extension_grid_esm_EVENT_DESTROY = "destroy";
-    function splide_extension_grid_esm_EventInterface(Splide2) {
-        var bus = Splide2 ? Splide2.event.bus : document.createDocumentFragment();
-        var binder = splide_extension_grid_esm_EventBinder();
-        function on(events, callback) {
-            binder.bind(bus, toArray$1(events).join(" "), (function(e) {
-                callback.apply(callback, isArray$1(e.detail) ? e.detail : []);
-            }));
-        }
-        function emit(event) {
-            binder.dispatch(bus, event, slice$1(arguments, 1));
-        }
-        if (Splide2) Splide2.event.on(splide_extension_grid_esm_EVENT_DESTROY, binder.destroy);
-        return assign$1(binder, {
-            bus,
-            on,
-            off: apply$1(binder.unbind, bus),
-            emit
-        });
-    }
-    var splide_extension_grid_esm_CLASS_ROOT = PROJECT_CODE$1;
-    var splide_extension_grid_esm_CLASS_SLIDE = PROJECT_CODE$1 + "__slide";
-    var splide_extension_grid_esm_CLASS_CONTAINER = splide_extension_grid_esm_CLASS_SLIDE + "__container";
-    function splide_extension_grid_esm_empty(array) {
-        array.length = 0;
-    }
-    function splide_extension_grid_esm_slice(arrayLike, start, end) {
-        return Array.prototype.slice.call(arrayLike, start, end);
-    }
-    function splide_extension_grid_esm_apply(func) {
-        return func.bind(null, ...splide_extension_grid_esm_slice(arguments, 1));
-    }
-    function splide_extension_grid_esm_typeOf(type, subject) {
-        return typeof subject === type;
-    }
-    function splide_extension_grid_esm_isObject(subject) {
-        return !splide_extension_grid_esm_isNull(subject) && splide_extension_grid_esm_typeOf("object", subject);
-    }
-    const splide_extension_grid_esm_isArray = Array.isArray;
-    splide_extension_grid_esm_apply(splide_extension_grid_esm_typeOf, "function");
-    const splide_extension_grid_esm_isString = splide_extension_grid_esm_apply(splide_extension_grid_esm_typeOf, "string");
-    const splide_extension_grid_esm_isUndefined = splide_extension_grid_esm_apply(splide_extension_grid_esm_typeOf, "undefined");
-    function splide_extension_grid_esm_isNull(subject) {
-        return subject === null;
-    }
-    function splide_extension_grid_esm_isHTMLElement(subject) {
-        return subject instanceof HTMLElement;
-    }
-    function splide_extension_grid_esm_toArray(value) {
-        return splide_extension_grid_esm_isArray(value) ? value : [ value ];
-    }
-    function splide_extension_grid_esm_forEach(values, iteratee) {
-        splide_extension_grid_esm_toArray(values).forEach(iteratee);
-    }
-    function splide_extension_grid_esm_push(array, items) {
-        array.push(...splide_extension_grid_esm_toArray(items));
-        return array;
-    }
-    function splide_extension_grid_esm_toggleClass(elm, classes, add) {
-        if (elm) splide_extension_grid_esm_forEach(classes, (name => {
-            if (name) elm.classList[add ? "add" : "remove"](name);
-        }));
-    }
-    function splide_extension_grid_esm_addClass(elm, classes) {
-        splide_extension_grid_esm_toggleClass(elm, splide_extension_grid_esm_isString(classes) ? classes.split(" ") : classes, true);
-    }
-    function splide_extension_grid_esm_append(parent, children) {
-        splide_extension_grid_esm_forEach(children, parent.appendChild.bind(parent));
-    }
-    function splide_extension_grid_esm_matches(elm, selector) {
-        return splide_extension_grid_esm_isHTMLElement(elm) && (elm["msMatchesSelector"] || elm.matches).call(elm, selector);
-    }
-    function splide_extension_grid_esm_children(parent, selector) {
-        const children2 = parent ? splide_extension_grid_esm_slice(parent.children) : [];
-        return selector ? children2.filter((child => splide_extension_grid_esm_matches(child, selector))) : children2;
-    }
-    function splide_extension_grid_esm_child(parent, selector) {
-        return selector ? splide_extension_grid_esm_children(parent, selector)[0] : parent.firstElementChild;
-    }
-    const splide_extension_grid_esm_ownKeys = Object.keys;
-    function splide_extension_grid_esm_forOwn(object, iteratee, right) {
-        if (object) {
-            let keys = splide_extension_grid_esm_ownKeys(object);
-            keys = right ? keys.reverse() : keys;
-            for (let i = 0; i < keys.length; i++) {
-                const key = keys[i];
-                if (key !== "__proto__") if (iteratee(object[key], key) === false) break;
-            }
-        }
-        return object;
-    }
-    function splide_extension_grid_esm_assign(object) {
-        splide_extension_grid_esm_slice(arguments, 1).forEach((source => {
-            splide_extension_grid_esm_forOwn(source, ((value, key) => {
-                object[key] = source[key];
-            }));
-        }));
-        return object;
-    }
-    function splide_extension_grid_esm_omit(object, keys) {
-        splide_extension_grid_esm_toArray(keys || splide_extension_grid_esm_ownKeys(object)).forEach((key => {
-            delete object[key];
-        }));
-    }
-    function splide_extension_grid_esm_removeAttribute(elms, attrs) {
-        splide_extension_grid_esm_forEach(elms, (elm => {
-            splide_extension_grid_esm_forEach(attrs, (attr => {
-                elm && elm.removeAttribute(attr);
-            }));
-        }));
-    }
-    function splide_extension_grid_esm_setAttribute(elms, attrs, value) {
-        if (splide_extension_grid_esm_isObject(attrs)) splide_extension_grid_esm_forOwn(attrs, ((value2, name) => {
-            splide_extension_grid_esm_setAttribute(elms, name, value2);
-        })); else splide_extension_grid_esm_forEach(elms, (elm => {
-            splide_extension_grid_esm_isNull(value) || value === "" ? splide_extension_grid_esm_removeAttribute(elm, attrs) : elm.setAttribute(attrs, String(value));
-        }));
-    }
-    function splide_extension_grid_esm_create(tag, attrs, parent) {
-        const elm = document.createElement(tag);
-        if (attrs) splide_extension_grid_esm_isString(attrs) ? splide_extension_grid_esm_addClass(elm, attrs) : splide_extension_grid_esm_setAttribute(elm, attrs);
-        parent && splide_extension_grid_esm_append(parent, elm);
-        return elm;
-    }
-    function splide_extension_grid_esm_style(elm, prop, value) {
-        if (splide_extension_grid_esm_isUndefined(value)) return getComputedStyle(elm)[prop];
-        if (!splide_extension_grid_esm_isNull(value)) elm.style[prop] = `${value}`;
-    }
-    function splide_extension_grid_esm_hasClass(elm, className) {
-        return elm && elm.classList.contains(className);
-    }
-    function splide_extension_grid_esm_remove(nodes) {
-        splide_extension_grid_esm_forEach(nodes, (node => {
-            if (node && node.parentNode) node.parentNode.removeChild(node);
-        }));
-    }
-    function splide_extension_grid_esm_queryAll(parent, selector) {
-        return selector ? splide_extension_grid_esm_slice(parent.querySelectorAll(selector)) : [];
-    }
-    function splide_extension_grid_esm_removeClass(elm, classes) {
-        splide_extension_grid_esm_toggleClass(elm, classes, false);
-    }
-    function splide_extension_grid_esm_unit(value) {
-        return splide_extension_grid_esm_isString(value) ? value : value ? `${value}px` : "";
-    }
-    const splide_extension_grid_esm_PROJECT_CODE = "splide";
-    function splide_extension_grid_esm_assert(condition, message) {
-        if (!condition) throw new Error(`[${splide_extension_grid_esm_PROJECT_CODE}] ${message || ""}`);
-    }
-    const {min: splide_extension_grid_esm_min, max: splide_extension_grid_esm_max, floor: splide_extension_grid_esm_floor, ceil: splide_extension_grid_esm_ceil, abs: splide_extension_grid_esm_abs} = Math;
-    function splide_extension_grid_esm_pad(number) {
-        return number < 10 ? `0${number}` : `${number}`;
-    }
-    const CLASS_SLIDE_ROW = `${splide_extension_grid_esm_CLASS_SLIDE}__row`;
-    const CLASS_SLIDE_COL = `${splide_extension_grid_esm_CLASS_SLIDE}--col`;
-    const splide_extension_grid_esm_DEFAULTS = {
-        rows: 1,
-        cols: 1,
-        dimensions: [],
-        gap: {}
-    };
-    function Dimension(options) {
-        function normalize() {
-            const {rows, cols, dimensions} = options;
-            return splide_extension_grid_esm_isArray(dimensions) && dimensions.length ? dimensions : [ [ rows, cols ] ];
-        }
-        function get(index) {
-            const dimensions = normalize();
-            return dimensions[splide_extension_grid_esm_min(index, dimensions.length - 1)];
-        }
-        function getAt(index) {
-            const dimensions = normalize();
-            let rows, cols, aggregator = 0;
-            for (let i = 0; i < dimensions.length; i++) {
-                const dimension = dimensions[i];
-                rows = dimension[0] || 1;
-                cols = dimension[1] || 1;
-                aggregator += rows * cols;
-                if (index < aggregator) break;
-            }
-            splide_extension_grid_esm_assert(rows && cols, "Invalid dimension");
-            return [ rows, cols ];
-        }
-        return {
-            get,
-            getAt
-        };
-    }
-    function splide_extension_grid_esm_Layout(Splide2, gridOptions, Dimension) {
-        const {on, destroy: destroyEvent} = splide_extension_grid_esm_EventInterface(Splide2);
-        const {Components, options} = Splide2;
-        const {resolve} = Components.Direction;
-        const {forEach} = Components.Slides;
-        function mount() {
-            layout();
-            if (options.slideFocus) {
-                on(splide_extension_grid_esm_EVENT_VISIBLE, onVisible);
-                on(splide_extension_grid_esm_EVENT_HIDDEN, onHidden);
-            }
-        }
-        function destroy() {
-            forEach((Slide => {
-                const {slide} = Slide;
-                toggleTabIndex(slide, false);
-                getRowsIn(slide).forEach((cell => {
-                    splide_extension_grid_esm_removeAttribute(cell, "style");
-                }));
-                getColsIn(slide).forEach((colSlide => {
-                    cover(colSlide, true);
-                    splide_extension_grid_esm_removeAttribute(colSlide, "style");
-                }));
-            }));
-            destroyEvent();
-        }
-        function layout() {
-            forEach((Slide => {
-                const {slide} = Slide;
-                const [rows, cols] = Dimension.get(Slide.isClone ? Slide.slideIndex : Slide.index);
-                layoutRow(rows, slide);
-                layoutCol(cols, slide);
-                getColsIn(Slide.slide).forEach(((colSlide, index) => {
-                    colSlide.id = `${Slide.slide.id}-col${splide_extension_grid_esm_pad(index + 1)}`;
-                    if (Splide2.options.cover) cover(colSlide);
-                }));
-            }));
-        }
-        function layoutRow(rows, slide) {
-            const {row: rowGap} = gridOptions.gap;
-            const height = `calc(${100 / rows}%${rowGap ? ` - ${splide_extension_grid_esm_unit(rowGap)} * ${(rows - 1) / rows}` : ""})`;
-            getRowsIn(slide).forEach(((rowElm, index, rowElms) => {
-                splide_extension_grid_esm_style(rowElm, "height", height);
-                splide_extension_grid_esm_style(rowElm, "display", "flex");
-                splide_extension_grid_esm_style(rowElm, "margin", `0 0 ${splide_extension_grid_esm_unit(rowGap)} 0`);
-                splide_extension_grid_esm_style(rowElm, "padding", 0);
-                if (index === rowElms.length - 1) splide_extension_grid_esm_style(rowElm, "marginBottom", 0);
-            }));
-        }
-        function layoutCol(cols, slide) {
-            const {col: colGap} = gridOptions.gap;
-            const width = `calc(${100 / cols}%${colGap ? ` - ${splide_extension_grid_esm_unit(colGap)} * ${(cols - 1) / cols}` : ""})`;
-            getColsIn(slide).forEach(((colElm, index, colElms) => {
-                splide_extension_grid_esm_style(colElm, "width", width);
-                if (index !== colElms.length - 1) splide_extension_grid_esm_style(colElm, resolve("marginRight"), splide_extension_grid_esm_unit(colGap));
-            }));
-        }
-        function cover(colSlide, uncover) {
-            const container = splide_extension_grid_esm_child(colSlide, `.${splide_extension_grid_esm_CLASS_CONTAINER}`);
-            const img = splide_extension_grid_esm_child(container || colSlide, "img");
-            if (img && img.src) {
-                splide_extension_grid_esm_style(container || colSlide, "background", uncover ? "" : `center/cover no-repeat url("${img.src}")`);
-                splide_extension_grid_esm_style(img, "display", uncover ? "" : "none");
-            }
-        }
-        function getRowsIn(slide) {
-            return splide_extension_grid_esm_queryAll(slide, `.${CLASS_SLIDE_ROW}`);
-        }
-        function getColsIn(slide) {
-            return splide_extension_grid_esm_queryAll(slide, `.${CLASS_SLIDE_COL}`);
-        }
-        function toggleTabIndex(slide, add) {
-            getColsIn(slide).forEach((colSlide => {
-                splide_extension_grid_esm_setAttribute(colSlide, "tabindex", add ? 0 : null);
-            }));
-        }
-        function onVisible(Slide) {
-            toggleTabIndex(Slide.slide, true);
-        }
-        function onHidden(Slide) {
-            toggleTabIndex(Slide.slide, false);
-        }
-        return {
-            mount,
-            destroy
-        };
-    }
-    function Grid(Splide2, Components2, options) {
-        const {on, off} = splide_extension_grid_esm_EventInterface(Splide2);
-        const {Elements} = Components2;
-        const gridOptions = {};
-        const Dimension$1 = Dimension(gridOptions);
-        const Layout$1 = splide_extension_grid_esm_Layout(Splide2, gridOptions, Dimension$1);
-        const modifier = `${splide_extension_grid_esm_CLASS_ROOT}--grid`;
-        const originalSlides = [];
-        function mount() {
-            init();
-            on(splide_extension_grid_esm_EVENT_UPDATED, init);
-        }
-        function init() {
-            splide_extension_grid_esm_omit(gridOptions);
-            splide_extension_grid_esm_assign(gridOptions, splide_extension_grid_esm_DEFAULTS, options.grid || {});
-            if (shouldBuild()) {
-                destroy();
-                splide_extension_grid_esm_push(originalSlides, Elements.slides);
-                splide_extension_grid_esm_addClass(Splide2.root, modifier);
-                splide_extension_grid_esm_append(Elements.list, build());
-                off(splide_extension_grid_esm_EVENT_REFRESH);
-                on(splide_extension_grid_esm_EVENT_REFRESH, layout);
-                refresh();
-            } else if (isActive()) {
-                destroy();
-                refresh();
-            }
-        }
-        function destroy() {
-            if (isActive()) {
-                const {slides} = Elements;
-                Layout$1.destroy();
-                originalSlides.forEach((slide => {
-                    splide_extension_grid_esm_removeClass(slide, CLASS_SLIDE_COL);
-                    splide_extension_grid_esm_append(Elements.list, slide);
-                }));
-                splide_extension_grid_esm_remove(slides);
-                splide_extension_grid_esm_removeClass(Splide2.root, modifier);
-                splide_extension_grid_esm_empty(slides);
-                splide_extension_grid_esm_push(slides, originalSlides);
-                splide_extension_grid_esm_empty(originalSlides);
-                off(splide_extension_grid_esm_EVENT_REFRESH);
-            }
-        }
-        function refresh() {
-            Splide2.refresh();
-        }
-        function layout() {
-            if (isActive()) Layout$1.mount();
-        }
-        function build() {
-            const outerSlides = [];
-            let row = 0, col = 0;
-            let outerSlide, rowSlide;
-            originalSlides.forEach(((slide, index) => {
-                const [rows, cols] = Dimension$1.getAt(index);
-                if (!col) {
-                    if (!row) {
-                        outerSlide = splide_extension_grid_esm_create(slide.tagName, splide_extension_grid_esm_CLASS_SLIDE);
-                        outerSlides.push(outerSlide);
-                    }
-                    rowSlide = buildRow(rows, slide, outerSlide);
-                }
-                buildCol(cols, slide, rowSlide);
-                if (++col >= cols) {
-                    col = 0;
-                    row = ++row >= rows ? 0 : row;
-                }
-            }));
-            return outerSlides;
-        }
-        function buildRow(rows, slide, outerSlide) {
-            const tag = slide.tagName.toLowerCase() === "li" ? "ul" : "div";
-            return splide_extension_grid_esm_create(tag, CLASS_SLIDE_ROW, outerSlide);
-        }
-        function buildCol(cols, slide, rowSlide) {
-            splide_extension_grid_esm_addClass(slide, CLASS_SLIDE_COL);
-            splide_extension_grid_esm_append(rowSlide, slide);
-            return slide;
-        }
-        function shouldBuild() {
-            if (options.grid) {
-                const {rows, cols, dimensions} = gridOptions;
-                return rows > 1 || cols > 1 || splide_extension_grid_esm_isArray(dimensions) && dimensions.length > 0;
-            }
-            return false;
-        }
-        function isActive() {
-            return splide_extension_grid_esm_hasClass(Splide2.root, modifier);
-        }
-        return {
-            mount,
-            destroy
-        };
-    }
-    class VideoBox {
-        constructor(container) {
-            this.container = container;
-            this.video = container.querySelector(".video-box__video");
-            this.button = container.querySelector(".video-box__play");
-            this.video.addEventListener("ended", (() => this.showButton()));
-        }
-        play() {
-            this.video.play();
-            this.button.classList.add("_hide");
-        }
-        pause() {
-            if (this.video.tagName !== "IFRAME") this.video.pause();
-            if (this.button) this.button.classList.remove("_hide");
-        }
-        toggle() {
-            if (!this.video.classList.contains("_disabled")) if (this.video.paused) this.play(); else this.pause();
-        }
-        showButton() {
-            this.button.classList.remove("_hide");
-        }
-    }
     document.addEventListener("DOMContentLoaded", (function() {
-        var heroSliderEl = document.querySelector(".hero-home__slider");
+        var heroSliderEl = document.querySelector(".hero__slider");
         if (heroSliderEl) {
-            var heroSlider = new Splide(heroSliderEl, {
-                type: "fade",
+            var heroSlider = new splide_esm_Splide(heroSliderEl, {
                 perPage: 1,
-                arrows: true,
+                arrows: false,
                 pagination: true,
-                autoplay: true,
-                interval: 3e3,
-                rewind: true,
-                classes: {
-                    arrow: "splide__arrow _icon-ch-round-right"
+                gap: 20,
+                padding: {
+                    left: 64,
+                    right: 64
                 },
                 breakpoints: {
-                    991.98: {
-                        arrows: false
+                    369.98: {
+                        gap: 10,
+                        padding: {
+                            left: 30,
+                            right: 30
+                        }
                     }
                 }
             });
             heroSlider.mount();
         }
-        var productsSectionSliderEls = document.querySelectorAll(".products-section__slider");
-        productsSectionSliderEls.forEach((function(sliderEl) {
-            var slider = new Splide(sliderEl, {
-                perPage: 5,
-                arrows: true,
-                pagination: false,
-                perMove: 1,
-                gap: 20,
-                updateOnMove: true,
-                classes: {
-                    arrow: "splide__arrow splide__arrow--black _icon-arrow-right"
-                },
-                breakpoints: {
-                    1599.98: {
-                        perPage: 4
-                    },
-                    1279.98: {
-                        perPage: 3
-                    },
-                    959.98: {
-                        perPage: 2
-                    },
-                    539.98: {
-                        destroy: true
-                    }
-                }
-            });
-            slider.mount();
-        }));
-        var shareSliderEls = document.querySelectorAll(".share-cakes__slider");
-        shareSliderEls.forEach((function(sliderEl) {
-            var slider = new Splide(sliderEl, {
-                perPage: 5,
-                arrows: true,
-                pagination: false,
-                perMove: 1,
-                gap: "1.25rem",
-                updateOnMove: true,
-                classes: {
-                    arrow: "splide__arrow splide__arrow--black _icon-arrow-right"
-                },
-                breakpoints: {
-                    1279.98: {
-                        perPage: 4
-                    },
-                    959.98: {
-                        perPage: 3
-                    },
-                    639.98: {
-                        perPage: 2
-                    },
-                    399.98: {
-                        pagination: true,
-                        arrows: false,
-                        perPage: 1,
-                        grid: {
-                            rows: 2,
-                            cols: 1,
-                            gap: {
-                                row: "1.25rem",
-                                col: "1.25rem"
-                            }
-                        }
-                    }
-                }
-            });
-            slider.mount({
-                Grid
-            });
-        }));
-        var reviewsProductEls = document.querySelectorAll(".reviews-product__slider");
-        reviewsProductEls.forEach((function(sliderEl) {
-            var slider = new Splide(sliderEl, {
-                perPage: 5,
-                arrows: true,
-                pagination: false,
-                perMove: 1,
-                gap: 60,
-                updateOnMove: true,
-                classes: {
-                    arrow: "splide__arrow splide__arrow--black _icon-arrow-right"
-                },
-                breakpoints: {
-                    1599.98: {
-                        perPage: 4
-                    },
-                    1279.98: {
-                        perPage: 3
-                    },
-                    959.98: {
-                        perPage: 2,
-                        gap: 20,
-                        arrows: false,
-                        pagination: true
-                    },
-                    539.98: {
-                        perPage: 1
-                    }
-                }
-            });
-            slider.mount();
-        }));
-        var imageSliderEls = document.querySelectorAll(".splide--image");
-        if (imageSliderEls) imageSliderEls.forEach((imageSliderEl => {
-            var slider = new Splide(imageSliderEl, {
-                type: "fade",
-                perPage: 1,
-                arrows: true,
-                pagination: true,
-                autoplay: true,
-                interval: 3e3,
-                rewind: true,
-                classes: {
-                    arrow: "splide__arrow _icon-ch-round-right"
-                },
-                breakpoints: {
-                    499.98: {
-                        arrows: false
-                    }
-                }
-            });
-            slider.mount();
-        }));
-        const creatorsSlider = document.querySelectorAll(".collection-home__slider");
-        creatorsSlider.forEach(((slider, index) => {
-            const parent = slider.closest("[data-slider-parent]");
-            let prevArrow = null;
-            let nextArrow = null;
-            if (parent) {
-                prevArrow = parent.querySelector(".splide__arrow--prev");
-                nextArrow = parent.querySelector(".splide__arrow--next");
-            }
-            let options = {
-                type: "fade",
-                perPage: 1,
-                arrows: false,
-                pagination: true,
-                autoplay: true,
-                interval: 3e3,
-                rewind: true,
-                classes: {
-                    arrow: "splide__arrow _icon-ch-round-right"
-                }
-            };
-            function refreshButtons() {
-                if (slider.closest("[hidden]") !== null) return;
-                if (prevArrow) prevArrow.disabled = splideInstance.index === 0;
-                if (nextArrow) nextArrow.disabled = splideInstance.index === splideInstance.Components.Controller.getEnd();
-            }
-            const splideInstance = new Splide(slider, options);
-            splideInstance.on("mounted move", (() => {
-                refreshButtons();
-            }));
-            splideInstance.mount();
-            if (prevArrow) prevArrow.addEventListener("click", (() => splideInstance.go("<")));
-            if (nextArrow) nextArrow.addEventListener("click", (() => splideInstance.go(">")));
-        }));
-        var publicationsSliderEl = document.querySelector(".publications-home__slider");
-        if (publicationsSliderEl) {
-            var publicationsSlider = new Splide(publicationsSliderEl, {
-                perPage: 1,
-                arrows: false,
-                pagination: true,
-                destroy: true,
-                grid: {
-                    rows: 6,
-                    cols: 1
-                },
-                breakpoints: {
-                    549.98: {
-                        destroy: false
-                    }
-                }
-            });
-            publicationsSlider.mount({
-                Grid
-            });
-        }
-        const productSliders = document.querySelectorAll(".main-product__sliders");
-        if (productSliders.length) productSliders.forEach((sliderWrapper => {
-            const mainSlider = sliderWrapper.querySelector(".main-product__main-slider");
-            const thumbnailSlider = sliderWrapper.querySelector(".main-product__thumbnail-slider");
-            if (mainSlider && thumbnailSlider) {
-                const mainSplide = new Splide(mainSlider, {
-                    type: "fade",
-                    rewind: true,
-                    perPage: 1,
-                    pagination: false,
-                    arrows: false,
-                    breakpoints: {
-                        991.98: {
-                            pagination: true
-                        }
-                    }
-                });
-                const thumbSplide = new Splide(thumbnailSlider, {
-                    isNavigation: true,
-                    perPage: 4,
-                    gap: "1.25rem",
-                    pagination: false,
-                    arrows: false
-                });
-                mainSplide.on("move", ((newIndex, oldIndex) => {
-                    mainSplide.querySelectorAll("iframe")?.forEach((iframe => {
-                        iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', "*");
-                    }));
-                    const oldSlide = mainSplide.Components.Slides.getAt(oldIndex);
-                    if (oldSlide) {
-                        const videoBoxes = oldSlide.slide.querySelectorAll(".video-box");
-                        videoBoxes.forEach((container => {
-                            const vb = new VideoBox(container);
-                            vb.pause();
-                        }));
-                    }
-                }));
-                mainSplide.mount();
-                thumbSplide.mount();
-                mainSplide.sync(thumbSplide);
-            }
-        }));
     }));
-    class ScrollWatcher {
-        constructor(props) {
-            let defaultConfig = {
-                logging: true
-            };
-            this.config = Object.assign(defaultConfig, props);
-            this.observer;
-            !document.documentElement.classList.contains("watcher") ? this.scrollWatcherRun() : null;
-        }
-        scrollWatcherUpdate() {
-            this.scrollWatcherRun();
-        }
-        scrollWatcherRun() {
-            document.documentElement.classList.add("watcher");
-            this.scrollWatcherConstructor(document.querySelectorAll("[data-watch]"));
-        }
-        scrollWatcherConstructor(items) {
-            if (items.length) {
-                this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
-                let uniqParams = uniqArray(Array.from(items).map((function(item) {
-                    if (item.dataset.watch === "navigator" && !item.dataset.watchThreshold) {
-                        let valueOfThreshold;
-                        if (item.clientHeight > 2) {
-                            valueOfThreshold = window.innerHeight / 2 / (item.clientHeight - 1);
-                            if (valueOfThreshold > 1) valueOfThreshold = 1;
-                        } else valueOfThreshold = 1;
-                        item.setAttribute("data-watch-threshold", valueOfThreshold.toFixed(2));
+    document.addEventListener("DOMContentLoaded", (function() {
+        var articlesDashSliderEl = document.querySelector(".articles-dash__slider");
+        if (articlesDashSliderEl) {
+            var articlesDashSlider = new splide_esm_Splide(articlesDashSliderEl, {
+                perPage: 2,
+                arrows: false,
+                pagination: false,
+                destroy: true,
+                gap: 16,
+                padding: {
+                    right: 150
+                },
+                breakpoints: {
+                    1099.98: {
+                        destroy: false
+                    },
+                    767.98: {
+                        perPage: 1
+                    },
+                    499.98: {
+                        padding: {
+                            right: 39
+                        }
                     }
-                    return `${item.dataset.watchRoot ? item.dataset.watchRoot : null}|${item.dataset.watchMargin ? item.dataset.watchMargin : "0px"}|${item.dataset.watchThreshold ? item.dataset.watchThreshold : 0}`;
-                })));
-                uniqParams.forEach((uniqParam => {
-                    let uniqParamArray = uniqParam.split("|");
-                    let paramsWatch = {
-                        root: uniqParamArray[0],
-                        margin: uniqParamArray[1],
-                        threshold: uniqParamArray[2]
-                    };
-                    let groupItems = Array.from(items).filter((function(item) {
-                        let watchRoot = item.dataset.watchRoot ? item.dataset.watchRoot : null;
-                        let watchMargin = item.dataset.watchMargin ? item.dataset.watchMargin : "0px";
-                        let watchThreshold = item.dataset.watchThreshold ? item.dataset.watchThreshold : 0;
-                        if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) return item;
-                    }));
-                    let configWatcher = this.getScrollWatcherConfig(paramsWatch);
-                    this.scrollWatcherInit(groupItems, configWatcher);
-                }));
-            } else this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
-        }
-        getScrollWatcherConfig(paramsWatch) {
-            let configWatcher = {};
-            if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if (paramsWatch.root !== "null") this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
-            configWatcher.rootMargin = paramsWatch.margin;
-            if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
-                this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
-                return;
-            }
-            if (paramsWatch.threshold === "prx") {
-                paramsWatch.threshold = [];
-                for (let i = 0; i <= 1; i += .005) paramsWatch.threshold.push(i);
-            } else paramsWatch.threshold = paramsWatch.threshold.split(",");
-            configWatcher.threshold = paramsWatch.threshold;
-            return configWatcher;
-        }
-        scrollWatcherCreate(configWatcher) {
-            console.log(configWatcher);
-            this.observer = new IntersectionObserver(((entries, observer) => {
-                entries.forEach((entry => {
-                    this.scrollWatcherCallback(entry, observer);
-                }));
-            }), configWatcher);
-        }
-        scrollWatcherInit(items, configWatcher) {
-            this.scrollWatcherCreate(configWatcher);
-            items.forEach((item => this.observer.observe(item)));
-        }
-        scrollWatcherIntersecting(entry, targetElement) {
-            if (entry.isIntersecting) {
-                !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null;
-                this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
-            } else {
-                targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
-                this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
-            }
-        }
-        scrollWatcherOff(targetElement, observer) {
-            observer.unobserve(targetElement);
-            this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
-        }
-        scrollWatcherLogging(message) {
-            this.config.logging ? functions_FLS(`[Спостерігач]: ${message}`) : null;
-        }
-        scrollWatcherCallback(entry, observer) {
-            const targetElement = entry.target;
-            this.scrollWatcherIntersecting(entry, targetElement);
-            if (entry.isIntersecting) this.scrollWatcherOff(targetElement, observer);
-            document.dispatchEvent(new CustomEvent("watcherCallback", {
-                detail: {
-                    entry
                 }
-            }));
+            });
+            articlesDashSlider.mount();
         }
+    }));
+    function isObject_isObject(value) {
+        var type = typeof value;
+        return value != null && (type == "object" || type == "function");
     }
-    document.addEventListener("DOMContentLoaded", (() => {
-        modules_flsModules.watcher = new ScrollWatcher({});
+    const lodash_es_isObject = isObject_isObject;
+    var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
+    const _freeGlobal = freeGlobal;
+    var freeSelf = typeof self == "object" && self && self.Object === Object && self;
+    var root = _freeGlobal || freeSelf || Function("return this")();
+    const _root = root;
+    var now = function() {
+        return _root.Date.now();
+    };
+    const lodash_es_now = now;
+    var reWhitespace = /\s/;
+    function trimmedEndIndex(string) {
+        var index = string.length;
+        while (index-- && reWhitespace.test(string.charAt(index))) ;
+        return index;
+    }
+    const _trimmedEndIndex = trimmedEndIndex;
+    var reTrimStart = /^\s+/;
+    function baseTrim(string) {
+        return string ? string.slice(0, _trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
+    }
+    const _baseTrim = baseTrim;
+    var Symbol = _root.Symbol;
+    const _Symbol = Symbol;
+    var objectProto = Object.prototype;
+    var _getRawTag_hasOwnProperty = objectProto.hasOwnProperty;
+    var nativeObjectToString = objectProto.toString;
+    var symToStringTag = _Symbol ? _Symbol.toStringTag : void 0;
+    function getRawTag(value) {
+        var isOwn = _getRawTag_hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
+        try {
+            value[symToStringTag] = void 0;
+            var unmasked = true;
+        } catch (e) {}
+        var result = nativeObjectToString.call(value);
+        if (unmasked) if (isOwn) value[symToStringTag] = tag; else delete value[symToStringTag];
+        return result;
+    }
+    const _getRawTag = getRawTag;
+    var _objectToString_objectProto = Object.prototype;
+    var _objectToString_nativeObjectToString = _objectToString_objectProto.toString;
+    function objectToString(value) {
+        return _objectToString_nativeObjectToString.call(value);
+    }
+    const _objectToString = objectToString;
+    var nullTag = "[object Null]", undefinedTag = "[object Undefined]";
+    var _baseGetTag_symToStringTag = _Symbol ? _Symbol.toStringTag : void 0;
+    function baseGetTag(value) {
+        if (value == null) return value === void 0 ? undefinedTag : nullTag;
+        return _baseGetTag_symToStringTag && _baseGetTag_symToStringTag in Object(value) ? _getRawTag(value) : _objectToString(value);
+    }
+    const _baseGetTag = baseGetTag;
+    function isObjectLike(value) {
+        return value != null && typeof value == "object";
+    }
+    const lodash_es_isObjectLike = isObjectLike;
+    var symbolTag = "[object Symbol]";
+    function isSymbol(value) {
+        return typeof value == "symbol" || lodash_es_isObjectLike(value) && _baseGetTag(value) == symbolTag;
+    }
+    const lodash_es_isSymbol = isSymbol;
+    var NAN = 0 / 0;
+    var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+    var reIsBinary = /^0b[01]+$/i;
+    var reIsOctal = /^0o[0-7]+$/i;
+    var freeParseInt = parseInt;
+    function toNumber(value) {
+        if (typeof value == "number") return value;
+        if (lodash_es_isSymbol(value)) return NAN;
+        if (lodash_es_isObject(value)) {
+            var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+            value = lodash_es_isObject(other) ? other + "" : other;
+        }
+        if (typeof value != "string") return value === 0 ? value : +value;
+        value = _baseTrim(value);
+        var isBinary = reIsBinary.test(value);
+        return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+    }
+    const lodash_es_toNumber = toNumber;
+    var FUNC_ERROR_TEXT = "Expected a function";
+    var nativeMax = Math.max, nativeMin = Math.min;
+    function debounce(func, wait, options) {
+        var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+        if (typeof func != "function") throw new TypeError(FUNC_ERROR_TEXT);
+        wait = lodash_es_toNumber(wait) || 0;
+        if (lodash_es_isObject(options)) {
+            leading = !!options.leading;
+            maxing = "maxWait" in options;
+            maxWait = maxing ? nativeMax(lodash_es_toNumber(options.maxWait) || 0, wait) : maxWait;
+            trailing = "trailing" in options ? !!options.trailing : trailing;
+        }
+        function invokeFunc(time) {
+            var args = lastArgs, thisArg = lastThis;
+            lastArgs = lastThis = void 0;
+            lastInvokeTime = time;
+            result = func.apply(thisArg, args);
+            return result;
+        }
+        function leadingEdge(time) {
+            lastInvokeTime = time;
+            timerId = setTimeout(timerExpired, wait);
+            return leading ? invokeFunc(time) : result;
+        }
+        function remainingWait(time) {
+            var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
+            return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+        }
+        function shouldInvoke(time) {
+            var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+            return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+        }
+        function timerExpired() {
+            var time = lodash_es_now();
+            if (shouldInvoke(time)) return trailingEdge(time);
+            timerId = setTimeout(timerExpired, remainingWait(time));
+        }
+        function trailingEdge(time) {
+            timerId = void 0;
+            if (trailing && lastArgs) return invokeFunc(time);
+            lastArgs = lastThis = void 0;
+            return result;
+        }
+        function cancel() {
+            if (timerId !== void 0) clearTimeout(timerId);
+            lastInvokeTime = 0;
+            lastArgs = lastCallTime = lastThis = timerId = void 0;
+        }
+        function flush() {
+            return timerId === void 0 ? result : trailingEdge(lodash_es_now());
+        }
+        function debounced() {
+            var time = lodash_es_now(), isInvoking = shouldInvoke(time);
+            lastArgs = arguments;
+            lastThis = this;
+            lastCallTime = time;
+            if (isInvoking) {
+                if (timerId === void 0) return leadingEdge(lastCallTime);
+                if (maxing) {
+                    clearTimeout(timerId);
+                    timerId = setTimeout(timerExpired, wait);
+                    return invokeFunc(lastCallTime);
+                }
+            }
+            if (timerId === void 0) timerId = setTimeout(timerExpired, wait);
+            return result;
+        }
+        debounced.cancel = cancel;
+        debounced.flush = flush;
+        return debounced;
+    }
+    const lodash_es_debounce = debounce;
+    var throttle_FUNC_ERROR_TEXT = "Expected a function";
+    function throttle(func, wait, options) {
+        var leading = true, trailing = true;
+        if (typeof func != "function") throw new TypeError(throttle_FUNC_ERROR_TEXT);
+        if (lodash_es_isObject(options)) {
+            leading = "leading" in options ? !!options.leading : leading;
+            trailing = "trailing" in options ? !!options.trailing : trailing;
+        }
+        return lodash_es_debounce(func, wait, {
+            leading,
+            maxWait: wait,
+            trailing
+        });
+    }
+    const lodash_es_throttle = throttle;
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+    function getElementWindow$1(element) {
+        if (!element || !element.ownerDocument || !element.ownerDocument.defaultView) return window;
+        return element.ownerDocument.defaultView;
+    }
+    function getElementDocument$1(element) {
+        if (!element || !element.ownerDocument) return document;
+        return element.ownerDocument;
+    }
+    var getOptions$1 = function(obj) {
+        var initialObj = {};
+        var options = Array.prototype.reduce.call(obj, (function(acc, attribute) {
+            var option = attribute.name.match(/data-simplebar-(.+)/);
+            if (option) {
+                var key = option[1].replace(/\W+(.)/g, (function(_, chr) {
+                    return chr.toUpperCase();
+                }));
+                switch (attribute.value) {
+                  case "true":
+                    acc[key] = true;
+                    break;
+
+                  case "false":
+                    acc[key] = false;
+                    break;
+
+                  case void 0:
+                    acc[key] = true;
+                    break;
+
+                  default:
+                    acc[key] = attribute.value;
+                }
+            }
+            return acc;
+        }), initialObj);
+        return options;
+    };
+    function addClasses$1(el, classes) {
+        var _a;
+        if (!el) return;
+        (_a = el.classList).add.apply(_a, classes.split(" "));
+    }
+    function removeClasses$1(el, classes) {
+        if (!el) return;
+        classes.split(" ").forEach((function(className) {
+            el.classList.remove(className);
+        }));
+    }
+    function classNamesToQuery$1(classNames) {
+        return ".".concat(classNames.split(" ").join("."));
+    }
+    var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+    var helpers = Object.freeze({
+        __proto__: null,
+        addClasses: addClasses$1,
+        canUseDOM,
+        classNamesToQuery: classNamesToQuery$1,
+        getElementDocument: getElementDocument$1,
+        getElementWindow: getElementWindow$1,
+        getOptions: getOptions$1,
+        removeClasses: removeClasses$1
+    });
+    var cachedScrollbarWidth = null;
+    var cachedDevicePixelRatio = null;
+    if (canUseDOM) window.addEventListener("resize", (function() {
+        if (cachedDevicePixelRatio !== window.devicePixelRatio) {
+            cachedDevicePixelRatio = window.devicePixelRatio;
+            cachedScrollbarWidth = null;
+        }
+    }));
+    function scrollbarWidth() {
+        if (cachedScrollbarWidth === null) {
+            if (typeof document === "undefined") {
+                cachedScrollbarWidth = 0;
+                return cachedScrollbarWidth;
+            }
+            var body = document.body;
+            var box = document.createElement("div");
+            box.classList.add("simplebar-hide-scrollbar");
+            body.appendChild(box);
+            var width = box.getBoundingClientRect().right;
+            body.removeChild(box);
+            cachedScrollbarWidth = width;
+        }
+        return cachedScrollbarWidth;
+    }
+    var getElementWindow = getElementWindow$1, getElementDocument = getElementDocument$1, getOptions = getOptions$1, addClasses = addClasses$1, dist_removeClasses = removeClasses$1, classNamesToQuery = classNamesToQuery$1;
+    var SimpleBarCore = function() {
+        function SimpleBarCore(element, options) {
+            if (options === void 0) options = {};
+            var _this = this;
+            this.removePreventClickId = null;
+            this.minScrollbarWidth = 20;
+            this.stopScrollDelay = 175;
+            this.isScrolling = false;
+            this.isMouseEntering = false;
+            this.isDragging = false;
+            this.scrollXTicking = false;
+            this.scrollYTicking = false;
+            this.wrapperEl = null;
+            this.contentWrapperEl = null;
+            this.contentEl = null;
+            this.offsetEl = null;
+            this.maskEl = null;
+            this.placeholderEl = null;
+            this.heightAutoObserverWrapperEl = null;
+            this.heightAutoObserverEl = null;
+            this.rtlHelpers = null;
+            this.scrollbarWidth = 0;
+            this.resizeObserver = null;
+            this.mutationObserver = null;
+            this.elStyles = null;
+            this.isRtl = null;
+            this.mouseX = 0;
+            this.mouseY = 0;
+            this.onMouseMove = function() {};
+            this.onWindowResize = function() {};
+            this.onStopScrolling = function() {};
+            this.onMouseEntered = function() {};
+            this.onScroll = function() {
+                var elWindow = getElementWindow(_this.el);
+                if (!_this.scrollXTicking) {
+                    elWindow.requestAnimationFrame(_this.scrollX);
+                    _this.scrollXTicking = true;
+                }
+                if (!_this.scrollYTicking) {
+                    elWindow.requestAnimationFrame(_this.scrollY);
+                    _this.scrollYTicking = true;
+                }
+                if (!_this.isScrolling) {
+                    _this.isScrolling = true;
+                    addClasses(_this.el, _this.classNames.scrolling);
+                }
+                _this.showScrollbar("x");
+                _this.showScrollbar("y");
+                _this.onStopScrolling();
+            };
+            this.scrollX = function() {
+                if (_this.axis.x.isOverflowing) _this.positionScrollbar("x");
+                _this.scrollXTicking = false;
+            };
+            this.scrollY = function() {
+                if (_this.axis.y.isOverflowing) _this.positionScrollbar("y");
+                _this.scrollYTicking = false;
+            };
+            this._onStopScrolling = function() {
+                dist_removeClasses(_this.el, _this.classNames.scrolling);
+                if (_this.options.autoHide) {
+                    _this.hideScrollbar("x");
+                    _this.hideScrollbar("y");
+                }
+                _this.isScrolling = false;
+            };
+            this.onMouseEnter = function() {
+                if (!_this.isMouseEntering) {
+                    addClasses(_this.el, _this.classNames.mouseEntered);
+                    _this.showScrollbar("x");
+                    _this.showScrollbar("y");
+                    _this.isMouseEntering = true;
+                }
+                _this.onMouseEntered();
+            };
+            this._onMouseEntered = function() {
+                dist_removeClasses(_this.el, _this.classNames.mouseEntered);
+                if (_this.options.autoHide) {
+                    _this.hideScrollbar("x");
+                    _this.hideScrollbar("y");
+                }
+                _this.isMouseEntering = false;
+            };
+            this._onMouseMove = function(e) {
+                _this.mouseX = e.clientX;
+                _this.mouseY = e.clientY;
+                if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseMoveForAxis("x");
+                if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseMoveForAxis("y");
+            };
+            this.onMouseLeave = function() {
+                _this.onMouseMove.cancel();
+                if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseLeaveForAxis("x");
+                if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseLeaveForAxis("y");
+                _this.mouseX = -1;
+                _this.mouseY = -1;
+            };
+            this._onWindowResize = function() {
+                _this.scrollbarWidth = _this.getScrollbarWidth();
+                _this.hideNativeScrollbar();
+            };
+            this.onPointerEvent = function(e) {
+                if (!_this.axis.x.track.el || !_this.axis.y.track.el || !_this.axis.x.scrollbar.el || !_this.axis.y.scrollbar.el) return;
+                var isWithinTrackXBounds, isWithinTrackYBounds;
+                _this.axis.x.track.rect = _this.axis.x.track.el.getBoundingClientRect();
+                _this.axis.y.track.rect = _this.axis.y.track.el.getBoundingClientRect();
+                if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) isWithinTrackXBounds = _this.isWithinBounds(_this.axis.x.track.rect);
+                if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) isWithinTrackYBounds = _this.isWithinBounds(_this.axis.y.track.rect);
+                if (isWithinTrackXBounds || isWithinTrackYBounds) {
+                    e.stopPropagation();
+                    if (e.type === "pointerdown" && e.pointerType !== "touch") {
+                        if (isWithinTrackXBounds) {
+                            _this.axis.x.scrollbar.rect = _this.axis.x.scrollbar.el.getBoundingClientRect();
+                            if (_this.isWithinBounds(_this.axis.x.scrollbar.rect)) _this.onDragStart(e, "x"); else _this.onTrackClick(e, "x");
+                        }
+                        if (isWithinTrackYBounds) {
+                            _this.axis.y.scrollbar.rect = _this.axis.y.scrollbar.el.getBoundingClientRect();
+                            if (_this.isWithinBounds(_this.axis.y.scrollbar.rect)) _this.onDragStart(e, "y"); else _this.onTrackClick(e, "y");
+                        }
+                    }
+                }
+            };
+            this.drag = function(e) {
+                var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+                if (!_this.draggedAxis || !_this.contentWrapperEl) return;
+                var eventOffset;
+                var track = _this.axis[_this.draggedAxis].track;
+                var trackSize = (_b = (_a = track.rect) === null || _a === void 0 ? void 0 : _a[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _b !== void 0 ? _b : 0;
+                var scrollbar = _this.axis[_this.draggedAxis].scrollbar;
+                var contentSize = (_d = (_c = _this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c[_this.axis[_this.draggedAxis].scrollSizeAttr]) !== null && _d !== void 0 ? _d : 0;
+                var hostSize = parseInt((_f = (_e = _this.elStyles) === null || _e === void 0 ? void 0 : _e[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _f !== void 0 ? _f : "0px", 10);
+                e.preventDefault();
+                e.stopPropagation();
+                if (_this.draggedAxis === "y") eventOffset = e.pageY; else eventOffset = e.pageX;
+                var dragPos = eventOffset - ((_h = (_g = track.rect) === null || _g === void 0 ? void 0 : _g[_this.axis[_this.draggedAxis].offsetAttr]) !== null && _h !== void 0 ? _h : 0) - _this.axis[_this.draggedAxis].dragOffset;
+                dragPos = _this.draggedAxis === "x" && _this.isRtl ? ((_k = (_j = track.rect) === null || _j === void 0 ? void 0 : _j[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _k !== void 0 ? _k : 0) - scrollbar.size - dragPos : dragPos;
+                var dragPerc = dragPos / (trackSize - scrollbar.size);
+                var scrollPos = dragPerc * (contentSize - hostSize);
+                if (_this.draggedAxis === "x" && _this.isRtl) scrollPos = ((_l = SimpleBarCore.getRtlHelpers()) === null || _l === void 0 ? void 0 : _l.isScrollingToNegative) ? -scrollPos : scrollPos;
+                _this.contentWrapperEl[_this.axis[_this.draggedAxis].scrollOffsetAttr] = scrollPos;
+            };
+            this.onEndDrag = function(e) {
+                _this.isDragging = false;
+                var elDocument = getElementDocument(_this.el);
+                var elWindow = getElementWindow(_this.el);
+                e.preventDefault();
+                e.stopPropagation();
+                dist_removeClasses(_this.el, _this.classNames.dragging);
+                _this.onStopScrolling();
+                elDocument.removeEventListener("mousemove", _this.drag, true);
+                elDocument.removeEventListener("mouseup", _this.onEndDrag, true);
+                _this.removePreventClickId = elWindow.setTimeout((function() {
+                    elDocument.removeEventListener("click", _this.preventClick, true);
+                    elDocument.removeEventListener("dblclick", _this.preventClick, true);
+                    _this.removePreventClickId = null;
+                }));
+            };
+            this.preventClick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            };
+            this.el = element;
+            this.options = __assign(__assign({}, SimpleBarCore.defaultOptions), options);
+            this.classNames = __assign(__assign({}, SimpleBarCore.defaultOptions.classNames), options.classNames);
+            this.axis = {
+                x: {
+                    scrollOffsetAttr: "scrollLeft",
+                    sizeAttr: "width",
+                    scrollSizeAttr: "scrollWidth",
+                    offsetSizeAttr: "offsetWidth",
+                    offsetAttr: "left",
+                    overflowAttr: "overflowX",
+                    dragOffset: 0,
+                    isOverflowing: true,
+                    forceVisible: false,
+                    track: {
+                        size: null,
+                        el: null,
+                        rect: null,
+                        isVisible: false
+                    },
+                    scrollbar: {
+                        size: null,
+                        el: null,
+                        rect: null,
+                        isVisible: false
+                    }
+                },
+                y: {
+                    scrollOffsetAttr: "scrollTop",
+                    sizeAttr: "height",
+                    scrollSizeAttr: "scrollHeight",
+                    offsetSizeAttr: "offsetHeight",
+                    offsetAttr: "top",
+                    overflowAttr: "overflowY",
+                    dragOffset: 0,
+                    isOverflowing: true,
+                    forceVisible: false,
+                    track: {
+                        size: null,
+                        el: null,
+                        rect: null,
+                        isVisible: false
+                    },
+                    scrollbar: {
+                        size: null,
+                        el: null,
+                        rect: null,
+                        isVisible: false
+                    }
+                }
+            };
+            if (typeof this.el !== "object" || !this.el.nodeName) throw new Error("Argument passed to SimpleBar must be an HTML element instead of ".concat(this.el));
+            this.onMouseMove = lodash_es_throttle(this._onMouseMove, 64);
+            this.onWindowResize = lodash_es_debounce(this._onWindowResize, 64, {
+                leading: true
+            });
+            this.onStopScrolling = lodash_es_debounce(this._onStopScrolling, this.stopScrollDelay);
+            this.onMouseEntered = lodash_es_debounce(this._onMouseEntered, this.stopScrollDelay);
+            this.init();
+        }
+        SimpleBarCore.getRtlHelpers = function() {
+            if (SimpleBarCore.rtlHelpers) return SimpleBarCore.rtlHelpers;
+            var dummyDiv = document.createElement("div");
+            dummyDiv.innerHTML = '<div class="simplebar-dummy-scrollbar-size"><div></div></div>';
+            var scrollbarDummyEl = dummyDiv.firstElementChild;
+            var dummyChild = scrollbarDummyEl === null || scrollbarDummyEl === void 0 ? void 0 : scrollbarDummyEl.firstElementChild;
+            if (!dummyChild) return null;
+            document.body.appendChild(scrollbarDummyEl);
+            scrollbarDummyEl.scrollLeft = 0;
+            var dummyContainerOffset = SimpleBarCore.getOffset(scrollbarDummyEl);
+            var dummyChildOffset = SimpleBarCore.getOffset(dummyChild);
+            scrollbarDummyEl.scrollLeft = -999;
+            var dummyChildOffsetAfterScroll = SimpleBarCore.getOffset(dummyChild);
+            document.body.removeChild(scrollbarDummyEl);
+            SimpleBarCore.rtlHelpers = {
+                isScrollOriginAtZero: dummyContainerOffset.left !== dummyChildOffset.left,
+                isScrollingToNegative: dummyChildOffset.left !== dummyChildOffsetAfterScroll.left
+            };
+            return SimpleBarCore.rtlHelpers;
+        };
+        SimpleBarCore.prototype.getScrollbarWidth = function() {
+            try {
+                if (this.contentWrapperEl && getComputedStyle(this.contentWrapperEl, "::-webkit-scrollbar").display === "none" || "scrollbarWidth" in document.documentElement.style || "-ms-overflow-style" in document.documentElement.style) return 0; else return scrollbarWidth();
+            } catch (e) {
+                return scrollbarWidth();
+            }
+        };
+        SimpleBarCore.getOffset = function(el) {
+            var rect = el.getBoundingClientRect();
+            var elDocument = getElementDocument(el);
+            var elWindow = getElementWindow(el);
+            return {
+                top: rect.top + (elWindow.pageYOffset || elDocument.documentElement.scrollTop),
+                left: rect.left + (elWindow.pageXOffset || elDocument.documentElement.scrollLeft)
+            };
+        };
+        SimpleBarCore.prototype.init = function() {
+            if (canUseDOM) {
+                this.initDOM();
+                this.rtlHelpers = SimpleBarCore.getRtlHelpers();
+                this.scrollbarWidth = this.getScrollbarWidth();
+                this.recalculate();
+                this.initListeners();
+            }
+        };
+        SimpleBarCore.prototype.initDOM = function() {
+            var _a, _b;
+            this.wrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.wrapper));
+            this.contentWrapperEl = this.options.scrollableNode || this.el.querySelector(classNamesToQuery(this.classNames.contentWrapper));
+            this.contentEl = this.options.contentNode || this.el.querySelector(classNamesToQuery(this.classNames.contentEl));
+            this.offsetEl = this.el.querySelector(classNamesToQuery(this.classNames.offset));
+            this.maskEl = this.el.querySelector(classNamesToQuery(this.classNames.mask));
+            this.placeholderEl = this.findChild(this.wrapperEl, classNamesToQuery(this.classNames.placeholder));
+            this.heightAutoObserverWrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverWrapperEl));
+            this.heightAutoObserverEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverEl));
+            this.axis.x.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.horizontal)));
+            this.axis.y.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.vertical)));
+            this.axis.x.scrollbar.el = ((_a = this.axis.x.track.el) === null || _a === void 0 ? void 0 : _a.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
+            this.axis.y.scrollbar.el = ((_b = this.axis.y.track.el) === null || _b === void 0 ? void 0 : _b.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
+            if (!this.options.autoHide) {
+                addClasses(this.axis.x.scrollbar.el, this.classNames.visible);
+                addClasses(this.axis.y.scrollbar.el, this.classNames.visible);
+            }
+        };
+        SimpleBarCore.prototype.initListeners = function() {
+            var _this = this;
+            var _a;
+            var elWindow = getElementWindow(this.el);
+            this.el.addEventListener("mouseenter", this.onMouseEnter);
+            this.el.addEventListener("pointerdown", this.onPointerEvent, true);
+            this.el.addEventListener("mousemove", this.onMouseMove);
+            this.el.addEventListener("mouseleave", this.onMouseLeave);
+            (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.addEventListener("scroll", this.onScroll);
+            elWindow.addEventListener("resize", this.onWindowResize);
+            if (!this.contentEl) return;
+            if (window.ResizeObserver) {
+                var resizeObserverStarted_1 = false;
+                var resizeObserver = elWindow.ResizeObserver || ResizeObserver;
+                this.resizeObserver = new resizeObserver((function() {
+                    if (!resizeObserverStarted_1) return;
+                    elWindow.requestAnimationFrame((function() {
+                        _this.recalculate();
+                    }));
+                }));
+                this.resizeObserver.observe(this.el);
+                this.resizeObserver.observe(this.contentEl);
+                elWindow.requestAnimationFrame((function() {
+                    resizeObserverStarted_1 = true;
+                }));
+            }
+            this.mutationObserver = new elWindow.MutationObserver((function() {
+                elWindow.requestAnimationFrame((function() {
+                    _this.recalculate();
+                }));
+            }));
+            this.mutationObserver.observe(this.contentEl, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        };
+        SimpleBarCore.prototype.recalculate = function() {
+            if (!this.heightAutoObserverEl || !this.contentEl || !this.contentWrapperEl || !this.wrapperEl || !this.placeholderEl) return;
+            var elWindow = getElementWindow(this.el);
+            this.elStyles = elWindow.getComputedStyle(this.el);
+            this.isRtl = this.elStyles.direction === "rtl";
+            var contentElOffsetWidth = this.contentEl.offsetWidth;
+            var isHeightAuto = this.heightAutoObserverEl.offsetHeight <= 1;
+            var isWidthAuto = this.heightAutoObserverEl.offsetWidth <= 1 || contentElOffsetWidth > 0;
+            var contentWrapperElOffsetWidth = this.contentWrapperEl.offsetWidth;
+            var elOverflowX = this.elStyles.overflowX;
+            var elOverflowY = this.elStyles.overflowY;
+            this.contentEl.style.padding = "".concat(this.elStyles.paddingTop, " ").concat(this.elStyles.paddingRight, " ").concat(this.elStyles.paddingBottom, " ").concat(this.elStyles.paddingLeft);
+            this.wrapperEl.style.margin = "-".concat(this.elStyles.paddingTop, " -").concat(this.elStyles.paddingRight, " -").concat(this.elStyles.paddingBottom, " -").concat(this.elStyles.paddingLeft);
+            var contentElScrollHeight = this.contentEl.scrollHeight;
+            var contentElScrollWidth = this.contentEl.scrollWidth;
+            this.contentWrapperEl.style.height = isHeightAuto ? "auto" : "100%";
+            this.placeholderEl.style.width = isWidthAuto ? "".concat(contentElOffsetWidth || contentElScrollWidth, "px") : "auto";
+            this.placeholderEl.style.height = "".concat(contentElScrollHeight, "px");
+            var contentWrapperElOffsetHeight = this.contentWrapperEl.offsetHeight;
+            this.axis.x.isOverflowing = contentElOffsetWidth !== 0 && contentElScrollWidth > contentElOffsetWidth;
+            this.axis.y.isOverflowing = contentElScrollHeight > contentWrapperElOffsetHeight;
+            this.axis.x.isOverflowing = elOverflowX === "hidden" ? false : this.axis.x.isOverflowing;
+            this.axis.y.isOverflowing = elOverflowY === "hidden" ? false : this.axis.y.isOverflowing;
+            this.axis.x.forceVisible = this.options.forceVisible === "x" || this.options.forceVisible === true;
+            this.axis.y.forceVisible = this.options.forceVisible === "y" || this.options.forceVisible === true;
+            this.hideNativeScrollbar();
+            var offsetForXScrollbar = this.axis.x.isOverflowing ? this.scrollbarWidth : 0;
+            var offsetForYScrollbar = this.axis.y.isOverflowing ? this.scrollbarWidth : 0;
+            this.axis.x.isOverflowing = this.axis.x.isOverflowing && contentElScrollWidth > contentWrapperElOffsetWidth - offsetForYScrollbar;
+            this.axis.y.isOverflowing = this.axis.y.isOverflowing && contentElScrollHeight > contentWrapperElOffsetHeight - offsetForXScrollbar;
+            this.axis.x.scrollbar.size = this.getScrollbarSize("x");
+            this.axis.y.scrollbar.size = this.getScrollbarSize("y");
+            if (this.axis.x.scrollbar.el) this.axis.x.scrollbar.el.style.width = "".concat(this.axis.x.scrollbar.size, "px");
+            if (this.axis.y.scrollbar.el) this.axis.y.scrollbar.el.style.height = "".concat(this.axis.y.scrollbar.size, "px");
+            this.positionScrollbar("x");
+            this.positionScrollbar("y");
+            this.toggleTrackVisibility("x");
+            this.toggleTrackVisibility("y");
+        };
+        SimpleBarCore.prototype.getScrollbarSize = function(axis) {
+            var _a, _b;
+            if (axis === void 0) axis = "y";
+            if (!this.axis[axis].isOverflowing || !this.contentEl) return 0;
+            var contentSize = this.contentEl[this.axis[axis].scrollSizeAttr];
+            var trackSize = (_b = (_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) !== null && _b !== void 0 ? _b : 0;
+            var scrollbarRatio = trackSize / contentSize;
+            var scrollbarSize;
+            scrollbarSize = Math.max(~~(scrollbarRatio * trackSize), this.options.scrollbarMinSize);
+            if (this.options.scrollbarMaxSize) scrollbarSize = Math.min(scrollbarSize, this.options.scrollbarMaxSize);
+            return scrollbarSize;
+        };
+        SimpleBarCore.prototype.positionScrollbar = function(axis) {
+            var _a, _b, _c;
+            if (axis === void 0) axis = "y";
+            var scrollbar = this.axis[axis].scrollbar;
+            if (!this.axis[axis].isOverflowing || !this.contentWrapperEl || !scrollbar.el || !this.elStyles) return;
+            var contentSize = this.contentWrapperEl[this.axis[axis].scrollSizeAttr];
+            var trackSize = ((_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) || 0;
+            var hostSize = parseInt(this.elStyles[this.axis[axis].sizeAttr], 10);
+            var scrollOffset = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+            scrollOffset = axis === "x" && this.isRtl && ((_b = SimpleBarCore.getRtlHelpers()) === null || _b === void 0 ? void 0 : _b.isScrollOriginAtZero) ? -scrollOffset : scrollOffset;
+            if (axis === "x" && this.isRtl) scrollOffset = ((_c = SimpleBarCore.getRtlHelpers()) === null || _c === void 0 ? void 0 : _c.isScrollingToNegative) ? scrollOffset : -scrollOffset;
+            var scrollPourcent = scrollOffset / (contentSize - hostSize);
+            var handleOffset = ~~((trackSize - scrollbar.size) * scrollPourcent);
+            handleOffset = axis === "x" && this.isRtl ? -handleOffset + (trackSize - scrollbar.size) : handleOffset;
+            scrollbar.el.style.transform = axis === "x" ? "translate3d(".concat(handleOffset, "px, 0, 0)") : "translate3d(0, ".concat(handleOffset, "px, 0)");
+        };
+        SimpleBarCore.prototype.toggleTrackVisibility = function(axis) {
+            if (axis === void 0) axis = "y";
+            var track = this.axis[axis].track.el;
+            var scrollbar = this.axis[axis].scrollbar.el;
+            if (!track || !scrollbar || !this.contentWrapperEl) return;
+            if (this.axis[axis].isOverflowing || this.axis[axis].forceVisible) {
+                track.style.visibility = "visible";
+                this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "scroll";
+                this.el.classList.add("".concat(this.classNames.scrollable, "-").concat(axis));
+            } else {
+                track.style.visibility = "hidden";
+                this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "hidden";
+                this.el.classList.remove("".concat(this.classNames.scrollable, "-").concat(axis));
+            }
+            if (this.axis[axis].isOverflowing) scrollbar.style.display = "block"; else scrollbar.style.display = "none";
+        };
+        SimpleBarCore.prototype.showScrollbar = function(axis) {
+            if (axis === void 0) axis = "y";
+            if (this.axis[axis].isOverflowing && !this.axis[axis].scrollbar.isVisible) {
+                addClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
+                this.axis[axis].scrollbar.isVisible = true;
+            }
+        };
+        SimpleBarCore.prototype.hideScrollbar = function(axis) {
+            if (axis === void 0) axis = "y";
+            if (this.isDragging) return;
+            if (this.axis[axis].isOverflowing && this.axis[axis].scrollbar.isVisible) {
+                dist_removeClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
+                this.axis[axis].scrollbar.isVisible = false;
+            }
+        };
+        SimpleBarCore.prototype.hideNativeScrollbar = function() {
+            if (!this.offsetEl) return;
+            this.offsetEl.style[this.isRtl ? "left" : "right"] = this.axis.y.isOverflowing || this.axis.y.forceVisible ? "-".concat(this.scrollbarWidth, "px") : "0px";
+            this.offsetEl.style.bottom = this.axis.x.isOverflowing || this.axis.x.forceVisible ? "-".concat(this.scrollbarWidth, "px") : "0px";
+        };
+        SimpleBarCore.prototype.onMouseMoveForAxis = function(axis) {
+            if (axis === void 0) axis = "y";
+            var currentAxis = this.axis[axis];
+            if (!currentAxis.track.el || !currentAxis.scrollbar.el) return;
+            currentAxis.track.rect = currentAxis.track.el.getBoundingClientRect();
+            currentAxis.scrollbar.rect = currentAxis.scrollbar.el.getBoundingClientRect();
+            if (this.isWithinBounds(currentAxis.track.rect)) {
+                this.showScrollbar(axis);
+                addClasses(currentAxis.track.el, this.classNames.hover);
+                if (this.isWithinBounds(currentAxis.scrollbar.rect)) addClasses(currentAxis.scrollbar.el, this.classNames.hover); else dist_removeClasses(currentAxis.scrollbar.el, this.classNames.hover);
+            } else {
+                dist_removeClasses(currentAxis.track.el, this.classNames.hover);
+                if (this.options.autoHide) this.hideScrollbar(axis);
+            }
+        };
+        SimpleBarCore.prototype.onMouseLeaveForAxis = function(axis) {
+            if (axis === void 0) axis = "y";
+            dist_removeClasses(this.axis[axis].track.el, this.classNames.hover);
+            dist_removeClasses(this.axis[axis].scrollbar.el, this.classNames.hover);
+            if (this.options.autoHide) this.hideScrollbar(axis);
+        };
+        SimpleBarCore.prototype.onDragStart = function(e, axis) {
+            var _a;
+            if (axis === void 0) axis = "y";
+            this.isDragging = true;
+            var elDocument = getElementDocument(this.el);
+            var elWindow = getElementWindow(this.el);
+            var scrollbar = this.axis[axis].scrollbar;
+            var eventOffset = axis === "y" ? e.pageY : e.pageX;
+            this.axis[axis].dragOffset = eventOffset - (((_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) || 0);
+            this.draggedAxis = axis;
+            addClasses(this.el, this.classNames.dragging);
+            elDocument.addEventListener("mousemove", this.drag, true);
+            elDocument.addEventListener("mouseup", this.onEndDrag, true);
+            if (this.removePreventClickId === null) {
+                elDocument.addEventListener("click", this.preventClick, true);
+                elDocument.addEventListener("dblclick", this.preventClick, true);
+            } else {
+                elWindow.clearTimeout(this.removePreventClickId);
+                this.removePreventClickId = null;
+            }
+        };
+        SimpleBarCore.prototype.onTrackClick = function(e, axis) {
+            var _this = this;
+            var _a, _b, _c, _d;
+            if (axis === void 0) axis = "y";
+            var currentAxis = this.axis[axis];
+            if (!this.options.clickOnTrack || !currentAxis.scrollbar.el || !this.contentWrapperEl) return;
+            e.preventDefault();
+            var elWindow = getElementWindow(this.el);
+            this.axis[axis].scrollbar.rect = currentAxis.scrollbar.el.getBoundingClientRect();
+            var scrollbar = this.axis[axis].scrollbar;
+            var scrollbarOffset = (_b = (_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) !== null && _b !== void 0 ? _b : 0;
+            var hostSize = parseInt((_d = (_c = this.elStyles) === null || _c === void 0 ? void 0 : _c[this.axis[axis].sizeAttr]) !== null && _d !== void 0 ? _d : "0px", 10);
+            var scrolled = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+            var t = axis === "y" ? this.mouseY - scrollbarOffset : this.mouseX - scrollbarOffset;
+            var dir = t < 0 ? -1 : 1;
+            var scrollSize = dir === -1 ? scrolled - hostSize : scrolled + hostSize;
+            var speed = 40;
+            var scrollTo = function() {
+                if (!_this.contentWrapperEl) return;
+                if (dir === -1) {
+                    if (scrolled > scrollSize) {
+                        scrolled -= speed;
+                        _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
+                        elWindow.requestAnimationFrame(scrollTo);
+                    }
+                } else if (scrolled < scrollSize) {
+                    scrolled += speed;
+                    _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
+                    elWindow.requestAnimationFrame(scrollTo);
+                }
+            };
+            scrollTo();
+        };
+        SimpleBarCore.prototype.getContentElement = function() {
+            return this.contentEl;
+        };
+        SimpleBarCore.prototype.getScrollElement = function() {
+            return this.contentWrapperEl;
+        };
+        SimpleBarCore.prototype.removeListeners = function() {
+            var elWindow = getElementWindow(this.el);
+            this.el.removeEventListener("mouseenter", this.onMouseEnter);
+            this.el.removeEventListener("pointerdown", this.onPointerEvent, true);
+            this.el.removeEventListener("mousemove", this.onMouseMove);
+            this.el.removeEventListener("mouseleave", this.onMouseLeave);
+            if (this.contentWrapperEl) this.contentWrapperEl.removeEventListener("scroll", this.onScroll);
+            elWindow.removeEventListener("resize", this.onWindowResize);
+            if (this.mutationObserver) this.mutationObserver.disconnect();
+            if (this.resizeObserver) this.resizeObserver.disconnect();
+            this.onMouseMove.cancel();
+            this.onWindowResize.cancel();
+            this.onStopScrolling.cancel();
+            this.onMouseEntered.cancel();
+        };
+        SimpleBarCore.prototype.unMount = function() {
+            this.removeListeners();
+        };
+        SimpleBarCore.prototype.isWithinBounds = function(bbox) {
+            return this.mouseX >= bbox.left && this.mouseX <= bbox.left + bbox.width && this.mouseY >= bbox.top && this.mouseY <= bbox.top + bbox.height;
+        };
+        SimpleBarCore.prototype.findChild = function(el, query) {
+            var matches = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+            return Array.prototype.filter.call(el.children, (function(child) {
+                return matches.call(child, query);
+            }))[0];
+        };
+        SimpleBarCore.rtlHelpers = null;
+        SimpleBarCore.defaultOptions = {
+            forceVisible: false,
+            clickOnTrack: true,
+            scrollbarMinSize: 25,
+            scrollbarMaxSize: 0,
+            ariaLabel: "scrollable content",
+            tabIndex: 0,
+            classNames: {
+                contentEl: "simplebar-content",
+                contentWrapper: "simplebar-content-wrapper",
+                offset: "simplebar-offset",
+                mask: "simplebar-mask",
+                wrapper: "simplebar-wrapper",
+                placeholder: "simplebar-placeholder",
+                scrollbar: "simplebar-scrollbar",
+                track: "simplebar-track",
+                heightAutoObserverWrapperEl: "simplebar-height-auto-observer-wrapper",
+                heightAutoObserverEl: "simplebar-height-auto-observer",
+                visible: "simplebar-visible",
+                horizontal: "simplebar-horizontal",
+                vertical: "simplebar-vertical",
+                hover: "simplebar-hover",
+                dragging: "simplebar-dragging",
+                scrolling: "simplebar-scrolling",
+                scrollable: "simplebar-scrollable",
+                mouseEntered: "simplebar-mouse-entered"
+            },
+            scrollableNode: null,
+            contentNode: null,
+            autoHide: true
+        };
+        SimpleBarCore.getOptions = getOptions;
+        SimpleBarCore.helpers = helpers;
+        return SimpleBarCore;
+    }();
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || {
+            __proto__: []
+        } instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __);
+    }
+    var _a = SimpleBarCore.helpers, dist_getOptions = _a.getOptions, dist_addClasses = _a.addClasses, dist_canUseDOM = _a.canUseDOM;
+    var SimpleBar = function(_super) {
+        __extends(SimpleBar, _super);
+        function SimpleBar() {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) args[_i] = arguments[_i];
+            var _this = _super.apply(this, args) || this;
+            SimpleBar.instances.set(args[0], _this);
+            return _this;
+        }
+        SimpleBar.initDOMLoadedElements = function() {
+            document.removeEventListener("DOMContentLoaded", this.initDOMLoadedElements);
+            window.removeEventListener("load", this.initDOMLoadedElements);
+            Array.prototype.forEach.call(document.querySelectorAll("[data-simplebar]"), (function(el) {
+                if (el.getAttribute("data-simplebar") !== "init" && !SimpleBar.instances.has(el)) new SimpleBar(el, dist_getOptions(el.attributes));
+            }));
+        };
+        SimpleBar.removeObserver = function() {
+            var _a;
+            (_a = SimpleBar.globalObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
+        };
+        SimpleBar.prototype.initDOM = function() {
+            var _this = this;
+            var _a, _b, _c;
+            if (!Array.prototype.filter.call(this.el.children, (function(child) {
+                return child.classList.contains(_this.classNames.wrapper);
+            })).length) {
+                this.wrapperEl = document.createElement("div");
+                this.contentWrapperEl = document.createElement("div");
+                this.offsetEl = document.createElement("div");
+                this.maskEl = document.createElement("div");
+                this.contentEl = document.createElement("div");
+                this.placeholderEl = document.createElement("div");
+                this.heightAutoObserverWrapperEl = document.createElement("div");
+                this.heightAutoObserverEl = document.createElement("div");
+                dist_addClasses(this.wrapperEl, this.classNames.wrapper);
+                dist_addClasses(this.contentWrapperEl, this.classNames.contentWrapper);
+                dist_addClasses(this.offsetEl, this.classNames.offset);
+                dist_addClasses(this.maskEl, this.classNames.mask);
+                dist_addClasses(this.contentEl, this.classNames.contentEl);
+                dist_addClasses(this.placeholderEl, this.classNames.placeholder);
+                dist_addClasses(this.heightAutoObserverWrapperEl, this.classNames.heightAutoObserverWrapperEl);
+                dist_addClasses(this.heightAutoObserverEl, this.classNames.heightAutoObserverEl);
+                while (this.el.firstChild) this.contentEl.appendChild(this.el.firstChild);
+                this.contentWrapperEl.appendChild(this.contentEl);
+                this.offsetEl.appendChild(this.contentWrapperEl);
+                this.maskEl.appendChild(this.offsetEl);
+                this.heightAutoObserverWrapperEl.appendChild(this.heightAutoObserverEl);
+                this.wrapperEl.appendChild(this.heightAutoObserverWrapperEl);
+                this.wrapperEl.appendChild(this.maskEl);
+                this.wrapperEl.appendChild(this.placeholderEl);
+                this.el.appendChild(this.wrapperEl);
+                (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.setAttribute("tabindex", this.options.tabIndex.toString());
+                (_b = this.contentWrapperEl) === null || _b === void 0 ? void 0 : _b.setAttribute("role", "region");
+                (_c = this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c.setAttribute("aria-label", this.options.ariaLabel);
+            }
+            if (!this.axis.x.track.el || !this.axis.y.track.el) {
+                var track = document.createElement("div");
+                var scrollbar = document.createElement("div");
+                dist_addClasses(track, this.classNames.track);
+                dist_addClasses(scrollbar, this.classNames.scrollbar);
+                track.appendChild(scrollbar);
+                this.axis.x.track.el = track.cloneNode(true);
+                dist_addClasses(this.axis.x.track.el, this.classNames.horizontal);
+                this.axis.y.track.el = track.cloneNode(true);
+                dist_addClasses(this.axis.y.track.el, this.classNames.vertical);
+                this.el.appendChild(this.axis.x.track.el);
+                this.el.appendChild(this.axis.y.track.el);
+            }
+            SimpleBarCore.prototype.initDOM.call(this);
+            this.el.setAttribute("data-simplebar", "init");
+        };
+        SimpleBar.prototype.unMount = function() {
+            SimpleBarCore.prototype.unMount.call(this);
+            SimpleBar.instances["delete"](this.el);
+        };
+        SimpleBar.initHtmlApi = function() {
+            this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
+            if (typeof MutationObserver !== "undefined") {
+                this.globalObserver = new MutationObserver(SimpleBar.handleMutations);
+                this.globalObserver.observe(document, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+            if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) window.setTimeout(this.initDOMLoadedElements); else {
+                document.addEventListener("DOMContentLoaded", this.initDOMLoadedElements);
+                window.addEventListener("load", this.initDOMLoadedElements);
+            }
+        };
+        SimpleBar.handleMutations = function(mutations) {
+            mutations.forEach((function(mutation) {
+                mutation.addedNodes.forEach((function(addedNode) {
+                    if (addedNode.nodeType === 1) if (addedNode.hasAttribute("data-simplebar")) !SimpleBar.instances.has(addedNode) && document.documentElement.contains(addedNode) && new SimpleBar(addedNode, dist_getOptions(addedNode.attributes)); else addedNode.querySelectorAll("[data-simplebar]").forEach((function(el) {
+                        if (el.getAttribute("data-simplebar") !== "init" && !SimpleBar.instances.has(el) && document.documentElement.contains(el)) new SimpleBar(el, dist_getOptions(el.attributes));
+                    }));
+                }));
+                mutation.removedNodes.forEach((function(removedNode) {
+                    var _a;
+                    if (removedNode.nodeType === 1) if (removedNode.getAttribute("data-simplebar") === "init") !document.documentElement.contains(removedNode) && ((_a = SimpleBar.instances.get(removedNode)) === null || _a === void 0 ? void 0 : _a.unMount()); else Array.prototype.forEach.call(removedNode.querySelectorAll('[data-simplebar="init"]'), (function(el) {
+                        var _a;
+                        !document.documentElement.contains(el) && ((_a = SimpleBar.instances.get(el)) === null || _a === void 0 ? void 0 : _a.unMount());
+                    }));
+                }));
+            }));
+        };
+        SimpleBar.instances = new WeakMap;
+        return SimpleBar;
+    }(SimpleBarCore);
+    if (dist_canUseDOM) SimpleBar.initHtmlApi();
+    if (document.querySelectorAll("[data-simplebar]").length) document.querySelectorAll("[data-simplebar]").forEach((scrollBlock => {
+        new SimpleBar(scrollBlock, {
+            autoHide: false
+        });
     }));
     let addWindowScrollEvent = false;
-    function digitsCounter() {
-        function digitsCountersInit(digitsCountersItems) {
-            let digitsCounters = digitsCountersItems ? digitsCountersItems : document.querySelectorAll("[data-digits-counter]");
-            if (digitsCounters.length) digitsCounters.forEach((digitsCounter => {
-                if (digitsCounter.hasAttribute("data-go")) return;
-                digitsCounter.setAttribute("data-go", "");
-                digitsCounter.innerHTML = `0`;
-                setMinWidth(digitsCounter);
-                digitsCountersAnimate(digitsCounter);
-            }));
-        }
-        function formatNumberWithCommas(number) {
-            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-        function setMinWidth(digitsCounter) {
-            const endValue = parseFloat(digitsCounter.dataset.digitsCounter);
-            const formattedValue = formatNumberWithCommas(endValue);
-            const charCount = formattedValue.length;
-            digitsCounter.style.minWidth = `${charCount}ch`;
-        }
-        function digitsCountersAnimate(digitsCounter) {
-            let startTimestamp = null;
-            const duration = parseFloat(digitsCounter.dataset.digitsCounterSpeed) ? parseFloat(digitsCounter.dataset.digitsCounterSpeed) : 1e3;
-            const startValue = parseFloat(digitsCounter.dataset.digitsCounter);
-            const startPosition = 0;
-            const step = timestamp => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (startPosition + startValue));
-                digitsCounter.innerHTML = formatNumberWithCommas(value);
-                if (progress < 1) window.requestAnimationFrame(step); else digitsCounter.removeAttribute("data-go");
-            };
-            window.requestAnimationFrame(step);
-        }
-        function digitsCounterAction(e) {
-            const entry = e.detail.entry;
-            const targetElement = entry.target;
-            if (targetElement.querySelectorAll("[data-digits-counter]").length) digitsCountersInit(targetElement.querySelectorAll("[data-digits-counter]"));
-        }
-        document.addEventListener("watcherCallback", digitsCounterAction);
-    }
     setTimeout((() => {
         if (addWindowScrollEvent) {
             let windowScroll = new Event("windowScroll");
@@ -4674,70 +5087,158 @@
             document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
         }
     }
-    document.querySelectorAll(".share-cakes__wrapper")?.forEach((block => {
-        _slideUp(block, 0);
+    document.querySelectorAll(".bid-inq")?.forEach((item => {
+        _slideUp(item, 0);
     }));
     window.addEventListener("load", (function() {
         updateHeaderHeights();
     }));
-    window.addEventListener("resize", updateHeaderHeights);
+    window.addEventListener("resize", (() => {
+        updateHeaderHeights();
+    }));
     document.addEventListener("selectCallback", (e => {
         e.detail.select.dispatchEvent(new Event("change"));
     }));
+    document.querySelectorAll(".rates-inquires__body")?.forEach((item => {
+        _slideUp(item, 0);
+    }));
     document.addEventListener("click", (e => {
-        if (e.target.closest(".icon-menu")) {
+        if (e.target.closest("[data-menu-toggle]")) {
             bodyLockToggle(0);
             document.documentElement.classList.toggle("menu-open");
-        } else if (!e.target.closest(".mobile-menu") && document.documentElement.classList.contains(`menu-open`)) {
+        } else if (!e.target.closest(".mobile-menu") && document.documentElement.classList.contains("menu-open")) {
             bodyUnlock(0);
             document.documentElement.classList.remove("menu-open");
         }
-        if (e.target.closest("[data-filter-btn]")) {
-            bodyLockToggle(0);
-            document.documentElement.classList.toggle("filter-open");
-        } else if ((!e.target.closest(".filters-catalog") || e.target.closest(".filters-catalog__close")) && document.documentElement.classList.contains(`filter-open`)) {
-            bodyUnlock(0);
-            document.documentElement.classList.remove("filter-open");
+        if (e.target.closest("[data-chats-toggle]")) {
+            window.matchMedia("(max-width: 991.98px)").matches ? bodyLockToggle(0) : null;
+            document.documentElement.classList.toggle("chat-open");
+        } else if (!e.target.closest(".chats-dash") && document.documentElement.classList.contains("chat-open")) {
+            window.matchMedia("(max-width: 991.98px)").matches ? bodyUnlock(0) : null;
+            document.documentElement.classList.remove("chat-open");
         }
-        if (e.target.closest(".footer__up")) window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-        if (e.target.closest(".share-cakes__button")) {
-            const container = e.target.closest(".share-cakes");
-            const block = container.querySelector(".share-cakes__wrapper");
-            block && block.hidden ? _slideDown(block) : null;
+        if (e.target.closest(".field__hide")) {
+            const button = e.target;
+            const fieldContainer = button.closest(".field__input");
+            const input = fieldContainer.querySelector("input");
+            if (input.type === "password") {
+                input.type = "text";
+                button.classList.remove("_icon-eye");
+                button.classList.add("_icon-eye-hide");
+            } else {
+                input.type = "password";
+                button.classList.remove("_icon-eye-hide");
+                button.classList.add("_icon-eye");
+            }
         }
-        if (e.target.closest(".video-box__play")) {
-            const playTarget = e.target.closest(".video-box__play");
-            const container = playTarget.closest(".video-box");
-            const videoBox = new VideoBox(container);
-            videoBox.toggle();
+        if (e.target.closest(".rates-inquires__button")) {
+            const btn = e.target.closest(".rates-inquires__button");
+            const body = btn.closest(".rates-inquires")?.querySelector(".rates-inquires__body");
+            if (body) {
+                _slideToggle(body);
+                btn.classList.toggle("_open");
+            }
         }
-        if (e.target.closest("[data-share-close]")) {
-            const container = e.target.closest(".share-cakes");
-            const block = container.querySelector(".share-cakes__wrapper");
-            block && !block.hidden ? _slideUp(block) : null;
+        if (e.target.closest("[data-bid-open]")) {
+            const btn = e.target.closest("[data-bid-open]");
+            const container = btn.closest(".inquires__card, .card-inquires-m");
+            const block = container.querySelector(".bid-inq");
+            if (block) {
+                _slideToggle(block);
+                if (block.querySelector(".tracking-inq")) ;
+                btn.classList.toggle("_active");
+            }
+        }
+        if (e.target.closest("[data-add-inputs]")) {
+            const wrapper = e.target.closest("[data-inputs-wrapper]");
+            if (wrapper) {
+                const originalBlock = wrapper.querySelector("[data-inputs]");
+                if (!originalBlock) return;
+                const clone = originalBlock.cloneNode(true);
+                clone.querySelectorAll("input").forEach((input => {
+                    input.value = "";
+                    if (input.type === "checkbox" || input.type === "radio") input.checked = false;
+                }));
+                const container = originalBlock.parentNode;
+                container.appendChild(clone);
+            }
+        }
+        if (e.target.closest(".measurements__add")) {
+            const btn = e.target.closest(".measurements__add");
+            const table = btn.closest(".measurements__table");
+            const tbody = table.querySelector("table tbody");
+            const newRow = document.createElement("tr");
+            for (let i = 0; i < 9; i++) {
+                const td = document.createElement("td");
+                const input = document.createElement("input");
+                input.type = "number";
+                td.appendChild(input);
+                newRow.appendChild(td);
+            }
+            tbody.appendChild(newRow);
         }
     }));
-    const numberInputs = document.querySelectorAll(".counter");
-    if (numberInputs) numberInputs.forEach((wrapperInput => {
-        const input = wrapperInput.querySelector("input");
-        const min = parseInt(wrapperInput.getAttribute("data-min"));
-        const max = parseInt(wrapperInput.getAttribute("data-max"));
-        const validateInput = () => {
-            let value = parseInt(input.value);
-            if (isNaN(value)) value = min;
-            if (value < min) value = min; else if (value > max) value = max;
-            input.value = value;
-        };
-        input.addEventListener("input", validateInput);
-        input.addEventListener("blur", validateInput);
+    document.addEventListener("selectCallback", (e => {
+        e.detail.select.dispatchEvent(new Event("change"));
+    }));
+    const dateInputs = document.querySelectorAll(".field__date input");
+    dateInputs?.forEach((dateInput => {
+        const block = dateInput.closest(".field__input");
+        const textInput = block.querySelector("input[type='text']");
+        dateInput.addEventListener("change", (e => {
+            const rawDate = e.target.value;
+            if (rawDate) {
+                const date = new Date(rawDate);
+                const day = String(date.getDate()).padStart(2, "0");
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const year = date.getFullYear();
+                textInput.value = `${day}.${month}.${year}`;
+            }
+        }));
+        dateInput.addEventListener("input", (e => {
+            if (!e.target.value) textInput.value = "";
+        }));
+        textInput.addEventListener("input", (() => {
+            const raw = textInput.value;
+            const cursorPos = textInput.selectionStart;
+            let digits = raw.replace(/\D/g, "").slice(0, 8);
+            let formatted = "";
+            if (digits.length >= 1) formatted += digits.slice(0, 2);
+            if (digits.length >= 3) formatted += "." + digits.slice(2, 4);
+            if (digits.length >= 5) formatted += "." + digits.slice(4, 8);
+            let newCursorPos = cursorPos;
+            const prevDots = (raw.slice(0, cursorPos).match(/\./g) || []).length;
+            const newDots = (formatted.slice(0, cursorPos).match(/\./g) || []).length;
+            newCursorPos += newDots - prevDots;
+            textInput.value = formatted;
+            textInput.setSelectionRange(newCursorPos, newCursorPos);
+            if (digits.length === 8) {
+                const day = digits.slice(0, 2);
+                const month = digits.slice(2, 4);
+                const year = digits.slice(4, 8);
+                const m = Math.min(Math.max(parseInt(month), 1), 12).toString().padStart(2, "0");
+                const maxDay = new Date(year, m, 0).getDate();
+                const d = Math.min(Math.max(parseInt(day), 1), maxDay).toString().padStart(2, "0");
+                dateInput.value = `${year}-${m}-${d}`;
+            } else dateInput.value = "";
+        }));
+        textInput.addEventListener("click", (() => {
+            textInput.value = "";
+            dateInput.value = "";
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const progressBlocks = document.querySelectorAll(".circle-progress");
+        progressBlocks.forEach((block => {
+            const value = +block.getAttribute("data-value");
+            const circle = block.querySelector(".progress--circle");
+            const textEl = block.querySelector(".circle-progress__value p");
+            if (circle) circle.style.strokeDashoffset = 100 - value;
+            if (textEl) textEl.textContent = `${value}%`;
+        }));
     }));
     window["FLS"] = false;
-    menuInit();
     spoilers();
     tabs();
-    showMore();
-    digitsCounter();
+    formRating();
 })();
