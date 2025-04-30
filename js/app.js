@@ -1216,6 +1216,13 @@
         }
     }
     modules_flsModules.select = new SelectConstructor({});
+    window.addEventListener("selectsUpdateRequest", (function(e) {
+        const selectItems = document.querySelectorAll("*:not(.select) > select");
+        if (selectItems.length) {
+            modules_flsModules.select.selectsInit(selectItems);
+            console.log("+");
+        }
+    }));
     function _defineProperties(target, props) {
         for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
