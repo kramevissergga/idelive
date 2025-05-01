@@ -389,6 +389,10 @@
                 const tabSwitchEvent = new CustomEvent("tabSwitch");
                 tabsBlock.dispatchEvent(tabSwitchEvent);
                 e.preventDefault();
+                const lines = tabsBlock.querySelectorAll(".tracking-inq");
+                if (lines) lines.forEach((line => {
+                    updateTrackingLine(line);
+                }));
             }
         }
         function setActiveTab(tabsBlock, index) {
