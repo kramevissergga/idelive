@@ -4666,7 +4666,7 @@
             document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
         }
     }
-    document.querySelectorAll(".bid-inq")?.forEach((item => {
+    document.querySelectorAll(".bid-inq:not([data-open])")?.forEach((item => {
         _slideUp(item, 0);
     }));
     window.addEventListener("load", (function() {
@@ -4674,9 +4674,6 @@
     }));
     window.addEventListener("resize", (() => {
         updateHeaderHeights();
-    }));
-    document.addEventListener("selectCallback", (e => {
-        e.detail.select.dispatchEvent(new Event("change"));
     }));
     document.querySelectorAll(".rates-inquires__body")?.forEach((item => {
         _slideUp(item, 0);
@@ -4695,6 +4692,13 @@
         } else if (!e.target.closest(".chats-dash") && document.documentElement.classList.contains("chat-open")) {
             window.matchMedia("(max-width: 991.98px)").matches ? bodyUnlock(0) : null;
             document.documentElement.classList.remove("chat-open");
+        }
+        if (e.target.closest("[data-settings-toggle]")) {
+            const chatsBlock = e.target.closest(".chats-dash");
+            chatsBlock.classList.add("set-open");
+        } else if (!e.target.closest(".set-chats__content") && e.target.closest(".set-chats")) {
+            const chatsBlock = e.target.closest(".chats-dash");
+            chatsBlock.classList.remove("set-open");
         }
         if (e.target.closest(".field__hide")) {
             const button = e.target;
