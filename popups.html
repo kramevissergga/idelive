@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250506033814">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250512225556">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -95,18 +95,33 @@
 										</label>
 									</div>
 								</div>
-								<div class="bid-popup__field field">
-									<div class="bid-popup__label">
-										Weight*
+								<div class="bid-popup__ship-specs">
+									<div class="bid-popup__field field">
+										<div class="bid-popup__label">
+											Total weight*
+										</div>
+										<div class="field__input ">
+											<input placeholder="0" type="text">
+											<select data-class-modif="input">
+												<option value="1" selected>Ib</option>
+												<option value="2">Kg</option>
+											</select>
+										</div>
 									</div>
-									<div class="field__input ">
-										<input placeholder="Enter full address" type="text">
-										<select data-class-modif="input">
-											<option value="1" selected>Ibs</option>
-											<option value="2">Kg</option>
-										</select>
+									<div class="bid-popup__field field">
+										<div class="bid-popup__label">
+											Total volume*
+										</div>
+										<div class="field__input ">
+											<input placeholder="Volume" type="text">
+											<select data-class-modif="input">
+												<option value="1" selected>cbm</option>
+												<option value="2">in</option>
+											</select>
+										</div>
 									</div>
 								</div>
+
 							</div>
 							<div class="bid-popup__body">
 								<div data-simplebar class="bid-popup__scroll">
@@ -147,6 +162,11 @@
 										</div>
 										<div class="bid-popup__wrapper">
 											<div class="bid-popup__details">
+												<label class="bid-popup__checkbox bid-popup__checkbox--dark checkbox">
+													<span class="icon"></span>
+													Full Container
+													<input type="checkbox">
+												</label>
 												<div class="bid-popup__field bid-popup__field--quantity field">
 													<div class="bid-popup__label">
 														Quantity
@@ -167,24 +187,13 @@
 														</select>
 													</div>
 												</div>
-												<div class="bid-popup__or">
-													or
-												</div>
-												<div class="bid-popup__field field">
-													<div class="field__input field__input--border-between">
-														<input placeholder="Volume" type="text">
-														<div class="field__input-label">
-															CBM
-														</div>
-													</div>
-												</div>
 											</div>
 										</div>
 										<div class="bid-popup__wrapper">
 											<div class="bid-popup__label">
 												Cargo*
 											</div>
-											<div class="bid-popup__cargo">
+											<div class="bid-popup__code">
 												<div class="bid-popup__field field">
 													<div class="field__input">
 														<input placeholder="Enter product" type="text">
@@ -235,7 +244,10 @@
 							<button data-close class="bid-popup__button bid-popup__button--pc button button--border">
 								Close
 							</button>
-							<button class="bid-popup__button button _icon-arrow-right">
+							<button class="bid-popup__button bid-popup__button--pc button _icon-arrow-right">
+								BidDeliv
+							</button>
+							<button class="bid-popup__button bid-popup__button--mobile button button--gradient">
 								BidDeliv
 							</button>
 						</div>
@@ -1516,8 +1528,8 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250506033814"></script>
-	<script src="js/select-constructor.js?_v=20250506033814"></script>
+	<script src="js/app.min.js?_v=20250512225556"></script>
+	<script src="js/select-constructor.js?_v=20250512225556"></script>
 </body>
 
 </html>
