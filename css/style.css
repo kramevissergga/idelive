@@ -544,6 +544,10 @@ body::after {
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   gap: .625rem
 }
 .file-input::before {
@@ -1008,7 +1012,7 @@ body::after {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  padding: .8125rem .625rem;
+  padding: 1rem .625rem;
   color: inherit
 }
 .select_prices .select__option {
@@ -1184,6 +1188,10 @@ body::after {
   max-width: 45.5rem;
   border-radius: 1.25rem
 }
+.popup--info .popup__content {
+  max-width: 57.625rem;
+  padding: 3.4375rem
+}
 .popup--thanks .popup__content {
   padding-top: 6.5rem;
   padding-bottom: 6.5rem
@@ -1211,6 +1219,22 @@ body::after {
   top: 1.5rem;
   right: 1.5rem
 }
+.bid-popup__mob-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .9375rem
+}
+.bid-popup__mob-header:not(:last-child) {
+  margin-bottom: 2.125rem
+}
+.bid-popup__clear {
+  color: #7b7f97;
+  font-size: .875rem;
+  line-height: 1.2;
+  text-decoration-thickness: .0625rem;
+  text-underline-offset: .125rem
+}
 .bid-popup__back {
   color: #7b7f97;
   line-height: 1.2;
@@ -1225,8 +1249,20 @@ body::after {
 .bid-popup__back:not(:last-child) {
   margin-bottom: 2rem
 }
+.bid-popup--info .bid-popup__back:not(:last-child) {
+  margin-bottom: 0
+}
 .bid-popup__back::before {
   font-size: .8125rem
+}
+.bid-popup__supplier-info {
+  display: grid;
+  grid-template-columns: 194fr 390fr 194fr;
+  gap: 1rem
+}
+.bid-popup__supplier-info .field__input .file-input,
+.bid-popup__supplier-info .field__input input {
+  font-size: .875rem
 }
 .bid-popup--decline .bid-popup__form {
   max-width: 28rem;
@@ -1321,6 +1357,9 @@ body::after {
 .bid-popup__address-block>*:not(:last-child) {
   margin-bottom: .5rem
 }
+.bid-popup__field {
+  min-width: 0
+}
 .bid-popup__field input {
   font-size: 1.125rem
 }
@@ -1351,6 +1390,12 @@ body::after {
 .bid-popup__big-title:not(:last-child) {
   margin-bottom: 1.5rem
 }
+.bid-popup--info .bid-popup__big-title {
+  text-align: left
+}
+.bid-popup--info .bid-popup__big-title:not(:last-child) {
+  margin-bottom: 2rem
+}
 .bid-popup__text {
   color: #000;
   text-align: center;
@@ -1374,15 +1419,27 @@ body::after {
 .bid-popup__scroll {
   max-height: 21.25rem
 }
+.bid-popup--info .bid-popup__scroll {
+  max-height: 23.125rem
+}
 .bid-popup__body {
   padding-top: .625rem;
   border-top: .0625rem solid #dddee2
+}
+.bid-popup--info .bid-popup__body {
+  padding-top: 0;
+  border-top: none
 }
 .bid-popup__body-block:not(:last-child) {
   margin-bottom: 1rem
 }
 .bid-popup__body-block>*:not(:last-child) {
   margin-bottom: 1rem
+}
+.bid-popup--info .bid-popup__body-block:not(:last-child) {
+  padding-bottom: 2rem;
+  border-bottom: .0625rem solid #dddee2;
+  margin-bottom: 2rem
 }
 .bid-popup__wrapper--big-margin:not(:last-child) {
   margin-bottom: 2.5rem
@@ -1427,6 +1484,9 @@ body::after {
 .bid-popup__add:not(:last-child) {
   margin-bottom: 2rem
 }
+.bid-popup--info .bid-popup__add:not(:last-child) {
+  margin-bottom: 0
+}
 .bid-popup__add button {
   width: 2.5rem;
   height: 2.5rem;
@@ -1445,13 +1505,19 @@ body::after {
   display: flex;
   justify-content: space-between;
   gap: 1.25rem;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  align-items: center
 }
 .bid-popup--confirm2 .bid-popup__footer:not(:first-child) {
   margin-top: 2.5rem
 }
 .bid-popup__button {
   min-width: 12.1875rem
+}
+.bid-popup--info .bid-popup__button {
+  min-width: 6.5625rem;
+  font-size: 1rem;
+  padding: .625rem
 }
 .bid-popup--confirm2 .bid-popup__button {
   min-width: 14rem;
@@ -1520,6 +1586,11 @@ body::after {
 .tabs-inq__title {
   text-decoration: underline;
   text-decoration-color: transparent;
+  transition: text-decoration-color .3s
+}
+.bid-popup__clear {
+  text-decoration: underline;
+  text-decoration-color: inherit;
   transition: text-decoration-color .3s
 }
 .header {
@@ -5769,11 +5840,20 @@ body::after {
   .popup__inquires .bid-inq__main {
     padding-bottom: 1.75rem!important
   }
+  .bid-popup__mob-header {
+    display: none
+  }
   .bid-popup__back {
     display: none
   }
+  .bid-popup__supplier-info .bid-popup__label {
+    font-weight: 500
+  }
   .bid-popup__details-label--mobile {
     display: none
+  }
+  .bid-popup--info .bid-popup__body-block>*:not(:last-child) {
+    margin-bottom: 1.5rem
   }
   .bid-popup__dimensions .field {
     position: relative
@@ -5967,6 +6047,9 @@ body::after {
   }
 }
 @media (max-width:61.99875em) {
+  .popup--info .popup__content {
+    padding: 3.4375rem 1.25rem
+  }
   .footer__body {
     flex-direction: column;
     padding-top: 2rem
@@ -6140,11 +6223,17 @@ body::after {
   .popup__content {
     padding: 1.25rem 1.25rem 4.75rem
   }
+  .popup--info .popup__content {
+    padding: 1.25rem 1.25rem 3.75rem
+  }
   .popup--dash-inq .popup__content {
     padding: 1.25rem 1.25rem 3.75rem
   }
   .bid-popup__back-circle {
     display: none
+  }
+  .bid-popup__supplier-info {
+    grid-template-columns: 1fr
   }
   .bid-popup__form:not(:last-child) {
     margin-bottom: 2.0625rem
@@ -6174,11 +6263,20 @@ body::after {
     grid-template-columns: 1fr;
     gap: 1.125rem
   }
+  .bid-popup--info .bid-popup__big-title {
+    font-size: 1rem
+  }
+  .bid-popup--info .bid-popup__big-title:not(:last-child) {
+    margin-bottom: 1.5rem
+  }
   .bid-popup__ship-specs {
     grid-template-columns: 1fr;
     gap: 1rem
   }
   .bid-popup__scroll {
+    max-height: 41.875rem
+  }
+  .bid-popup--info .bid-popup__scroll {
     max-height: 41.875rem
   }
   .bid-popup__body {
@@ -6207,8 +6305,17 @@ body::after {
   .bid-popup__add:not(:last-child) {
     margin-bottom: 4.0625rem
   }
+  .bid-popup--info .bid-popup__footer {
+    align-items: start;
+    flex-direction: column;
+    gap: 2.5rem
+  }
   .bid-popup--confirm2 .bid-popup__footer:not(:first-child) {
     margin-top: 3.75rem
+  }
+  .bid-popup--info .bid-popup__button {
+    padding: .75rem .625rem;
+    width: 100%
   }
   .bid-popup__button {
     flex-grow: 1
@@ -7102,6 +7209,9 @@ body::after {
   .inquires__tabs-item:hover,
   .tabs-inq__title:hover {
     text-decoration-color: inherit
+  }
+  .bid-popup__clear:hover {
+    text-decoration-color: transparent
   }
   .header__menu ul li a:hover {
     color: #998ee0

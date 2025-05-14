@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250512230243">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250514124300">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -255,6 +255,96 @@
 				</div>
 			</div>
 		</div>
+		<div id="popup-info" aria-hidden="true" class="popup popup--info">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div data-inputs-wrapper class="bid-popup bid-popup--info">
+						<button data-close class="bid-popup__back-circle _icon-cross"></button>
+						<div class="bid-popup__mob-header">
+							<button class="bid-popup__back _icon-arrow-bold-left">Back</button>
+							<button class="bid-popup__clear">Clear all</button>
+						</div>
+
+						<h3 class="bid-popup__big-title ">
+							Please, fill the below information:
+						</h3>
+						<form action="#" class="bid-popup__form">
+							<div class="bid-popup__body ">
+								<div data-simplebar class="bid-popup__scroll">
+									<div data-inputs class="bid-popup__body-block ">
+										<div class="bid-popup__wrapper">
+											<div class="bid-popup__supplier-info">
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Name of the supplier:
+													</div>
+													<div class="field__input">
+														<input placeholder="Enter company name" type="text">
+													</div>
+												</div>
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Email:
+													</div>
+													<div class="field__input">
+														<input placeholder="Enter e-mail address" type="email">
+													</div>
+												</div>
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Phone number:
+													</div>
+													<div class="field__input">
+														<input placeholder="+86 21 1234 5678" type="text">
+													</div>
+												</div>
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Cargo
+													</div>
+													<div class="field__input">
+														<input placeholder="Enter product name" type="text">
+													</div>
+												</div>
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Address: 
+													</div>
+													<div class="field__input">
+														<input placeholder="1234 Maple Street, Los Angeles, CA 90001, USA" type="text">
+													</div>
+												</div>
+												<div class="bid-popup__field field">
+													<div class="bid-popup__label">
+														Wechat QR code
+													</div>
+													<div class="field__input">
+														<label class="file-input _icon-pin">
+															Upload document
+															<input type="file" name="myImage" accept="image.webp, image.webp, image.webp">
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<div class="bid-popup__footer">
+							<div class="bid-popup__add">
+								<button data-add-inputs type="button" class="_icon-plus"></button>
+								Add a supplier
+							</div>
+							<button data-close class="bid-popup__button button">
+								Accept
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="decline-popup" aria-hidden="true" class="popup">
 			<div class="popup__wrapper">
 				<div class="popup__content">
@@ -262,7 +352,7 @@
 						<button data-close class="bid-popup__back-circle _icon-cross"></button>
 						<button data-close class="bid-popup__back _icon-arrow-bold-left">Back</button>
 						<form action="#" class="bid-popup__form">
-							<h3 class="bid-popup__title">
+							<h3 class="bid-popup__title ">
 								Let us know about your problem, we will solve it quickly
 							</h3>
 							<div class="bid-popup__wrapper">
@@ -1665,8 +1755,8 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250512230243"></script>
-	<script src="js/select-constructor.js?_v=20250512230243"></script>
+	<script src="js/app.min.js?_v=20250514124300"></script>
+	<script src="js/select-constructor.js?_v=20250514124300"></script>
 </body>
 
 </html>

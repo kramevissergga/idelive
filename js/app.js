@@ -4669,9 +4669,6 @@
     document.querySelectorAll(".bid-inq:not([data-open])")?.forEach((item => {
         _slideUp(item, 0);
     }));
-    window.addEventListener("load", (function() {
-        updateHeaderHeights();
-    }));
     window.addEventListener("resize", (() => {
         updateHeaderHeights();
     }));
@@ -4811,6 +4808,7 @@
         }));
     }));
     document.addEventListener("DOMContentLoaded", (() => {
+        updateHeaderHeights();
         const progressBlocks = document.querySelectorAll(".circle-progress");
         progressBlocks.forEach((block => {
             const value = +block.getAttribute("data-value");
