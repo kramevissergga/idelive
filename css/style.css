@@ -1213,11 +1213,11 @@ body::after {
   width: 2.625rem;
   height: 2.625rem;
   border-radius: 50%;
-  transition: all .3s;
   border: .0625rem solid #dddee2;
   position: absolute;
   top: 1.5rem;
-  right: 1.5rem
+  right: 1.5rem;
+  transition: all .3s
 }
 .bid-popup__mob-header {
   display: flex;
@@ -7195,6 +7195,10 @@ body::after {
   }
   [data-rating=set] .rating__item:hover~.rating__item span {
     display: none
+  }
+  .bid-popup__back-circle:hover {
+    color: #fff;
+    background-color: #998ee0
   }
   .bid-popup__back:hover {
     background-color: #2a2e4a;
