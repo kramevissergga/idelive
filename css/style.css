@@ -549,7 +549,7 @@ body::after {
 .field__info-label--bold {
   font-weight: 500
 }
-.field__certif tr:first-child td {
+.field__certif tr:not(:last-child) td {
   padding-bottom: .25rem
 }
 .field__certif td {
@@ -563,9 +563,6 @@ body::after {
   max-width: max-content;
   display: inline-block;
   text-wrap: nowrap
-}
-.field__certif td:last-child {
-  width: 100%
 }
 .field__certif-body {
   display: flex;
@@ -5440,14 +5437,14 @@ body::after {
   gap: 2rem 1.5rem;
   max-width: 43rem
 }
-.account__fields--triple {
-  grid-template-columns: repeat(3,1fr)
-}
 .account__fields--company {
   grid-template-columns: 1fr 2fr
 }
 .account__field .field__input:has(.file-input) {
   max-width: 12rem
+}
+.account__field .field__input textarea {
+  height: 5.25rem
 }
 .account__field .file-input {
   font-size: .875rem
@@ -5458,8 +5455,53 @@ body::after {
 .account__field .field__label--grow {
   flex-grow: 1
 }
-.account__field--double {
-  grid-column: span 2
+.account__mob-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center
+}
+.account__mob-actions:not(:last-child) {
+  margin-bottom: 1.6875rem
+}
+.account__bar {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: center;
+  color: #7b7f97;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2
+}
+.account__bar-line {
+  border-radius: .375rem;
+  overflow: hidden;
+  height: .375rem;
+  background-color: #dddee2;
+  width: 100%;
+  position: relative;
+  width: 9.8125rem
+}
+.account__bar-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress);
+  height: 100%;
+  background-color: #998ee0
+}
+.account__mob-edit,
+.account__mob-save {
+  font-size: .875rem;
+  padding: .8125rem 1.25rem;
+  width: 100%;
+  max-width: 20.9375rem
+}
+.account__mob-save {
+  margin: 0 auto;
+  margin-top: 2.875rem
 }
 .pr-info-acc {
   display: flex;
@@ -5467,9 +5509,11 @@ body::after {
 }
 .pr-info-acc__image {
   width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  overflow: hidden
+  aspect-ratio: 1/1;
+  position: relative
+}
+.pr-info-acc__image img {
+  border-radius: 50%
 }
 .pr-info-acc__body {
   display: flex;
@@ -5489,10 +5533,30 @@ body::after {
 .pr-info-acc__label--bold {
   font-weight: 500
 }
+.pr-info-acc__image-edit {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: #eef1f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  color: #7b7f97;
+  -webkit-transform: translate(-50%,50%);
+  transform: translate(-50%,50%);
+  bottom: 0;
+  transition: all .3s
+}
+.pr-info-acc__image-edit::before {
+  font-size: .8125rem
+}
 .photos-acc__header {
   display: flex;
   align-items: center;
-  gap: 1.875rem
+  flex-wrap: wrap;
+  gap: .625rem 1.875rem
 }
 .photos-acc__header:not(:last-child) {
   margin-bottom: 1.25rem
@@ -5532,10 +5596,24 @@ body::after {
 .photos-acc__uploads .uploading__item {
   min-width: 8.5rem
 }
+.photos-acc__up-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem
+}
+.photos-acc__up-remove {
+  width: 1.5rem;
+  height: 1.5rem
+}
+.photos-acc__up-remove svg {
+  width: 100%;
+  height: 100%
+}
 .photos-acc__up-label {
   color: #2a2e4a;
   font-size: .875rem;
-  line-height: 1.2
+  line-height: 1.2;
+  flex-grow: 1
 }
 .photos-acc__up-label:not(:last-child) {
   margin-bottom: 1rem
@@ -6742,6 +6820,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
 }
 @media (min-width:47.99875em) {
+  .field__certif td:last-child {
+    width: 100%
+  }
   .popup__inquires .bid-inq__main {
     padding-bottom: 1.75rem!important
   }
@@ -6824,6 +6905,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .upload-bid__link:not(:last-child) {
     margin-bottom: 1.1875rem
   }
+  .account__field--double {
+    grid-column: span 2
+  }
 }
 @media (min-width:61.99875em) {
   .footer__contacts {
@@ -6834,6 +6918,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .feedback-hero__header {
     padding: 0 .625rem 0 3.4375rem
+  }
+  .photos-acc__up-remove {
+    display: none
   }
 }
 @media (min-width:68.74875em) {
@@ -6860,6 +6947,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     display: grid!important;
     grid-template-columns: repeat(3,1fr);
     gap: 1rem
+  }
+}
+@media (min-width:74.99875em) {
+  .account__bar {
+    display: none
+  }
+  .account__mob-edit,
+  .account__mob-save {
+    display: none
   }
 }
 @media (min-width:81.24875em) {
@@ -6891,6 +6987,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .contacts-h__block:not(:last-child) {
     margin-bottom: 5.5rem
+  }
+}
+@media (min-width:87.49875em) {
+  .account__fields--triple {
+    grid-template-columns: repeat(3,1fr)
   }
 }
 @media (min-width:768px) {
@@ -6933,6 +7034,14 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .inq-dash__rates-btn {
     grid-column: 1/-1
+  }
+}
+@media (max-width:74.99875em) {
+  .account__wrapper {
+    grid-template-columns: 16rem 1fr
+  }
+  .completed-account {
+    display: none
   }
 }
 @media (max-width:68.74875em) {
@@ -7123,11 +7232,44 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%)
   }
+  .account__wrapper {
+    grid-template-columns: 1fr
+  }
+  .account__aside {
+    display: none
+  }
+  .account__body {
+    padding: 2.1875rem 1.25rem 2rem
+  }
+  .account__edit {
+    display: none
+  }
+  .photos-acc__delete {
+    display: none
+  }
 }
 @media (max-width:47.99875em) {
   .field__input>input,
   .field__input>textarea {
     font-size: .875rem
+  }
+  .field__certif,
+  .field__certif td {
+    display: block
+  }
+  .field__certif tr {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3125rem 3.75rem
+  }
+  .field__certif .field__label {
+    font-size: 1rem
+  }
+  .field__certif tr:not(:last-child) td {
+    padding-bottom: 0
+  }
+  .field__certif-body {
+    gap: .375rem
   }
   .title {
     font-size: 2.25rem
@@ -7719,6 +7861,49 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .articles-dash__title {
     flex-grow: 1
   }
+  .account__block {
+    padding: 1.25rem
+  }
+  .account__b-title {
+    font-size: 1rem
+  }
+  .account__field {
+    gap: .375rem
+  }
+  .account__field .field__label:not(.field__certif .field__label) {
+    font-size: .875rem
+  }
+  .pr-info-acc {
+    gap: 1.25rem
+  }
+  .pr-info-acc__image {
+    width: 4.3125rem;
+    height: 4.3125rem
+  }
+  .pr-info-acc__body {
+    gap: .3125rem
+  }
+  .pr-info-acc__title {
+    font-size: 1.25rem
+  }
+  .photos-acc__up-wrapper .simplebar-track.simplebar-horizontal {
+    top: calc(100% + .5rem)
+  }
+  .photos-acc__up-items {
+    gap: .5rem
+  }
+  .photos-acc__up-items img {
+    width: 4.375rem;
+    height: 3.5rem
+  }
+  .completed-account__text {
+    font-size: .875rem
+  }
+}
+@media (max-width:47.99875em)and (max-width:47.99875em) {
+  .field__certif tr:not(:last-child) {
+    margin-bottom: 1rem
+  }
 }
 @media (max-width:47.99875em)and (max-width:23.4375em) {
   .feedback-hero__text {
@@ -7743,6 +7928,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .updates-inq__success:not(:first-child) {
     margin-top: .5rem
+  }
+  .account__fields {
+    grid-template-columns: 1fr;
+    gap: 1rem
   }
 }
 @media (max-width:34.37375em) {
@@ -8253,6 +8442,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .account__edit:not(:disabled):not(:focus):not(:active):hover {
     background-color: #3f456e;
     border-color: #3f456e;
+    color: #fff
+  }
+  .pr-info-acc__image-edit:hover {
+    background-color: #3f456e;
     color: #fff
   }
   .photos-acc__delete:hover {
