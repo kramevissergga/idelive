@@ -5,7 +5,7 @@
 	<title>Sign Up - iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250627133220">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250702151710">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -33,34 +33,16 @@
 					</div>
 				</div>
 				<div class="auth__body">
-					<a href="#" class="auth__back _icon-arrow-bold-left"></a>
 					<div class="auth__content">
 
 						<div class="auth__header">
 							<h1 class="auth__title">
 								Sign up
 							</h1>
-							<p class="auth__subtitle-mobile">
-								Welcome to the world's first transportation exchange resource!
-							</p>
+							<a href="#" class="auth__back _icon-arrow-bold-left">Back</a>
 						</div>
 						<form action="#" class="auth__form">
 							<div class="auth__fields">
-								<div class="auth__type ">
-									<div class="auth__type-label">
-										Select the type of user to register
-									</div>
-									<div class="auth__type-radios type-radios">
-										<label class="type-radios__item">
-											<input checked type="radio" name="type">
-											Customer
-										</label>
-										<label class="type-radios__item">
-											<input type="radio" name="type">
-											Partner
-										</label>
-									</div>
-								</div>
 								<div class="auth__field field">
 									<label for="email" class="field__label">
 										Email address
@@ -86,8 +68,18 @@
 									<div class="field__input">
 										<input type="confirm-password" placeholder="Enter your password" id="confirm-password" name="confirm-password">
 										<button type="button" class="field__hide _icon-eye-hide">
-
 										</button>
+									</div>
+									<div class="field__pass-level pass-level">
+										<div class="pass-level__body">
+											Weak password
+											<div style="--level: 80%" class="pass-level__line">
+
+											</div>
+										</div>
+										<div class="pass-level__label">
+											That’s a bit weak. Add symbols or letters.
+										</div>
 									</div>
 								</div>
 								<div class="auth__actions">
@@ -132,8 +124,7 @@
 			</div>
 		</main>
 	</div>
-	<script src="js/app.min.js?_v=20250627133220"></script>
-	<script src="js/select-constructor.js?_v=20250627133220"></script>
+	<script src="js/app.min.js?_v=20250702151710"></script>
 </body>
 
 </html>

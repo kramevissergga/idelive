@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Sign Up - iDelive</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250702151710">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="page page--flex">
+			<div class="page__auth auth">
+				<div class="auth__aside">
+					<img src="img/logo.svg" alt="Image" class="auth__logo">
+					<div class="auth__wrapper">
+						<h2 class="auth__title auth__title--center">
+							Hello there!
+						</h2>
+						<p class="auth__subtitle">
+							Welcome to the world's first transportation exchange resource
+						</p>
+						<div class="auth__other">
+							<span>Already have an acount?</span>
+							<button class="button button--border">
+								Sign in
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="auth__body">
+					<div class="auth__content">
+
+						<div class="auth__header">
+							<h1 class="auth__title">
+								Sign up
+							</h1>
+							<p class="auth__subtitle-mobile">
+								Welcome to the world's first transportation exchange resource!
+							</p>
+						</div>
+						<form action="#" class="auth__form">
+							<div class="auth__fields">
+								<div class="auth__type ">
+									<div class="auth__type-label">
+										Select the type of user to register
+									</div>
+									<div class="auth__type-radios type-radios">
+										<label class="type-radios__item">
+											<input checked type="radio" name="type">
+											Customer
+										</label>
+										<label class="type-radios__item">
+											<input type="radio" name="type">
+											Partner
+										</label>
+									</div>
+								</div>
+								<div class="auth__field field">
+									<label for="name" class="field__label">
+										Company name*
+									</label>
+									<div class="field__input">
+										<input placeholder="Enter company name" type="text" id="name" name="name">
+									</div>
+								</div>
+								<div class="auth__field field">
+									<label for="certif" class="field__label">
+										Business Registration Certificate*
+									</label>
+									<div class="field__input">
+										<input type="number" placeholder="Enter certificate number" id="certif" name="certif">
+									</div>
+								</div>
+								<div class="auth__field field">
+									<label class="field__label">
+										What countries do you work with?*
+									</label>
+									<select name="form[]" data-search data-tags multiple data-class-modif="multi">
+										<option value="" selected>Enter the countries you work with</option>
+										<option data-asset="img/flag.svg" value="1">Bahamas</option>
+										<option data-asset="img/flag.svg" value="2">Bahrain</option>
+										<option data-asset="img/flag.svg" value="3">Bangladesh</option>
+										<option data-asset="img/flag.svg" value="4">Barbados</option>В
+									</select>
+								</div>
+								<div class="auth__field field">
+									<label class="field__label">
+										What products do you work with?*
+									</label>
+									<select name="form[]" data-search data-tags multiple data-class-modif="multi">
+										<option value="" selected>Enter the products you work with</option>
+										<option value="1">Electronic devices</option>
+										<option value="2">Emergency supplies</option>
+										<option value="4">Envelopes</option>
+										<option value="5">Toys</option>
+										<option value="6">Digital devices</option>
+										<option value="7">Clothing</option>
+										<option value="8">Building materials</option>
+									</select>
+								</div>
+							</div>
+							<button class="auth__next button">
+								Next step
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/app.min.js?_v=20250702151710"></script>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250627135458">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250702151710">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -1577,10 +1577,160 @@
 										<option value="6">size: smallest</option>
 									</select>
 									<div class="inquires__filter filter-inq">
-										<button class=" _icon-filter filter-inq__button">Filter</button>
-										<div class="filter-inq__body">
-
-										</div>
+										<button data-filter-toggle class=" _icon-filter filter-inq__open">Filter</button>
+										<form action="#" method="GET" class="filter-inq__body">
+											<button data-filter-toggle class="filter-inq__back back-btn _icon-arrow-bold-left">Back</button>
+											<div class="filter-inq__block">
+												<div class="filter-inq__header">
+													<h3 class="filter-inq__title">
+														Type of delivery
+													</h3>
+													<button class="filter-inq__clear _icon-cross-bold">
+														Clear all
+													</button>
+												</div>
+												<div class="filter-inq__search _icon-search search search--gray">
+													<input type="text" placeholder="Search">
+												</div>
+												<div class="filter-inq__categories">
+													<label class="filter-inq__category"> <input type="checkbox">
+														Air freight+UPS
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Air freight+truck
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Air express
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Fast sea
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Fast sea truck
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Sea ups
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Air freight+UPS
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Train
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Sea truck
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Container 20ft
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Container 40ft
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Container 45hq
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Container 40hq
+													</label>
+												</div>
+											</div>
+											<div class="filter-inq__block">
+												<div class="filter-inq__header">
+													<h3 class="filter-inq__title">
+														Product category
+													</h3>
+													<button class="filter-inq__clear _icon-cross-bold">
+														Clear all
+													</button>
+												</div>
+												<div class="filter-inq__search _icon-search search search--gray">
+													<input type="text" placeholder="Search">
+												</div>
+												<div class="filter-inq__categories">
+													<label class="filter-inq__category"> <input type="checkbox">
+														Electronics
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Electrical appliances
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Tools
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Household appliances
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Avto
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Car parts
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Furniture
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Clothes
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Children's products
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Toys
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Lighting devices
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Solar panels
+													</label>
+												</div>
+											</div>
+											<div class="filter-inq__block">
+												<div class="filter-inq__header">
+													<h3 class="filter-inq__title">
+														Destination
+													</h3>
+													<button class="filter-inq__clear _icon-cross-bold">
+														Clear all
+													</button>
+												</div>
+												<div class="filter-inq__search _icon-search search search--gray">
+													<input type="text" placeholder="Search">
+												</div>
+												<div class="filter-inq__categories">
+													<label class="filter-inq__category"> <input type="checkbox">
+														Amazon
+													</label>
+													<label class="filter-inq__category"> <input type="checkbox">
+														Walmart
+													</label>
+												</div>
+											</div>
+											<div class="filter-inq__block">
+												<div class="filter-inq__header">
+													<h3 class="filter-inq__title">
+														Cargo weight range
+													</h3>
+													<select data-class-modif="input">
+														<option value="1" selected>lb</option>
+														<option value="2">kg</option>
+													</select>
+												</div>
+												<div class="filter-inq__range range-comp">
+													<div class="range-comp__line"></div>
+													<div class="range-comp__inputs">
+														<input type="text" class="range-comp__input range-comp__input--min" name="min">
+														<input type="text" class="range-comp__input range-comp__input--max" name="max">
+													</div>
+												</div>
+											</div>
+											<label class="filter-inq__checkbox checkbox">
+												<span class="icon"></span>
+												Only where I haven't bid
+												<input data-cargo-expand type="checkbox">
+											</label>
+											<button data-filter-toggle class="filter-inq__button button button--purple">Apply</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -3344,8 +3494,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250627135458"></script>
-	<script src="js/select-constructor.js?_v=20250627135458"></script>
+	<script src="js/app.min.js?_v=20250702151710"></script>
 </body>
 
 </html>
