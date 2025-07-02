@@ -8939,10 +8939,19 @@ PERFORMANCE OF THIS SOFTWARE.
             }
         }));
         document.querySelectorAll(".pass-level__line").forEach((line => {
-            const level = parseFloat(getComputedStyle(line).getPropertyValue("--level")) || 0;
-            let color;
-            if (level < 40) color = "#D50000"; else if (level < 70) color = "#998EE0"; else color = "#64DB78";
-            line.style.setProperty("--color", color);
+            const updateColor = () => {
+                const levelStr = line.style.getPropertyValue("--level") || getComputedStyle(line).getPropertyValue("--level");
+                const level = parseFloat(levelStr.replace("%", "")) || 0;
+                let color;
+                if (level < 40) color = "#D50000"; else if (level < 70) color = "#998EE0"; else color = "#64DB78";
+                line.style.setProperty("--color", color);
+            };
+            updateColor();
+            const observer = new MutationObserver((() => updateColor()));
+            observer.observe(line, {
+                attributes: true,
+                attributeFilter: [ "style" ]
+            });
         }));
         window["FLS"] = false;
         spoilers();
