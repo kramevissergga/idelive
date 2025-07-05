@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250702151710">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250705204327">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -1323,6 +1323,848 @@
 				</div>
 			</div>
 		</div>
+		<div id="popup-form" aria-hidden="true" class="popup popup--form">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div data-tabs class="tabs">
+						<div class="form-popup__header">
+							<div data-tabs-titles class="form-popup__orders">
+								<button data-tabs-title class="form-popup__order _checked _tab-active">
+									Order 1
+								</button>
+							</div>
+						</div>
+						<div data-tabs-body class="tabs__content">
+							<div data-tabs-item class="tabs__body">
+								<div data-tabs class="form-popup">
+									<div class="form-popup__top">
+										<button data-tabs-back class="form-popup__back-btn _icon-arrow-bold-left ">Back</button>
+										<div class="separator"></div>
+										<nav data-tabs-titles class="form-popup__navigation">
+											<button data-tabs-title type="button" class="form-popup__nav-title  nav-title-form">
+												<div class="nav-title-form__index">
+													1
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Shipping method
+													</h2>
+													<div class="nav-title-form__label">
+														Choose transport type
+													</div>
+												</div>
+
+											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title  nav-title-form">
+												<div class="nav-title-form__index">
+													2
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Cargo
+													</h2>
+													<div class="nav-title-form__label">
+														Add cargo details
+													</div>
+												</div>
+											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title  nav-title-form">
+												<div class="nav-title-form__index">
+													3
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Addresses
+													</h2>
+													<div class="nav-title-form__label">
+														Enter pickup & delivery
+													</div>
+												</div>
+											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title nav-title-form">
+												<div class="nav-title-form__index">
+													4
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Files
+													</h2>
+													<div class="nav-title-form__label">
+														Upload documents
+													</div>
+												</div>
+											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title _tab-active nav-title-form">
+												<div class="nav-title-form__index">
+													5
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Review and submit
+													</h2>
+													<div class="nav-title-form__label">
+														Check and confirm details
+													</div>
+												</div>
+											</button>
+										</nav>
+										<div class="form-popup__switch">
+											<button data-tabs-back type="button" class="form-popup__arrow _icon-ch-left"></button>
+											<div data-tabs-pages class="form-popup__pages">
+											</div>
+											<button data-tabs-next type="button" class="form-popup__arrow _icon-ch-right"></button>
+										</div>
+									</div>
+									<div data-tabs-body class="form-popup__content">
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__shipping shipping-form">
+												<div class="shipping-form__header">
+													<div class="shipping-form__label label-form">
+														Shipping method*
+													</div>
+													<div id="shipping-type-radios" class="shipping-form__type-radios type-radios">
+														<label class="type-radios__item">
+															<input checked type="radio" name="type">
+															Land
+														</label>
+														<label class="type-radios__item">
+															<input type="radio" name="type">
+															Air
+														</label>
+														<label class="type-radios__item">
+															<input type="radio" name="type">
+															Sea
+														</label>
+													</div>
+													<label class="shipping-form__checkbox checkbox">
+														<span class="icon"></span>
+														Calculate all the options
+														<input data-disable="#shipping-type-radios" type="checkbox">
+													</label>
+												</div>
+												<div class="shipping-form__body">
+													<div class="shipping-form__field field">
+														<div class="shipping-form__label label-form">
+															From*
+														</div>
+														<select data-class-modif="countries">
+															<option value="" selected>Country</option>
+															<option value="2">Some Country</option>
+															<option value="3">Some Country</option>
+															<option value="4">Some Country</option>
+															<option value="5">Some Country</option>
+															<option value="6">Some Country</option>
+															<option value="7">Some Country</option>
+														</select>
+													</div>
+													<div class="shipping-form__field field">
+														<div class="bid-popup__label">
+															To*
+														</div>
+														<select data-class-modif="countries">
+															<option value="" selected>Country</option>
+															<option value="2">Some Country</option>
+															<option value="3">Some Country</option>
+															<option value="4">Some Country</option>
+															<option value="5">Some Country</option>
+															<option value="6">Some Country</option>
+															<option value="7">Some Country</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="cargo-form__cargo cargo-form">
+												<div class="cargo-form__info-block">
+													<div class="cargo-form__ship-type">
+														<div class="cargo-form__label label-form ">
+															Shipment type*
+														</div>
+														<div class="cargo-form__ship-block">
+															<label class="cargo-form__radiobox radiobox">
+																<span class="icon"></span>
+																<input type="radio" name="ship-type">
+																Box
+															</label>
+															<label class="cargo-form__radiobox radiobox">
+																<span class="icon"></span>
+																<input type="radio" name="ship-type">
+																Pallets
+															</label>
+														</div>
+													</div>
+													<div class="cargo-form__full field">
+														<div class="cargo-form__label label-form ">
+															Full Container
+														</div>
+														<label class="field__checkbox checkbox">
+															<input type="checkbox">
+															<span class="icon"></span>
+														</label>
+													</div>
+													<div class="cargo-form__ship-specs">
+														<div class="cargo-form__field field">
+															<div class="cargo-form__label label-form">
+																Total weight*
+															</div>
+															<div class="field__input field__input--16">
+																<input placeholder="0" type="text">
+																<select data-class-modif="input">
+																	<option value="1" selected="">Ib</option>
+																	<option value="2">Kg</option>
+																</select>
+															</div>
+														</div>
+														<div class="cargo-form__field field">
+															<div class="cargo-form__label label-form">
+																Total volume*
+															</div>
+															<div class="field__input ">
+																<input placeholder="Volume" type="text">
+																<select data-class-modif="input">
+																	<option value="1" selected="">cbm</option>
+																	<option value="2">ft</option>
+																</select>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div class="cargo-form__block cargo-form__block--cargo">
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Cargo*
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter  product " type="text">
+														</div>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Product category
+														</div>
+														<select name="form[]" data-class-modif="countries">
+															<option value="" selected>Select category</option>
+															<option value="2">Normal cargo</option>
+															<option value="3">Sensitive goods</option>
+															<option value="4">Children products</option>
+															<option value="5">Charged items / With batteries</option>
+														</select>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															HS Code
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter code" type="text">
+														</div>
+													</div>
+												</div>
+												<div class="cargo-form__block cargo-form__block--details">
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Quantity*
+														</div>
+														<div class="field__input field__input--16">
+															<input placeholder="1" type="number">
+														</div>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Gross weight CTN
+														</div>
+														<div class="field__input field__input--16 field__input--gross">
+															<input placeholder="0" type="text">
+															<select data-class-modif="input">
+																<option value="1">Ib</option>
+																<option value="2" selected>Kg</option>
+															</select>
+														</div>
+													</div>
+													<div class="cargo-form__wrapper">
+														<div class="cargo-form__label label-form">
+															Dimensions*
+														</div>
+														<div class="cargo-form__dimensions">
+															<div class="cargo-form__field field ">
+																<div class="field__input field__input--16">
+																	<input placeholder="Length" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Width" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Height" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__addresses addresses-form">
+												<div class="addresses-form__block">
+													<div class="addresses-form__field field">
+														<div class="field__label label-form">Invoice, packing list</div>
+														<div class="field__input">
+															<label class="file-input _icon-pin">
+																Attach invoice, packing list
+																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+															</label>
+														</div>
+													</div>
+													<div class="addresses-form__field field">
+														<div class="addresses-form__label label-form">
+															Invoice value
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter invoice" type="text">
+														</div>
+													</div>
+												</div>
+												<div class="addresses-form__field field">
+													<div class="field__label label-form">
+														Pick-up address*
+													</div>
+													<select name="pick-up-address" data-required data-search="save" data-class-modif="countries">
+														<option value="" selected>Select the address used above or enter a new one manually</option>
+														<option value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.
+														</option>
+														<option value="3">Pellentesque quis magnis sagittis fames ornare himenaeos hendrerit</option>
+														<option value="4">Odio aliquet proin congue facilisi justo magnis magna auctor tincidunt
+														</option>
+													</select>
+												</div>
+												<div class="addresses-form__field field">
+													<div class="field__label label-form">
+														Pick-up address*
+													</div>
+													<select name="delivery-address" data-required data-search="save" data-input="delivery-address" data-class-modif="countries">
+														<option value="" selected>Select the address used above or enter a new one manually</option>
+														<option value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.
+														</option>
+														<option value="3">Pellentesque quis magnis sagittis fames ornare himenaeos hendrerit</option>
+														<option value="4">Odio aliquet proin congue facilisi justo magnis magna auctor tincidunt
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__files files-form">
+												<div class="files-form__body">
+													<div class="files-form__block">
+														<div class="files-form__content">
+															<div class="files-form__label">
+																Photo cargo <span>(Attach some photos)</span>
+															</div>
+															<label class="files-form__upload-btn button button--purple button--upload">
+																Choose file
+																<input type="file" name="photo" accept="image.webp, image.webp, image.webp" />
+															</label>
+
+														</div>
+														<div class="files-form__items">
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		Photo2.webp
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 37%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	37% done
+																</div>
+															</div>
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		Photo2.webp
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 100%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	Completed
+																</div>
+															</div>
+															<div class="files-form__image-uploaded">
+																<img src="img/cargo/02.webp" alt="Image">
+																<div class="files-form__up-label">
+																	Photo2.webp
+																	<button class="_icon-cross-bold"></button>
+																</div>
+															</div>
+															<div class="files-form__image-uploaded">
+																<img src="img/cargo/02.webp" alt="Image">
+																<div class="files-form__up-label">
+																	Photo2.webp
+																	<button class="_icon-cross-bold"></button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="files-form__block">
+														<div class="files-form__content">
+															<div class="files-form__label">
+																Certificate <span>(Attach some certificates)</span>
+															</div>
+															<label class="files-form__upload-btn button button--purple button--upload">
+																Choose file
+																<input type="file" name="certif" accept=".pdf" />
+															</label>
+
+														</div>
+														<div class="files-form__items">
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		doc1.pdf
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 37%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	37% done
+																</div>
+															</div>
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		doc1.pdf
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 100%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	Completed
+																</div>
+															</div>
+															<div class="files-form__up-label">
+																<a class="_icon-file" href="#">doc1.pdf</a>
+																<button class="_icon-cross-bold"></button>
+															</div>
+															<div class="files-form__up-label">
+																<span class="_icon-file" href="#">doc1.pdf</span>
+																<button class="_icon-cross-bold"></button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="files-form__footer">
+													<div class="files-form__footer-label">
+														Do you want to add new sizes, products or additional delivery address? 
+													</div>
+													<button class="files-form__button button button--purple button--border _icon-plus">
+														<span>Add <span class="pc-only">dimensions and product</span></span>
+													</button>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__review review-form">
+												<div data-spoilers class="review-form__items">
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--shipping">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Shipping method
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	Sea
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="delivery-info-inq__roadmap">
+																	<span>China</span>
+																	<div style="--progress: 50%" class="delivery-info-inq__line">
+																		<div class="delivery-info-inq__point _active">
+																		</div>
+																		<div class="delivery-info-inq__image">
+																			<img src="img/inquires/bid-ship-op.svg" alt="Image" class="ibg ibg--contain">
+																		</div>
+																		<div class="delivery-info-inq__point">
+																		</div>
+																	</div>
+																	<span>USA</span>
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="ship-review">
+																<div class="ship-review__col">
+																	<select name="form[]" data-class-modif="underline">
+																		<option value="1" selected>Sea</option>
+																		<option value="2">Air</option>
+																		<option value="3">Пункт №3</option>
+																		<option value="4">Land</option>
+																	</select>
+																</div>
+																<div class="ship-review__col">
+																	<div class="ship-review__ship-info">
+																		<div class="ship-review__field">
+																			<div class="ship-review__label text-review">
+																				From:
+																			</div>
+																			<select data-class-modif="underline">
+																				<option value="" selected>Country</option>
+																				<option value="2">Some Country</option>
+																				<option value="3">Some Country</option>
+																				<option value="4">Some Country</option>
+																			</select>
+																		</div>
+																		<div class="ship-review__field">
+																			<div class="ship-review__label text-review">
+																				To:
+																			</div>
+																			<select data-class-modif="underline">
+																				<option value="" selected>Country</option>
+																				<option value="2">Some Country</option>
+																				<option value="3">Some Country</option>
+																				<option value="4">Some Country</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--addresses">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Addresses
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	1 pick-up
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	2 delivery addresses
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button disabled class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__addresses addresses-review">
+																<div class="addresses-review__row">
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__label text-review">Pick up add:</div>
+																	</div>
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M5.92453 2.5L2 6.5M2 6.5L5.92453 10.5M2 6.5L10 6.5" stroke="#F79B39" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			No. 88, Huaihai Road, Shanghai, 200000, China
+																		</div>
+																	</div>
+																</div>
+																<div class="addresses-review__row">
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__label text-review">Delivery add:</div>
+																	</div>
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M6.07547 10.5L10 6.5M10 6.5L6.07547 2.5M10 6.5L2 6.5" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			1234 Maple Street, Los Angeles, CA 90001, USA
+																		</div>
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M6.07547 10.5L10 6.5M10 6.5L6.07547 2.5M10 6.5L2 6.5" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			1234 Maple Street, Los Angeles, CA 90001, USA
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--cargo">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Cargo
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	3 pallets
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__labels">
+																	<div class="details-review__label text-review">
+																		1200 kg
+																	</div>
+																	<div class="details-review__label text-review">
+																		4 cbm
+																	</div>
+																	<div class="details-review__label text-review">
+																		Electronics device
+																	</div>
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__cargo cargo-review">
+																<span></span>
+																<div class="cargo-review__content">
+																	<div class="cargo-review__label text-review">
+																		<b>Dimensions CTN:</b> 50×40×30 cm
+																	</div>
+																	<div class="cargo-review__label text-review">
+																		<b>Quantity:</b> 50
+																	</div>
+																	<div class="cargo-review__label text-review">
+																		<b>Gross weight CTN:</b> 1200kg
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--files">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Files
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	3 images
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	2 pdf
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__files files-review">
+																<div class="files-review__row">
+																	<div class="files-review__col">
+																		<div class="files-review__header">
+																			<div class="files-review__label text-review">Photo cargo</div>
+																			<label class="files-review__upload-btn button button--purple">
+																				Choose file
+																				<input type="file" name="image" accept="image.webp, image.webp, image.webp" />
+																			</label>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<div class="files-review__uploads">
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<button class="files-review__delete">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M14.5 14.5L14.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																			</svg>
+																		</button>
+																	</div>
+																</div>
+																<div class="files-review__row">
+																	<div class="files-review__col">
+																		<div class="files-review__header">
+																			<div class="files-review__label text-review">Certificate</div>
+																			<label class="files-review__upload-btn button button--purple">
+																				Choose file
+																				<input type="file" name="file" accept="pdf" />
+																			</label>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<div class="files-review__uploads">
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#">doc1.pdf</a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#">doc1.pdf</a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#">doc1.pdf</a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#">doc1.pdf</a>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<button class="files-review__delete">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M14.5 14.5L14.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																			</svg>
+																		</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+												</div>
+											</div>
+										</div>
+										<div class="form-popup__footer">
+											<button data-tabs-back type="button" class="form-popup__back">
+												Back to last step
+											</button>
+											<button type="button" class="form-popup__next _icon-arrow-bold-left button button--gradient">
+												BidDeliv
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="popup-success1" aria-hidden="true" class="popup popup--success">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div class="success-popup">
+						<img src="img/success-bg.svg" alt="Image" class="success-popup__bg">
+						<div class="success-popup__body">
+							<div class="success-popup__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+									<circle cx="23" cy="23" r="22" stroke="#64DB78" stroke-width="2" />
+									<path d="M15.8125 23.7547L20.3141 28.0313L30.9063 17.9688" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+								</svg>
+							</div>
+							<h3 class="success-popup__title">
+								Successfully!
+							</h3>
+							<div class="success-popup__text">
+								Your bid is accepted, we give you 10 minutes to edit or delete the bid before the time for partner bids
+								starts.
+							</div>
+							<button data-close class="success-popup__button button button--gradient">
+								Back to Inquires
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<header class="header">
 			<div class="header__container">
 				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
@@ -1521,28 +2363,66 @@
 					</div>
 					<div class="profile__body">
 						<div class="profile__nav nav-profile">
-							<a href="#" class="nav-profile__item _active">
-								Inquiries 
-							</a>
-							<a href="#" class="nav-profile__item">
-								Active delivery
-							</a>
-							<a href="#" class="nav-profile__item">
-								Completed delivery
-							</a>
+							<div class="nav-profile__slider splide">
+								<div class="splide__track">
+									<ul class="splide__list">
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _active">
+												Inquiries 
+												<div style="background-color: #F79B39;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item">
+												Active delivery
+												<div style="background-color: #64DB78;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item">
+												Completed delivery
+												<div class="count">5</div>
+											</a>
+										</li>
+										<div class="separator">
+
+										</div>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _icon-price-list">
+												Price list
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 						<div class="profile__inquires inquires">
 							<div class="inquires__header">
-								<div class="inquires__tabs">
-									<a href="#" class="inquires__tabs-item">
-										Waiting: 00
-									</a>
-									<a href="#" class="inquires__tabs-item _active">
-										Processed: 01
-									</a>
-									<a href="#" class="inquires__tabs-item">
-										Finished: 00
-									</a>
+								<div class="inquires__tabs-slider splide">
+									<div class="splide__track">
+										<ul class="splide__list">
+											<li class="splide__slide">
+												<a href="#" class="inquires__tabs-item">
+													Waiting: 00
+												</a>
+											</li>
+											<li class="splide__slide">
+												<a href="#" class="inquires__tabs-item _active">
+													Processed: 01
+												</a>
+											</li>
+											<li class="splide__slide">
+												<a href="#" class="inquires__tabs-item">
+													Finished: 00
+												</a>
+											</li>
+											<li class="splide__slide">
+												<a href="#" class="inquires__tabs-item">
+													Archive: 00
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<button data-da="{.profile__body}, 767.98, last" class="inquires__start-bid button button--gradient">
 									Start BidDeliv
@@ -1639,7 +2519,19 @@
 											<tbody>
 												<tr>
 													<td>
-														<span>
+														<span class="ship">
+															<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																<g clip-path="url(#clip0_2533_26355)">
+																	<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																	<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																	<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																</g>
+																<defs>
+																	<clipPath id="clip0_2533_26355">
+																		<rect width="23" height="24" fill="white" />
+																	</clipPath>
+																</defs>
+															</svg>
 															Sea truck
 														</span>
 													</td>
@@ -1661,13 +2553,25 @@
 														</span>
 													</td>
 													<td>
-														<button data-popup="#popup-info" class="button">Accept</button>
+														<button data-popup="#popup-info" class="button button--gradient">Accept</button>
 													</td>
 												</tr>
 												<tr>
 													<td>
-														<span>
-															Fast sea
+														<span class="ship">
+															<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																<g clip-path="url(#clip0_2533_26355)">
+																	<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																	<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																	<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																</g>
+																<defs>
+																	<clipPath id="clip0_2533_26355">
+																		<rect width="23" height="24" fill="white" />
+																	</clipPath>
+																</defs>
+															</svg>
+															Sea truck
 														</span>
 													</td>
 													<td>
@@ -1688,13 +2592,25 @@
 														</span>
 													</td>
 													<td>
-														<button data-popup="#popup-info" class="button">Accept</button>
+														<button data-popup="#popup-info" class="button button--gradient">Accept</button>
 													</td>
 												</tr>
 												<tr>
 													<td>
-														<span>
-															Air express
+														<span class="ship">
+															<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																<g clip-path="url(#clip0_2533_26355)">
+																	<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																	<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																	<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																</g>
+																<defs>
+																	<clipPath id="clip0_2533_26355">
+																		<rect width="23" height="24" fill="white" />
+																	</clipPath>
+																</defs>
+															</svg>
+															Sea truck
 														</span>
 													</td>
 													<td>
@@ -1715,7 +2631,7 @@
 														</span>
 													</td>
 													<td>
-														<button data-popup="#popup-info" class="button">Accept</button>
+														<button data-popup="#popup-info" class="button button--gradient">Accept</button>
 													</td>
 												</tr>
 											</tbody>
@@ -2448,7 +3364,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250702151710"></script>
+	<script src="js/app.min.js?_v=20250705204327"></script>
 </body>
 
 </html>
