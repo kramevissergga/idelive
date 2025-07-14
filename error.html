@@ -205,97 +205,24 @@
 			</div>
 		</header>
 		<main class="page">
-			<div class="page__profile profile">
-				<div class="profile__wrapper">
-					<div class="profile__aside aside-profile">
-						<div class="aside-profile__label">
-							Welcome back, <span>Roland</span>
-						</div>
-						<div class="aside-profile__aside-nav aside-nav">
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#dashboard"></use>
-								</svg>
-								<span>Dashboard</span>
-							</a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#notifications"></use>
-								</svg>
-								<span>Notifications</span>
-
-							</a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#cargo"></use>
-								</svg>
-								<span>Cargo</span>
-							</a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#documents"></use>
-								</svg>
-								<span>Documents</span></a>
-							<a href="#" class="aside-nav__item _active">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#messages"></use>
-								</svg>
-								<span>Messages</span>
-								<div class="count">1</div>
-							</a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#profile"></use>
-								</svg>
-								<span>Profile</span></a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#settings"></use>
-								</svg>
-								<span>Settings</span></a>
-							<a href="#" class="aside-nav__item">
-								<svg class="sprite">
-									<use xlink:href="img/icons.svg#payment"></use>
-								</svg>
-								<span>Payment</span></a>
-						</div>
-						<button class="aside-profile__logout logout-btn _icon-upload">
-							Log out
-						</button>
+			<section class="page__error error">
+				<div class="error__container">
+					<div class="error__image">
+						<img src="img/error.svg" alt="Image" class="ibg ibg--contain">
 					</div>
-					<div class="profile__body">
-						<div class="profile__nav nav-profile">
-							<a href="#" class="nav-profile__item _active">
-								Inquiries 
-							</a>
-							<a href="#" class="nav-profile__item">
-								Active delivery
-							</a>
-							<a href="#" class="nav-profile__item">
-								Completed delivery
-							</a>
-						</div>
-						<div class="profile__inquires profile__inquires--fill inquires">
-							<div class="inquires__header">
-								<div class="inquires__tabs">
-									<a href="#" class="inquires__tabs-item">
-										Waiting: 00
-									</a>
-									<a href="#" class="inquires__tabs-item">
-										Processed: 00
-									</a>
-									<a href="#" class="inquires__tabs-item">
-										Finished: 00
-									</a>
-								</div>
-								<button class="inquires__start-bid button button--gradient">
-									Start BidDeliv
-								</button>
-							</div>
-						</div>
+					<h1 class="error__title">Session Expired</h1>
+					<div class="error__icon">
+						<img src="img/sand-clock.webp" alt="Image" class="ibg ibg--contain">
 					</div>
+					<div class="error__text text">
+						<p>
+							Oops! It looks like your session timed out. To continue, please refresh the page
+						</p>
+					</div>
+					<a href="#" class="error__button button button--gradient">Refresh</a>
+					<a href="#" class="error__link">Go back to previous page</a>
 				</div>
-			</div>
+			</section>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">

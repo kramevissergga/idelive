@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250709165235">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250715024219">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2211,7 +2211,61 @@
 							<option value="3">UK</option>
 						</select>
 					</div>
-					<a href="#" class="header__notif _icon-bell _active"></a>
+					<div class="header__notif-el">
+						<button class="header__notif _icon-bell">
+							<span>3</span>
+						</button>
+						<div class="header__notif-block notif-block">
+							<div class="notif-block__items">
+								<a href="#" style="--color: #64DB78" class="notif-block__item">
+									<div class="notif-block__wrapper">
+										<div class="notif-block__body">
+											<h3 class="notif-block__title">
+												New order
+											</h3>
+											<p class="notif-block__text">
+												A new order is waiting for your bet!
+											</p>
+										</div>
+										<div class="notif-block__time">
+											1 min
+										</div>
+									</div>
+								</a>
+								<a href="#" style="--color: #F79B39" class="notif-block__item">
+									<div class="notif-block__wrapper">
+										<div class="notif-block__body">
+											<h3 class="notif-block__title">
+												New order
+											</h3>
+											<p class="notif-block__text">
+												A new order is waiting for your bet!
+											</p>
+										</div>
+										<div class="notif-block__time">
+											3 min
+										</div>
+									</div>
+								</a>
+								<a href="#" style="--color: #64DB78" class="notif-block__item">
+									<div class="notif-block__wrapper">
+										<div class="notif-block__body">
+											<h3 class="notif-block__title">
+												New order
+											</h3>
+											<p class="notif-block__text">
+												A new order is waiting for your bet!
+											</p>
+										</div>
+										<div class="notif-block__time">
+											7 min
+										</div>
+									</div>
+								</a>
+							</div>
+							<a href="#" class="notif-block__link">See all</a>
+						</div>
+					</div>
 					<div class="header__profile profile-comp">
 						<a href="#" class="profile-comp__pic">
 							<img src="img/user.webp" alt="Image" class="ibg">
@@ -2962,7 +3016,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250709165235"></script>
+	<script src="js/app.min.js?_v=20250715024219"></script>
 </body>
 <script>
 	const selectItems = document.querySelectorAll("select");
