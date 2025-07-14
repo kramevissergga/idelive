@@ -11753,6 +11753,9 @@ span.flatpickr-weekday {
   .notif__read-all {
     font-size: .875rem
   }
+  .notif__block:not(:last-child) {
+    margin-bottom: 1.5rem
+  }
   .notif__date {
     font-size: .875rem
   }
