@@ -7839,7 +7839,12 @@ body::after {
   content: "";
   width: 1.5rem;
   height: 1.5rem;
-  background: url(../img/list-check.svg) no-repeat 100%/contain
+  background: url(../img/list-check.svg) no-repeat 100%/contain;
+  opacity: 0;
+  transition: opacity .3s
+}
+.completed-account__list li._active::before {
+  opacity: 1
 }
 .completed-account__list li:not(:last-child) {
   margin-bottom: 1.375rem
@@ -9784,7 +9789,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
 }
 span.flatpickr-weekday {
   color: #998ee0;
-  font-size: toRem(14);
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.1
 }
