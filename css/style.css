@@ -1854,8 +1854,16 @@ body::after {
   color: #7b7f97;
   font-size: .875rem;
   line-height: 1.2;
+  transition: all .3s;
   text-decoration-thickness: .0625rem;
   text-underline-offset: .125rem
+}
+.bid-popup__clear:disabled {
+  opacity: 0;
+  visibility: hidden
+}
+.bid-popup__clear:not(:last-child) {
+  margin-bottom: .3125rem
 }
 .bid-popup__back {
   color: #7b7f97;
@@ -2520,6 +2528,7 @@ body::after {
 .files-form__block {
   display: flex;
   align-items: end;
+  justify-content: space-between;
   gap: 2.875rem
 }
 .files-form__block:not(:last-child) {
@@ -2529,7 +2538,6 @@ body::after {
   display: flex;
   align-items: end;
   gap: 1.125rem;
-  flex-grow: 1;
   padding-bottom: .875rem
 }
 .files-form__label {
@@ -2627,7 +2635,15 @@ body::after {
   font-size: .75rem;
   line-height: 1.2;
   text-underline-offset: .25rem;
-  text-decoration-thickness: .0625rem
+  text-decoration-thickness: .0625rem;
+  transition: all .3s
+}
+.files-form__clear:not(:last-child) {
+  margin-bottom: .625rem
+}
+.files-form__clear:disabled {
+  opacity: 0;
+  visibility: hidden
 }
 .review-form__item {
   border-radius: .75rem;
@@ -10436,6 +10452,9 @@ span.flatpickr-weekday {
   .form-popup__nav-title:not(:last-child):has(~._tab-active)::before {
     background-color: #d7d1ff
   }
+  .files-form__content {
+    flex: 0 0 15.625rem
+  }
   .hero__content--mobile {
     display: none
   }
@@ -11256,7 +11275,8 @@ span.flatpickr-weekday {
   }
   .files-form__content {
     align-items: center;
-    padding-bottom: 0
+    padding-bottom: 0;
+    flex-grow: 1
   }
   .files-form__items {
     gap: 1.0625rem
