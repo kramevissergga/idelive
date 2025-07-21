@@ -205,24 +205,175 @@
 			</div>
 		</header>
 		<main class="page">
-			<section class="page__error error">
-				<div class="error__container">
-					<div class="error__image">
-						<img src="img/error.svg" alt="Image" class="ibg ibg--contain">
+			<div class="page__docs docs">
+				<div class="docs__grid-container">
+					<div class="docs__wrapper">
+						<div class="docs__aside aside-profile">
+							<div class="aside-profile__label">
+								Welcome back, <span>Roland</span>
+							</div>
+							<div class="aside-profile__aside-nav aside-nav">
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#dashboard"></use>
+									</svg>
+									<span>Dashboard</span>
+								</a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#notifications"></use>
+									</svg>
+									<span>Notifications</span>
+
+								</a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#cargo"></use>
+									</svg>
+									<span>Cargo</span>
+								</a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#documents"></use>
+									</svg>
+									<span>Documents</span></a>
+								<a href="#" class="aside-nav__item _active">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#messages"></use>
+									</svg>
+									<span>Messages</span>
+									<div class="count">1</div>
+								</a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#profile"></use>
+									</svg>
+									<span>Profile</span></a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#settings"></use>
+									</svg>
+									<span>Settings</span></a>
+								<a href="#" class="aside-nav__item">
+									<svg class="sprite">
+										<use xlink:href="img/icons.svg#payment"></use>
+									</svg>
+									<span>Payment</span></a>
+							</div>
+							<button class="aside-profile__logout logout-btn _icon-upload">
+								Log out
+							</button>
+						</div>
+						<div class="docs__body">
+							<div class="docs__header">
+								<h1 class="docs__title">
+									Payment documents
+								</h1>
+								<div class="docs__filters">
+									<select>
+										<option value="1" selected>All</option>
+										<option value="2">Some</option>
+										<option value="3">Other</option>
+									</select>
+									<select>
+										<option value="" selected>Mounts</option>
+										<option value="2">January</option>
+										<option value="3">February</option>
+										<option value="4">March</option>
+										<option value="5">April</option>
+									</select>
+									<select>
+										<option value="" selected>Year</option>
+										<option value="2">2025</option>
+										<option value="3">2026</option>
+										<option value="4">2027</option>
+										<option value="5">2028</option>
+										<option value="6">2029</option>
+									</select>
+									<select>
+										<option value="" selected>Whole period</option>
+										<option value="2">1 day</option>
+										<option value="3">2 days</option>
+										<option value="4">3 days</option>
+										<option value="5">4 days</option>
+										<option value="6">5 days</option>
+									</select>
+								</div>
+							</div>
+							<div class="docs__items">
+								<div class="docs__item">
+									<a href="#" class="docs__pdf _icon-arrow-bold-left">
+										PDF
+									</a>
+									<div class="docs__date">
+										2025-31-05
+									</div>
+									<div class="docs__code">
+										12748947040AA1B678
+									</div>
+									<div class="docs__category">
+										Household appliances
+									</div>
+									<div class="docs__paid">
+										Paid: 2025-31-05
+									</div>
+									<div class="docs__price">$ 3000</div>
+									<button class="docs__remove _icon-cross">
+
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
-					<h1 class="error__title">Session Expired</h1>
-					<div class="error__icon">
-						<img src="img/sand-clock.webp" alt="Image" class="ibg ibg--contain">
+					<div class="docs__footer">
+						<a href="#" class="docs__more button button--border">
+							See more
+						</a>
+						<div class="docs__pagination pagination">
+							<ul>
+								<li>
+									<a href="#" class="_icon-ch-left">
+
+									</a>
+								</li>
+								<li>
+									<a class="_active" href="#">
+										1
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										2
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										3
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										4
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										5
+									</a>
+								</li>
+								<li>
+									<a href="#" class="_icon-ch-right">
+
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
-					<div class="error__text text">
-						<p>
-							Oops! It looks like your session timed out. To continue, please refresh the page
-						</p>
+					<div class="docs__total">
+						Total invoice value: <span>73 000 00 $</span>
 					</div>
-					<a href="#" class="error__button button button--gradient">Refresh</a>
-					<a href="#" class="error__link">Go back to previous page</a>
 				</div>
-			</section>
+			</div>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">

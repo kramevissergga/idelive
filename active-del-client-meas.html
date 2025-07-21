@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250715024219">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250721121702">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -1329,8 +1329,11 @@
 					<div data-tabs class="tabs">
 						<div class="form-popup__header">
 							<div data-tabs-titles class="form-popup__orders">
-								<button data-tabs-title class="form-popup__order _checked _tab-active">
+								<button data-tabs-title class="form-popup__order _checked ">
 									Order 1
+								</button>
+								<button data-tabs-title class="form-popup__order _tab-active">
+									Order 2
 								</button>
 							</div>
 						</div>
@@ -1484,6 +1487,62 @@
 										</div>
 										<div data-tabs-item class="form-popup__body">
 											<div class="cargo-form__cargo cargo-form">
+												<div class="cargo-form__block cargo-form__block--details">
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Quantity*
+														</div>
+														<div class="field__input field__input--16">
+															<input placeholder="1" type="number">
+														</div>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Gross weight CTN
+														</div>
+														<div class="field__input field__input--16 field__input--gross">
+															<input placeholder="0" type="text">
+															<select data-class-modif="input">
+																<option value="1">Ib</option>
+																<option value="2" selected>Kg</option>
+															</select>
+														</div>
+													</div>
+													<div class="cargo-form__wrapper">
+														<div class="cargo-form__label label-form">
+															Dimensions*
+														</div>
+														<div class="cargo-form__dimensions">
+															<div class="cargo-form__field field ">
+																<div class="field__input field__input--16">
+																	<input placeholder="Length" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Width" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Height" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
 												<div class="cargo-form__info-block">
 													<div class="cargo-form__ship-type">
 														<div class="cargo-form__label label-form ">
@@ -1566,62 +1625,6 @@
 														</div>
 														<div class="field__input">
 															<input placeholder="Enter code" type="text">
-														</div>
-													</div>
-												</div>
-												<div class="cargo-form__block cargo-form__block--details">
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Quantity*
-														</div>
-														<div class="field__input field__input--16">
-															<input placeholder="1" type="number">
-														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Gross weight CTN
-														</div>
-														<div class="field__input field__input--16 field__input--gross">
-															<input placeholder="0" type="text">
-															<select data-class-modif="input">
-																<option value="1">Ib</option>
-																<option value="2" selected>Kg</option>
-															</select>
-														</div>
-													</div>
-													<div class="cargo-form__wrapper">
-														<div class="cargo-form__label label-form">
-															Dimensions*
-														</div>
-														<div class="cargo-form__dimensions">
-															<div class="cargo-form__field field ">
-																<div class="field__input field__input--16">
-																	<input placeholder="Length" type="text">
-																	<select data-class-modif="input">
-																		<option value="1" selected>In</option>
-																		<option value="2">cm</option>
-																	</select>
-																</div>
-															</div>
-															<div class="cargo-form__field field">
-																<div class="field__input field__input--16">
-																	<input placeholder="Width" type="text">
-																	<select data-class-modif="input">
-																		<option value="1" selected>In</option>
-																		<option value="2">cm</option>
-																	</select>
-																</div>
-															</div>
-															<div class="cargo-form__field field">
-																<div class="field__input field__input--16">
-																	<input placeholder="Height" type="text">
-																	<select data-class-modif="input">
-																		<option value="1" selected>In</option>
-																		<option value="2">cm</option>
-																	</select>
-																</div>
-															</div>
 														</div>
 													</div>
 												</div>
@@ -1742,14 +1745,14 @@
 															<div class="files-form__image-uploaded">
 																<img src="img/cargo/02.webp" alt="Image">
 																<div class="files-form__up-label">
-																	Photo2.webp
+																	<span><span class="ellipsis">Photo2.webp</span class="ellipsis"></span>
 																	<button class="_icon-cross-bold"></button>
 																</div>
 															</div>
 															<div class="files-form__image-uploaded">
 																<img src="img/cargo/02.webp" alt="Image">
 																<div class="files-form__up-label">
-																	Photo2.webp
+																	<span><span class="ellipsis">Photo2.webp</span></span>
 																	<button class="_icon-cross-bold"></button>
 																</div>
 															</div>
@@ -1800,11 +1803,11 @@
 																</div>
 															</div>
 															<div class="files-form__up-label">
-																<a class="_icon-file" href="#">doc1.pdf</a>
+																<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
 																<button class="_icon-cross-bold"></button>
 															</div>
 															<div class="files-form__up-label">
-																<span class="_icon-file" href="#">doc1.pdf</span>
+																<span class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></span>
 																<button class="_icon-cross-bold"></button>
 															</div>
 														</div>
@@ -2092,16 +2095,16 @@
 																	<div class="files-review__col">
 																		<div class="files-review__uploads">
 																			<div class="files-form__up-label">
-																				<a class="_icon-file" href="#">doc1.pdf</a>
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
 																			</div>
 																			<div class="files-form__up-label">
-																				<a class="_icon-file" href="#">doc1.pdf</a>
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
 																			</div>
 																			<div class="files-form__up-label">
-																				<a class="_icon-file" href="#">doc1.pdf</a>
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
 																			</div>
 																			<div class="files-form__up-label">
-																				<a class="_icon-file" href="#">doc1.pdf</a>
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
 																			</div>
 																		</div>
 																	</div>
@@ -2122,13 +2125,665 @@
 												</div>
 											</div>
 										</div>
-										<div class="form-popup__footer">
-											<button data-tabs-back type="button" class="form-popup__back">
-												Back to last step
+									</div>
+								</div>
+							</div>
+							<div data-tabs-item class="tabs__body">
+								<div data-tabs class="form-popup">
+									<div class="form-popup__top">
+										<button data-tabs-back class="form-popup__back-btn _icon-arrow-bold-left ">Back</button>
+										<div class="separator"></div>
+										<nav data-tabs-titles class="form-popup__navigation">
+											<button data-tabs-title type="button" class="form-popup__nav-title  nav-title-form">
+												<div class="nav-title-form__index">
+													1
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Cargo
+													</h2>
+													<div class="nav-title-form__label">
+														Add cargo details
+													</div>
+												</div>
 											</button>
-											<button type="button" class="form-popup__next _icon-arrow-bold-left button button--gradient">
-												BidDeliv
+											<button data-tabs-title type="button" class="form-popup__nav-title  nav-title-form">
+												<div class="nav-title-form__index">
+													2
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Addresses
+													</h2>
+													<div class="nav-title-form__label">
+														Enter pickup & delivery
+													</div>
+												</div>
 											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title nav-title-form">
+												<div class="nav-title-form__index">
+													3
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Files
+													</h2>
+													<div class="nav-title-form__label">
+														Upload documents
+													</div>
+												</div>
+											</button>
+											<button data-tabs-title type="button" class="form-popup__nav-title _tab-active nav-title-form">
+												<div class="nav-title-form__index">
+													4
+												</div>
+												<div class="nav-title-form__body">
+													<h2 class="nav-title-form__title">
+														Review and submit
+													</h2>
+													<div class="nav-title-form__label">
+														Check and confirm details
+													</div>
+												</div>
+											</button>
+										</nav>
+										<div class="form-popup__switch">
+											<button data-tabs-back type="button" class="form-popup__arrow _icon-ch-left"></button>
+											<div data-tabs-pages class="form-popup__pages">
+											</div>
+											<button data-tabs-next type="button" class="form-popup__arrow _icon-ch-right"></button>
+										</div>
+									</div>
+									<div data-tabs-body class="form-popup__content">
+										<div data-tabs-item class="form-popup__body">
+											<div class="cargo-form__cargo cargo-form">
+												<div class="cargo-form__block cargo-form__block--cargo">
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Cargo*
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter  product " type="text">
+														</div>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Product category
+														</div>
+														<select name="form[]" data-class-modif="countries">
+															<option value="" selected>Select category</option>
+															<option value="2">Normal cargo</option>
+															<option value="3">Sensitive goods</option>
+															<option value="4">Children products</option>
+															<option value="5">Charged items / With batteries</option>
+														</select>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															HS Code
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter code" type="text">
+														</div>
+													</div>
+												</div>
+												<div class="cargo-form__block cargo-form__block--details">
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Quantity*
+														</div>
+														<div class="field__input field__input--16">
+															<input placeholder="1" type="number">
+														</div>
+													</div>
+													<div class="cargo-form__field field">
+														<div class="cargo-form__label label-form">
+															Gross weight CTN
+														</div>
+														<div class="field__input field__input--16 field__input--gross">
+															<input placeholder="0" type="text">
+															<select data-class-modif="input">
+																<option value="1">Ib</option>
+																<option value="2" selected>Kg</option>
+															</select>
+														</div>
+													</div>
+													<div class="cargo-form__wrapper">
+														<div class="cargo-form__label label-form">
+															Dimensions*
+														</div>
+														<div class="cargo-form__dimensions">
+															<div class="cargo-form__field field ">
+																<div class="field__input field__input--16">
+																	<input placeholder="Length" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Width" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="field__input field__input--16">
+																	<input placeholder="Height" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__addresses addresses-form">
+												<div class="addresses-form__block">
+													<div class="addresses-form__field field">
+														<div class="field__label label-form">Invoice, packing list
+															<button class="info-btn">?</button>
+														</div>
+														<div class="field__input">
+															<label class="file-input _icon-pin">
+																Attach invoice, packing list
+																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+															</label>
+														</div>
+													</div>
+													<div class="addresses-form__field field">
+														<div class="addresses-form__label label-form">
+															Invoice value
+														</div>
+														<div class="field__input">
+															<input placeholder="Enter invoice" type="text">
+														</div>
+													</div>
+												</div>
+												<div class="addresses-form__field field">
+													<div class="field__label label-form">
+														Pick-up address*
+													</div>
+													<select name="pick-up-address" data-required data-search="save" data-class-modif="countries">
+														<option value="" selected>Select the address used above or enter a new one manually</option>
+														<option value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.
+														</option>
+														<option value="3">Pellentesque quis magnis sagittis fames ornare himenaeos hendrerit</option>
+														<option value="4">Odio aliquet proin congue facilisi justo magnis magna auctor tincidunt
+														</option>
+													</select>
+												</div>
+												<div class="addresses-form__field field">
+													<div class="field__label label-form">
+														Pick-up address*
+													</div>
+													<select name="delivery-address" data-required data-search="save" data-input="delivery-address" data-class-modif="countries">
+														<option value="" selected>Select the address used above or enter a new one manually</option>
+														<option value="2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.
+														</option>
+														<option value="3">Pellentesque quis magnis sagittis fames ornare himenaeos hendrerit</option>
+														<option value="4">Odio aliquet proin congue facilisi justo magnis magna auctor tincidunt
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__files files-form">
+												<button class="files-form__clear">
+													Clear all downloaded files
+												</button>
+												<div class="files-form__body">
+													<div class="files-form__block">
+														<div class="files-form__content">
+															<div class="files-form__label">
+																Photo cargo <span>(Attach some photos)</span>
+															</div>
+															<label class="files-form__upload-btn button button--purple button--upload">
+																Choose file
+																<input type="file" name="photo" accept="image.webp, image.webp, image.webp" />
+															</label>
+
+														</div>
+														<div class="files-form__items">
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		Photo2.webp
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 37%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	37% done
+																</div>
+															</div>
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		Photo2.webp
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 100%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	Completed
+																</div>
+															</div>
+															<div class="files-form__image-uploaded">
+																<img src="img/cargo/02.webp" alt="Image">
+																<div class="files-form__up-label">
+																	<span><span class="ellipsis">Photo2.webp</span></span>
+																	<button class="_icon-cross-bold"></button>
+																</div>
+															</div>
+															<div class="files-form__image-uploaded">
+																<img src="img/cargo/02.webp" alt="Image">
+																<div class="files-form__up-label">
+																	<span><span class="ellipsis">Photo2.webp</span></span>
+																	<button class="_icon-cross-bold"></button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="files-form__block">
+														<div class="files-form__content">
+															<div class="files-form__label">
+																Certificate <span>(Attach some certificates)</span>
+															</div>
+															<label class="files-form__upload-btn button button--purple button--upload">
+																Choose file
+																<input type="file" name="certif" accept=".pdf" />
+															</label>
+
+														</div>
+														<div class="files-form__items">
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		<span>doc1.pdf</span>
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 37%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	37% done
+																</div>
+															</div>
+															<div class="uploading__item">
+																<div class="uploading__boby _icon-pic">
+																	<div class="uploading__title">
+																		<span>doc1.pdf</span>
+																	</div>
+																	<button class="uploading__remove _icon-cross">
+
+																	</button>
+																</div>
+																<div style="--progress: 100%" class="uploading__bar">
+
+																</div>
+																<div class="uploading__status">
+																	Completed
+																</div>
+															</div>
+															<div class="files-form__up-label">
+																<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
+																<button class="_icon-cross-bold"></button>
+															</div>
+															<div class="files-form__up-label">
+																<span class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></span>
+																<button class="_icon-cross-bold"></button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="files-form__footer">
+													<div class="files-form__footer-label">
+														Do you want to add new sizes, products or additional delivery address? 
+													</div>
+													<button class="files-form__button button button--purple button--border _icon-plus">
+														<span>Add <span class="pc-only">dimensions and product</span></span>
+													</button>
+												</div>
+											</div>
+											<div class="form-popup__footer">
+												<button data-tabs-back type="button" class="form-popup__back">
+													Back to last step
+												</button>
+												<button data-tabs-next type="button" class="form-popup__next button button--gradient">
+													Next step
+												</button>
+											</div>
+										</div>
+										<div data-tabs-item class="form-popup__body">
+											<div class="form-popup__review review-form">
+												<div data-spoilers class="review-form__items">
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--shipping">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Shipping method
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	Sea
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="delivery-info-inq__roadmap">
+																	<span>China</span>
+																	<div style="--progress: 50%" class="delivery-info-inq__line">
+																		<div class="delivery-info-inq__point _active">
+																		</div>
+																		<div class="delivery-info-inq__image">
+																			<img src="img/inquires/bid-ship-op.svg" alt="Image" class="ibg ibg--contain">
+																		</div>
+																		<div class="delivery-info-inq__point">
+																		</div>
+																	</div>
+																	<span>USA</span>
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="ship-review">
+																<div class="ship-review__col">
+																	<select name="form[]" data-class-modif="underline">
+																		<option value="1" selected>Sea</option>
+																		<option value="2">Air</option>
+																		<option value="3">Пункт №3</option>
+																		<option value="4">Land</option>
+																	</select>
+																</div>
+																<div class="ship-review__col">
+																	<div class="ship-review__ship-info">
+																		<div class="ship-review__field">
+																			<div class="ship-review__label text-review">
+																				From:
+																			</div>
+																			<select data-class-modif="underline">
+																				<option value="" selected>Country</option>
+																				<option value="2">Some Country</option>
+																				<option value="3">Some Country</option>
+																				<option value="4">Some Country</option>
+																			</select>
+																		</div>
+																		<div class="ship-review__field">
+																			<div class="ship-review__label text-review">
+																				To:
+																			</div>
+																			<select data-class-modif="underline">
+																				<option value="" selected>Country</option>
+																				<option value="2">Some Country</option>
+																				<option value="3">Some Country</option>
+																				<option value="4">Some Country</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--addresses">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Addresses
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	1 pick-up
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	2 delivery addresses
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button disabled class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__addresses addresses-review">
+																<div class="addresses-review__row">
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__label text-review">Pick up add:</div>
+																	</div>
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M5.92453 2.5L2 6.5M2 6.5L5.92453 10.5M2 6.5L10 6.5" stroke="#F79B39" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			No. 88, Huaihai Road, Shanghai, 200000, China
+																		</div>
+																	</div>
+																</div>
+																<div class="addresses-review__row">
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__label text-review">Delivery add:</div>
+																	</div>
+																	<div class="addresses-review__col">
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M6.07547 10.5L10 6.5M10 6.5L6.07547 2.5M10 6.5L2 6.5" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			1234 Maple Street, Los Angeles, CA 90001, USA
+																		</div>
+																		<div class="addresses-review__info-label text-review">
+																			<div class="icon">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+																					<path d="M6.07547 10.5L10 6.5M10 6.5L6.07547 2.5M10 6.5L2 6.5" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+																				</svg>
+																			</div>
+																			1234 Maple Street, Los Angeles, CA 90001, USA
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--cargo">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Cargo
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	3 pallets
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__labels">
+																	<div class="details-review__label text-review">
+																		1200 kg
+																	</div>
+																	<div class="details-review__label text-review">
+																		4 cbm
+																	</div>
+																	<div class="details-review__label text-review">
+																		Electronics device
+																	</div>
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__cargo cargo-review">
+																<span></span>
+																<div class="cargo-review__content">
+																	<div class="cargo-review__label text-review">
+																		<b>Dimensions CTN:</b> 50×40×30 cm
+																	</div>
+																	<div class="cargo-review__label text-review">
+																		<b>Quantity:</b> 50
+																	</div>
+																	<div class="cargo-review__label text-review">
+																		<b>Gross weight CTN:</b> 1200kg
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+													<details class="review-form__item">
+														<summary class="review-form__details details-review details-review--files">
+															<div class="details-review__col">
+																<div class="details-review__title">
+																	Files
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	3 images
+																</div>
+															</div>
+															<div class="details-review__col">
+																<div class="details-review__label text-review">
+																	2 pdf
+																</div>
+															</div>
+															<div class="details-review__col">
+																<button class="details-review__edit button button--purple">
+																	Edit
+																</button>
+															</div>
+														</summary>
+														<div class="review-form__body">
+															<div class="review-form__files files-review">
+																<div class="files-review__row">
+																	<div class="files-review__col">
+																		<div class="files-review__header">
+																			<div class="files-review__label text-review">Photo cargo</div>
+																			<label class="files-review__upload-btn button button--purple">
+																				Choose file
+																				<input type="file" name="image" accept="image.webp, image.webp, image.webp" />
+																			</label>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<div class="files-review__uploads">
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																			<div class="files-review__up-image">
+																				<img src="img/cargo/02.webp">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<button class="files-review__delete">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M14.5 14.5L14.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																			</svg>
+																		</button>
+																	</div>
+																</div>
+																<div class="files-review__row">
+																	<div class="files-review__col">
+																		<div class="files-review__header">
+																			<div class="files-review__label text-review">Certificate</div>
+																			<label class="files-review__upload-btn button button--purple">
+																				Choose file
+																				<input type="file" name="file" accept="pdf" />
+																			</label>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<div class="files-review__uploads">
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
+																			</div>
+																			<div class="files-form__up-label">
+																				<a class="_icon-file" href="#"><span class="ellipsis">doc1.pdf</span></a>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="files-review__col">
+																		<button class="files-review__delete">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M14.5 14.5L14.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																				<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
+																			</svg>
+																		</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</details>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -3092,7 +3747,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250715024219"></script>
+	<script src="js/app.min.js?_v=20250721121702"></script>
 </body>
 
 </html>
