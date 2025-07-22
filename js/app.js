@@ -396,7 +396,7 @@
                 }
                 function setspoilerAction(e) {
                     const el = e.target;
-                    if (el.closest("summary") && el.closest("[data-spoilers]")) {
+                    if (el.closest("summary") && el.closest("[data-spoilers]") && !el.closest("[data-sp-ignore]")) {
                         e.preventDefault();
                         if (el.closest("[data-spoilers]").classList.contains("_spoiler-init")) {
                             const spoilerTitle = el.closest("summary");
