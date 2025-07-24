@@ -11244,6 +11244,14 @@ PERFORMANCE OF THIS SOFTWARE.
                 esm(calendarEl, config);
             }));
         }
+        const themeSwitchEls = document.querySelectorAll("[data-theme-swith]");
+        if (themeSwitchEls) themeSwitchEls.forEach((themeSwitch => {
+            const updateTheme = () => {
+                if (themeSwitch.checked) document.documentElement.classList.add("--dark"); else document.documentElement.classList.remove("--dark");
+            };
+            themeSwitch.addEventListener("change", updateTheme);
+            updateTheme();
+        }));
         window["FLS"] = false;
         spoilers();
         formRating();
