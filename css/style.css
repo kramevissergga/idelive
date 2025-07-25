@@ -5155,7 +5155,7 @@ body::after {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  align-items: center
+  flex-direction: column
 }
 .block-inq__file-link {
   display: flex;
@@ -8421,12 +8421,6 @@ body::after {
   font-size: 1rem;
   width: 100%
 }
-body:has(.details-notif._active:not(._hidden)) {
-  overflow: hidden;
-  touch-action: none;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none
-}
 .docs {
   padding-top: 2.0625rem
 }
@@ -11329,6 +11323,12 @@ span.flatpickr-weekday {
   .details-notif._active:not(._hidden) {
     -webkit-transform: none;
     transform: none
+  }
+  body:has(.details-notif._active:not(._hidden)) {
+    overflow: hidden;
+    touch-action: none;
+    -ms-scroll-chaining: none;
+    overscroll-behavior: none
   }
 }
 @media (max-width:68.74875em) {
