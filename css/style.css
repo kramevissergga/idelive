@@ -11151,6 +11151,10 @@ span.flatpickr-weekday {
   .details-notif__back {
     display: none
   }
+  .details-notif__body {
+    position: sticky;
+    top: .625rem
+  }
 }
 @media (min-width:81.24875em) {
   .form-bid-inq__item--info {
