@@ -2945,7 +2945,7 @@ body::after {
 .start-popup {
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  background: url(img/start-popup/bg.svg) no-repeat top left/cover;
+  background: url(../img/start-popup/bg.svg) no-repeat top left/cover;
   border-radius: 1.5rem;
   overflow: hidden;
   position: relative
@@ -3181,7 +3181,7 @@ body::after {
   min-height: 35.25rem;
   display: flex;
   align-items: center;
-  background: url(img/calc-popup/bg.svg) no-repeat top center/cover;
+  background: url(../img/calc-popup/bg.svg) no-repeat top center/cover;
   border-radius: 1.5rem;
   overflow: hidden;
   padding: 4rem
