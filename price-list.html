@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250730124821">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250730180233">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2820,7 +2820,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="popup-start" aria-hidden="true" class="popup popup--start">
+		<div id="popup-start" aria-hidden="true" class="popup popup_show popup--start">
 
 			<div class="popup__wrapper">
 				<div class="popup__content">
@@ -2832,11 +2832,16 @@
 							<img src="img/logo.svg" alt="Image" class="start-popup__logo">
 							<div class="start-popup__wrapper">
 								<h2 class="start-popup__title">
-									Hello there!
+									Welcome to AiDeliv!
 								</h2>
-								<p class="start-popup__subtitle">
-									Welcome to the world's first transportation exchange resource
-								</p>
+								<div class="start-popup__text">
+									<p>
+										The world’s first freight bidding platform
+									</p>
+									<p>
+										We turn every shipment into a global logistics auction — fast, transparent, and on your terms
+									</p>
+								</div>
 								<div class="start-popup__other">
 									<span>Don’t have an account?</span>
 									<button class="button button--border">
@@ -2858,31 +2863,16 @@
 									No hidden fees
 								</li>
 							</ul>
-							<p class="start-popup__text">
-								Even if you're shipping small volumes,
-								our platform helps you access top-tier rates by combining shipments with others.
-							</p>
 							<h3 class="start-popup__label">
 								Just one step away — choose how you'd like to start!
 							</h3>
-							<div class="start-popup__items">
-								<div class="start-popup__item item-serv-popup">
-									<div class="item-serv-popup__wrapper">
-										<span>Get an instant price in 1 minute</span>
-										<button class="button button--purple">
-											Quick Estimate
-										</button>
-									</div>
-
+							<div class="start-popup__footer">
+								<div class="start-popup__footer-label">
+									Get current delivery options for your request
 								</div>
-								<div class="start-popup__item item-serv-popup item-serv-popup--gradient">
-									<div class="item-serv-popup__wrapper">
-										<span>Offers from real logistics companies</span>
-										<button class="button button--gradient">
-											Request Offers
-										</button>
-									</div>
-								</div>
+								<button class="start-popup__button button button--gradient">
+									BidDeliv
+								</button>
 							</div>
 						</div>
 					</div>
@@ -4170,7 +4160,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250730124821"></script>
+	<script src="js/app.min.js?_v=20250730180233"></script>
 </body>
 
 </html>

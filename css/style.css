@@ -2948,10 +2948,11 @@ body::after {
   background: url(../img/start-popup/bg.svg) no-repeat top left/cover;
   border-radius: 1.5rem;
   overflow: hidden;
-  position: relative
+  position: relative;
+  min-height: 35.25rem
 }
 .start-popup__aside {
-  padding: 1.5625rem 1.5625rem 4.0625rem;
+  padding: 1.5625rem 1.5625rem 3.875rem;
   display: flex;
   flex-direction: column;
   align-items: center
@@ -2962,7 +2963,7 @@ body::after {
   align-self: self-start
 }
 .start-popup__logo:not(:last-child) {
-  margin-bottom: 8.1875rem
+  margin-bottom: 6.875rem
 }
 .start-popup__wrapper {
   max-width: 19.3125rem;
@@ -2972,12 +2973,12 @@ body::after {
   justify-content: center
 }
 .start-popup__title {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   line-height: 1.4;
   text-align: center
 }
 .start-popup__title:not(:last-child) {
-  margin-bottom: 1rem
+  margin-bottom: .5rem
 }
 .start-popup__title--center {
   text-align: center
@@ -2987,15 +2988,6 @@ body::after {
 }
 .start-popup__info--accent {
   color: #998ee0
-}
-.start-popup__subtitle {
-  text-align: center;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  flex-grow: 1
-}
-.start-popup__subtitle:not(:last-child) {
-  margin-bottom: 1.5rem
 }
 .start-popup__other {
   display: flex;
@@ -3008,11 +3000,17 @@ body::after {
   text-align: center;
   line-height: 1.2
 }
-.start-popup__other button {
-  min-width: 9.875rem
+.start-popup__other .button {
+  min-width: 9.875rem;
+  background-color: hsla(0,0%,100%,.6);
+  border-color: hsla(0,0%,100%,.6);
+  font-weight: 400
 }
 .start-popup__body {
-  padding: 2.625rem 3.875rem 3rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 2.625rem 3.875rem 3.875rem;
   background: linear-gradient(165deg,#fff 39.21%,rgba(246,246,246,.15) 77.81%);
   backdrop-filter: blur(2.5px)
 }
@@ -3054,10 +3052,15 @@ body::after {
   margin-bottom: .375rem
 }
 .start-popup__text {
-  line-height: 1.4
+  line-height: 1.4;
+  text-align: center;
+  flex-grow: 1
+}
+.start-popup__text p:not(:last-child) {
+  margin-bottom: 1.25rem
 }
 .start-popup__text:not(:last-child) {
-  margin-bottom: 4.75rem
+  margin-bottom: 1.25rem
 }
 .start-popup__label {
   color: #998ee0;
@@ -3115,6 +3118,22 @@ body::after {
   height: 100%;
   background: linear-gradient(115deg,#fbfbfb 13.92%,#fff 63.76%);
   z-index: 1
+}
+.start-popup__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem
+}
+.start-popup__footer-label {
+  color: #7b7f97;
+  text-align: center;
+  font-size: .875rem;
+  line-height: 1.2
+}
+.start-popup__button {
+  width: 100%;
+  max-width: 19.75rem
 }
 .item-serv-popup {
   padding: .0625rem;
@@ -11340,6 +11359,11 @@ span.flatpickr-weekday {
   .files-form__content {
     flex: 0 0 15.625rem
   }
+  .start-popup__label {
+    flex-grow: 1;
+    display: flex;
+    align-items: center
+  }
   .start-popup__items {
     margin: 0 -1.25rem
   }
@@ -12180,16 +12204,14 @@ span.flatpickr-weekday {
     flex: 0 0 4.375rem
   }
   .start-popup {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
+    min-height: 0
   }
   .start-popup__aside {
     padding: 1.25rem
   }
   .start-popup__logo:not(:last-child) {
-    margin-bottom: 30px
-  }
-  .start-popup__title {
-    font-size: 2rem
+    margin-bottom: 1.875rem
   }
   .start-popup__info {
     text-align: center;
@@ -12202,12 +12224,6 @@ span.flatpickr-weekday {
   }
   .start-popup__list:not(:last-child) {
     margin-bottom: 1.875rem
-  }
-  .start-popup__text {
-    text-align: center
-  }
-  .start-popup__text:not(:last-child) {
-    margin-bottom: 2.8125rem
   }
   .calc-popup {
     min-height: 0;
