@@ -237,6 +237,13 @@
     (() => {
         "use strict";
         const modules_flsModules = {};
+        function functions_getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
+        function setHash(hash) {
+            hash = hash ? `#${hash}` : window.location.href.split("#")[0];
+            history.pushState("", "", hash);
+        }
         let _slideUp = (target, duration = 500, showmore = 0, margin = 0) => {
             if (!target.classList.contains("_slide")) {
                 target.classList.add("_slide");
@@ -463,6 +470,208 @@
                     }
                 });
                 spoilerBlock.dispatchEvent(event);
+            }
+        }
+        function tabs() {
+            const tabs = document.querySelectorAll("[data-tabs]");
+            let tabsActiveHash = [];
+            if (tabs.length > 0) {
+                const hash = functions_getHash();
+                if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
+                tabs.forEach(((tabsBlock, index) => {
+                    tabsBlock.classList.add("_tab-init");
+                    tabsBlock.setAttribute("data-tabs-index", index);
+                    tabsBlock.addEventListener("click", setTabsAction);
+                    const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                    const backBtns = Array.from(tabsBlock.querySelectorAll("[data-tabs-back]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                    const nextBtns = Array.from(tabsBlock.querySelectorAll("[data-tabs-next]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                    backBtns.forEach((backBtn => {
+                        backBtn.addEventListener("click", (() => {
+                            const currentIndex = tabsTitles.findIndex((title => title.classList.contains("_tab-active")));
+                            if (currentIndex > 0) {
+                                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                                if (splideElement?.splideInstance) splideElement.splideInstance.go(currentIndex - 1); else setActiveTab(tabsBlock, currentIndex - 1);
+                            }
+                        }));
+                    }));
+                    nextBtns.forEach((nextBtn => {
+                        nextBtn.addEventListener("click", (() => {
+                            const currentIndex = tabsTitles.findIndex((title => title.classList.contains("_tab-active")));
+                            if (currentIndex < tabsTitles.length - 1) {
+                                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                                if (splideElement?.splideInstance) splideElement.splideInstance.go(currentIndex + 1); else setActiveTab(tabsBlock, currentIndex + 1);
+                            }
+                        }));
+                    }));
+                    initTabs(tabsBlock);
+                    const splideElement = tabsBlock.querySelector("._splide-tabs");
+                    if (splideElement) {
+                        const splide = new Splide(splideElement, {
+                            speed: 300,
+                            pagination: false,
+                            updateOnMove: true,
+                            flickMaxPages: 1,
+                            flickPower: 100
+                        }).mount();
+                        splideElement.splideInstance = splide;
+                        splide.on("mounted move", (newIndex => {
+                            setActiveTab(tabsBlock, newIndex);
+                            updateSelect(tabsBlock, newIndex);
+                        }));
+                        tabsTitles.forEach(((title, tabIndex) => {
+                            title.addEventListener("click", (() => {
+                                splide.go(tabIndex);
+                            }));
+                        }));
+                        const activeIndex = tabsTitles.findIndex((title => title.classList.contains("_tab-active")));
+                        if (activeIndex >= 0) splide.go(activeIndex);
+                    }
+                    const tabsSelect = tabsBlock.querySelector(".select_tabs");
+                    if (tabsSelect) {
+                        document.addEventListener("selectCallback", (e => {
+                            if (e.detail.select === tabsSelect.querySelector("select")) {
+                                const selectedOption = e.detail.select.selectedOptions[0];
+                                const value = selectedOption.value;
+                                if (!selectedOption.hasAttribute("data-href")) {
+                                    const tabIndex = parseInt(value, 10) - 1;
+                                    const splideElement = tabsBlock.querySelector("._splide-tabs");
+                                    if (splideElement?.splideInstance) splideElement.splideInstance.go(tabIndex); else setActiveTab(tabsBlock, tabIndex);
+                                }
+                            }
+                        }));
+                        const activeTabIndex = tabsTitles.findIndex((title => title.classList.contains("_tab-active")));
+                        if (activeTabIndex >= 0) tabsSelect.value = activeTabIndex + 1;
+                    }
+                }));
+                const mdQueriesArray = dataMediaQueries(tabs, "tabs");
+                if (mdQueriesArray?.length) mdQueriesArray.forEach((item => {
+                    item.matchMedia.addEventListener("change", (() => {
+                        setTitlePosition(item.itemsArray, item.matchMedia);
+                    }));
+                    setTitlePosition(item.itemsArray, item.matchMedia);
+                }));
+            }
+            function initTabs(tabsBlock) {
+                const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const tabsContent = Array.from(tabsBlock.querySelectorAll("[data-tabs-item]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+                const activeHash = tabsActiveHash[0] == tabsBlockIndex;
+                if (activeHash) {
+                    const current = tabsBlock.querySelector("[data-tabs-title]._tab-active");
+                    current?.classList.remove("_tab-active");
+                }
+                tabsContent.forEach(((item, i) => {
+                    const isActive = tabsTitles[i]?.classList.contains("_tab-active");
+                    item.hidden = !isActive;
+                    item.inert = !isActive;
+                }));
+                const activeIndex = tabsTitles.findIndex((t => t.classList.contains("_tab-active")));
+                if (activeIndex >= 0) updateTabsNavigation(tabsBlock, activeIndex);
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement?.splideInstance && activeIndex >= 0) splideElement.splideInstance.go(activeIndex);
+            }
+            function setTabsAction(e) {
+                const el = e.target.closest("[data-tabs-title]");
+                if (!el) return;
+                const tabsBlock = el.closest("[data-tabs]");
+                if (!tabsBlock) return;
+                const splideElement = tabsBlock.querySelector("._splide-tabs");
+                if (splideElement?.splideInstance) {
+                    const index = Array.from(el.parentElement.children).indexOf(el);
+                    splideElement.splideInstance.go(index);
+                } else if (!el.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                    const prev = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]._tab-active")).filter((el => el.closest("[data-tabs]") === tabsBlock))[0];
+                    prev?.classList.remove("_tab-active");
+                    el.classList.add("_tab-active");
+                    setTabsStatus(tabsBlock);
+                    const activeIndex = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock)).indexOf(el);
+                    updateSelect(tabsBlock, activeIndex);
+                    updateTabsNavigation(tabsBlock, activeIndex);
+                }
+                tabsBlock.dispatchEvent(new CustomEvent("tabSwitch"));
+                tabsBlock.querySelectorAll(".tracking-inq").forEach(updateTrackingLine);
+                e.preventDefault();
+            }
+            function setActiveTab(tabsBlock, index) {
+                const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const tabsContent = Array.from(tabsBlock.querySelectorAll("[data-tabs-item]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                tabsTitles.forEach(((title, i) => {
+                    const isActive = i === index;
+                    title.classList.toggle("_tab-active", isActive);
+                }));
+                tabsContent.forEach(((content, i) => {
+                    const isActive = i === index;
+                    content.hidden = !isActive;
+                    content.inert = !isActive;
+                }));
+                updateSelect(tabsBlock, index);
+                updateTabsNavigation(tabsBlock, index);
+            }
+            function updateTabsNavigation(tabsBlock, activeIndex) {
+                const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const backBtns = Array.from(tabsBlock.querySelectorAll("[data-tabs-back]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const nextBtns = Array.from(tabsBlock.querySelectorAll("[data-tabs-next]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const pagesIndicators = Array.from(tabsBlock.querySelectorAll("[data-tabs-pages]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                backBtns.forEach((btn => btn.disabled = activeIndex <= 0));
+                nextBtns.forEach((btn => btn.disabled = activeIndex >= tabsTitles.length - 1));
+                pagesIndicators.forEach((indicator => {
+                    indicator.innerHTML = "";
+                    const span = document.createElement("span");
+                    span.textContent = activeIndex + 1;
+                    indicator.appendChild(span);
+                    indicator.append(`/${tabsTitles.length}`);
+                }));
+            }
+            function updateSelect(tabsBlock, index) {
+                const tabsSelect = tabsBlock.querySelector(".tabs-select");
+                if (tabsSelect) {
+                    tabsSelect.value = index + 1;
+                    modules_flsModules.select.selectBuild(tabsSelect);
+                }
+            }
+            function setTitlePosition(tabsMediaArray, matchMedia) {
+                tabsMediaArray.forEach((item => {
+                    const tabsBlock = item.item;
+                    const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                    const tabsContent = Array.from(tabsBlock.querySelectorAll("[data-tabs-item]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                    const titlesContainer = tabsBlock.querySelector("[data-tabs-titles]");
+                    const contentContainer = tabsBlock.querySelector("[data-tabs-body]");
+                    tabsContent.forEach(((contentItem, i) => {
+                        if (matchMedia.matches) {
+                            contentContainer.append(tabsTitles[i]);
+                            contentContainer.append(contentItem);
+                            tabsBlock.classList.add("_tab-spoiler");
+                        } else {
+                            titlesContainer.append(tabsTitles[i]);
+                            tabsBlock.classList.remove("_tab-spoiler");
+                        }
+                    }));
+                }));
+            }
+            function setTabsStatus(tabsBlock) {
+                const tabsTitles = Array.from(tabsBlock.querySelectorAll("[data-tabs-title]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                let tabsContent = Array.from(tabsBlock.querySelectorAll("[data-tabs-item]")).filter((el => el.closest("[data-tabs]") === tabsBlock));
+                const animate = tabsBlock.dataset.tabsAnimate ? +tabsBlock.dataset.tabsAnimate : null;
+                const isHash = tabsBlock.hasAttribute("data-tabs-hash");
+                tabsContent.forEach(((item, i) => {
+                    const isActive = tabsTitles[i].classList.contains("_tab-active");
+                    if (isActive) {
+                        if (animate) _slideDown(item, animate); else {
+                            item.hidden = false;
+                            item.inert = false;
+                        }
+                        if (isHash && !item.closest(".popup")) {
+                            const index = tabsBlock.dataset.tabsIndex;
+                            setHash(`tab-${index}-${i}`);
+                        }
+                    } else {
+                        item.querySelectorAll("iframe").forEach((f => f.remove()));
+                        if (animate) _slideUp(item, animate); else {
+                            item.hidden = true;
+                            item.inert = true;
+                        }
+                    }
+                }));
             }
         }
         function functions_FLS(message) {
@@ -11254,6 +11463,7 @@ PERFORMANCE OF THIS SOFTWARE.
         }));
         window["FLS"] = false;
         spoilers();
+        tabs();
         formRating();
     })();
 })();
