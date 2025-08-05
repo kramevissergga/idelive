@@ -7385,16 +7385,9 @@ body::after {
   text-decoration-thickness: .125rem;
   transition: all .3s
 }
-.inq-dash__type:has(input:checked) {
+.inq-dash__type._tab-active {
   color: #998ee0;
   text-decoration-color: inherit
-}
-.inq-dash__type input {
-  position: absolute;
-  top: 0;
-  width: 0;
-  height: 0;
-  visibility: hidden
 }
 .inq-dash__icon {
   flex-grow: 1
