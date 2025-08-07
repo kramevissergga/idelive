@@ -6406,6 +6406,30 @@
                 });
                 articlesDashSlider.mount();
             }
+            var blogSliderEls = document.querySelectorAll(".blog__news");
+            if (blogSliderEls) blogSliderEls.forEach((blogSliderEl => {
+                var blogSlider = new splide_esm_Splide(blogSliderEl, {
+                    perPage: 2,
+                    arrows: false,
+                    pagination: true,
+                    destroy: true,
+                    gap: 5,
+                    updateOnMove: true,
+                    padding: {
+                        right: 20,
+                        left: 20
+                    },
+                    breakpoints: {
+                        991.98: {
+                            destroy: false
+                        },
+                        599.98: {
+                            perPage: 1
+                        }
+                    }
+                });
+                blogSlider.mount();
+            }));
             var navSliderEl = document.querySelector(".nav-profile__slider");
             if (navSliderEl) {
                 var navSlider = new splide_esm_Splide(navSliderEl, {
