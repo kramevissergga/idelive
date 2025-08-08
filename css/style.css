@@ -12037,6 +12037,9 @@ span.flatpickr-weekday {
     opacity: 1;
     visibility: visible
   }
+  .hero__title {
+    font-size: 3.75rem
+  }
   .hero__content--mobile {
     display: none
   }
@@ -12453,9 +12456,6 @@ span.flatpickr-weekday {
   }
 }
 @media (min-width:84.25em) {
-  .hero__title {
-    font-size: 5.75rem
-  }
   .hero__footer {
     gap: 3.9375rem
   }
@@ -14670,17 +14670,19 @@ span.flatpickr-weekday {
     min-width: 4.5625rem
   }
 }
+@media (min-width:23.4375em)and (max-width:47.99875em) {
+  @supports (font-size:clamp(2.5rem ,1.3071912057rem + 5.0893175225vw ,3.75rem)) {
+    .hero__title {
+      font-size: clamp(2.5rem ,1.3071912057rem + 5.0893175225vw ,3.75rem)
+    }
+  }
+  @supports not (font-size:clamp(2.5rem ,1.3071912057rem + 5.0893175225vw ,3.75rem)) {
+    .hero__title {
+      font-size: calc(2.5rem + 1.25*(100vw - 23.4375rem)/ 24.56125)
+    }
+  }
+}
 @media (min-width:23.4375em)and (max-width:84.25em) {
-  @supports (font-size:clamp(2.5rem ,1.2474306269rem + 5.3442959918vw ,5.75rem)) {
-    .hero__title {
-      font-size: clamp(2.5rem ,1.2474306269rem + 5.3442959918vw ,5.75rem)
-    }
-  }
-  @supports not (font-size:clamp(2.5rem ,1.2474306269rem + 5.3442959918vw ,5.75rem)) {
-    .hero__title {
-      font-size: calc(2.5rem + 3.25*(100vw - 23.4375rem)/ 60.8125)
-    }
-  }
   @supports (gap:clamp(1.875rem ,1.0801002055rem + 3.3915724563vw ,3.9375rem)) {
     .hero__footer {
       gap: clamp(1.875rem ,1.0801002055rem + 3.3915724563vw ,3.9375rem)
