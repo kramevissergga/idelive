@@ -12046,6 +12046,167 @@ span.flatpickr-weekday {
   .about-us-h__content {
     min-height: 24.6875rem
   }
+  .hero {
+    padding-top: calc(var(--header-height) + 5.2631578947vh);
+    padding-bottom: 10.6203007519vh;
+    position: relative;
+    font-size: 1.5037593985vh
+  }
+  .hero__container {
+    max-width: 126.6917293233vh
+  }
+  .hero__body {
+    gap: 3.007518797vh
+  }
+  .hero__body:not(:last-child) {
+    margin-bottom: 5.0751879699vh
+  }
+  .hero__title {
+    font-size: 8.6466165414vh
+  }
+  .hero__text {
+    font-size: 1.8796992481vh;
+    max-width: 64.1917293233vh
+  }
+  .hero__button {
+    font-size: 2.2556390977vh;
+    padding: 1.4097744361vh;
+    min-width: 19.5488721805vh
+  }
+  .hero__content:not(:last-child) {
+    margin-bottom: 5.0751879699vh
+  }
+  .hero__content--pc {
+    grid-template-columns: 447fr 356fr 458fr;
+    gap: 1.8796992481vh
+  }
+  .hero__left {
+    gap: 3.5714285714vh
+  }
+  .hero__left .hero__price-block {
+    max-width: 34.3984962406vh
+  }
+  .hero__dashboard {
+    backdrop-filter: blur(.7988721805vh);
+    border: .0939849624vh solid var(--glass_stroke,rgba(246,246,246,.15));
+    border-radius: 1.5037593985vh
+  }
+  .hero__right {
+    gap: 4.6992481203vh;
+    margin-left: -4.6992481203vh
+  }
+  .hero__right .hero__price-block {
+    max-width: 34.3984962406vh
+  }
+  .hero__footer {
+    gap: 5.9210526316vh
+  }
+  .hero__label {
+    gap: 1.6917293233vh;
+    font-size: 1.6917293233vh
+  }
+  .hero__info:not(:last-child) {
+    margin-bottom: 1.8796992481vh
+  }
+  .hero__info-label:not(:last-child) {
+    margin-bottom: 1.1278195489vh
+  }
+  .hero__info-block {
+    gap: 1.8796992481vh
+  }
+  .hero__slider {
+    margin: 0 -1.8796992481vh
+  }
+  .price-block-h {
+    padding: 1.8796992481vh 3.1954887218vh;
+    border-radius: 1.5037593985vh;
+    border: .0939849624vh solid rgba(246,246,246,.15);
+    backdrop-filter: blur(.7518796992vh);
+    gap: 1.6917293233vh
+  }
+  .price-block-h--col {
+    flex-direction: column;
+    align-items: stretch
+  }
+  .price-block-h__body {
+    gap: .9398496241vh
+  }
+  .price-block-h__price {
+    font-size: 3.7593984962vh;
+    letter-spacing: -.0827067669vh
+  }
+  .price-block-h__icon {
+    width: 4.2293233083vh;
+    height: 3.477443609vh
+  }
+  .article-hero__image {
+    border-radius: 1.5037593985vh 1.5037593985vh 0 0
+  }
+  .article-hero__tag {
+    font-size: 1.3157894737vh;
+    letter-spacing: -.0289473684vh;
+    padding: .7988721805vh 1.8327067669vh;
+    border-radius: 2.537593985vh;
+    top: 1.5037593985vh;
+    left: 1.5037593985vh
+  }
+  .article-hero__body {
+    gap: .9398496241vh;
+    padding: 2.2556390977vh 1.5977443609vh 2.6315789474vh;
+    border-radius: 0 0 1.5037593985vh 1.5037593985vh;
+    border: .0939849624vh solid rgba(246,246,246,.15);
+    backdrop-filter: blur(.7518796992vh)
+  }
+  .article-hero__title {
+    font-size: 1.8796992481vh
+  }
+  .article-hero__button {
+    font-size: 1.5037593985vh;
+    padding: .9398496241vh 1.5977443609vh
+  }
+  .feedback-hero__header {
+    gap: .9398496241vh
+  }
+  .feedback-hero__header:not(:last-child) {
+    margin-bottom: .7518796992vh
+  }
+  .feedback-hero__decs {
+    font-size: 1.3157894737vh;
+    max-width: 18.7969924812vh
+  }
+  .feedback-hero__body {
+    padding: 1.8796992481vh .9398496241vh;
+    gap: 1.5037593985vh;
+    border-radius: 1.5037593985vh;
+    border: .0939849624vh solid rgba(246,246,246,.15);
+    backdrop-filter: blur(.7518796992vh)
+  }
+  .feedback-hero__quote-icon {
+    width: 2.0676691729vh;
+    height: 1.5037593985vh
+  }
+  .feedback-hero__text {
+    font-size: 1.3157894737vh;
+    gap: 1.0338345865vh
+  }
+  .feedback-hero__actions {
+    gap: 1.5037593985vh
+  }
+  .feedback-hero__likes {
+    gap: 1.1278195489vh
+  }
+  .feedback-hero__likes svg {
+    width: 2.3496240602vh;
+    height: 2.1616541353vh
+  }
+  .feedback-hero__user {
+    width: 4.5112781955vh;
+    height: 4.5112781955vh;
+    font-size: 2.2556390977vh
+  }
+  .feedback-hero__user:not(:first-child) {
+    margin-left: -3.007518797vh
+  }
   .auth__subtitle-mobile {
     display: none
   }
