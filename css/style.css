@@ -12303,9 +12303,6 @@ span.flatpickr-weekday {
   .footer__contacts {
     flex: 0 1 39.875rem
   }
-  .article-hero__title {
-    font-size: 1.25rem
-  }
   .feedback-hero__header {
     padding: 0 .625rem 0 3.4375rem
   }
@@ -14635,9 +14632,6 @@ span.flatpickr-weekday {
   .hero__footer {
     gap: 1.875rem
   }
-  .article-hero__title {
-    font-size: .9375rem
-  }
   .about-us-h {
     padding-top: 3.75rem
   }
@@ -14785,18 +14779,6 @@ span.flatpickr-weekday {
   @supports not (margin-bottom:clamp(5.25rem ,3.3229701953rem + 8.2219938335vw ,10.25rem)) {
     .article__content:not(:last-child) {
       margin-bottom: calc(5.25rem + 5*(100vw - 23.4375rem)/ 60.8125)
-    }
-  }
-}
-@media (min-width:23.4375em)and (max-width:61.99875em) {
-  @supports (font-size:clamp(0.9375rem ,0.7475627249rem + 0.8103990405vw ,1.25rem)) {
-    .article-hero__title {
-      font-size: clamp(.9375rem ,.7475627249rem + .8103990405vw ,1.25rem)
-    }
-  }
-  @supports not (font-size:clamp(0.9375rem ,0.7475627249rem + 0.8103990405vw ,1.25rem)) {
-    .article-hero__title {
-      font-size: calc(.9375rem + .3125*(100vw - 23.4375rem)/ 38.56125)
     }
   }
 }
