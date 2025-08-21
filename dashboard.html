@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250807044121">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2937,6 +2937,9 @@
 		</div>
 		<main class="page">
 			<div class="page__dashboard dashboard">
+				<div class="dashboard__bg">
+					<span></span>
+				</div>
 				<div class="dashboard__container">
 					<div class="dashboard__header">
 						<div class="dashboard__menu _icon-dashboard menu-dash">
@@ -3031,7 +3034,7 @@
 						<div class="dashboard__body">
 							<div class="dashboard__left">
 								<div class="dashboard__duo-block">
-									<div class="dashboard__progress-stats progress-stats">
+									<div data-glass class="dashboard__progress-stats progress-stats">
 										<div class="progress-stats__header">
 											<h2 class="progress-stats__title">
 												Progress statistics
@@ -3091,7 +3094,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="dashboard__inq inq-dash">
+									<div data-glass class="dashboard__inq inq-dash">
 										<div class="inq-dash__header">
 											<h2 class="inq-dash__title">
 												Inquiries
@@ -3256,14 +3259,14 @@
 											EORI Number
 										</summary>
 										<div class="eori-number__body">
-											<div class="eori-number__number">
-												CN1234567890
+											<div data-glass class="eori-number__number">
+												<span>CN1234567890</span>
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<circle cx="12" cy="12" r="9" stroke="#64DB78" />
 													<path d="M8 12L11 15L16 9" stroke="#64DB78" />
 												</svg>
 											</div>
-											<div class="eori-number__text">
+											<div data-glass class="eori-number__text">
 												<div class="eori-number__label">
 													Registration Date: March 15, 2015
 												</div>
@@ -3273,20 +3276,20 @@
 											</div>
 										</div>
 									</details>
-									<div class="dashboard__codes codes-dash">
+									<div data-glass class="dashboard__codes codes-dash">
 										<h2 class="codes-dash__title">
 											HS Codes for Commonly Shipped Goods:
 										</h2>
 										<div class="codes-dash__fields">
 											<div class="codes-dash__field field">
-												<div class="field__input">
+												<div data-glass class="field__input">
 													<input type="text" placeholder="Enter the desired product" name="product">
 													<button type="button" class="field__button _icon-mic">
 													</button>
 												</div>
 											</div>
 											<div class="codes-dash__field field">
-												<div class="field__input">
+												<div data-glass class="field__input">
 													<input type="text" placeholder="HS code product" name="code">
 													<button type="button" class="field__button _icon-copy">
 													</button>
@@ -3300,7 +3303,7 @@
 										</div>
 
 									</div>
-									<div class="dashboard__freight">
+									<div data-glass class="dashboard__freight">
 										<img src="img/home/dash.svg" alt="Image" class="ibg">
 									</div>
 								</div>
@@ -3458,7 +3461,7 @@
 										Chat
 									</button>
 								</div>
-								<div class="logitalk__item item-logitalk">
+								<div data-glass class="logitalk__item item-logitalk">
 									<div class="item-logitalk__header">
 										<div class="item-logitalk__profile profile-logitalk">
 											<img src="img/user.webp" alt="Image" class="profile-logitalk__img">
@@ -3936,7 +3939,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250807044121"></script>
+	<script src="js/app.min.js?_v=20250821184616"></script>
 </body>
 
 </html>

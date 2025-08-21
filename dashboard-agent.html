@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250807044121">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -3031,7 +3031,7 @@
 						<div class="dashboard__body">
 							<div class="dashboard__left">
 								<div class="dashboard__duo-block">
-									<div class="dashboard__progress-stats progress-stats">
+									<div data-glass class="dashboard__progress-stats progress-stats">
 										<div class="progress-stats__header">
 											<h2 class="progress-stats__title">
 												Progress statistics
@@ -3094,7 +3094,7 @@
 											</div>
 										</div>
 									</div>
-									<div data-tabs style="--color: #F79B39" class="dashboard__inq inq-dash">
+									<div data-tabs style="--color: #F79B39" data-glass class="dashboard__inq inq-dash">
 										<div class="inq-dash__header">
 											<div data-tabs-titles class="inq-dash__types">
 												<button data-tabs-title class="inq-dash__type  _tab-active">Inquiries</button>
@@ -3341,7 +3341,7 @@
 												<ul class="splide__list">
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3366,7 +3366,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3390,7 +3390,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3415,7 +3415,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3439,7 +3439,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3464,7 +3464,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div class="item-holidays__wrapper">
+															<div data-glass class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3498,7 +3498,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="dashboard__freight">
+									<div data-glass class="dashboard__freight">
 										<img src="img/home/dash.svg" alt="Image" class="ibg">
 									</div>
 								</div>
@@ -3656,7 +3656,7 @@
 										Chat
 									</button>
 								</div>
-								<div class="logitalk__item item-logitalk">
+								<div data-glass class="logitalk__item item-logitalk">
 									<div class="item-logitalk__header">
 										<div class="item-logitalk__profile profile-logitalk">
 											<img src="img/user.webp" alt="Image" class="profile-logitalk__img">
@@ -4048,97 +4048,6 @@
 							</div>
 						</div>
 					</div>
-					<div style="--color: #64DB78" class="dashboard__inq inq-dash">
-						<div class="inq-dash__header">
-							<div class="inq-dash__types">
-								<label class="inq-dash__type">Inquiries <input name="type" checked type="radio"></label>
-								<label class="inq-dash__type">Finished <input name="type" type="radio"></label>
-								<label class="inq-dash__type">Archive <input name="type" type="radio"></label>
-							</div>
-							<a href="#" class="inq-dash__more">View more</a>
-						</div>
-						<div class="inq-dash__info">
-							<div class="inq-dash__info-body">
-								<select disabled data-class-modif="dash">
-									<option value="1" selected>ID number: 0001</option>
-								</select>
-							</div>
-							<div class="inq-dash__time">
-								18 : 23 : 10
-							</div>
-						</div>
-						<div class="inq-dash__empty">
-							<img src="img/dashboard/empty.svg" alt="Image">
-							<span>Offers from partners will be displayed here after you make a BidDeliv</span>
-						</div>
-					</div>
-					<div style="--color: #D50000" class="dashboard__inq inq-dash">
-						<div class="inq-dash__header">
-							<div class="inq-dash__types">
-								<label class="inq-dash__type">Inquiries <input name="type" checked type="radio"></label>
-								<label class="inq-dash__type">Finished <input name="type" type="radio"></label>
-								<label class="inq-dash__type">Archive <input name="type" type="radio"></label>
-							</div>
-							<a href="#" class="inq-dash__more">View more</a>
-						</div>
-						<div class="inq-dash__info">
-							<div class="inq-dash__info-body">
-								<!--Якщо елементів нема то треба додати такий option з порожнім value, якщо елемент один то додати value і disabled-->
-								<select disabled data-class-modif="dash">
-									<option value="" selected>You do not have any inactive applications yet</option>
-								</select>
-							</div>
-						</div>
-						<div class="inq-dash__empty">
-							<img src="img/dashboard/empty.svg" alt="Image">
-							<span>Offers from partners will be displayed here after you make a BidDeliv</span>
-						</div>
-					</div>
-					<div style="--color: #D50000" class="dashboard__inq inq-dash">
-						<div class="inq-dash__header">
-							<div class="inq-dash__types">
-								<label class="inq-dash__type">Inquiries <input name="type" checked type="radio"></label>
-								<label class="inq-dash__type">Finished <input name="type" type="radio"></label>
-								<label class="inq-dash__type">Archive <input name="type" type="radio"></label>
-							</div>
-							<a href="#" class="inq-dash__more">View more</a>
-						</div>
-						<div class="inq-dash__info">
-							<div class="inq-dash__info-body">
-								<!--Якщо елементів нема то треба додати такий option з порожнім value, якщо елемент один то додати value і disabled-->
-								<select disabled data-class-modif="dash">
-									<option value="1" selected>ID number: 0001</option>
-								</select>
-							</div>
-							<div class="inq-dash__color-label">
-								90 days until automatic deletion
-							</div>
-						</div>
-						<div class="inq-dash__archive footer-inq">
-							<div class="footer-inq__body">
-								<div class="footer-inq__block">
-									<p class="footer-inq__text">
-										You can repeat the request, but it will already be calculated at current prices
-									</p>
-									<button class="footer-inq__button button button--gradient">
-										<svg class="sprite">
-											<use xlink:href="img/icons.svg#refresh"></use>
-										</svg>
-										Repeat
-
-									</button>
-								</div>
-								<div class="footer-inq__block">
-									<p class="footer-inq__text">
-										Email us why you didn't choose the best offer, we want to make the service better.
-									</p>
-									<button class="footer-inq__button  button button--gray">
-										Review
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</main>
@@ -4225,7 +4134,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250807044121"></script>
+	<script src="js/app.min.js?_v=20250821184616"></script>
 </body>
 
 </html>

@@ -5,11 +5,13 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250807044121">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 </head>
+<style>
+</style>
 
 <body>
 	<div class="wrapper">
@@ -115,7 +117,7 @@
 						</div>
 						<div class="hero__content hero__content--pc">
 							<div class="hero__left">
-								<div class="hero__price-block price-block-h">
+								<div data-glass class="hero__price-block price-block-h">
 									<div class="price-block-h__label">
 										Ocean freight <br>
 										average price today:
@@ -126,7 +128,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="hero__dashboard">
+								<div data-glass class="hero__dashboard">
 									<img src="img/home/dash.svg" alt="Image" class="ibg">
 								</div>
 							</div>
@@ -137,7 +139,7 @@
 										ShipNews
 									</div>
 								</div>
-								<div class="article-hero__body">
+								<div data-glass class="article-hero__body">
 									<h3 class="article-hero__title">
 										Challenges <br>
 										for Trade and Logistics
@@ -145,8 +147,11 @@
 									<a href="#" class="article-hero__button button">Read now</a>
 								</div>
 							</div>
+							<div style="position: fixed; top: 300px; left: 300px; z-index: 100" id="glassOverlay">
+
+							</div>
 							<div class="hero__right">
-								<div class="hero__feedback feedback-hero">
+								<div class="hero__feedback feedback-hero ">
 									<div class="feedback-hero__header">
 										<div class="feedback-hero__name">
 											LogiTalk
@@ -155,7 +160,7 @@
 											Trend: <br> «US-China Trade Tensions Impacting Global Logistics»
 										</div>
 									</div>
-									<div class="feedback-hero__body">
+									<div data-glass class="feedback-hero__body">
 										<div class="feedback-hero__text">
 											<div class="feedback-hero__quote-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
@@ -190,7 +195,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="hero__price-block price-block-h price-block-h--col">
+								<div data-glass class="hero__price-block price-block-h price-block-h--col">
 									<div class="price-block-h__label">
 										Air freight average <br> price today:
 									</div>
@@ -248,7 +253,7 @@
 														ShipNews
 													</div>
 												</div>
-												<div class="article-hero__body">
+												<div data-glass class="article-hero__body">
 													<h3 class="article-hero__title">
 														Challenges
 														for Trade and Logistics
@@ -258,14 +263,14 @@
 											</div>
 										</li>
 										<li class="splide__slide">
-											<div class="hero__dashboard">
+											<div data-glass class="hero__dashboard">
 												<img src="img/home/dash.svg" alt="Image" class="ibg">
 											</div>
 										</li>
 										<li class="splide__slide">
 											<div class="hero__feedback feedback-hero">
 
-												<div class="feedback-hero__body">
+												<div data-glass class="feedback-hero__body">
 													<div class="feedback-hero__header">
 														<div class="feedback-hero__quote-icon">
 															<svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
@@ -484,7 +489,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250807044121"></script>
+	<script src="js/app.min.js?_v=20250821184616"></script>
 </body>
 
 </html>

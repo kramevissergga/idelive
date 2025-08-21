@@ -765,6 +765,178 @@
                 trackingLine.style.setProperty("--accent-width", `${accentDistance}px`);
             }
         }
+        function getDisplacementMap({height, width, radius, depth}) {
+            const yStart = Math.ceil(radius / height * 15);
+            const yEnd = Math.floor(100 - radius / height * 15);
+            const xStart = Math.ceil(radius / width * 15);
+            const xEnd = Math.floor(100 - radius / width * 15);
+            const svgContent = `\n                <svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">\n                    <style>.mix { mix-blend-mode: screen; }</style>\n                    <defs>\n                        <linearGradient id="Y" x1="0" x2="0" y1="${yStart}%" y2="${yEnd}%">\n                            <stop offset="0%" stop-color="#0F0" />\n                            <stop offset="100%" stop-color="#000" />\n                        </linearGradient>\n                        <linearGradient id="X" x1="${xStart}%" x2="${xEnd}%" y1="0" y2="0">\n                            <stop offset="0%" stop-color="#F00" />\n                            <stop offset="100%" stop-color="#000" />\n                        </linearGradient>\n                    </defs>\n                    <rect x="0" y="0" height="${height}" width="${width}" fill="#808080" />\n                    <g filter="blur(2px)">\n                        <rect x="0" y="0" height="${height}" width="${width}" fill="#000080" />\n                        <rect x="0" y="0" height="${height}" width="${width}" fill="url(#Y)" class="mix" />\n                        <rect x="0" y="0" height="${height}" width="${width}" fill="url(#X)" class="mix" />\n                        <rect x="${depth}" y="${depth}" height="${height - 2 * depth}" width="${width - 2 * depth}" \n                              fill="#808080" rx="${radius}" ry="${radius}" filter="blur(${depth}px)" />\n                    </g>\n                </svg>`;
+            return "data:image/svg+xml;utf8," + encodeURIComponent(svgContent);
+        }
+        function getDisplacementFilter({height, width, radius, depth, strength = 100, chromaticAberration = 0}) {
+            const displacementMap = getDisplacementMap({
+                height,
+                width,
+                radius,
+                depth
+            });
+            const svgContent = `\n                <svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">\n                    <defs>\n                        <filter id="displace" color-interpolation-filters="sRGB">\n                            <feImage x="0" y="0" height="${height}" width="${width}" \n                                     href="${displacementMap}" result="displacementMap" />\n                            <feDisplacementMap transform-origin="center" in="SourceGraphic" in2="displacementMap"\n                                               scale="${strength + chromaticAberration * 2}" \n                                               xChannelSelector="R" yChannelSelector="G" />\n                            <feColorMatrix type="matrix" \n                                           values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" \n                                           result="displacedR" />\n                            <feDisplacementMap in="SourceGraphic" in2="displacementMap"\n                                               scale="${strength + chromaticAberration}" \n                                               xChannelSelector="R" yChannelSelector="G" />\n                            <feColorMatrix type="matrix" \n                                           values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" \n                                           result="displacedG" />\n                            <feDisplacementMap in="SourceGraphic" in2="displacementMap"\n                                               scale="${strength}" \n                                               xChannelSelector="R" yChannelSelector="G" />\n                            <feColorMatrix type="matrix" \n                                           values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" \n                                           result="displacedB" />\n                            <feBlend in="displacedR" in2="displacedG" mode="screen"/>\n                            <feBlend in2="displacedB" mode="screen"/>\n                        </filter>\n                    </defs>\n                </svg>`;
+            return "data:image/svg+xml;utf8," + encodeURIComponent(svgContent) + "#displace";
+        }
+        class GlassElement {
+            constructor(options) {
+                this.options = options;
+                this.element = null;
+                this.clicked = false;
+                this.init();
+            }
+            init() {
+                this.element = document.createElement("div");
+                this.element.className = "glass-element";
+                this.applyStyles();
+                if (this.options.children) {
+                    const content = document.createElement("div");
+                    content.className = "content";
+                    content.textContent = this.options.children;
+                    this.element.appendChild(content);
+                }
+            }
+            applyStyles() {
+                const {height, width, radius, depth: baseDepth, strength, chromaticAberration, blur = 0, debug = false} = this.options;
+                let depth = baseDepth / (this.clicked ? .7 : 1);
+                this.element.style.height = `${height}px`;
+                this.element.style.width = `${width}px`;
+                this.element.style.borderRadius = `${radius}px`;
+                if (debug) {
+                    this.element.style.background = `url("${getDisplacementMap({
+                        height,
+                        width,
+                        radius,
+                        depth
+                    })}")`;
+                    this.element.style.boxShadow = "none";
+                } else this.element.style.backdropFilter = `blur(${blur / 2}px) url('${getDisplacementFilter({
+                    height,
+                    width,
+                    radius,
+                    depth,
+                    strength,
+                    chromaticAberration
+                })}') blur(${blur}px) brightness(1.1) saturate(1.5)`;
+            }
+            getElement() {
+                return this.element;
+            }
+            updateOptions(newOptions) {
+                this.options = {
+                    ...this.options,
+                    ...newOptions
+                };
+                this.applyStyles();
+            }
+            update(params) {
+                if (params.width !== void 0) this.options.width = params.width;
+                if (params.height !== void 0) this.options.height = params.height;
+                if (params.radius !== void 0) this.options.radius = params.radius;
+                this.applyStyles();
+            }
+            updateAllOptions(newOptions) {
+                this.options = {
+                    ...this.options,
+                    ...newOptions
+                };
+                this.applyStyles();
+            }
+            destroy() {
+                if (this.element && this.element.parentNode) this.element.parentNode.removeChild(this.element);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", (() => {
+            const glassParents = document.querySelectorAll("[data-glass]");
+            const glassElements = new Map;
+            let resizeObserver;
+            function initOrUpdateGlassElements() {
+                glassParents.forEach((glassItem => {
+                    const {width, height} = glassItem.getBoundingClientRect();
+                    const radius = getComputedStyle(glassItem).borderRadius;
+                    if (glassElements.has(glassItem)) glassElements.get(glassItem).update({
+                        width,
+                        height,
+                        radius
+                    }); else {
+                        const glassElement = new GlassElement({
+                            width,
+                            height,
+                            radius,
+                            depth: 10,
+                            blur: 1.5,
+                            chromaticAberration: 5
+                        });
+                        glassElement.getElement().style.borderRadius = radius;
+                        glassItem.appendChild(glassElement.getElement());
+                        glassElements.set(glassItem, glassElement);
+                    }
+                }));
+            }
+            function setupResizeObserver() {
+                if (resizeObserver) resizeObserver.disconnect();
+                resizeObserver = new ResizeObserver(debounce((entries => {
+                    entries.forEach((entry => {
+                        const glassItem = entry.target;
+                        if (glassElements.has(glassItem)) {
+                            const {width, height} = glassItem.getBoundingClientRect();
+                            const radius = getComputedStyle(glassItem).borderRadius;
+                            glassElements.get(glassItem).update({
+                                width,
+                                height,
+                                radius
+                            });
+                        }
+                    }));
+                }), 100));
+                glassParents.forEach((glassItem => {
+                    resizeObserver.observe(glassItem);
+                }));
+            }
+            initOrUpdateGlassElements();
+            setupResizeObserver();
+            window.addEventListener("resize", debounce((() => {
+                glassElements.forEach(((glassElement, glassItem) => {
+                    const {width, height} = glassItem.getBoundingClientRect();
+                    const radius = getComputedStyle(glassItem).borderRadius;
+                    glassElement.update({
+                        width,
+                        height,
+                        radius
+                    });
+                }));
+            }), 250));
+            window.addEventListener("orientationchange", debounce((() => {
+                glassElements.forEach(((glassElement, glassItem) => {
+                    const {width, height} = glassItem.getBoundingClientRect();
+                    const radius = getComputedStyle(glassItem).borderRadius;
+                    glassElement.update({
+                        width,
+                        height,
+                        radius
+                    });
+                }));
+            }), 250));
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+            window.addEventListener("beforeunload", (() => {
+                if (resizeObserver) resizeObserver.disconnect();
+            }));
+        }));
         class Popup {
             constructor(options) {
                 let config = {
@@ -11484,6 +11656,68 @@ PERFORMANCE OF THIS SOFTWARE.
             };
             themeSwitch.addEventListener("change", updateTheme);
             updateTheme();
+        }));
+        document.addEventListener("DOMContentLoaded", (function() {
+            const containers = document.querySelectorAll("[data-scroll-an]");
+            if (!containers.length) return;
+            containers.forEach((container => {
+                const decor = container.querySelector(".scroll-decor");
+                const targets = container.querySelectorAll("[data-scroll-item]");
+                if (!decor || !targets.length) return;
+                let currentActiveElement = null;
+                function updateDecorPosition() {
+                    let activeElement = null;
+                    let maxVisibility = -1;
+                    targets.forEach((target => {
+                        const rect = target.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+                        const elementHeight = rect.height;
+                        const visibilityRatio = visibleHeight / elementHeight;
+                        if (visibleHeight > 0) if (visibilityRatio > maxVisibility || visibilityRatio === maxVisibility && rect.top < (activeElement ? activeElement.getBoundingClientRect().top : 1 / 0)) {
+                            activeElement = target;
+                            maxVisibility = visibilityRatio;
+                        }
+                    }));
+                    if (activeElement) {
+                        const rect = activeElement.getBoundingClientRect();
+                        const containerRect = container.getBoundingClientRect();
+                        if (currentActiveElement !== activeElement) {
+                            decor.style.opacity = "0";
+                            setTimeout((() => {
+                                decor.style.top = `${rect.top - containerRect.top + container.scrollTop}px`;
+                                decor.style.height = `${rect.height}px`;
+                                decor.style.width = `${rect.width}px`;
+                                decor.style.left = `${rect.left - containerRect.left}px`;
+                                decor.style.opacity = "1";
+                            }), 50);
+                            currentActiveElement = activeElement;
+                        } else {
+                            decor.style.top = `${rect.top - containerRect.top + container.scrollTop}px`;
+                            decor.style.height = `${rect.height}px`;
+                            decor.style.width = `${rect.width}px`;
+                            decor.style.left = `${rect.left - containerRect.left}px`;
+                        }
+                        decor.style.transition = "top 0.5s ease";
+                    } else {
+                        decor.style.opacity = "0";
+                        currentActiveElement = null;
+                    }
+                }
+                let isScrolling = false;
+                function throttleScroll() {
+                    if (!isScrolling) {
+                        isScrolling = true;
+                        requestAnimationFrame((() => {
+                            updateDecorPosition();
+                            isScrolling = false;
+                        }));
+                    }
+                }
+                updateDecorPosition();
+                window.addEventListener("scroll", throttleScroll);
+                window.addEventListener("resize", throttleScroll);
+            }));
         }));
         window["FLS"] = false;
         spoilers();
