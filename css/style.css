@@ -3698,6 +3698,9 @@ body::after {
   text-decoration-color: inherit;
   transition: text-decoration-color .3s
 }
+:root {
+  --header-height: 97px
+}
 .header {
   padding: 1.5625rem 0;
   position: absolute;
@@ -9824,7 +9827,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: .25rem;
-  color: #fff;
+  color: #070707;
   font-size: .875rem;
   line-height: 1.2;
   transition: all .3s
@@ -9867,7 +9870,7 @@ body::after {
   color: #998ee0
 }
 .preview-blog__date {
-  color: #fff;
+  color: #070707;
   font-family: Manrope,sans-serif;
   font-size: .875rem;
   line-height: 1.1;
@@ -12862,8 +12865,14 @@ span.flatpickr-weekday {
   }
 }
 @media (max-width:68.74875em) {
+  :root {
+    --header-height: 96px
+  }
   .header__menu {
     justify-content: start
+  }
+  .header__container .header__menu {
+    display: none!important
   }
   .header__menu ul {
     flex-direction: column;
@@ -12871,6 +12880,9 @@ span.flatpickr-weekday {
   }
   .header__menu ul li {
     font-size: 1.25rem
+  }
+  .header__actions .header__lang {
+    display: none!important
   }
   .profile>* {
     grid-column: 1/-1
@@ -13501,6 +13513,9 @@ span.flatpickr-weekday {
   }
   .article-popup {
     gap: .75rem
+  }
+  :root {
+    --header-height: 74px
   }
   .header {
     padding: .875rem 0
