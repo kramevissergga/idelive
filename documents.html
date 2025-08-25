@@ -5,16 +5,17 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250825144539">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
 </head>
 
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<div class="header__container">
+			<div data-center-parent class="header__container">
 				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
 				<div class="header__logo">
 					<svg xmlns="http://www.w3.org/2000/svg" width="147" height="23" viewBox="0 0 147 23" fill="none">
@@ -37,7 +38,7 @@
 					</svg>
 				</div>
 				<nav data-da=".mobile-menu__block--menu, 1099.98, last" class="header__menu">
-					<ul>
+					<ul data-center-el>
 						<li>
 							<a href="#">
 								DataFreight
@@ -664,7 +665,26 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250821184616"></script>
+	<script>
+		function updateHeaderHeights() {
+			const headerEl = document.querySelector("header.header");
+			if (headerEl) {
+				document.documentElement.style.setProperty(
+					"--header-height",
+					`${headerEl.offsetHeight}px`
+				);
+			}
+		}
+		const resizeObserver = new ResizeObserver(updateHeaderHeights);
+		const headerEl = document.querySelector("header.header");
+
+		if (headerEl) {
+			resizeObserver.observe(headerEl);
+		}
+
+		updateHeaderHeights();
+	</script>
+	<script src="js/app.min.js?_v=20250825144539"></script>
 </body>
 
 </html>

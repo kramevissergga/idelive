@@ -5,10 +5,11 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250825144539">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
 </head>
 <style>
 </style>
@@ -16,7 +17,7 @@
 <body>
 	<div class="wrapper">
 		<header class="header header--unauth">
-			<div class="header__container">
+			<div data-center-parent class="header__container">
 
 				<div class="header__logo">
 					<svg xmlns="http://www.w3.org/2000/svg" width="147" height="23" viewBox="0 0 147 23" fill="none">
@@ -40,7 +41,7 @@
 				</div>
 				<span class="separator"></span>
 				<nav data-da=".mobile-menu__block--menu, 1099.98, last" class="header__menu">
-					<ul>
+					<ul data-center-el>
 						<li>
 							<a href="#">
 								DataFreight
@@ -117,7 +118,7 @@
 						</div>
 						<div class="hero__content hero__content--pc">
 							<div class="hero__left">
-								<div data-glass class="hero__price-block price-block-h">
+								<div class="hero__price-block price-block-h">
 									<div class="price-block-h__label">
 										Ocean freight <br>
 										average price today:
@@ -128,7 +129,7 @@
 										</div>
 									</div>
 								</div>
-								<div data-glass class="hero__dashboard">
+								<div class="hero__dashboard">
 									<img src="img/home/dash.svg" alt="Image" class="ibg">
 								</div>
 							</div>
@@ -139,7 +140,7 @@
 										ShipNews
 									</div>
 								</div>
-								<div data-glass class="article-hero__body">
+								<div class="article-hero__body">
 									<h3 class="article-hero__title">
 										Challenges <br>
 										for Trade and Logistics
@@ -160,7 +161,7 @@
 											Trend: <br> «US-China Trade Tensions Impacting Global Logistics»
 										</div>
 									</div>
-									<div data-glass class="feedback-hero__body">
+									<div class="feedback-hero__body">
 										<div class="feedback-hero__text">
 											<div class="feedback-hero__quote-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
@@ -195,7 +196,7 @@
 										</div>
 									</div>
 								</div>
-								<div data-glass class="hero__price-block price-block-h price-block-h--col">
+								<div class="hero__price-block price-block-h price-block-h--col">
 									<div class="price-block-h__label">
 										Air freight average <br> price today:
 									</div>
@@ -253,7 +254,7 @@
 														ShipNews
 													</div>
 												</div>
-												<div data-glass class="article-hero__body">
+												<div class="article-hero__body">
 													<h3 class="article-hero__title">
 														Challenges
 														for Trade and Logistics
@@ -263,14 +264,14 @@
 											</div>
 										</li>
 										<li class="splide__slide">
-											<div data-glass class="hero__dashboard">
+											<div class="hero__dashboard">
 												<img src="img/home/dash.svg" alt="Image" class="ibg">
 											</div>
 										</li>
 										<li class="splide__slide">
 											<div class="hero__feedback feedback-hero">
 
-												<div data-glass class="feedback-hero__body">
+												<div class="feedback-hero__body">
 													<div class="feedback-hero__header">
 														<div class="feedback-hero__quote-icon">
 															<svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
@@ -489,7 +490,26 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250821184616"></script>
+	<script>
+		function updateHeaderHeights() {
+			const headerEl = document.querySelector("header.header");
+			if (headerEl) {
+				document.documentElement.style.setProperty(
+					"--header-height",
+					`${headerEl.offsetHeight}px`
+				);
+			}
+		}
+		const resizeObserver = new ResizeObserver(updateHeaderHeights);
+		const headerEl = document.querySelector("header.header");
+
+		if (headerEl) {
+			resizeObserver.observe(headerEl);
+		}
+
+		updateHeaderHeights();
+	</script>
+	<script src="js/app.min.js?_v=20250825144539"></script>
 </body>
 
 </html>

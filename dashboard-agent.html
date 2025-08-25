@@ -5,16 +5,17 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250821184616">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250825144539">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
 </head>
 
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<div class="header__container">
+			<div data-center-parent class="header__container">
 				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
 				<div class="header__logo">
 					<svg xmlns="http://www.w3.org/2000/svg" width="147" height="23" viewBox="0 0 147 23" fill="none">
@@ -37,7 +38,7 @@
 					</svg>
 				</div>
 				<nav data-da=".mobile-menu__block--menu, 1099.98, last" class="header__menu">
-					<ul>
+					<ul data-center-el>
 						<li>
 							<a href="#">
 								DataFreight
@@ -3031,7 +3032,7 @@
 						<div class="dashboard__body">
 							<div class="dashboard__left">
 								<div class="dashboard__duo-block">
-									<div data-glass class="dashboard__progress-stats progress-stats">
+									<div class="dashboard__progress-stats progress-stats">
 										<div class="progress-stats__header">
 											<h2 class="progress-stats__title">
 												Progress statistics
@@ -3094,7 +3095,7 @@
 											</div>
 										</div>
 									</div>
-									<div data-tabs style="--color: #F79B39" data-glass class="dashboard__inq inq-dash">
+									<div data-tabs style="--color: #F79B39" class="dashboard__inq inq-dash">
 										<div class="inq-dash__header">
 											<div data-tabs-titles class="inq-dash__types">
 												<button data-tabs-title class="inq-dash__type  _tab-active">Inquiries</button>
@@ -3341,7 +3342,7 @@
 												<ul class="splide__list">
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3366,7 +3367,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3390,7 +3391,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3415,7 +3416,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3439,7 +3440,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3464,7 +3465,7 @@
 													</li>
 													<li class="splide__slide">
 														<div class="item-holidays">
-															<div data-glass class="item-holidays__wrapper">
+															<div class="item-holidays__wrapper">
 																<div class="item-holidays__header">
 																	<div class="item-holidays__tags">
 																		<div class="item-holidays__tag">
@@ -3498,7 +3499,7 @@
 											</div>
 										</div>
 									</div>
-									<div data-glass class="dashboard__freight">
+									<div class="dashboard__freight">
 										<img src="img/home/dash.svg" alt="Image" class="ibg">
 									</div>
 								</div>
@@ -3656,7 +3657,7 @@
 										Chat
 									</button>
 								</div>
-								<div data-glass class="logitalk__item item-logitalk">
+								<div class="logitalk__item item-logitalk">
 									<div class="item-logitalk__header">
 										<div class="item-logitalk__profile profile-logitalk">
 											<img src="img/user.webp" alt="Image" class="profile-logitalk__img">
@@ -4134,7 +4135,26 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250821184616"></script>
+	<script>
+		function updateHeaderHeights() {
+			const headerEl = document.querySelector("header.header");
+			if (headerEl) {
+				document.documentElement.style.setProperty(
+					"--header-height",
+					`${headerEl.offsetHeight}px`
+				);
+			}
+		}
+		const resizeObserver = new ResizeObserver(updateHeaderHeights);
+		const headerEl = document.querySelector("header.header");
+
+		if (headerEl) {
+			resizeObserver.observe(headerEl);
+		}
+
+		updateHeaderHeights();
+	</script>
+	<script src="js/app.min.js?_v=20250825144539"></script>
 </body>
 
 </html>

@@ -3605,8 +3605,7 @@ body::after {
 }
 .header__menu {
   flex-grow: 1;
-  display: flex;
-  justify-content: center
+  display: flex
 }
 .header__menu ul {
   display: flex;
@@ -3614,7 +3613,7 @@ body::after {
   gap: 1.5rem;
   --gr-color-1: #fff;
   --gr-color-2: rgba(246, 246, 246, 0.15);
-  transition: all .3s
+  transition: --gr-color-1 .3s,--gr-color-2 .3s
 }
 .--dark .header__menu ul {
   --gr-color-1: #d7d1ff;
@@ -12469,6 +12468,7 @@ span.flatpickr-weekday {
   .header__menu ul {
     padding: .75rem 1.375rem;
     border-radius: 1.5rem;
+    margin-left: var(--offset);
     background: linear-gradient(208deg,var(--gr-color-1) 5.99%,var(--gr-color-2) 178.59%)
   }
   .profile__wrapper {
