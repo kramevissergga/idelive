@@ -11182,32 +11182,6 @@ PERFORMANCE OF THIS SOFTWARE.
         };
         if (typeof window !== "undefined") window.flatpickr = flatpickr;
         const esm = flatpickr;
-        function centerEls() {
-            const centerParents = document.querySelectorAll("[data-center-parent]");
-            centerParents.forEach((centerParent => {
-                const el = centerParent.querySelector("[data-center-el]");
-                if (!el) return;
-                el.style = "";
-                const containerCenter = centerParent.offsetWidth / 2;
-                const elRect = el.getBoundingClientRect();
-                const containerRect = centerParent.getBoundingClientRect();
-                const elLeft = elRect.left - containerRect.left;
-                const elWidth = el.offsetWidth;
-                const elCenter = elLeft + elWidth / 2;
-                const offset = containerCenter - elCenter;
-                el.style = offset > 0 ? `--offset: ${offset}px` : "";
-            }));
-        }
-        const resizeObserver = new ResizeObserver(centerEls);
-        document.addEventListener("DOMContentLoaded", (() => {
-            const centerParents = document.querySelectorAll("[data-center-parent]");
-            centerParents.forEach((centerParent => {
-                resizeObserver.observe(centerParent);
-                const centerEl = centerParent.querySelector("[data-center-el]");
-                if (centerEl) resizeObserver.observe(centerEl);
-            }));
-            centerEls();
-        }));
         document.querySelectorAll(".bid-inq:not([data-open])")?.forEach((item => {
             _slideUp(item, 0);
         }));
