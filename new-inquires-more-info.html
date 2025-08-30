@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250828133828">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250830032515">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2750,6 +2750,100 @@
 				</div>
 			</div>
 		</div>
+		<div id="popup-supplier" aria-hidden="true" class="popup popup--supplier">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div class="supplier-popup">
+						<button data-close class="supplier-popup__close close-circle _icon-cross"></button>
+						<h3 class="supplier-popup__title">
+							Please, fill the below information:
+						</h3>
+						<form data-inputs-wrapper action="#" class="supplier-popup__body">
+							<div class="supplier-popup__content">
+								<div data-inputs class="supplier-popup__block">
+									<div class="supplier-popup__field field">
+										<div class="field__label">
+											Contact name:
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter manager/supplier name">
+										</div>
+									</div>
+									<div class="supplier-popup__field field">
+										<div class="field__label">
+											Email:
+										</div>
+										<div class="field__input">
+											<input type="email" placeholder="Enter e-mail address">
+										</div>
+									</div>
+									<div class="supplier-popup__field field">
+										<div class="field__label">
+											Phone number:
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="+86 21 1234 5678">
+										</div>
+									</div>
+									<div class="supplier-popup__field supplier-popup__field--dual field">
+										<div class="field__label">
+											Pick-up address: 
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="No. 88, Huaihai Road, Shanghai, 200000, China">
+										</div>
+									</div>
+									<div class="supplier-popup__field field">
+										<div class="field__label">
+											WeChat QR code:
+										</div>
+										<div class="field__input">
+											<label class="file-input _icon-pin">
+												<span class="ellipsis">Upload document or enter code</span>
+												<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="supplier-popup__footer">
+								<button data-add-inputs type="button" class="supplier-popup__add add-btn _icon-plus">
+									Add a supplier
+								</button>
+								<button class="supplier-popup__button button">
+									Accept
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="supplier-success" aria-hidden="true" class="popup popup--supplier">
+			<div class="popup__wrapper">
+				<div class="popup__content">
+					<div class="supplier-success">
+						<button data-close class="supplier-success__close close-circle _icon-cross"></button>
+						<div class="supplier-success__body">
+							<div class="supplier-success__label">
+								<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+									<circle cx="23" cy="23" r="22" stroke="#2A2E4A" stroke-width="2" />
+									<path d="M15.8125 23.7547L20.3141 28.0313L30.9063 17.9688" stroke="#2A2E4A" stroke-width="2" stroke-linecap="round" />
+								</svg>
+								Thank you!
+							</div>
+							<p class="supplier-success__text">
+								All information has been passed to the carrier, you will now
+								be able to track the shipment under the Active Delivery tab
+							</p>
+							<a href="#" class="supplier-success__button button">
+								Active Delivery
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<header class="header">
 			<div data-center-parent class="header__container">
 				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
@@ -4077,7 +4171,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250828133828"></script>
+	<script src="js/app.min.js?_v=20250830032515"></script>
 </body>
 
 </html>
