@@ -13084,6 +13084,9 @@ span.flatpickr-weekday {
     box-shadow: 0 .125rem .375rem 0 rgba(42,46,74,.25);
     text-decoration: none
   }
+  .inquires__table {
+    font-size: .875rem
+  }
   .filter-inq__body {
     position: fixed;
     top: var(--header-height);
