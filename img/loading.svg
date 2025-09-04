@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+																		id="eluHbrR6ma21" viewBox="0 0 40 40" project-id="25a1e2b23cab44cdacd451e71efdd023"
+																		export-id="4e54025fdf934fd4a482e46ca60bcf0c" cached="false">
+																		<defs>
+																			<filter id="eluHbrR6ma24-filter" x="-150%" y="-150%" width="400%" height="400%">
+																				<feGaussianBlur id="eluHbrR6ma24-filter-drop-shadow-0-blur" in="SourceAlpha"
+																					stdDeviation="2,2" />
+																				<feOffset id="eluHbrR6ma24-filter-drop-shadow-0-offset" dx="0" dy="0"
+																					result="tmp" />
+																				<feFlood id="eluHbrR6ma24-filter-drop-shadow-0-flood" flood-color="#61c9d8" />
+																				<feComposite id="eluHbrR6ma24-filter-drop-shadow-0-composite" operator="in"
+																					in2="tmp" />
+																				<feMerge id="eluHbrR6ma24-filter-drop-shadow-0-merge" result="result">
+																					<feMergeNode id="eluHbrR6ma24-filter-drop-shadow-0-merge-node-1" />
+																					<feMergeNode id="eluHbrR6ma24-filter-drop-shadow-0-merge-node-2"
+																						in="SourceGraphic" />
+																				</feMerge>
+																			</filter>
+																			<linearGradient id="eluHbrR6ma25-fill" x1="11" y1="4.5" x2="24.5" y2="16.5"
+																				spreadMethod="pad" gradientUnits="userSpaceOnUse"
+																				gradientTransform="translate(0 0)">
+																				<stop id="eluHbrR6ma25-fill-0" offset="0%" stop-color="#64c9db" />
+																				<stop id="eluHbrR6ma25-fill-1" offset="48.2988%" stop-color="#46baaf" />
+																				<stop id="eluHbrR6ma25-fill-2" offset="100%" stop-color="#08dd9d" />
+																			</linearGradient>
+																			<filter id="eluHbrR6ma26-filter" x="-150%" y="-150%" width="400%" height="400%">
+																				<feGaussianBlur id="eluHbrR6ma26-filter-drop-shadow-0-blur" in="SourceAlpha"
+																					stdDeviation="1.5,1.5" />
+																				<feOffset id="eluHbrR6ma26-filter-drop-shadow-0-offset" dx="0" dy="0"
+																					result="tmp" />
+																				<feFlood id="eluHbrR6ma26-filter-drop-shadow-0-flood" flood-color="#10daa0" />
+																				<feComposite id="eluHbrR6ma26-filter-drop-shadow-0-composite" operator="in"
+																					in2="tmp" />
+																				<feMerge id="eluHbrR6ma26-filter-drop-shadow-0-merge" result="result">
+																					<feMergeNode id="eluHbrR6ma26-filter-drop-shadow-0-merge-node-1" />
+																					<feMergeNode id="eluHbrR6ma26-filter-drop-shadow-0-merge-node-2"
+																						in="SourceGraphic" />
+																				</feMerge>
+																			</filter>
+																			<filter id="eluHbrR6ma28-filter" x="-150%" y="-150%" width="400%" height="400%">
+																				<feGaussianBlur id="eluHbrR6ma28-filter-drop-shadow-0-blur" in="SourceAlpha"
+																					stdDeviation="1.5,1.5" />
+																				<feOffset id="eluHbrR6ma28-filter-drop-shadow-0-offset" dx="0" dy="0"
+																					result="tmp" />
+																				<feFlood id="eluHbrR6ma28-filter-drop-shadow-0-flood" flood-color="#63c9da" />
+																				<feComposite id="eluHbrR6ma28-filter-drop-shadow-0-composite" operator="in"
+																					in2="tmp" />
+																				<feMerge id="eluHbrR6ma28-filter-drop-shadow-0-merge" result="result">
+																					<feMergeNode id="eluHbrR6ma28-filter-drop-shadow-0-merge-node-1" />
+																					<feMergeNode id="eluHbrR6ma28-filter-drop-shadow-0-merge-node-2"
+																						in="SourceGraphic" />
+																				</feMerge>
+																			</filter>
+																			<filter id="eluHbrR6ma210-filter" x="-150%" y="-150%" width="400%" height="400%">
+																				<feGaussianBlur id="eluHbrR6ma210-filter-drop-shadow-0-blur" in="SourceAlpha"
+																					stdDeviation="1.5,1.5" />
+																				<feOffset id="eluHbrR6ma210-filter-drop-shadow-0-offset" dx="0" dy="0"
+																					result="tmp" />
+																				<feFlood id="eluHbrR6ma210-filter-drop-shadow-0-flood" flood-color="#53c1c2" />
+																				<feComposite id="eluHbrR6ma210-filter-drop-shadow-0-composite" operator="in"
+																					in2="tmp" />
+																				<feMerge id="eluHbrR6ma210-filter-drop-shadow-0-merge" result="result">
+																					<feMergeNode id="eluHbrR6ma210-filter-drop-shadow-0-merge-node-1" />
+																					<feMergeNode id="eluHbrR6ma210-filter-drop-shadow-0-merge-node-2"
+																						in="SourceGraphic" />
+																				</feMerge>
+																			</filter>
+																		</defs>
+																		<g transform="translate(8 4)">
+																			<path
+																				d="M24,16c0,6.6274-5.3726,12-12,12s-12-5.3726-12-12s5.37258-12,12-12s12,5.37258,12,12ZM1.97529,16c0,5.5365,4.48822,10.0247,10.02471,10.0247s10.0247-4.4882,10.0247-10.0247-4.4882-10.02471-10.0247-10.02471-10.02471,4.48821-10.02471,10.02471Z"
+																				fill="transparent" />
+																			<g filter="url(#eluHbrR6ma24-filter)">
+																				<path
+																					d="M12.5898,4.01465c1.3742.06763,2.7282.37086,4.002.89844c1.4559.60305,2.7792,1.48726,3.8936,2.60156s1.9985,2.43765,2.6015,3.89355C23.6898,12.864,24,14.4243,24,16c0,.5523-.4477,1-1,1s-1-.4477-1-1h-.0029c0-1.3128-.2584-2.6133-.7608-3.8262s-1.2387-2.31489-2.167-3.24314c-.9282-.92824-2.0303-1.66459-3.2431-2.16699s-2.5134-.76074-3.8262-.76074L12,6c-.5523,0-1-.44772-1-1s.4477-1,1-1l.5898.01465Z"
+																					fill="url(#eluHbrR6ma25-fill)" />
+																			</g>
+																			<g filter="url(#eluHbrR6ma26-filter)">
+																				<path
+																					d="M22.6562,18.2535c.0322-.0871.1554-.0871.1876,0l.1088.2939.2939.1088c.0871.0322.0871.1554,0,.1876l-.2939.1088-.1088.2939c-.0322.0871-.1554.0871-.1876,0l-.1088-.2939-.2939-.1088c-.0871-.0322-.0871-.1554,0-.1876l.2939-.1088.1088-.2939Z"
+																					fill="#11d89f" />
+																			</g>
+																			<g filter="url(#eluHbrR6ma28-filter)">
+																				<path
+																					d="M21.5086,17.2058c.0352-.0792.1476-.0792.1828,0l.0707.1592.128.0394c.094.029.094.1622,0,.1912l-.128.0394-.0707.1592c-.0352.0792-.1476.0792-.1828,0l-.0707-.1592-.128-.0394c-.094-.029-.094-.1622,0-.1912l.128-.0394.0707-.1592Z"
+																					fill="#53c0c1" />
+																			</g>
+																			<g filter="url(#eluHbrR6ma210-filter)">
+																				<path
+																					d="M23.5086,17.2058c.0352-.0792.1476-.0792.1828,0l.0707.1592.128.0394c.094.029.094.1622,0,.1912l-.128.0394-.0707.1592c-.0352.0792-.1476.0792-.1828,0l-.0707-.1592-.128-.0394c-.094-.029-.094-.1622,0-.1912l.128-.0394.0707-.1592Z"
+																					fill="#6ff8d4" />
+																			</g>
+																		</g>
+																	</svg>
