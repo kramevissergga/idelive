@@ -7940,7 +7940,9 @@ body::after {
 }
 .tracking-progress__content {
   display: flex;
-  align-items: start
+  align-items: start;
+  flex-wrap: wrap-reverse;
+  gap: .625rem
 }
 .tracking-progress__content:not(:last-child) {
   margin-bottom: 2.5rem
@@ -7962,7 +7964,8 @@ body::after {
   gap: .5625rem;
   align-items: center;
   font-size: .75rem;
-  line-height: 1.2
+  line-height: 1.2;
+  flex-wrap: wrap
 }
 .tracking-progress__label:not(:last-child) {
   margin-bottom: .3125rem
