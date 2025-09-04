@@ -7969,7 +7969,7 @@ body::after {
   opacity: 0;
   visibility: hidden;
   transition: all .3s;
-  z-index: 3
+  z-index: 10
 }
 .tracking-progress__info span {
   font-size: .625rem;
@@ -7984,6 +7984,9 @@ body::after {
 }
 .tracking-progress__item {
   position: relative;
+  z-index: 3
+}
+.tracking-progress__item.--active {
   z-index: 2
 }
 .tracking-progress__item.--active::after {
@@ -7993,6 +7996,7 @@ body::after {
   position: absolute;
   bottom: calc(100% + .375rem);
   left: 50%;
+  z-index: -1;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   background: url(../img/inquires/bid-ship-op.svg) no-repeat center/contain
