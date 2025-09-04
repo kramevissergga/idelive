@@ -15997,14 +15997,6 @@ PERFORMANCE OF THIS SOFTWARE.
                     childList: true,
                     attributeFilter: [ "data-shuffle" ]
                 });
-                setInterval((() => {
-                    const items = container.querySelectorAll("[data-shuffle]");
-                    items.forEach((el => {
-                        const randomVal = Math.floor(Math.random() * 100);
-                        el.setAttribute("data-shuffle", randomVal);
-                    }));
-                    sortByAttribute();
-                }), 2e3);
             }));
         }));
         function updateProgress() {
