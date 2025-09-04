@@ -1405,10 +1405,17 @@
                 let optionsHTML = this.getOptions(originalSelect);
                 if (originalSelect.multiple && originalSelect.hasAttribute("data-search")) {
                     const selectTitleValue = originalSelect.dataset.placeholder ? originalSelect.dataset.placeholder : "";
-                    const searchInput = `<div class="${this.selectClasses.classSelectSearch}"><input autocomplete="off" type="text" placeholder="${selectTitleValue}" data-placeholder="${selectTitleValue}" class="${this.selectClasses.classSelectInput}"></div>`;
+                    const searchInput = `<div class="${this.selectClasses.classSelectSearch}">\n      <input autocomplete="off" type="text" placeholder="${selectTitleValue}" \n      data-placeholder="${selectTitleValue}" \n      class="${this.selectClasses.classSelectInput}">\n    </div>`;
                     optionsHTML = searchInput + optionsHTML;
                 }
                 selectItemOptions.innerHTML = optionsHTML;
+                const scroll = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOptionsScroll}`);
+                if (scroll) {
+                    const prevHidden = selectItemOptions.hidden;
+                    selectItemOptions.hidden = false;
+                    scroll.style.setProperty("--init-height", `${scroll.offsetHeight / 16}rem`);
+                    selectItemOptions.hidden = prevHidden;
+                }
                 if (originalSelect.hasAttribute("data-search")) this.searchActions(selectItem);
             }
             setOptionsPosition(selectItem) {
@@ -15917,7 +15924,7 @@ PERFORMANCE OF THIS SOFTWARE.
                     },
                     layoutDuration: 500,
                     layoutEasing: "ease",
-                    dragEnabled: true
+                    dragEnabled: false
                 });
                 function updateContainerLimit() {
                     const items = grid.getItems().map((item => item.getElement()));
@@ -15925,6 +15932,7 @@ PERFORMANCE OF THIS SOFTWARE.
                         if (maxItems && index >= maxItems) el.classList.add("--hidden"); else el.classList.remove("--hidden");
                     }));
                     const limitedItems = maxItems ? items.slice(0, maxItems) : items;
+                    const wrapper = container.closest(`[data-shuffle-wrapper]`);
                     if (horizontal) {
                         let totalWidth = 0;
                         let maxHeight = 0;
@@ -15934,8 +15942,13 @@ PERFORMANCE OF THIS SOFTWARE.
                             totalWidth += rect.width + parseFloat(style.marginRight || 0);
                             if (rect.height > maxHeight) maxHeight = rect.height;
                         }));
-                        container.style.maxWidth = Math.ceil(totalWidth) + "px";
-                        container.style.height = Math.ceil(maxHeight) + "px";
+                        if (wrapper) {
+                            wrapper.style.maxWidth = Math.ceil(totalWidth) + "px";
+                            wrapper.style.height = Math.ceil(maxHeight) + "px";
+                        } else {
+                            container.style.maxWidth = Math.ceil(totalWidth) + "px";
+                            container.style.height = Math.ceil(maxHeight) + "px";
+                        }
                     } else {
                         let totalHeight = 0;
                         let maxWidth = 0;
@@ -15945,8 +15958,13 @@ PERFORMANCE OF THIS SOFTWARE.
                             totalHeight += rect.height + parseFloat(style.marginBottom || 0);
                             if (rect.width > maxWidth) maxWidth = rect.width;
                         }));
-                        container.style.maxHeight = Math.ceil(totalHeight) + "px";
-                        container.style.width = Math.ceil(maxWidth) + "px";
+                        if (wrapper) {
+                            wrapper.style.maxHeight = Math.ceil(totalHeight) + "px";
+                            wrapper.style.width = Math.ceil(maxWidth) + "px";
+                        } else {
+                            container.style.maxHeight = Math.ceil(totalHeight) + "px";
+                            container.style.width = Math.ceil(maxWidth) + "px";
+                        }
                     }
                 }
                 function sortByAttribute() {
@@ -16012,6 +16030,16 @@ PERFORMANCE OF THIS SOFTWARE.
         }
         window.addEventListener("resize", updateProgress);
         window.addEventListener("load", updateProgress);
+        setInterval((() => {
+            const containers = document.querySelectorAll("[data-shuffle-container]");
+            containers.forEach((container => {
+                const items = container.querySelectorAll("[data-shuffle]");
+                items.forEach((el => {
+                    const randomVal = Math.floor(Math.random() * 100);
+                    el.setAttribute("data-shuffle", randomVal);
+                }));
+            }));
+        }), 2e3);
         window["FLS"] = false;
         addLoadedClass();
         spoilers();
