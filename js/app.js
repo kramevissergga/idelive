@@ -16030,16 +16030,6 @@ PERFORMANCE OF THIS SOFTWARE.
         }
         window.addEventListener("resize", updateProgress);
         window.addEventListener("load", updateProgress);
-        setInterval((() => {
-            const containers = document.querySelectorAll("[data-shuffle-container]");
-            containers.forEach((container => {
-                const items = container.querySelectorAll("[data-shuffle]");
-                items.forEach((el => {
-                    const randomVal = Math.floor(Math.random() * 100);
-                    el.setAttribute("data-shuffle", randomVal);
-                }));
-            }));
-        }), 2e3);
         window["FLS"] = false;
         addLoadedClass();
         spoilers();
