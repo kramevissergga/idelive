@@ -6638,13 +6638,6 @@ body:has(header.header) .page {
 .bid-inq__request:not(:last-child) {
   margin-bottom: 1.375rem
 }
-.bid-inq__form:not(:last-child) {
-  padding-bottom: 2.4375rem;
-  border-bottom: .0625rem solid #dddee2
-}
-.bid-inq__form:not(:last-child):not(:last-child) {
-  margin-bottom: 2rem
-}
 .bid-inq__add {
   font-size: 1rem;
   min-width: 12.125rem
@@ -8444,6 +8437,8 @@ body:has(header.header) .page {
 }
 .progress-stats__footer {
   display: flex;
+  gap: .625rem;
+  flex-wrap: wrap;
   align-items: center
 }
 .progress-stats__navigation {
