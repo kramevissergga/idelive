@@ -4732,13 +4732,13 @@ body:has(header.header) .page {
   padding-top: var(--header-height)
 }
 .page--no-p {
-  padding-top: 0
+  padding-top: 0!important
 }
 .page__home {
   margin-bottom: 1.0625rem
 }
 .hero {
-  padding-top: calc(var(--header-height) + 3.5rem);
+  padding-top: calc(var(--header-height) + 1.875rem);
   padding-bottom: 7.0625rem;
   position: relative
 }
@@ -13566,7 +13566,7 @@ span.flatpickr-weekday {
     min-height: 24.6875rem
   }
   .hero {
-    padding-top: calc(var(--header-height) + 5.2631578947vh);
+    padding-top: calc(var(--header-height) + 2.8195488722vh);
     padding-bottom: 10.6203007519vh;
     position: relative;
     font-size: 1.5037593985vh
