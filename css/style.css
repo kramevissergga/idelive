@@ -2218,56 +2218,8 @@ body::after {
 .popup--form {
   padding: 0
 }
-.popup--dash-inq .bid-inq__main {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 1.25rem;
-  padding-bottom: 4.0625rem;
-  border-bottom: .0625rem solid #dddee2
-}
-.popup--dash-inq .bid-inq__main:not(:last-child) {
-  margin-bottom: 2rem
-}
-.popup--dash-inq .bid-inq__block {
-  display: flex;
-  align-items: center;
-  gap: 1rem 3rem;
-  flex-wrap: wrap
-}
-.popup--dash-inq .bid-inq__block:not(:last-child) {
-  margin-bottom: 1rem
-}
-.popup--dash-inq .bid-inq__info {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .5rem 1rem
-}
-.popup--dash-inq .bid-inq__label {
-  color: #2a2e4a;
-  font-weight: 500;
-  line-height: 1.2
-}
-.popup--dash-inq .bid-inq__text {
-  line-height: 1.2
-}
-.popup--dash-inq .bid-inq__info-block {
-  display: flex;
-  align-items: center;
-  gap: .25rem .5rem
-}
-.popup--dash-inq .bid-inq__pic {
-  color: #7b7f97;
-  transition: color .3s
-}
-.popup--dash-inq .bid-inq__specs {
-  display: flex;
-  gap: .5rem 1.5rem;
-  flex-wrap: wrap
-}
-.popup--dash-inq .bid-inq__title:not(:last-child) {
-  margin-bottom: 4rem
+.popup--dash-inq .form-bid-inq__block {
+  border-top: .0625rem solid #dddee2
 }
 .popup__inquires {
   padding: 0!important;
@@ -2320,7 +2272,8 @@ body::after {
 }
 .popup--dash-inq .popup__content {
   padding: 0;
-  max-width: 70rem
+  max-width: 70rem;
+  border-radius: 1.5rem
 }
 .popup--form .popup__content {
   max-width: 54rem;
@@ -8555,6 +8508,9 @@ body:has(header.header) .page {
   text-align: center;
   line-height: 1.2
 }
+.inq-dash__wrapper {
+  width: 100%!important
+}
 .inq-dash__wrapper .simplebar-track.simplebar-vertical {
   width: .125rem!important;
   border-radius: 1.6875rem;
@@ -8609,7 +8565,8 @@ body:has(header.header) .page {
   line-height: 1.2;
   flex-shrink: 0;
   text-wrap: nowrap;
-  width: 100%
+  width: 100%;
+  min-width: 4.6875rem
 }
 .inq-dash__info {
   display: flex;
