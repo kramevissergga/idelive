@@ -270,10 +270,10 @@
 			</div>
 		</header>
 		<main class="page">
-			<div class="page__docs docs">
-				<div class="docs__grid-container">
-					<div class="docs__wrapper">
-						<div class="docs__aside aside-profile">
+			<div class="page__payment payment">
+				<div class="payment__grid-container">
+					<div class="payment__wrapper">
+						<div class="payment__aside aside-profile">
 							<div class="aside-profile__label">
 								Welcome back, <span>Roland</span>
 							</div>
@@ -329,254 +329,234 @@
 								Log out
 							</button>
 						</div>
-						<div class="docs__body">
-							<div class="docs__header">
-								<h1 class="docs__title">
-									Payment documents
-								</h1>
-								<div class="docs__filters">
-									<select>
-										<option value="1" selected>All</option>
-										<option value="2">Some</option>
-										<option value="3">Other</option>
-									</select>
-									<select>
-										<option value="" selected>Mounts</option>
-										<option value="2">January</option>
-										<option value="3">February</option>
-										<option value="4">March</option>
-										<option value="5">April</option>
-									</select>
-									<select>
-										<option value="" selected>Year</option>
-										<option value="2">2025</option>
-										<option value="3">2026</option>
-										<option value="4">2027</option>
-										<option value="5">2028</option>
-										<option value="6">2029</option>
-									</select>
-									<select>
-										<option value="" selected>Whole period</option>
-										<option value="2">1 day</option>
-										<option value="3">2 days</option>
-										<option value="4">3 days</option>
-										<option value="5">4 days</option>
-										<option value="6">5 days</option>
-									</select>
+						<div class="payment__content">
+							<div class="payment__body">
+								<div class="payment__header">
+									<h1 class="payment__title">
+										Pending payments
+									</h1>
+									<div class="payment__steps">
+										<a href="#" class="payment__step --current">Step 1</a>
+										<a href="#" class="payment__step">Step 2</a>
+										<a href="#" class="payment__step">Step 3</a>
+									</div>
+									<div class="separator"></div>
+									<label class="payment__checkbox checkbox">
+										<div class="icon"></div>
+										Pay all
+										<input type="checkbox">
+									</label>
+								</div>
+								<div class="payment__main">
+									<div class="payment__orders">
+										<div class="payment__order order-payment">
+											<div class="order-payment__body">
+												<div class="order-payment__cols">
+													<h3 class="order-payment__title">ID number: 0000123</h3>
+													<div class="order-payment__shipping">
+														<div class="order-payment__ship-icon">
+															<img src="img/inquires/bid-ship-op.svg" alt="Image">
+														</div>
+														<div class="delivery-info-inq__roadmap">
+															<span>China</span>
+															<div style="--progress: 100%" class="delivery-info-inq__line">
+																<div class="delivery-info-inq__point _active">
+																</div>
+																<div class="delivery-info-inq__point">
+																</div>
+															</div>
+															<span>USA</span>
+														</div>
+													</div>
+												</div>
+												<div class="order-payment__cols">
+													<div class="order-payment__info">
+														<span>Delivery type:</span>
+														Fast sea truck
+													</div>
+													<div class="order-payment__info">
+														<span>Cargo:</span>
+														Household appliances
+													</div>
+													<div class="order-payment__info">
+														<span>From:</span>
+														No. 88, Huaihai Road, Shanghai, 200000, China
+													</div>
+													<div class="order-payment__info">
+														<span>To:</span>
+														1234 Maple Street,
+														Los Angeles, CA 90001, USA
+													</div>
+												</div>
+											</div>
+											<div class="order-payment__actions">
+												<div class="order-payment__price">
+													Total amount:
+													<span>
+														$ 2 300
+													</span>
+												</div>
+												<label class="order-payment__checkbox">
+													<input checked type="checkbox">
+													<span>Select</span>
+													<span>Deselect</span>
+												</label>
+											</div>
+										</div>
+										<div class="payment__order order-payment">
+											<div class="order-payment__body">
+												<div class="order-payment__cols">
+													<h3 class="order-payment__title">ID number: 0000123</h3>
+													<div class="order-payment__shipping">
+														<div class="order-payment__ship-icon">
+															<img src="img/inquires/bid-ship-op.svg" alt="Image">
+														</div>
+														<div class="delivery-info-inq__roadmap">
+															<span>China</span>
+															<div style="--progress: 100%" class="delivery-info-inq__line">
+																<div class="delivery-info-inq__point _active">
+																</div>
+																<div class="delivery-info-inq__point">
+																</div>
+															</div>
+															<span>USA</span>
+														</div>
+													</div>
+												</div>
+												<div class="order-payment__cols">
+													<div class="order-payment__info">
+														<span>Delivery type:</span>
+														Fast sea truck
+													</div>
+													<div class="order-payment__info">
+														<span>Cargo:</span>
+														Household appliances
+													</div>
+													<div class="order-payment__info">
+														<span>From:</span>
+														No. 88, Huaihai Road, Shanghai, 200000, China
+													</div>
+													<div class="order-payment__info">
+														<span>To:</span>
+														1234 Maple Street,
+														Los Angeles, CA 90001, USA
+													</div>
+												</div>
+											</div>
+											<div class="order-payment__actions">
+												<div class="order-payment__price">
+													Total amount:
+													<span>
+														$ 2 300
+													</span>
+												</div>
+												<label class="order-payment__checkbox">
+													<input type="checkbox">
+													<span>Select</span>
+													<span>Deselect</span>
+												</label>
+											</div>
+										</div>
+										<div class="payment__order order-payment">
+											<div class="order-payment__body">
+												<div class="order-payment__cols">
+													<h3 class="order-payment__title">ID number: 0000123</h3>
+													<div class="order-payment__shipping">
+														<div class="order-payment__ship-icon">
+															<img src="img/inquires/bid-ship-op.svg" alt="Image">
+														</div>
+														<div class="delivery-info-inq__roadmap">
+															<span>China</span>
+															<div style="--progress: 100%" class="delivery-info-inq__line">
+																<div class="delivery-info-inq__point _active">
+																</div>
+																<div class="delivery-info-inq__point">
+																</div>
+															</div>
+															<span>USA</span>
+														</div>
+													</div>
+												</div>
+												<div class="order-payment__cols">
+													<div class="order-payment__info">
+														<span>Delivery type:</span>
+														Fast sea truck
+													</div>
+													<div class="order-payment__info">
+														<span>Cargo:</span>
+														Household appliances
+													</div>
+													<div class="order-payment__info">
+														<span>From:</span>
+														No. 88, Huaihai Road, Shanghai, 200000, China
+													</div>
+													<div class="order-payment__info">
+														<span>To:</span>
+														1234 Maple Street,
+														Los Angeles, CA 90001, USA
+													</div>
+												</div>
+											</div>
+											<div class="order-payment__actions">
+												<div class="order-payment__price">
+													Total amount:
+													<span>
+														$ 2 300
+													</span>
+												</div>
+												<label class="order-payment__checkbox">
+													<input type="checkbox">
+													<span>Select</span>
+													<span>Deselect</span>
+												</label>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="docs__items">
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
+							<div class="payment__right">
+								<div class="payment__summary summary-payment">
+									<h2 class="summary-payment__title">Order summary:</h2>
+									<div class="summary-payment__body">
+										<div class="summary-payment__item">
+											<div class="summary-payment__cols">
+												<div class="summary-payment__label">
+													Order number:
+												</div>
+												<div class="summary-payment__label">
+													0000123
+												</div>
+											</div>
+										</div>
+										<div class="summary-payment__item">
+											<div class="summary-payment__cols">
+												<div class="summary-payment__label">
+													Subtotal:
+												</div>
+												<div class="summary-payment__label summary-payment__label--subtotal">
+													$ 2 300
+												</div>
+											</div>
+											<div class="summary-payment__warn">
+												This amount does not include the bank's commission
+											</div>
+										</div>
+										<div class="summary-payment__item">
+											<div class="summary-payment__cols">
+												<div class="summary-payment__label">
+													Total:
+												</div>
+												<div class="summary-payment__label summary-payment__label--total">
+													$ 2 300
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
+									<button class="summary-payment__button button button--gradient">Confirm selection</button>
 								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-							</div>
-							<div class="docs__footer section-footer">
-								<a href="#" class="section-footer__more button button--border">
-									See more
-								</a>
-								<div class="section-footer__pagination pagination">
-									<ul>
-										<li>
-											<a href="#" class="_icon-ch-left">
-
-											</a>
-										</li>
-										<li>
-											<a class="_active" href="#">
-												1
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												2
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												3
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												4
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												5
-											</a>
-										</li>
-										<li>
-											<a href="#" class="_icon-ch-right">
-
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="docs__total">
-								Total invoice value: <span>73 000 00 $</span>
 							</div>
 						</div>
+
 					</div>
 
 				</div>

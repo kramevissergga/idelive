@@ -6503,7 +6503,7 @@
                     breakpoints: {
                         767.98: {
                             grid: {
-                                rows: isPopup ? 2 : 2
+                                rows: 2
                             }
                         }
                     }
@@ -6539,6 +6539,21 @@
                     }));
                 }
                 bidSlider.mount();
+            }));
+            var logitalkSliderEl = document.querySelectorAll(".logitalk__slider");
+            if (logitalkSliderEl.length) logitalkSliderEl.forEach((logitalkSliderEl => {
+                var logitalkSlider = new splide_esm_Splide(logitalkSliderEl, {
+                    autoplay: true,
+                    interval: 4e3,
+                    pauseOnHover: true,
+                    arrows: false,
+                    perPage: 1,
+                    omitEnd: true,
+                    pagination: false,
+                    gap: 10,
+                    updateOnMove: true
+                });
+                logitalkSlider.mount();
             }));
         }));
         function isObject_isObject(value) {
