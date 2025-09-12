@@ -945,6 +945,9 @@
                                 popup: this
                             }
                         }));
+                        setTimeout((() => {
+                            window.dispatchEvent(new Event("resize"));
+                        }), 0);
                         this.popupLogging(`Відкрив попап`);
                     } else this.popupLogging(`Йой, такого попапу немає. Перевірте коректність введення. `);
                 }
@@ -6479,8 +6482,9 @@
                 });
                 navSlider.mount();
             }
-            var holidaysSliderEl = document.querySelector(".holidays-dash__slider");
-            if (holidaysSliderEl) {
+            var holidaysSliderEl = document.querySelectorAll(".holidays-dash__slider");
+            if (holidaysSliderEl.length) holidaysSliderEl.forEach((holidaysSliderEl => {
+                const isPopup = holidaysSliderEl.classList.contains("holidays-dash__slider--popup");
                 var holidaysSlider = new splide_esm_Splide(holidaysSliderEl, {
                     arrows: true,
                     perMove: 1,
@@ -6489,18 +6493,25 @@
                     gap: 8,
                     updateOnMove: true,
                     grid: {
-                        rows: 2,
+                        rows: isPopup ? 4 : 2,
                         cols: 1,
                         gap: {
                             row: "0.5rem",
                             col: "0.5rem"
+                        }
+                    },
+                    breakpoints: {
+                        767.98: {
+                            grid: {
+                                rows: isPopup ? 2 : 2
+                            }
                         }
                     }
                 });
                 holidaysSlider.mount({
                     Grid
                 });
-            }
+            }));
             var bidSliderEls = document.querySelectorAll(".block-inq__slider");
             if (bidSliderEls) bidSliderEls.forEach((bidSliderEl => {
                 var bidSlider = new splide_esm_Splide(bidSliderEl, {
@@ -11463,24 +11474,44 @@ PERFORMANCE OF THIS SOFTWARE.
             }
         }));
         const calendars = document.querySelectorAll("[data-calendar]");
-        if (calendars) {
-            esm.localize({
-                weekdays: {
-                    shorthand: [ "S", "M", "T", "W", "T", "F", "S" ],
-                    longhand: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
-                },
-                firstDayOfWeek: 1
+        calendars.forEach((calendarEl => {
+            calendarEl.dataset.holidaysInfo && JSON.parse(calendarEl.dataset.holidaysInfo);
+            esm(calendarEl, {
+                inline: true,
+                monthSelectorType: "static",
+                dateFormat: "d/m/Y",
+                ariaDateFormat: "F j, Y",
+                onDayCreate: function(dObj, dStr, fp, dayElem) {
+                    const dayDate = dayElem.dateObj.toISOString().split("T")[0];
+                    const holidaysInfo = this.input?.dataset?.holidaysInfo ? JSON.parse(this.input.dataset.holidaysInfo) : {};
+                    const holiday = holidaysInfo[dayDate];
+                    if (holiday) {
+                        if (holiday.type) dayElem.classList.add(holiday.type);
+                        if (holiday.note) {
+                            const noteEl = document.createElement("div");
+                            noteEl.className = "holiday-note";
+                            noteEl.textContent = holiday.note;
+                            dayElem.appendChild(noteEl);
+                        }
+                        if (holiday.color) dayElem.style.setProperty("--color", holiday.color);
+                    }
+                }
             });
+        }));
+        document.addEventListener("click", (e => {
+            const btn = e.target.closest("[data-calendar-goto]");
+            if (!btn) return;
+            const wrapper = btn.closest("[data-calendar-wrapper]");
+            if (!wrapper) return;
+            const targetDateStr = btn.dataset.calendarGoto;
+            if (!targetDateStr) return;
+            const [year, month, day] = targetDateStr.split("-").map(Number);
+            const targetDate = new Date(year, month - 1, day);
+            const calendars = wrapper.querySelectorAll("[data-calendar]");
             calendars.forEach((calendarEl => {
-                const config = {
-                    inline: true,
-                    monthSelectorType: "static",
-                    dateFormat: "d/m/Y",
-                    mode: "range"
-                };
-                esm(calendarEl, config);
+                if (calendarEl._flatpickr) calendarEl._flatpickr.jumpToDate(targetDate, true);
             }));
-        }
+        }));
         const themeSwitchEls = document.querySelectorAll("[data-theme-swith]");
         if (themeSwitchEls) themeSwitchEls.forEach((themeSwitch => {
             const updateTheme = () => {
