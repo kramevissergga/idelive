@@ -8612,7 +8612,10 @@ body:has(header.header) .page {
   gap: .5rem;
   align-items: center;
   grid-template-columns: 119fr 1.625rem 78fr 51fr 72fr 76fr;
-  margin-bottom: .5rem
+  margin-bottom: .5rem;
+  position: relative!important;
+  -webkit-transform: none!important;
+  transform: none!important
 }
 .inq-dash__item.--hidden {
   opacity: 1;
