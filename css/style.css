@@ -363,6 +363,7 @@ body::after {
 .actions-dash__more,
 .agent-dash-popup__more,
 .articles-dash__link,
+.holidays-dash__link,
 .inq-dash-ag__more,
 .inq-dash__more,
 .item-logitalk__link,
@@ -539,7 +540,7 @@ body::after {
 }
 .field__input>input:disabled,
 .field__input>textarea:disabled {
-  background-color: #eef1f4;
+  background-color: rgba(0,0,0,0);
   color: #7b7f97
 }
 .field__input>textarea {
@@ -549,7 +550,8 @@ body::after {
 }
 .field__input:has(>input:disabled),
 .field__input:has(>textarea:disabled) {
-  border-color: #eef1f4
+  border-color: #eef1f4;
+  background-color: #eef1f4
 }
 .field__input:has(>input:focus),
 .field__input:has(>textarea:focus) {
@@ -5651,9 +5653,6 @@ body:has(header.header) .page {
   background: #fff;
   padding: 2.4375rem 2rem 0
 }
-.inquires--active-del {
-  padding-top: 0
-}
 .inquires__header {
   display: flex;
   gap: 1.75rem 1.25rem;
@@ -7620,7 +7619,8 @@ body:has(header.header) .page {
   margin-bottom: 1.1875rem
 }
 .upload-bid__field .file-input {
-  font-size: .875rem
+  font-size: .875rem;
+  min-width: 12.375rem
 }
 .upload-bid__files {
   max-height: 3.75rem
@@ -7651,26 +7651,35 @@ body:has(header.header) .page {
 .profile-bid__label a {
   transition: color .3s
 }
+.bid-inq__meas {
+  max-width: 50.625rem;
+  margin: 0 auto
+}
 .bid-inq__meas:not(:last-child) {
   margin-bottom: 2.8125rem
 }
 .meas-bid {
   display: grid;
-  grid-template-columns: 190fr 303fr 250fr;
+  grid-template-columns: 12.1875rem 1fr;
   gap: 2.0625rem;
-  align-items: end;
+  align-items: start;
   min-width: 0
 }
 .meas-bid__main {
   min-width: 0
 }
+.meas-bid__main .meas-bid__title:not(:last-child) {
+  margin-bottom: 1.5rem
+}
+.meas-bid__body {
+  display: grid;
+  grid-template-columns: 303fr 255fr;
+  gap: 2rem
+}
 .meas-bid__title {
   font-size: .875rem;
   font-weight: 500;
   line-height: 1.2
-}
-.meas-bid__title:not(:last-child) {
-  margin-bottom: 1.25rem
 }
 .meas-bid__scroll {
   min-width: 0
@@ -7730,13 +7739,14 @@ body:has(header.header) .page {
   background-color: #d50000
 }
 .meas-bid__info {
-  min-width: 0
+  min-width: 0;
+  grid-column: span 2
 }
 .meas-bid__details {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: space-between
+  gap: .3125rem 1.5rem;
+  align-items: center;
+  flex-wrap: wrap
 }
 .meas-bid__details:not(:last-child) {
   margin-bottom: 1.6875rem
@@ -7745,7 +7755,7 @@ body:has(header.header) .page {
   font-size: .875rem;
   line-height: 1.2;
   display: flex;
-  gap: .5rem;
+  gap: .375rem;
   align-items: center
 }
 .meas-bid__field .field__label {
@@ -7756,7 +7766,9 @@ body:has(header.header) .page {
 }
 .meas-bid__field .field__input textarea {
   font-size: .875rem;
-  height: 3.375rem
+  height: 3.375rem;
+  overflow-y: auto;
+  line-height: 1
 }
 .meas-bid__actions {
   min-width: 0
@@ -7767,7 +7779,7 @@ body:has(header.header) .page {
   line-height: 1.2
 }
 .meas-bid__actions-label:not(:last-child) {
-  margin-bottom: 2rem
+  margin-bottom: 1.0625rem
 }
 .meas-bid__buttons {
   display: flex;
@@ -8398,7 +8410,8 @@ body:has(header.header) .page {
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
-  padding: .75rem
+  padding: .75rem;
+  overflow: hidden
 }
 .progress-stats__header {
   display: flex;
@@ -9661,14 +9674,20 @@ body:has(header.header) .page {
   min-width: 0;
   position: relative
 }
-.holidays-dash__title {
-  font-weight: 500;
-  line-height: 1.1;
+.holidays-dash__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .625rem;
   padding-left: 1.1875rem;
   padding-right: 4.375rem
 }
-.holidays-dash__title:not(:last-child) {
+.holidays-dash__header:not(:last-child) {
   margin-bottom: .9375rem
+}
+.holidays-dash__title {
+  font-weight: 500;
+  line-height: 1.1
 }
 .holidays-dash__slider {
   position: static!important
@@ -13719,6 +13738,9 @@ span.flatpickr-weekday {
   .nav-profile__item::before {
     display: none
   }
+  .inquires--active-del {
+    padding-top: 0
+  }
   .inquires__header-actions {
     padding-right: 8rem
   }
@@ -16614,6 +16636,7 @@ span.flatpickr-weekday {
   .actions-dash__more:hover,
   .agent-dash-popup__more:hover,
   .articles-dash__link:hover,
+  .holidays-dash__link:hover,
   .inq-dash-ag__more:hover,
   .inq-dash__more:hover,
   .item-logitalk__link:hover,

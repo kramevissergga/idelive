@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250912170132">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250916145651">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -5261,24 +5261,42 @@
 						</button>
 					</div>
 					<div class="profile__body">
-						<div class="profile__header">
-							<div class="profile__nav nav-profile">
-								<a href="#" class="nav-profile__item ">
-									Inquiries 
-								</a>
-								<a href="#" class="nav-profile__item _active">
-									Active delivery
-								</a>
-								<a href="#" class="nav-profile__item">
-									Completed delivery
-								</a>
-							</div>
-							<div data-da=".inquires__content--mobile, 767.98, first" class="profile__orders">
-								Total orders:
-								<span>03</span>
+						<div class="profile__nav nav-profile">
+							<div class="nav-profile__slider splide">
+								<div class="splide__track">
+									<ul class="splide__list">
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item ">
+												Inquiries 
+												<div style="background-color: #F79B39;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _active">
+												Active delivery
+												<div style="background-color: #64DB78;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item">
+												Completed delivery
+												<div class="count">5</div>
+											</a>
+										</li>
+										<div class="separator">
+
+										</div>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _icon-price-list">
+												Price list
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="profile__inquires inquires inquires--active-del">
+
 							<div class="inquires__content inquires__content--pc">
 								<div style="--card-color: #D50000" class="inquires__card">
 									<div class="inquires__table">
@@ -5523,29 +5541,67 @@
 												</div>
 												<a href="#" class="meas-bid__download _icon-download">Download measurements</a>
 											</div>
-											<div class="meas-bid__info">
-												<h4 class="meas-bid__title">
-													Total for shipment:
-												</h4>
-												<div class="meas-bid__details">
-													<div class="meas-bid__label">
-														Quantity:
-														<span>
-															16
-														</span>
+											<div class="meas-bid__body">
+												<div class="meas-bid__info">
+													<div class="meas-bid__details">
+														<h4 class="meas-bid__title">
+															Declared measurements:
+														</h4>
+														<div class="meas-bid__label">
+															Quantity:
+															<span>
+																1200
+															</span>
 
+														</div>
+														<div class="meas-bid__label">
+															CBM:
+															<span>
+																1400
+															</span>
+														</div>
+														<div class="meas-bid__label">
+															KG:
+															<span>
+																2000
+															</span>
+														</div>
+														<div class="meas-bid__label">
+															Price:
+															<span>
+																$ 1 430
+															</span>
+														</div>
 													</div>
-													<div class="meas-bid__label">
-														CBM:
-														<span>
-															0,673
-														</span>
-													</div>
-													<div class="meas-bid__label">
-														KG:
-														<span>
-															205
-														</span>
+													<div style="color: #D50000;" class="meas-bid__details">
+														<h4 class="meas-bid__title">
+															Declared measurements:
+														</h4>
+														<div class="meas-bid__label">
+															Quantity:
+															<span>
+																1200
+															</span>
+
+														</div>
+														<div class="meas-bid__label">
+															CBM:
+															<span>
+																1400
+															</span>
+														</div>
+														<div class="meas-bid__label">
+															KG:
+															<span>
+																2000
+															</span>
+														</div>
+														<div class="meas-bid__label">
+															Price:
+															<span>
+																$ 1 430
+															</span>
+														</div>
 													</div>
 												</div>
 												<div class="meas-bid__msg">
@@ -5558,17 +5614,18 @@
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="meas-bid__actions">
-												<div class="meas-bid__actions-label">
-													Carrier sent measurements, confirm them
-													or reject them if you don't agree with them.
+												<div class="meas-bid__actions">
+													<div class="meas-bid__actions-label">
+														Carrier sent measurements, confirm them
+														or reject them if you don't agree with them.
+													</div>
+													<div class="meas-bid__buttons">
+														<a href="#" class="meas-bid__button button button--border">Decline</a>
+														<a href="#" class="meas-bid__button button">Confirm</a>
+													</div>
 												</div>
-												<div class="meas-bid__buttons">
-													<a href="#" class="meas-bid__button button button--border">Decline</a>
-													<a href="#" class="meas-bid__button button">Confirm</a>
-												</div>
 											</div>
+
 										</div>
 										<div class="bid-inq__footer">
 											<div class="bid-inq__upload upload-bid">
@@ -5589,20 +5646,6 @@
 													<a href="#" class="upload-bid__link file-link _icon-file">insurance policy</a>
 													<a href="#" class="upload-bid__link file-link _icon-file">invoice</a>
 
-												</div>
-											</div>
-											<div class="bid-inq__profile profile-bid">
-												<h5 class="profile-bid__title block-title">
-													Carrier
-												</h5>
-												<div class="profile-bid__body">
-													<a href="#" class="profile-bid__image">
-														<img src="img/user.webp" alt="Image" class="ibg">
-													</a>
-													<div class="profile-bid__label">
-														<a href="#">Josh Michael</a>
-														<span>4.5</span>
-													</div>
 												</div>
 											</div>
 											<div class="bid-inq__feedback">
@@ -5947,7 +5990,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250912170132"></script>
+	<script src="js/app.min.js?_v=20250916145651"></script>
 </body>
 
 </html>

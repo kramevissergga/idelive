@@ -12210,95 +12210,67 @@
     }
     window.addEventListener("resize", updateProgress);
     window.addEventListener("load", updateProgress);
-    const allowedMods = [ "--accent", "--loading", "--glowing", "--award" ];
-    function syncAvatars() {
-        const avatars = document.querySelectorAll(".inq-dash__avatars .inq-dash__info-avatar");
-        const items = document.querySelectorAll(".inq-dash__items .inq-dash__item");
-        avatars.forEach(((avatar, index) => {
-            const item = items[index];
-            if (!item) return;
-            const shuffle = item.getAttribute("data-shuffle");
-            if (shuffle) avatar.setAttribute("data-shuffle", shuffle);
-            const animal = item.querySelector(".inq-dash__animal");
-            if (animal) {
-                const mods = [ ...animal.classList ].filter((cls => allowedMods.some((mod => cls.includes(mod)))));
-                [ ...avatar.classList ].forEach((cls => {
-                    if (allowedMods.some((mod => cls.includes(mod)))) avatar.classList.remove(cls);
-                }));
-                mods.forEach((cls => avatar.classList.add(cls)));
-            }
-        }));
-    }
-    syncAvatars();
-    const target = document.querySelector(".inq-dash__items");
-    if (target) {
-        const observer = new MutationObserver((() => {
-            syncAvatars();
-        }));
-        observer.observe(target, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: [ "class", "data-shuffle" ]
-        });
-    }
-    function simulateBids() {
-        const items = document.querySelectorAll(".inq-dash__items .inq-dash__item");
-        if (items.length < 2) return;
-        const sorted = [ ...items ].sort(((a, b) => {
-            const priceA = parseInt(a.querySelector(".inq-dash__label--price").textContent.replace(/\D/g, "")) || 0;
-            const priceB = parseInt(b.querySelector(".inq-dash__label--price").textContent.replace(/\D/g, "")) || 0;
-            return priceB - priceA;
-        }));
-        sorted.forEach(((item, index) => {
-            item.setAttribute("data-shuffle", index + 1);
-        }));
-        const contenders = sorted.filter((item => {
-            const rank = item.getAttribute("data-shuffle");
-            const animal = item.querySelector(".inq-dash__animal");
-            if (!animal) return false;
-            return rank !== "1" && !animal.classList.contains("--accent");
-        }));
-        if (contenders.length === 0) return;
-        const bidder = contenders[Math.floor(Math.random() * contenders.length)];
-        const animal = bidder.querySelector(".inq-dash__animal");
-        const priceLabel = bidder.querySelector(".inq-dash__label--price");
-        if (!animal || !priceLabel) return;
-        animal.classList.add("--loading");
-        setTimeout((() => {
-            animal.classList.remove("--loading");
-            let currentPrice = parseInt(priceLabel.textContent.replace(/\D/g, "")) || 0;
-            const increment = Math.floor(Math.random() * 200 + 50);
-            const newPrice = currentPrice + increment;
-            priceLabel.textContent = `$${newPrice}`;
-            animal.classList.add("--glowing");
+    (function() {
+        function sleep(ms) {
+            return new Promise((r => setTimeout(r, ms)));
+        }
+        async function runRound() {
+            const countLabel = document.querySelector(".inq-dash__users-label");
+            countLabel ? countLabel.innerHTML = `+${Math.floor(Math.random() * 9) + 2}` : null;
+            const avatars = Array.from(document.querySelectorAll(".inq-dash__avatars .inq-dash__info-avatar"));
+            if (avatars.length < 2) return;
+            avatars.forEach(((a, i) => {
+                if (!a.getAttribute("data-shuffle")) a.setAttribute("data-shuffle", String(i + 1));
+            }));
+            const sorted = avatars.slice().sort(((a, b) => {
+                const pa = parseInt(a.getAttribute("data-shuffle")) || 0;
+                const pb = parseInt(b.getAttribute("data-shuffle")) || 0;
+                return pa - pb;
+            }));
+            const contenders = sorted.filter((a => {
+                const rank = parseInt(a.getAttribute("data-shuffle")) || 0;
+                return rank !== 1 && !a.classList.contains("--accent") && !a.classList.contains("--loading");
+            }));
+            if (!contenders.length) return;
+            const bidder = contenders[Math.floor(Math.random() * contenders.length)];
+            if (!bidder) return;
+            bidder.classList.add("--loading");
+            await sleep(2e3);
+            if (!bidder) return;
+            bidder.classList.remove("--loading");
+            bidder.classList.add("--glowing");
             setTimeout((() => {
-                animal.classList.remove("--glowing");
+                if (bidder) bidder.classList.remove("--glowing");
             }), 2e3);
-            setTimeout((() => {
-                const resorted = [ ...items ].sort(((a, b) => {
-                    const priceA = parseInt(a.querySelector(".inq-dash__label--price").textContent.replace(/\D/g, "")) || 0;
-                    const priceB = parseInt(b.querySelector(".inq-dash__label--price").textContent.replace(/\D/g, "")) || 0;
-                    return priceB - priceA;
-                }));
-                resorted.forEach(((item, index) => {
-                    const rank = index + 1;
-                    const animal = item.querySelector(".inq-dash__animal");
-                    const prevRank = item.getAttribute("data-shuffle");
-                    item.setAttribute("data-shuffle", rank);
-                    if (!animal) return;
-                    if (rank === 1) animal.classList.add("--award"); else if (prevRank === "1") {
-                        animal.classList.remove("--award");
-                        animal.classList.add("--accent");
-                        setTimeout((() => {
-                            animal.classList.remove("--accent");
-                        }), 2e3);
-                    }
-                }));
-            }), 200);
-        }), 2e3);
-    }
-    setInterval(simulateBids, 2e3);
+            await sleep(200);
+            const avatarsNow = Array.from(document.querySelectorAll(".inq-dash__avatars .inq-dash__info-avatar"));
+            if (!avatarsNow.length) return;
+            const prevRanks = new Map;
+            avatarsNow.forEach((a => prevRanks.set(a, a.getAttribute("data-shuffle") || null)));
+            const shuffled = avatarsNow.slice().sort((() => Math.random() - .5));
+            shuffled.forEach(((a, i) => a.setAttribute("data-shuffle", String(i + 1))));
+            shuffled.forEach(((a, i) => {
+                const prev = prevRanks.get(a);
+                const newRank = i + 1;
+                if (newRank === 1 && prev !== "1") a.classList.remove("--accent"); else if (prev === "1" && newRank !== 1) {
+                    a.classList.add("--accent");
+                    setTimeout((() => {
+                        if (a) a.classList.remove("--accent");
+                    }), 2e3);
+                }
+            }));
+        }
+        (async function loop() {
+            while (true) {
+                try {
+                    await runRound();
+                } catch (e) {
+                    console.error(e);
+                }
+                await sleep(500);
+            }
+        })();
+    })();
     window["FLS"] = false;
     addLoadedClass();
     spoilers();
