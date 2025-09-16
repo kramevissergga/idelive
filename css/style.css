@@ -8393,6 +8393,7 @@ body:has(header.header) .page {
   line-height: 1.2
 }
 .progress-stats {
+  position: relative;
   background-color: #fff;
   border-radius: 1.5rem;
   display: flex;
@@ -8981,7 +8982,7 @@ body:has(header.header) .page {
   align-items: center;
   justify-content: center;
   background-color: rgba(90,98,129,.7);
-  z-index: 5;
+  z-index: 20;
   padding: .625rem;
   opacity: 0;
   visibility: hidden;
