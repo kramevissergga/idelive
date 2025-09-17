@@ -2900,10 +2900,43 @@ body::after {
   grid-template-columns: repeat(2,1fr);
   gap: 1rem 1.25rem
 }
-.cargo-form {
+.cargo-form__groups {
+  display: flex
+}
+.cargo-form__groups:not(:last-child) {
+  margin-bottom: 1rem
+}
+.cargo-form__groups .simplebar-vertical {
+  background: #dddee2!important;
+  width: .25rem!important;
+  left: calc(100% + .625rem)!important
+}
+.cargo-form__groups .simplebar-scrollbar {
+  left: 0;
+  width: 100%!important
+}
+.cargo-form__groups .simplebar-scrollbar::before {
+  background: #998ee0!important
+}
+.cargo-form__group {
   display: flex;
   flex-direction: column;
   gap: 1rem
+}
+.cargo-form__group:not(:last-child) {
+  padding-bottom: 1.25rem;
+  border-bottom: .0625rem solid #dddee2;
+  margin-bottom: 1.25rem
+}
+.cargo-form__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.cargo-form__clear {
+  color: #7b7f97;
+  font-size: .875rem;
+  line-height: 1.2
 }
 .cargo-form__field .field__input--gross .select {
   border-left: .0625rem solid #7b7f97;
@@ -3036,9 +3069,9 @@ body::after {
 }
 .addresses-form__footer-label {
   color: #2a2e4a;
-  font-size: .875rem;
-  line-height: 1.3;
-  max-width: 19.6875rem
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.3
 }
 .addresses-form__button {
   font-size: .875rem;
@@ -4201,6 +4234,7 @@ body::after {
   transition: text-decoration-color .3s
 }
 .bid-popup__clear,
+.cargo-form__clear,
 .checkbox a,
 .files-form__clear,
 .notif-block__link,
@@ -13506,6 +13540,9 @@ span.flatpickr-weekday {
   .form-popup__nav-title:not(:last-child):has(~._tab-active)::before {
     background-color: #d7d1ff
   }
+  .cargo-form__groups {
+    max-height: 19rem
+  }
   .files-form__content {
     flex: 0 0 15.625rem
   }
@@ -14771,7 +14808,7 @@ span.flatpickr-weekday {
   .shipping-form__checkbox--dark {
     grid-column: span 2
   }
-  .cargo-form {
+  .cargo-form__group {
     gap: .5rem
   }
   .cargo-form__block {
@@ -16817,6 +16854,7 @@ span.flatpickr-weekday {
     text-decoration-color: inherit
   }
   .bid-popup__clear:hover,
+  .cargo-form__clear:hover,
   .checkbox a:hover,
   .files-form__clear:hover,
   .notif-block__link:hover,

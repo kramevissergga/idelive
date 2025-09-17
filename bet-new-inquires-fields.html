@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250916145651">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250917153654">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2048,7 +2048,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="popup-form" aria-hidden="true" class="popup  popup--form">
+		<div id="popup-form" aria-hidden="true" class="popup  popup--form popup_show">
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div data-tabs class="tabs">
@@ -2206,139 +2206,149 @@
 											</div>
 										</div>
 										<div data-tabs-item class="form-popup__body">
-											<div class="cargo-form__cargo cargo-form">
-												<div class="cargo-form__info-block">
-													<div class="cargo-form__ship-type">
-														<div class="cargo-form__label label-form ">
-															Shipment type*
-														</div>
-														<div class="cargo-form__ship-block">
-															<label class="cargo-form__radiobox radiobox">
-																<span class="icon"></span>
-																<input type="radio" name="ship-type">
-																Box
-															</label>
-															<label class="cargo-form__radiobox radiobox">
-																<span class="icon"></span>
-																<input type="radio" name="ship-type">
-																Pallets
-															</label>
-															<label class="cargo-form__radiobox radiobox">
-																<span class="icon"></span>
-																<input type="radio" name="ship-type">
-																Full Container
-															</label>
-														</div>
-													</div>
+											<div data-inputs-wrapper class="cargo-form__cargo cargo-form">
+												<div data-simplebar class="cargo-form__groups">
+													<div data-inputs class="cargo-form__group">
+														<div class="cargo-form__info-block">
+															<div class="cargo-form__ship-type">
+																<div class="cargo-form__label label-form ">
+																	Shipment type*
+																</div>
+																<div class="cargo-form__ship-block">
+																	<label class="cargo-form__radiobox radiobox">
+																		<span class="icon"></span>
+																		<input type="radio" name="ship-type">
+																		Box
+																	</label>
+																	<label class="cargo-form__radiobox radiobox">
+																		<span class="icon"></span>
+																		<input type="radio" name="ship-type">
+																		Pallets
+																	</label>
+																	<label class="cargo-form__radiobox radiobox">
+																		<span class="icon"></span>
+																		<input type="radio" name="ship-type">
+																		Full Container
+																	</label>
+																</div>
+															</div>
 
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Quantity*
-														</div>
-														<div class="field__input field__input--16">
-															<input placeholder="1" type="number">
-														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Box weight
-														</div>
-														<div class="field__input field__input--16 field__input--gross">
-															<input placeholder="0" type="text">
-															<select data-class-modif="input">
-																<option value="1">Ib</option>
-																<option value="2" selected>Kg</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="cargo-form__block cargo-form__block--details">
-													<div class="cargo-form__wrapper">
-														<div class="cargo-form__label label-form">
-															Dimensions*
-														</div>
-														<div class="cargo-form__dimensions">
-															<div class="cargo-form__field field ">
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Quantity*
+																</div>
 																<div class="field__input field__input--16">
-																	<input placeholder="L" type="text">
+																	<input placeholder="1" type="number">
 																</div>
 															</div>
 															<div class="cargo-form__field field">
-																<div class="field__input field__input--16">
-																	<input placeholder="W" type="text">
+																<div class="cargo-form__label label-form">
+																	Box weight
+																</div>
+																<div class="field__input field__input--16 field__input--gross">
+																	<input placeholder="0" type="text">
+																	<select data-class-modif="input">
+																		<option value="1">Ib</option>
+																		<option value="2" selected>Kg</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="cargo-form__block cargo-form__block--details">
+															<div class="cargo-form__wrapper">
+																<div class="cargo-form__label label-form">
+																	Dimensions*
+																</div>
+																<div class="cargo-form__dimensions">
+																	<div class="cargo-form__field field ">
+																		<div class="field__input field__input--16">
+																			<input placeholder="L" type="text">
+																		</div>
+																	</div>
+																	<div class="cargo-form__field field">
+																		<div class="field__input field__input--16">
+																			<input placeholder="W" type="text">
+																		</div>
+																	</div>
+																	<div class="cargo-form__field field">
+																		<div class="field__input field__input--16">
+																			<input placeholder="H" type="text">
+																		</div>
+																	</div>
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
 																</div>
 															</div>
 															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Total weight*
+																</div>
 																<div class="field__input field__input--16">
-																	<input placeholder="H" type="text">
+																	<input placeholder="0" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected="">Ib</option>
+																		<option value="2">Kg</option>
+																	</select>
 																</div>
 															</div>
-															<select data-class-modif="input">
-																<option value="1" selected>In</option>
-																<option value="2">cm</option>
-															</select>
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Total volume*
+																</div>
+																<div class="field__input ">
+																	<input placeholder="0" type="text">
+																	<select data-class-modif="input">
+																		<option value="1" selected="">cbm</option>
+																		<option value="2">ft</option>
+																	</select>
+																</div>
+															</div>
 														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Total weight*
+														<div class="cargo-form__block cargo-form__block--cargo">
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Cargo*
+																</div>
+																<div class="field__input">
+																	<input placeholder="Enter  product " type="text">
+																</div>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Product category
+																</div>
+																<select name="form[]" data-class-modif="countries">
+																	<option value="" selected>Select category</option>
+																	<option value="2">Normal cargo</option>
+																	<option value="3">Sensitive goods</option>
+																	<option value="4">Children products</option>
+																	<option value="5">Charged items / With batteries</option>
+																</select>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	HS Code
+																</div>
+																<div class="field__input">
+																	<input placeholder="Enter code" type="text">
+																</div>
+															</div>
 														</div>
-														<div class="field__input field__input--16">
-															<input placeholder="0" type="text">
-															<select data-class-modif="input">
-																<option value="1" selected="">Ib</option>
-																<option value="2">Kg</option>
-															</select>
+														<div class="cargo-form__error">
+															To continue, please enter the total volume or box size.
 														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Total volume*
-														</div>
-														<div class="field__input ">
-															<input placeholder="0" type="text">
-															<select data-class-modif="input">
-																<option value="1" selected="">cbm</option>
-																<option value="2">ft</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="cargo-form__block cargo-form__block--cargo">
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Cargo*
-														</div>
-														<div class="field__input">
-															<input placeholder="Enter  product " type="text">
-														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Product category
-														</div>
-														<select name="form[]" data-class-modif="countries">
-															<option value="" selected>Select category</option>
-															<option value="2">Normal cargo</option>
-															<option value="3">Sensitive goods</option>
-															<option value="4">Children products</option>
-															<option value="5">Charged items / With batteries</option>
-														</select>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															HS Code
-														</div>
-														<div class="field__input">
-															<input placeholder="Enter code" type="text">
+														<div class="cargo-form__tip">
+															*You can add more SKUs during step 4
 														</div>
 													</div>
 												</div>
-												<div class="cargo-form__error">
-													To continue, please enter the total volume or box size.
-												</div>
-												<div class="cargo-form__tip">
-													*You can add more SKUs during step 4
+												<div class="cargo-form__actions">
+													<button data-add-inputs="" type="button" class="cargo-form__add add-btn _icon-plus">Add dimensions
+														and
+														product</button>
+													<button type="reset" class="cargo-form__clear">Clear all</button>
 												</div>
 											</div>
 											<div class="form-popup__footer">
@@ -2401,7 +2411,7 @@
 												</div>
 												<div class="addresses-form__footer">
 													<div class="addresses-form__footer-label">
-														Do you want to add new sizes, products or additional delivery address? 
+														Do you want to add additional delivery address? 
 													</div>
 													<button class="addresses-form__button button button--purple button--border _icon-plus">
 														<span>Add <span class="pc-only">dimensions and product</span></span>
@@ -2990,91 +3000,101 @@
 											</div>
 										</div>
 										<div data-tabs-item class="form-popup__body">
-											<div class="cargo-form__cargo cargo-form">
-												<div class="cargo-form__block cargo-form__block--cargo">
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Cargo*
-														</div>
-														<div class="field__input">
-															<input placeholder="Enter  product " type="text">
-														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Product category
-														</div>
-														<select name="form[]" data-class-modif="countries">
-															<option value="" selected>Select category</option>
-															<option value="2">Normal cargo</option>
-															<option value="3">Sensitive goods</option>
-															<option value="4">Children products</option>
-															<option value="5">Charged items / With batteries</option>
-														</select>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															HS Code
-														</div>
-														<div class="field__input">
-															<input placeholder="Enter code" type="text">
-														</div>
-													</div>
-												</div>
-												<div class="cargo-form__block cargo-form__block--details-reverse">
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Quantity*
-														</div>
-														<div class="field__input field__input--16">
-															<input placeholder="1" type="number">
-														</div>
-													</div>
-													<div class="cargo-form__field field">
-														<div class="cargo-form__label label-form">
-															Box weight
-														</div>
-														<div class="field__input field__input--16 field__input--gross">
-															<input placeholder="0" type="text">
-															<select data-class-modif="input">
-																<option value="1">Ib</option>
-																<option value="2" selected>Kg</option>
-															</select>
-														</div>
-													</div>
-													<div class="cargo-form__wrapper">
-														<div class="cargo-form__label label-form">
-															Dimensions*
-														</div>
-														<div class="cargo-form__dimensions">
-															<div class="cargo-form__field field ">
-																<div class="field__input field__input--16">
-																	<input placeholder="L" type="text">
+											<div data-inputs-wrapper="" class="cargo-form__cargo cargo-form">
+												<div data-simplebar class="cargo-form__groups">
+													<div data-inputs class="cargo-form__group">
+														<div class="cargo-form__block cargo-form__block--cargo">
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Cargo*
+																</div>
+																<div class="field__input">
+																	<input placeholder="Enter  product " type="text">
 																</div>
 															</div>
 															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Product category
+																</div>
+																<select name="form[]" data-class-modif="countries">
+																	<option value="" selected>Select category</option>
+																	<option value="2">Normal cargo</option>
+																	<option value="3">Sensitive goods</option>
+																	<option value="4">Children products</option>
+																	<option value="5">Charged items / With batteries</option>
+																</select>
+															</div>
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	HS Code
+																</div>
+																<div class="field__input">
+																	<input placeholder="Enter code" type="text">
+																</div>
+															</div>
+														</div>
+														<div class="cargo-form__block cargo-form__block--details-reverse">
+															<div class="cargo-form__field field">
+																<div class="cargo-form__label label-form">
+																	Quantity*
+																</div>
 																<div class="field__input field__input--16">
-																	<input placeholder="W" type="text">
+																	<input placeholder="1" type="number">
 																</div>
 															</div>
 															<div class="cargo-form__field field">
-																<div class="field__input field__input--16">
-																	<input placeholder="H" type="text">
+																<div class="cargo-form__label label-form">
+																	Box weight
+																</div>
+																<div class="field__input field__input--16 field__input--gross">
+																	<input placeholder="0" type="text">
+																	<select data-class-modif="input">
+																		<option value="1">Ib</option>
+																		<option value="2" selected>Kg</option>
+																	</select>
 																</div>
 															</div>
-															<select data-class-modif="input">
-																<option value="1" selected>In</option>
-																<option value="2">cm</option>
-															</select>
+															<div class="cargo-form__wrapper">
+																<div class="cargo-form__label label-form">
+																	Dimensions*
+																</div>
+																<div class="cargo-form__dimensions">
+																	<div class="cargo-form__field field ">
+																		<div class="field__input field__input--16">
+																			<input placeholder="L" type="text">
+																		</div>
+																	</div>
+																	<div class="cargo-form__field field">
+																		<div class="field__input field__input--16">
+																			<input placeholder="W" type="text">
+																		</div>
+																	</div>
+																	<div class="cargo-form__field field">
+																		<div class="field__input field__input--16">
+																			<input placeholder="H" type="text">
+																		</div>
+																	</div>
+																	<select data-class-modif="input">
+																		<option value="1" selected>In</option>
+																		<option value="2">cm</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="cargo-form__error">
+															To continue, please enter the total volume or box size.
+														</div>
+														<div class="cargo-form__tip">
+															*You can add more SKUs during step 4
 														</div>
 													</div>
 												</div>
 
-												<div class="cargo-form__error">
-													To continue, please enter the total volume or box size.
-												</div>
-												<div class="cargo-form__tip">
-													*You can add more SKUs during step 4
+												<div class="cargo-form__actions">
+													<button data-add-inputs="" type="button" class="cargo-form__add add-btn _icon-plus">Add dimensions
+														and
+														product</button>
+													<button type="reset" class="cargo-form__clear">Clear all</button>
 												</div>
 											</div>
 
@@ -3144,7 +3164,7 @@
 												</div>
 												<div class="addresses-form__footer">
 													<div class="addresses-form__footer-label">
-														Do you want to add new sizes, products or additional delivery address? 
+														Do you want to add additional delivery address? 
 													</div>
 													<button class="addresses-form__button button button--purple button--border _icon-plus">
 														<span>Add <span class="pc-only">dimensions and product</span></span>
@@ -7295,7 +7315,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250916145651"></script>
+	<script src="js/app.min.js?_v=20250917153654"></script>
 </body>
 
 </html>
