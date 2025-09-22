@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250917153654">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250922150906">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -531,22 +531,6 @@
 																		1200 kg
 																	</dd>
 																	<dt>
-																		Dimensions:
-																	</dt>
-																	<dd>
-																		<div class="block-inq__dimensions">
-																			<span>
-																				L 40 In
-																			</span>
-																			<span>
-																				W 40 In
-																			</span>
-																			<span>
-																				H 40 In
-																			</span>
-																		</div>
-																	</dd>
-																	<dt>
 																		Quantity:
 																	</dt>
 																	<dd>
@@ -561,43 +545,101 @@
 																	<dt>
 																		Invoice packing list:
 																	</dt>
-																	<dd>
+																	<dd class="block-inq__cols">
 																		<a href="#" class="block-inq__file-link _icon-pic">
-																			packing list.pdf
+																			<span class="ellipsis">packing list.pdf</span>
 																		</a>
 																	</dd>
 																	<dt>
 																		Certificate:
 																	</dt>
-																	<dd>
+																	<dd class="block-inq__cols">
 																		<a href="#" class="block-inq__file-link">
-																			certificate product.pdf
+																			<span class="ellipsis">certificate product.pdf</span>
 																		</a>
 																		<a href="#" class="block-inq__file-link">
-																			certificate cargo.pdf
+																			<span class="ellipsis">certificate cargo.pdf</span>
 																		</a>
 																	</dd>
 																</dl>
 															</div>
 														</div>
-														<div class="block-inq__content block-inq__content--bottom">
-															<dl>
-																<dt>
-																	Pick up address:
-																</dt>
-																<dd>
-																	No. 88, Huaihai Road, Shanghai, 200000, China
-																</dd>
-																<dt>
-																	Delivery address:
-																</dt>
-																<dd>
-																	1234 Maple Street, Los Angeles, CA 90001, USA
-																</dd>
-															</dl>
-														</div>
+														<table class="block-inq__table">
+															<thead>
+																<tr>
+																	<th style="background-color: transparent;">
+																		Cargo
+																	</th>
+																	<th>
+																		Quantity:
+																	</th>
+																	<th>
+																		Height:
+																	</th>
+																	<th>
+																		Length:
+																	</th>
+																	<th>
+																		Width:
+																	</th>
+																	<th style="background-color: #D7D1FF;">
+																		Weight:
+																	</th>
+																	<th style="background-color: #D7D1FF;">
+																		Volume:
+																	</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>
+																		SKU 1
+																	</td>
+																	<td>
+																		12
+																	</td>
+																	<td>
+																		45
+																	</td>
+																	<td>
+																		25
+																	</td>
+																	<td>
+																		34
+																	</td>
+																	<td>
+																		12,5
+																	</td>
+																	<td>
+																		12,5
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		SKU 2
+																	</td>
+																	<td>
+																		4
+																	</td>
+																	<td>
+																		47
+																	</td>
+																	<td>
+																		26,5
+																	</td>
+																	<td>
+																		43
+																	</td>
+																	<td>
+																		13,7
+																	</td>
+																	<td>
+																		13,7
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-
 												</div>
 												<div data-cargo-block class="bid-inq__aside-wrapper">
 													<div class="bid-inq__aside">
@@ -841,20 +883,32 @@
 																</div>
 															</div>
 														</div>
+														<div class="form-bid-inq__rate-info">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
+																<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
+																<path d="M12 7L12 14" stroke="#7B7F97" />
+															</svg>
+															<div class="form-bid-inq__info-label">
+																Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
+															</div>
+															<button type="button" class="form-bid-inq__button button button--border">Apply</button>
+														</div>
 														<div class="form-bid-inq__actions">
-															<div class="form-bid-inq__rate-info">
-																<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																	<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																	<path d="M12 7L12 14" stroke="#7B7F97" />
-																</svg>
-																<div class="form-bid-inq__info-label">
-																	Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
+															<div class="form-bid-inq__footer-rate">
+																<h5 class="form-bid-inq__rate-title">
+																	Your rate
+																</h5>
+																<div class="form-bid-inq__rate-label">
+																	<span>Fast sea truck</span>
+																	<span>$2 kg</span>
 																</div>
-																<button type="button" class="form-bid-inq__button button button--border">Apply</button>
 															</div>
 															<div class="separator">
 
+															</div>
+															<div class="form-bid-inq__offer-label _icon-check-round">
+																Your offer has been sent to the client
 															</div>
 															<button class="form-bid-inq__button button">
 																Send
@@ -921,22 +975,6 @@
 																		1200 kg
 																	</dd>
 																	<dt>
-																		Dimensions:
-																	</dt>
-																	<dd>
-																		<div class="block-inq__dimensions">
-																			<span>
-																				L 40 In
-																			</span>
-																			<span>
-																				W 40 In
-																			</span>
-																			<span>
-																				H 40 In
-																			</span>
-																		</div>
-																	</dd>
-																	<dt>
 																		Quantity:
 																	</dt>
 																	<dd>
@@ -951,43 +989,101 @@
 																	<dt>
 																		Invoice packing list:
 																	</dt>
-																	<dd>
+																	<dd class="block-inq__cols">
 																		<a href="#" class="block-inq__file-link _icon-pic">
-																			packing list.pdf
+																			<span class="ellipsis">packing list.pdf</span>
 																		</a>
 																	</dd>
 																	<dt>
 																		Certificate:
 																	</dt>
-																	<dd>
+																	<dd class="block-inq__cols">
 																		<a href="#" class="block-inq__file-link">
-																			certificate product.pdf
+																			<span class="ellipsis">certificate product.pdf</span>
 																		</a>
 																		<a href="#" class="block-inq__file-link">
-																			certificate cargo.pdf
+																			<span class="ellipsis">certificate cargo.pdf</span>
 																		</a>
 																	</dd>
 																</dl>
 															</div>
 														</div>
-														<div class="block-inq__content block-inq__content--bottom">
-															<dl>
-																<dt>
-																	Pick up address:
-																</dt>
-																<dd>
-																	No. 88, Huaihai Road, Shanghai, 200000, China
-																</dd>
-																<dt>
-																	Delivery address:
-																</dt>
-																<dd>
-																	1234 Maple Street, Los Angeles, CA 90001, USA
-																</dd>
-															</dl>
-														</div>
+														<table class="block-inq__table">
+															<thead>
+																<tr>
+																	<th style="background-color: transparent;">
+																		Cargo
+																	</th>
+																	<th>
+																		Quantity:
+																	</th>
+																	<th>
+																		Height:
+																	</th>
+																	<th>
+																		Length:
+																	</th>
+																	<th>
+																		Width:
+																	</th>
+																	<th style="background-color: #D7D1FF;">
+																		Weight:
+																	</th>
+																	<th style="background-color: #D7D1FF;">
+																		Volume:
+																	</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>
+																		SKU 1
+																	</td>
+																	<td>
+																		12
+																	</td>
+																	<td>
+																		45
+																	</td>
+																	<td>
+																		25
+																	</td>
+																	<td>
+																		34
+																	</td>
+																	<td>
+																		12,5
+																	</td>
+																	<td>
+																		12,5
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		SKU 2
+																	</td>
+																	<td>
+																		4
+																	</td>
+																	<td>
+																		47
+																	</td>
+																	<td>
+																		26,5
+																	</td>
+																	<td>
+																		43
+																	</td>
+																	<td>
+																		13,7
+																	</td>
+																	<td>
+																		13,7
+																	</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
-
 												</div>
 												<div data-cargo-block class="bid-inq__aside-wrapper">
 													<div class="bid-inq__aside">
@@ -1231,20 +1327,32 @@
 																</div>
 															</div>
 														</div>
+														<div class="form-bid-inq__rate-info">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
+																<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
+																<path d="M12 7L12 14" stroke="#7B7F97" />
+															</svg>
+															<div class="form-bid-inq__info-label">
+																Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
+															</div>
+															<button type="button" class="form-bid-inq__button button button--border">Apply</button>
+														</div>
 														<div class="form-bid-inq__actions">
-															<div class="form-bid-inq__rate-info">
-																<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																	<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																	<path d="M12 7L12 14" stroke="#7B7F97" />
-																</svg>
-																<div class="form-bid-inq__info-label">
-																	Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
+															<div class="form-bid-inq__footer-rate">
+																<h5 class="form-bid-inq__rate-title">
+																	Your rate
+																</h5>
+																<div class="form-bid-inq__rate-label">
+																	<span>Fast sea truck</span>
+																	<span>$2 kg</span>
 																</div>
-																<button type="button" class="form-bid-inq__button button button--border">Apply</button>
 															</div>
 															<div class="separator">
 
+															</div>
+															<div class="form-bid-inq__offer-label _icon-check-round">
+																Your offer has been sent to the client
 															</div>
 															<button class="form-bid-inq__button button">
 																Send
@@ -2048,7 +2156,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="popup-form" aria-hidden="true" class="popup  popup--form popup_show">
+		<div id="popup-form" aria-hidden="true" class="popup  popup--form">
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div data-tabs class="tabs">
@@ -5526,7 +5634,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250917153654"></script>
+	<script src="js/app.min.js?_v=20250922150906"></script>
 </body>
 
 </html>
