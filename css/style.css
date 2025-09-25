@@ -1878,8 +1878,7 @@ body::after {
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2a2e4a
+  -moz-osx-font-smoothing: grayscale
 }
 .rating__item--active::before {
   content: ""
@@ -2306,6 +2305,9 @@ body::after {
 .popup--progress .popup__content {
   max-width: 46.5rem;
   padding: 1.125rem
+}
+.popup--progress-wider .popup__content {
+  max-width: 59.375rem
 }
 .popup--actions .popup__content {
   max-width: 42.1875rem;
@@ -4008,7 +4010,7 @@ body::after {
   grid-template-columns: 154fr 164fr 104fr 55fr 59fr 111fr!important
 }
 .agent-dash-popup__progress-stats .table-progress__item--active {
-  grid-template-columns: 144fr 113fr 146fr 264fr!important;
+  grid-template-columns: 144fr 113fr 146fr 264fr 7.5rem!important;
   padding: .3125rem .375rem;
   border-radius: 1.5rem;
   transition: all .3s
@@ -8529,6 +8531,12 @@ body:has(header.header) .page {
 .active-table-pr__text {
   font-size: .75rem;
   line-height: 1.2
+}
+.active-table-pr__button {
+  font-size: .875rem;
+  padding: .3125rem .625rem;
+  align-self: self-start;
+  justify-self: start
 }
 .progress-stats {
   position: relative;
@@ -14686,6 +14694,12 @@ span.flatpickr-weekday {
 @media (max-width:56.24875em) {
   .files-form__block {
     gap: 1.25rem
+  }
+  .agent-dash-popup__progress-stats .table-progress__item--active {
+    grid-template-columns: 144fr 113fr 146fr 264fr!important
+  }
+  .agent-dash-popup__progress-stats .table-progress__item--active .active-table-pr__button {
+    grid-column: 1/-1
   }
 }
 @media (max-width:47.99875em) {

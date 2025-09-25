@@ -1,53 +1,212 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	</meta>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	</meta>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</meta>
 	<title>PDF</title>
 	<style type="text/css">
 		@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap");
+
+		body {
+			margin: 0;
+			font-family: "Montserrat";
+			font-size: 12px;
+			width: 100%;
+		}
+
+		b {
+			font-weight: 700;
+		}
+
+		table {
+			border-spacing: 0;
+			border-collapse: collapse;
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		td {
+			padding: 0;
+			text-align: left;
+		}
+
+		img {
+			border: 0;
+		}
+
+		h1 {
+			font-size: 22px;
+			line-height: 28px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 12px;
+			font-weight: 700;
+			line-height: 13px;
+		}
+
+		h3 {
+			text-align: left;
+			font-size: 20px;
+			line-height: 20px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		h4 {
+			text-align: left;
+			font-size: 16px;
+			line-height: 18px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit
+		}
+
+		.text {
+			font-size: 10px;
+			line-height: 17px;
+		}
+
+		.text ul {
+			margin: 0;
+			padding: 0;
+			padding-left: 15px;
+			color: #181C32;
+		}
+
+
+		.services-table tbody {
+			border: 1px dashed #C6C6C6;
+			border-top: none;
+		}
+
+		.services-table thead {
+			border: 1px solid #D7DEFB;
+		}
+
+		.services-table thead td {
+			padding: 14px 28px 14px 15px;
+			color: #363636;
+			font-size: 12.6px;
+			font-weight: 700;
+			line-height: 16px;
+			background: #D7DEFB;
+		}
+
+		.services-table thead td:last-child {
+			text-align: right;
+		}
+
+		.services-table tbody td {
+			padding: 9px 28px 9px 15px;
+			font-size: 10px;
+			line-height: 12px;
+		}
+
+		.services-table tbody td span {
+			font-size: 9px;
+			color: #575963;
+			line-height: 11px;
+		}
+
+		.services-table tbody td:last-child {
+			text-align: right;
+		}
+
+		.total {
+			padding: 8px 23px;
+			text-align: center;
+			display: inline-block;
+			color: #363636;
+			font-size: 13.6px;
+			font-weight: 700;
+			line-height: 17px;
+			background: #D7DEFB;
+			letter-spacing: 1px;
+		}
+
+		.label {
+			line-height: 15px;
+		}
+
+		.contacts td {
+			vertical-align: top;
+			padding: 0 20px;
+		}
+
+		.contacts h2 {
+			height: 37px;
+			padding-bottom: 10px;
+			font-size: 18.7px;
+			line-height: 23px;
+			font-weight: 400;
+		}
+
+		.contacts p {
+			font-size: 9.9px;
+			line-height: 13px;
+		}
+
+		.footer td {
+			padding: 0 20px;
+		}
+
+		.footer td:last-child {
+			text-align: right;
+		}
+
+		.footer-link {
+			color: #000;
+			font-size: 13px;
+			line-height: 16px;
+		}
 	</style>
 </head>
 
-<body style="margin: 0; font-family: 'Montserrat'; font-size: 12px; width: 100%;">
+<body>
 	<center class="wrapper">
 		<div style=" background: url('') no-repeat center / cover; max-width: 600px;
 			width: 100%;">
-			<table class="main" style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-				width="100%">
+			<table class="main" style="width: 100%;">
 				<tr>
-					<td style="padding: 0; text-align: left;" align="left">
-						<img src="img/pdf/hero.png" style="border: 0; width: 100%;" alt="Image"></img>
+					<td>
+						<img src="img/pdf/hero.webp" style="width: 100%" alt="Image">
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: left; padding: 25px 36px;" align="left">
-						<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;" width="100%">
+					<td style="padding: 25px 36px;">
+						<table>
 							<tr>
-								<td style="padding: 0; text-align: left;" align="left">
-									<h1 style="font-size: 22px; line-height: 28px; font-weight: 400; margin: 0;">INVOICE</h1>
+								<td>
+									<h1>INVOICE</h1>
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: left; padding: 9px 0 39px;" align="left">
-									<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
+								<td style="padding: 9px 0 39px;">
+									<table>
 										<tr>
-											<td style="padding: 0; text-align: left;" align="left">
-												<div class="label" style="line-height: 15px;">
-													<b style="font-weight: 700;">Invoice Number:</b>
-													200011-2<br></br>
-													<b style="font-weight: 700;">Date:</b> 2025-09-11
+											<td>
+												<div class="label">
+													<b>Invoice Number:</b>
+													200011-2<br>
+													<b>Date:</b> 2025-09-11
 												</div>
 											</td>
-											<td style="padding: 0; text-align: right;" align="right">
-												<div class="label" style="line-height: 15px; display: inline-block; text-align: left;">
-													<b style="font-weight: 700;">BILL TO:</b> Pukalia <br></br>
+											<td style="text-align: right;">
+												<div class="label" style="display: inline-block; text-align: left;">
+													<b>BILL TO:</b> Pukalia <br>
 													central@pukalia.com
 												</div>
 											</td>
@@ -56,31 +215,23 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 25px;" align="left">
-									<table class="services-table"
-										style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
-										<thead style="border: 1px solid #D7DEFB;">
+								<td style="padding-bottom: 25px">
+									<table class="services-table">
+										<thead>
 											<tr>
-												<td
-													style="text-align: left; padding: 14px 28px 14px 15px; color: #363636; font-size: 12.6px; font-weight: 700; line-height: 16px; background: #D7DEFB;"
-													align="left">SERVICES</td>
-												<td
-													style="padding: 14px 28px 14px 15px; color: #363636; font-size: 12.6px; font-weight: 700; line-height: 16px; background: #D7DEFB; text-align: right;"
-													align="right">AMOUNT</td>
+												<td>SERVICES</td>
+												<td>AMOUNT</td>
 											</tr>
 										</thead>
-										<tbody style="border: 1px dashed #C6C6C6; border-top: none;">
+										<tbody>
 											<tr>
-												<td style="text-align: left; padding: 9px 28px 9px 15px; font-size: 10px; line-height: 12px;"
-													align="left">
-													FREIGHT <br></br>
-													<span style="font-size: 9px; color: #575963; line-height: 11px;">
+												<td>
+													FREIGHT <br>
+													<span>
 														REGULAR OCEAN FREIGHT + TRUCK
 													</span>
 												</td>
-												<td style="padding: 9px 28px 9px 15px; font-size: 10px; line-height: 12px; text-align: right;"
-													align="right">
+												<td>
 													$21327.00
 												</td>
 											</tr>
@@ -89,21 +240,19 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: right; padding-bottom: 56px;" align="right">
-									<div class="total"
-										style="padding: 8px 23px; text-align: center; display: inline-block; color: #363636; font-size: 13.6px; font-weight: 700; line-height: 17px; background: #D7DEFB; letter-spacing: 1px;">
+								<td style="text-align: right; padding-bottom: 56px;">
+									<div class="total">
 										TOTAL: $21327.00
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 188px;" align="left">
-									<div class="text" style="font-size: 10px; line-height: 17px;">
-										<b style="font-weight: 700; color: #363636;">FREIGHT MANAGEMENT/TRANSPORTATION LOGISTICS
-											SERVICES</b>
-										<br></br>
-										<br></br>
-										<ul style="margin: 0; padding: 0; padding-left: 15px; color: #181C32;">
+								<td style="padding-bottom: 188px">
+									<div class="text">
+										<b style="color: #363636;">FREIGHT MANAGEMENT/TRANSPORTATION LOGISTICS SERVICES</b>
+										<br>
+										<br>
+										<ul>
 											<li>
 												Planning and scheduling shipments
 											</li>
@@ -116,25 +265,22 @@
 											<li>Broker fee US</li>
 											<li>Pick up port - Delivery to: IUSP</li>
 										</ul>
-										<br></br>
-										<p style="margin: 0;">
-											Shipping term: DDP <br></br>
+										<br>
+										<p>
+											Shipping term: DDP <br>
 											Total boxes / weight: 787 boxes / 10997 KG
 										</p>
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 30px;" align="left">
-									<div style="font-size: 10px; line-height: 17px; max-width: 230px;" class="text">
-										<h2 style="font-size: 12px; font-weight: 700; line-height: 13px;">PAYMENT INFORMATION:</h2>
-										<p style="margin: 0;">
-											<b style="font-weight: 700;">Company name:</b> ARDI LOGISTICS LLC <br></br> <b
-												style="font-weight: 700;">Account number:</b> 898136351576 <br></br> <b
-												style="font-weight: 700;">Routing
-												number:</b> 063100277 <br></br> <b style="font-weight: 700;">Routing number for wire:</b>
-											026009593 <br></br> <b style="font-weight: 700;">SWIFT:</b> BOFAUS3N
-											<br></br> <b style="font-weight: 700;">Company address:</b> 17201 Collins
+								<td style="padding-bottom: 30px;">
+									<div style="max-width: 230px;" class="text">
+										<h2>PAYMENT INFORMATION:</h2>
+										<p>
+											<b>Company name:</b> ARDI LOGISTICS LLC <br> <b>Account number:</b> 898136351576 <br> <b>Routing
+												number:</b> 063100277 <br> <b>Routing number for wire:</b> 026009593 <br> <b>SWIFT:</b> BOFAUS3N
+											<br> <b>Company address:</b> 17201 Collins
 											Avenue, Oceans Four # 3402, Sunny
 											Isles Beach, FL 33160, US
 										</p>
@@ -142,16 +288,14 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 265px;" align="left">
-									<table class="warn"
-										style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
+								<td style="padding-bottom: 265px;">
+									<table class="warn">
 										<tr>
-											<td style="padding: 0; text-align: left; width: 5px;" width="5" align="left">
-												<img width="5" height="16" src="img/pdf/warn.png" alt="Image" style="border: 0;"></img>
+											<td style="width: 5px;">
+												<img width="5" height="16" src="img/pdf/warn.webp" alt="Image">
 											</td>
-											<td style="padding: 0; text-align: left; padding-left: 11px;" align="left">
-												<p style="margin: 0; font-size: 10px; line-height: 16px; max-width: 443px;">
+											<td style="padding-left: 11px">
+												<p style="font-size: 10px; line-height: 16px; max-width: 443px">
 													This routing number 063100277 can only be used for direct deposits and ACH
 													transactions. For wire transfers, please use routing number 026009593
 												</p>
@@ -165,41 +309,35 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="padding: 0; text-align: left; padding-bottom: 28px;" align="left">
-						<table class="contacts"
-							style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;" width="100%">
+					<td style="padding-bottom: 28px">
+						<table class="contacts">
 							<tr>
-								<td style="text-align: left; vertical-align: top; padding: 0 20px; width: 140px;" width="140"
-									align="left" valign="top">
-									<h2
-										style="height: 37px; padding-bottom: 10px; font-size: 18.7px; line-height: 23px; font-weight: 400;">
+								<td style="width: 140px;">
+									<h2>
 										Contact us
 									</h2>
-									<p style="margin: 0; font-size: 9.9px; line-height: 13px;">
+									<p>
 										If You have any questions or
 										need assistance, feel free to
 										reach out to us. Our team is
 										here to help!
 									</p>
 								</td>
-								<td style="text-align: left; vertical-align: top; padding: 0 20px;" align="left" valign="top">
-									<h2
-										style="height: 37px; padding-bottom: 10px; font-size: 18.7px; line-height: 23px; font-weight: 400;">
+								<td>
+									<h2>
 										Business Hours:
 									</h2>
-									<p style="margin: 0; font-size: 9.9px; line-height: 13px;">
-										Monday - Friday: 9:00 AM - 6:00 PM<br></br>
-										Saturday: 10:00 AM - 4:00 PM<br></br>
-										Sunday: Closed <br></br>
+									<p>
+										Monday - Friday: 9:00 AM - 6:00 PM<br>
+										Saturday: 10:00 AM - 4:00 PM<br>
+										Sunday: Closed <br>
 									</p>
 								</td>
-								<td style="text-align: left; vertical-align: top; padding: 0 20px; width: 148px;" width="148"
-									align="left" valign="top">
-									<h2
-										style="height: 37px; padding-bottom: 10px; font-size: 18.7px; line-height: 23px; font-weight: 400;">
+								<td style="width: 148px;">
+									<h2>
 										Address:
 									</h2>
-									<p style="margin: 0; font-size: 9.9px; line-height: 13px;">
+									<p>
 										1234 Warehouse Rd,Suite 567,
 										Los Angeles, CA 90021, USA
 									</p>
@@ -209,18 +347,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="padding: 0; text-align: left; padding-bottom: 92px;" align="left">
-						<table class="footer"
-							style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;" width="100%">
+					<td style="padding-bottom: 92px">
+						<table class="footer">
 							<tr>
-								<td style="text-align: left; padding: 0 20px;" align="left">
-									<a class="footer-link" href="#"
-										style="text-decoration: none; color: #000; font-size: 13px; line-height: 16px;">+1 (800)
-										123-4567</a>
+								<td>
+									<a class="footer-link" href="#">+1 (800) 123-4567</a>
 								</td>
-								<td style="padding: 0 20px; text-align: right;" align="right">
-									<a class="footer-link" href="#"
-										style="text-decoration: none; color: #000; font-size: 13px; line-height: 16px;">support@aideliv.com</a>
+								<td>
+									<a class="footer-link" href="#">support@aideliv.com</a>
 								</td>
 							</tr>
 						</table>
