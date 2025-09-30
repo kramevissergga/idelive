@@ -12457,7 +12457,8 @@ body:has(header.header) .page {
 }
 .adv-spoilers__title {
   font-size: 2.5rem;
-  line-height: 1.4
+  line-height: 1.4;
+  cursor: pointer
 }
 .adv-spoilers__body {
   padding-top: 1.625rem
