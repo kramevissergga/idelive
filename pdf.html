@@ -1,79 +1,229 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	</meta>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	</meta>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</meta>
 	<title>PDF</title>
 	<style type="text/css">
 		@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap");
+
+		body {
+			margin: 0;
+			font-family: "Montserrat";
+			font-size: 12px;
+			width: 100%;
+		}
+
+		b {
+			font-weight: 700;
+		}
+
+		table {
+			border-spacing: 0;
+			border-collapse: collapse;
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		td {
+			padding: 0;
+			text-align: left;
+		}
+
+		img {
+			border: 0;
+		}
+
+		h1 {
+			font-size: 23px;
+			line-height: 28px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 12px;
+			font-weight: 700;
+			line-height: 13px;
+			margin-top: 0;
+		}
+
+		h3 {
+			text-align: left;
+			font-size: 18px;
+			line-height: 20px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		h4 {
+			text-align: left;
+			font-size: 16px;
+			line-height: 18px;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit
+		}
+
+		.text {
+			font-size: 10px;
+			line-height: 17px;
+		}
+
+		.text ul {
+			margin: 0;
+			padding: 0;
+			padding-left: 15px;
+			color: #181C32;
+		}
+
+
+		.services-table tbody {
+			border: 1px dashed #C6C6C6;
+			border-top: none;
+		}
+
+		.services-table thead {
+			border: 1px solid #D7DEFB;
+		}
+
+		.services-table thead td {
+			padding: 14px 28px 14px 15px;
+			color: #363636;
+			font-size: 12.6px;
+			font-weight: 700;
+			line-height: 16px;
+			background: #D7DEFB;
+		}
+
+		.services-table thead td:last-child {
+			text-align: right;
+		}
+
+		.services-table tbody td {
+			padding: 9px 28px 9px 15px;
+			font-size: 10px;
+			line-height: 12px;
+		}
+
+		.services-table tbody td span {
+			font-size: 9px;
+			color: #575963;
+			line-height: 11px;
+		}
+
+		.services-table tbody td:last-child {
+			text-align: right;
+		}
+
+		.total {
+			padding: 8px 23px;
+			text-align: center;
+			display: inline-block;
+			color: #363636;
+			font-size: 13.6px;
+			font-weight: 700;
+			line-height: 17px;
+			background: #D7DEFB;
+			letter-spacing: 1px;
+		}
+
+		.label {
+			line-height: 15px;
+		}
+
+		.contacts td {
+			vertical-align: top;
+			padding: 0 20px;
+		}
+
+		.contacts h2 {
+			height: 37px;
+			padding-bottom: 10px;
+			font-size: 18.7px;
+			line-height: 23px;
+			font-weight: 400;
+		}
+
+		.contacts p {
+			font-size: 9.9px;
+			line-height: 13px;
+		}
+
+		.footer td:last-child {
+			text-align: right;
+		}
+
+		.footer-link {
+			color: #000;
+			font-size: 14px;
+			line-height: 16px;
+		}
 	</style>
 </head>
 
-<body style="margin: 0; font-family: 'Montserrat'; font-size: 12px; width: 100%;">
+<body>
 	<center class="wrapper">
-		<div style="background: url('img/pdf/bg.png') no-repeat center / cover; max-width: 750px;
+		<div style="background: url('img/pdf/bg.webp') no-repeat center / cover; max-width: 750px;
 			width: 100%;">
-			<table class="main" style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-				width="100%">
+			<table class="main" style="width: 100%;">
 				<tr>
-					<td style="padding: 0; text-align: left;" align="left">
-						<img src="img/pdf/hero.png" style="border: 0; width: 100%;" alt="Image"></img>
+					<td>
+						<img src="img/pdf/hero.webp" style="width: 100%" alt="Image">
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: left; padding: 31px 36px;" align="left">
-						<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;" width="100%">
+					<td style="padding: 31px 36px;">
+						<table>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 16px;" align="left">
-									<h1 style="font-size: 23px; line-height: 28px; font-weight: 400; margin: 0;">INVOICE</h1>
+								<td style="padding-bottom: 16px;">
+									<h1>INVOICE</h1>
 								</td>
 							</tr>
 							<tr>
-								<td style="text-align: left; padding: 9px 0 39px;" align="left">
-									<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
+								<td style="padding: 9px 0 39px;">
+									<table>
 										<tr>
-											<td style="padding: 0; text-align: left; padding-right: 10px; vertical-align: top;" valign="top"
-												align="left">
-												<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-													width="100%">
+											<td style="padding-right: 10px;vertical-align: top;">
+												<table>
 													<tr>
-														<td style="padding: 0; text-align: left; padding-bottom: 12px;" align="left">
-															<div class="label" style="line-height: 15px;">
-																<b style="font-weight: 700;">Invoice Number:</b>
-																200011-2<br></br>
-																<b style="font-weight: 700;">Date:</b> 2025-09-11
+														<td style="padding-bottom: 12px;">
+															<div class="label">
+																<b>Invoice Number:</b>
+																200011-2<br>
+																<b>Date:</b> 2025-09-11
 															</div>
 														</td>
 													</tr>
 													<tr>
-														<td style="padding: 0; text-align: left;" align="left">
-															<div class="label" style="line-height: 15px; display: inline-block; text-align: left;">
-																<b style="font-weight: 700;">BILL TO:</b> Pukalia <br></br>
+														<td>
+															<div class="label" style="display: inline-block; text-align: left;">
+																<b>BILL TO:</b> Pukalia <br>
 																central@pukalia.com
 															</div>
 														</td>
 													</tr>
 												</table>
 											</td>
-											<td style="padding: 0; text-align: left;" align="left">
-												<div style="font-size: 10px; line-height: 17px; max-width: 230px; vertical-align: top;"
-													class="text ">
-													<h2 style="font-size: 12px; font-weight: 700; line-height: 13px; margin-top: 0;">PAYMENT
-														INFORMATION:</h2>
-													<p style="margin: 0;">
-														<b style="font-weight: 700;">Company name:</b> ARDI LOGISTICS LLC <br></br> <b
-															style="font-weight: 700;">Account number:</b> 898136351576 <br></br>
-														<b style="font-weight: 700;">Routing
-															number:</b> 063100277 <br></br> <b style="font-weight: 700;">Routing number for wire:</b>
-														026009593 <br></br> <b style="font-weight: 700;">SWIFT:</b>
+											<td>
+												<div style="max-width: 230px; vertical-align: top;" class="text ">
+													<h2>PAYMENT INFORMATION:</h2>
+													<p>
+														<b>Company name:</b> ARDI LOGISTICS LLC <br> <b>Account number:</b> 898136351576 <br>
+														<b>Routing
+															number:</b> 063100277 <br> <b>Routing number for wire:</b> 026009593 <br> <b>SWIFT:</b>
 														BOFAUS3N
-														<br></br> <b style="font-weight: 700;">Company address:</b> 17201 Collins
+														<br> <b>Company address:</b> 17201 Collins
 														Avenue, Oceans Four # 3402, Sunny
 														Isles Beach, FL 33160, US
 													</p>
@@ -84,31 +234,23 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 25px;" align="left">
-									<table class="services-table"
-										style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
-										<thead style="border: 1px solid #D7DEFB;">
+								<td style="padding-bottom: 25px">
+									<table class="services-table">
+										<thead>
 											<tr>
-												<td
-													style="text-align: left; padding: 14px 28px 14px 15px; color: #363636; font-size: 12.6px; font-weight: 700; line-height: 16px; background: #D7DEFB;"
-													align="left">SERVICES</td>
-												<td
-													style="padding: 14px 28px 14px 15px; color: #363636; font-size: 12.6px; font-weight: 700; line-height: 16px; background: #D7DEFB; text-align: right;"
-													align="right">AMOUNT</td>
+												<td>SERVICES</td>
+												<td>AMOUNT</td>
 											</tr>
 										</thead>
-										<tbody style="border: 1px dashed #C6C6C6; border-top: none;">
+										<tbody>
 											<tr>
-												<td style="text-align: left; padding: 9px 28px 9px 15px; font-size: 10px; line-height: 12px;"
-													align="left">
-													FREIGHT <br></br>
-													<span style="font-size: 9px; color: #575963; line-height: 11px;">
+												<td>
+													FREIGHT <br>
+													<span>
 														REGULAR OCEAN FREIGHT + TRUCK
 													</span>
 												</td>
-												<td style="padding: 9px 28px 9px 15px; font-size: 10px; line-height: 12px; text-align: right;"
-													align="right">
+												<td>
 													$21327.00
 												</td>
 											</tr>
@@ -117,37 +259,35 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: right; padding-bottom: 48px;" align="right">
-									<div class="total"
-										style="padding: 8px 23px; text-align: center; display: inline-block; color: #363636; font-size: 13.6px; font-weight: 700; line-height: 17px; background: #D7DEFB; letter-spacing: 1px;">
+								<td style="text-align: right; padding-bottom: 48px;">
+									<div class="total">
 										TOTAL: $21327.00
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 90px;" align="left">
-									<table style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
+								<td style="padding-bottom: 90px">
+									<table>
 										<tr>
-											<td style="padding: 0; text-align: left;" align="left">
+											<td>
 												<div style="line-height: 21px;" class="label">
-													<b style="font-weight: 700;">Shipping term:</b>
+													<b>Shipping term:</b>
 													DDP (all-inclusive, door-to-door service)
 												</div>
 											</td>
 										</tr>
 										<tr>
-											<td style="padding: 0; text-align: left;" align="left">
+											<td>
 												<div style="line-height: 21px;" class="label">
-													<b style="font-weight: 700;">Shipping:</b>
+													<b>Shipping:</b>
 													Shenzhen – USA, IUSP
 												</div>
 											</td>
 										</tr>
 										<tr>
-											<td style="padding: 0; text-align: left;" align="left">
+											<td>
 												<div style="line-height: 21px;" class="label">
-													<b style="font-weight: 700;">Total boxes / weight:</b>
+													<b>Total boxes / weight:</b>
 													787 boxes / 10997 KG
 												</div>
 											</td>
@@ -156,23 +296,17 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 0; text-align: left; padding-bottom: 53px;" align="left">
-									<table class="footer"
-										style="border-spacing: 0; border-collapse: collapse; table-layout: fixed; width: 100%;"
-										width="100%">
+								<td style="padding-bottom: 53px">
+									<table class="footer">
 										<tr>
-											<td style="padding: 0; text-align: left;" align="left">
-												<h3 style="text-align: left; font-size: 18px; line-height: 20px; font-weight: 400; margin: 0;">
-													Contact us</h3>
+											<td>
+												<h3>Contact us</h3>
 											</td>
-											<td style="padding: 0; text-align: left;" align="left">
-												<a class="footer-link" href="#"
-													style="text-decoration: none; color: #000; font-size: 14px; line-height: 16px;">+1 (800)
-													123-4567</a>
+											<td>
+												<a class="footer-link" href="#">+1 (800) 123-4567</a>
 											</td>
-											<td style="padding: 0; text-align: right;" align="right">
-												<a class="footer-link" href="#"
-													style="text-decoration: none; color: #000; font-size: 14px; line-height: 16px;">support@aideliv.com</a>
+											<td>
+												<a class="footer-link" href="#">support@aideliv.com</a>
 											</td>
 										</tr>
 									</table>

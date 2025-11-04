@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251001081004">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251104171435">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -5386,7 +5386,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="balance-popup-2" aria-hidden="true" class="popup popup--balance popup_show">
+		<div id="balance-popup-2" aria-hidden="true" class="popup popup--balance">
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div class="balance-popup">
@@ -6455,57 +6455,6 @@
 																			<option value="3">30-35 days</option>
 																		</select>
 																	</div>
-																	<div class="form-bid-inq__item form-bid-inq__item--radios">
-																		<div class="form-bid-inq__label">
-																			Pick up fee
-																		</div>
-																		<div class="form-bid-inq__radios">
-																			<label class="form-bid-inq__radio radiobox">
-																				<span class="icon"></span>
-																				included
-																				<input type="radio" name="pickup">
-																			</label>
-																			<label class="form-bid-inq__radio radiobox">
-																				<span class="icon"></span>
-																				not included
-																				<input type="radio" name="pickup">
-																			</label>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__field field">
-																			<div class="field__input">
-																				<input type="text" placeholder="0 USD">
-																			</div>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__label">
-																			Price per kg/cbm
-																		</div>
-																		<div class="form-bid-inq__double-block">
-																			<div class="form-bid-inq__field field">
-																				<div class="field__input">
-																					<input type="text" placeholder="$">
-																				</div>
-																			</div>
-																			<select>
-																				<option value="1" selected>USD/KG</option>
-																				<option value="2">EUR/KG</option>
-																				<option value="3">UAH/KG</option>
-																			</select>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__label">
-																			Total price
-																		</div>
-																		<div class="form-bid-inq__field field">
-																			<div class="field__input">
-																				<input type="text" placeholder="$">
-																			</div>
-																		</div>
-																	</div>
 																	<div class="form-bid-inq__item  form-bid-inq__item--radios">
 																		<div class="form-bid-inq__label">
 																			Type of service
@@ -6545,19 +6494,91 @@
 																			</div>
 																		</div>
 																	</div>
+																	<div class="form-bid-inq__item form-bid-inq__item--price">
+																		<div class="form-bid-inq__price-block">
+																			<div class="form-bid-inq__price-item">
+																				<div class="form-bid-inq__label">
+																					Price per kg/cbm
+																				</div>
+																				<div class="form-bid-inq__double-block">
+																					<div class="form-bid-inq__field field">
+																						<div class="field__input">
+																							<input type="text" placeholder="$">
+																						</div>
+																					</div>
+																					<select>
+																						<option value="1" selected>USD/KG</option>
+																						<option value="2">EUR/KG</option>
+																						<option value="3">UAH/KG</option>
+																					</select>
+																				</div>
+																			</div>
+																			<div class="form-bid-inq__price-item">
+																				<div class="form-bid-inq__item">
+																					<div class="form-bid-inq__label">
+																						Total price
+																					</div>
+																					<div class="form-bid-inq__field field">
+																						<div class="field__input">
+																							<input type="text" placeholder="$">
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="form-bid-inq__rate-info">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																					<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																					<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																					<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																				</svg>
+																				<div class="form-bid-inq__info-label">
+																					Your rate must be less than 1.5% of the previous rate. Recommended rate is
+																					$2,00.
+																				</div>
+																				<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																			</div>
+																		</div>
+
+																	</div>
+																	<div class="form-bid-inq__item form-bid-inq__item--pick">
+																		<div class="form-bid-inq__label">
+																			Pick up fee
+																		</div>
+																		<div class="form-bid-inq__item-body">
+																			<div class="form-bid-inq__radios">
+																				<label class="form-bid-inq__radio radiobox">
+																					<span class="icon"></span>
+																					included
+																					<input type="radio" name="pickup">
+																				</label>
+																				<label class="form-bid-inq__radio radiobox">
+																					<span class="icon"></span>
+																					not included
+																					<input type="radio" name="pickup">
+																				</label>
+																			</div>
+																			<div class="form-bid-inq__field field">
+																				<div class="field__input">
+																					<input type="text" placeholder="0 USD">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="form-bid-inq__rate-info">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																				<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																				<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																				<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																			</svg>
+																			<div class="form-bid-inq__info-label">
+																				Your pick up fee must be less for win.
+																				Recommended pick up fee 80 usd 
+																			</div>
+																			<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																		</div>
+																	</div>
 																</div>
 															</div>
-															<div class="form-bid-inq__rate-info">
-																<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																	<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																	<path d="M12 7L12 14" stroke="#7B7F97" />
-																</svg>
-																<div class="form-bid-inq__info-label">
-																	Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
-																</div>
-																<button type="button" class="form-bid-inq__button button button--border">Apply</button>
-															</div>
+
 															<div class="form-bid-inq__actions">
 																<div class="form-bid-inq__footer-rate">
 																	<h5 class="form-bid-inq__rate-title">
@@ -6899,57 +6920,6 @@
 																			<option value="3">30-35 days</option>
 																		</select>
 																	</div>
-																	<div class="form-bid-inq__item form-bid-inq__item--radios">
-																		<div class="form-bid-inq__label">
-																			Pick up fee
-																		</div>
-																		<div class="form-bid-inq__radios">
-																			<label class="form-bid-inq__radio radiobox">
-																				<span class="icon"></span>
-																				included
-																				<input type="radio" name="pickup">
-																			</label>
-																			<label class="form-bid-inq__radio radiobox">
-																				<span class="icon"></span>
-																				not included
-																				<input type="radio" name="pickup">
-																			</label>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__field field">
-																			<div class="field__input">
-																				<input type="text" placeholder="0 USD">
-																			</div>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__label">
-																			Price per kg/cbm
-																		</div>
-																		<div class="form-bid-inq__double-block">
-																			<div class="form-bid-inq__field field">
-																				<div class="field__input">
-																					<input type="text" placeholder="$">
-																				</div>
-																			</div>
-																			<select>
-																				<option value="1" selected>USD/KG</option>
-																				<option value="2">EUR/KG</option>
-																				<option value="3">UAH/KG</option>
-																			</select>
-																		</div>
-																	</div>
-																	<div class="form-bid-inq__item">
-																		<div class="form-bid-inq__label">
-																			Total price
-																		</div>
-																		<div class="form-bid-inq__field field">
-																			<div class="field__input">
-																				<input type="text" placeholder="$">
-																			</div>
-																		</div>
-																	</div>
 																	<div class="form-bid-inq__item  form-bid-inq__item--radios">
 																		<div class="form-bid-inq__label">
 																			Type of service
@@ -6989,18 +6959,89 @@
 																			</div>
 																		</div>
 																	</div>
+																	<div class="form-bid-inq__item form-bid-inq__item--price">
+																		<div class="form-bid-inq__price-block">
+																			<div class="form-bid-inq__price-item">
+																				<div class="form-bid-inq__label">
+																					Price per kg/cbm
+																				</div>
+																				<div class="form-bid-inq__double-block">
+																					<div class="form-bid-inq__field field">
+																						<div class="field__input">
+																							<input type="text" placeholder="$">
+																						</div>
+																					</div>
+																					<select>
+																						<option value="1" selected>USD/KG</option>
+																						<option value="2">EUR/KG</option>
+																						<option value="3">UAH/KG</option>
+																					</select>
+																				</div>
+																			</div>
+																			<div class="form-bid-inq__price-item">
+																				<div class="form-bid-inq__item">
+																					<div class="form-bid-inq__label">
+																						Total price
+																					</div>
+																					<div class="form-bid-inq__field field">
+																						<div class="field__input">
+																							<input type="text" placeholder="$">
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="form-bid-inq__rate-info">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																					<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																					<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																					<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																				</svg>
+																				<div class="form-bid-inq__info-label">
+																					Your rate must be less than 1.5% of the previous rate. Recommended rate is
+																					$2,00.
+																				</div>
+																				<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																			</div>
+																		</div>
+
+																	</div>
+																	<div class="form-bid-inq__item form-bid-inq__item--pick">
+																		<div class="form-bid-inq__label">
+																			Pick up fee
+																		</div>
+																		<div class="form-bid-inq__item-body">
+																			<div class="form-bid-inq__radios">
+																				<label class="form-bid-inq__radio radiobox">
+																					<span class="icon"></span>
+																					included
+																					<input type="radio" name="pickup">
+																				</label>
+																				<label class="form-bid-inq__radio radiobox">
+																					<span class="icon"></span>
+																					not included
+																					<input type="radio" name="pickup">
+																				</label>
+																			</div>
+																			<div class="form-bid-inq__field field">
+																				<div class="field__input">
+																					<input type="text" placeholder="0 USD">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="form-bid-inq__rate-info">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																				<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																				<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																				<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																			</svg>
+																			<div class="form-bid-inq__info-label">
+																				Your pick up fee must be less for win.
+																				Recommended pick up fee 80 usd 
+																			</div>
+																			<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																		</div>
+																	</div>
 																</div>
-															</div>
-															<div class="form-bid-inq__rate-info">
-																<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																	<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																	<path d="M12 7L12 14" stroke="#7B7F97" />
-																</svg>
-																<div class="form-bid-inq__info-label">
-																	Your rate must be less than 1.5% of the previous rate. Recommended rate is $2,00.
-																</div>
-																<button type="button" class="form-bid-inq__button button button--border">Apply</button>
 															</div>
 															<div class="form-bid-inq__actions">
 																<div class="form-bid-inq__footer-rate">
@@ -7284,7 +7325,7 @@
 																			<div class="spoiler-inq__request">
 																				<form class="spoiler-inq__form form-bid-inq">
 																					<div class="form-bid-inq__body">
-																						<div data-inputs="" class="form-bid-inq__block">
+																						<div data-inputs class="form-bid-inq__block">
 																							<button disabled data-inputs-remove class="form-bid-inq__del-btn">
 																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																									<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
@@ -7324,69 +7365,6 @@
 																									<option value="3">30-35 days</option>
 																								</select>
 																							</div>
-																							<div class="form-bid-inq__item form-bid-inq__item--col form-bid-inq__item--radios">
-																								<div class="form-bid-inq__label">
-																									Pick up fee
-																								</div>
-																								<div class="form-bid-inq__radios">
-																									<label class="form-bid-inq__radio radiobox">
-																										<span class="icon"></span>
-																										included
-																										<input type="radio" name="pickup">
-																									</label>
-																									<label class="form-bid-inq__radio radiobox">
-																										<span class="icon"></span>
-																										not included
-																										<input type="radio" name="pickup">
-																									</label>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__item form-bid-inq__item--col">
-																								<div class="form-bid-inq__field field">
-																									<div class="field__input">
-																										<input type="text" placeholder="0 USD">
-																									</div>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__item">
-																								<div class="form-bid-inq__label">
-																									Price per kg/cbm
-																								</div>
-																								<div class="form-bid-inq__double-block">
-																									<div class="form-bid-inq__field field">
-																										<div class="field__input">
-																											<input type="text" placeholder="$">
-																										</div>
-																									</div>
-																									<select>
-																										<option value="1" selected>USD/KG</option>
-																										<option value="2">EUR/KG</option>
-																										<option value="3">UAH/KG</option>
-																									</select>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__rate-info">
-																								<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																									<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																									<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																									<path d="M12 7L12 14" stroke="#7B7F97" />
-																								</svg>
-																								<div class="form-bid-inq__info-label">
-																									Your rate must be less than 1.5% of the previous rate. Recommended
-																									rate is $2,00.
-																								</div>
-																								<button type="button" class="form-bid-inq__button button button--border">Apply</button>
-																							</div>
-																							<div class="form-bid-inq__item">
-																								<div class="form-bid-inq__label">
-																									Total price
-																								</div>
-																								<div class="form-bid-inq__field field">
-																									<div class="field__input">
-																										<input type="text" placeholder="$">
-																									</div>
-																								</div>
-																							</div>
 																							<div class="form-bid-inq__item  form-bid-inq__item--radios">
 																								<div class="form-bid-inq__label">
 																									Type of service
@@ -7407,7 +7385,8 @@
 																							<div class="form-bid-inq__item form-bid-inq__item--info">
 																								<div class="form-bid-inq__info">
 																									Please, fill if need custom report, commodity inspection, certificates
-																									(MSDS, CPC and
+																									(MSDS, CPC
+																									and
 																									etc) or other
 																								</div>
 																								<div class="form-bid-inq__label">
@@ -7424,6 +7403,89 @@
 																									<div class="field__input">
 																										<input type="text" placeholder="Enter a information">
 																									</div>
+																								</div>
+																							</div>
+																							<div class="form-bid-inq__item form-bid-inq__item--price">
+																								<div class="form-bid-inq__price-block">
+																									<div class="form-bid-inq__price-item">
+																										<div class="form-bid-inq__label">
+																											Price per kg/cbm
+																										</div>
+																										<div class="form-bid-inq__double-block">
+																											<div class="form-bid-inq__field field">
+																												<div class="field__input">
+																													<input type="text" placeholder="$">
+																												</div>
+																											</div>
+																											<select>
+																												<option value="1" selected>USD/KG</option>
+																												<option value="2">EUR/KG</option>
+																												<option value="3">UAH/KG</option>
+																											</select>
+																										</div>
+																									</div>
+																									<div class="form-bid-inq__price-item">
+																										<div class="form-bid-inq__item">
+																											<div class="form-bid-inq__label">
+																												Total price
+																											</div>
+																											<div class="form-bid-inq__field field">
+																												<div class="field__input">
+																													<input type="text" placeholder="$">
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																									<div class="form-bid-inq__rate-info">
+																										<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																											<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																											<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																											<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																										</svg>
+																										<div class="form-bid-inq__info-label">
+																											Your rate must be less than 1.5% of the previous rate. Recommended
+																											rate is
+																											$2,00.
+																										</div>
+																										<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																									</div>
+																								</div>
+
+																							</div>
+																							<div class="form-bid-inq__item form-bid-inq__item--pick">
+																								<div class="form-bid-inq__label">
+																									Pick up fee
+																								</div>
+																								<div class="form-bid-inq__item-body">
+																									<div class="form-bid-inq__radios">
+																										<label class="form-bid-inq__radio radiobox">
+																											<span class="icon"></span>
+																											included
+																											<input type="radio" name="pickup">
+																										</label>
+																										<label class="form-bid-inq__radio radiobox">
+																											<span class="icon"></span>
+																											not included
+																											<input type="radio" name="pickup">
+																										</label>
+																									</div>
+																									<div class="form-bid-inq__field field">
+																										<div class="field__input">
+																											<input type="text" placeholder="0 USD">
+																										</div>
+																									</div>
+																								</div>
+																								<div class="form-bid-inq__rate-info">
+																									<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																										<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																										<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																										<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																									</svg>
+																									<div class="form-bid-inq__info-label">
+																										Your pick up fee must be less for win.
+																										Recommended pick up fee 80 usd 
+																									</div>
+																									<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
 																								</div>
 																							</div>
 																						</div>
@@ -7645,7 +7707,7 @@
 																			<div class="spoiler-inq__request">
 																				<form class="spoiler-inq__form form-bid-inq">
 																					<div class="form-bid-inq__body">
-																						<div data-inputs="" class="form-bid-inq__block">
+																						<div data-inputs class="form-bid-inq__block">
 																							<button disabled data-inputs-remove class="form-bid-inq__del-btn">
 																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																									<path d="M9.5 14.5L9.5 11.5" stroke="var(--color, #7B7F97)" stroke-linecap="round" />
@@ -7685,69 +7747,6 @@
 																									<option value="3">30-35 days</option>
 																								</select>
 																							</div>
-																							<div class="form-bid-inq__item form-bid-inq__item--col form-bid-inq__item--radios">
-																								<div class="form-bid-inq__label">
-																									Pick up fee
-																								</div>
-																								<div class="form-bid-inq__radios">
-																									<label class="form-bid-inq__radio radiobox">
-																										<span class="icon"></span>
-																										included
-																										<input type="radio" name="pickup">
-																									</label>
-																									<label class="form-bid-inq__radio radiobox">
-																										<span class="icon"></span>
-																										not included
-																										<input type="radio" name="pickup">
-																									</label>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__item form-bid-inq__item--col">
-																								<div class="form-bid-inq__field field">
-																									<div class="field__input">
-																										<input type="text" placeholder="0 USD">
-																									</div>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__item">
-																								<div class="form-bid-inq__label">
-																									Price per kg/cbm
-																								</div>
-																								<div class="form-bid-inq__double-block">
-																									<div class="form-bid-inq__field field">
-																										<div class="field__input">
-																											<input type="text" placeholder="$">
-																										</div>
-																									</div>
-																									<select>
-																										<option value="1" selected>USD/KG</option>
-																										<option value="2">EUR/KG</option>
-																										<option value="3">UAH/KG</option>
-																									</select>
-																								</div>
-																							</div>
-																							<div class="form-bid-inq__rate-info">
-																								<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-																									<circle cx="12" cy="12" r="9" transform="rotate(-180 12 12)" stroke="#7B7F97" />
-																									<path d="M11.5 16.5C11.5 16.2239 11.7239 16 12 16C12.2761 16 12.5 16.2239 12.5 16.5C12.5 16.7761 12.2761 17 12 17C11.7239 17 11.5 16.7761 11.5 16.5Z" fill="#7B7F97" />
-																									<path d="M12 7L12 14" stroke="#7B7F97" />
-																								</svg>
-																								<div class="form-bid-inq__info-label">
-																									Your rate must be less than 1.5% of the previous rate. Recommended
-																									rate is $2,00.
-																								</div>
-																								<button type="button" class="form-bid-inq__button button button--border">Apply</button>
-																							</div>
-																							<div class="form-bid-inq__item">
-																								<div class="form-bid-inq__label">
-																									Total price
-																								</div>
-																								<div class="form-bid-inq__field field">
-																									<div class="field__input">
-																										<input type="text" placeholder="$">
-																									</div>
-																								</div>
-																							</div>
 																							<div class="form-bid-inq__item  form-bid-inq__item--radios">
 																								<div class="form-bid-inq__label">
 																									Type of service
@@ -7768,7 +7767,8 @@
 																							<div class="form-bid-inq__item form-bid-inq__item--info">
 																								<div class="form-bid-inq__info">
 																									Please, fill if need custom report, commodity inspection, certificates
-																									(MSDS, CPC and
+																									(MSDS, CPC
+																									and
 																									etc) or other
 																								</div>
 																								<div class="form-bid-inq__label">
@@ -7784,6 +7784,77 @@
 																								<div class="form-bid-inq__field field">
 																									<div class="field__input">
 																										<input type="text" placeholder="Enter a information">
+																									</div>
+																								</div>
+																							</div>
+																							<div class="form-bid-inq__item form-bid-inq__item--price">
+																								<div class="form-bid-inq__price-block">
+																									<div class="form-bid-inq__price-item">
+																										<div class="form-bid-inq__label">
+																											Price per kg/cbm
+																										</div>
+																										<div class="form-bid-inq__double-block">
+																											<div class="form-bid-inq__field field">
+																												<div class="field__input">
+																													<input type="text" placeholder="$">
+																												</div>
+																											</div>
+																											<select>
+																												<option value="1" selected>USD/KG</option>
+																												<option value="2">EUR/KG</option>
+																												<option value="3">UAH/KG</option>
+																											</select>
+																										</div>
+																									</div>
+																									<div class="form-bid-inq__price-item">
+																										<div class="form-bid-inq__item">
+																											<div class="form-bid-inq__label">
+																												Total price
+																											</div>
+																											<div class="form-bid-inq__field field">
+																												<div class="field__input">
+																													<input type="text" placeholder="$">
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																									<div class="form-bid-inq__rate-info">
+																										<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+																											<circle cx="9.5" cy="9.5" r="9" transform="rotate(-180 9.5 9.5)" stroke="#D50000" />
+																											<path d="M9 14C9 13.7239 9.22386 13.5 9.5 13.5C9.77614 13.5 10 13.7239 10 14C10 14.2761 9.77614 14.5 9.5 14.5C9.22386 14.5 9 14.2761 9 14Z" fill="#D50000" />
+																											<path d="M9.5 4.5L9.5 11.5" stroke="#D50000" />
+																										</svg>
+																										<div class="form-bid-inq__info-label">
+																											Your rate must be less than 1.5% of the previous rate. Recommended
+																											rate is
+																											$2,00.
+																										</div>
+																										<button type="button" class="form-bid-inq__button button button--purple button--border">Apply</button>
+																									</div>
+																								</div>
+
+																							</div>
+																							<div class="form-bid-inq__item form-bid-inq__item--pick">
+																								<div class="form-bid-inq__label">
+																									Pick up fee
+																								</div>
+																								<div class="form-bid-inq__item-body">
+																									<div class="form-bid-inq__radios">
+																										<label class="form-bid-inq__radio radiobox">
+																											<span class="icon"></span>
+																											included
+																											<input type="radio" name="pickup">
+																										</label>
+																										<label class="form-bid-inq__radio radiobox">
+																											<span class="icon"></span>
+																											not included
+																											<input type="radio" name="pickup">
+																										</label>
+																									</div>
+																									<div class="form-bid-inq__field field">
+																										<div class="field__input">
+																											<input type="text" placeholder="0 USD">
+																										</div>
 																									</div>
 																								</div>
 																							</div>
@@ -7956,7 +8027,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251001081004"></script>
+	<script src="js/app.min.js?_v=20251104171435"></script>
 </body>
 
 </html>

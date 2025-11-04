@@ -955,7 +955,8 @@ body::after {
   position: relative;
   border-radius: 1.5rem;
   border: .0625rem solid #7b7f97;
-  background-color: #fff
+  background-color: #fff;
+  overflow: hidden
 }
 .search::before {
   position: absolute;
@@ -4534,8 +4535,7 @@ body::after {
 .contacts-h__link,
 .inq-dash__type,
 .inquires__tabs-item,
-.publ-ref__link,
-.tabs-inq__title {
+.publ-ref__link {
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color .3s
@@ -5171,7 +5171,7 @@ body:has(header.header) .page {
 .hero__dashboard {
   background: linear-gradient(115deg,rgba(255,255,255,.6) 13.92%,rgba(246,246,246,.42) 63.76%);
   backdrop-filter: blur(.53125rem);
-  border: .0625rem solid var(--glass_stroke,rgba(246,246,246,.15));
+  border: .0625rem solid rgba(246,246,246,.15);
   width: 100%;
   align-self: end;
   border-radius: 1rem;
@@ -6069,7 +6069,8 @@ body:has(header.header) .page {
 .inquires__card {
   padding: 2rem;
   border-radius: 1.5rem;
-  border: .0625rem solid var(--card-color,#fff)
+  border: .0625rem solid var(--card-color,#fff);
+  margin-bottom: .5rem
 }
 .inquires__table {
   margin: 0 -2rem
@@ -6315,7 +6316,8 @@ body:has(header.header) .page {
   border-radius: 1.5rem;
   border: .0625rem solid var(--card-color,#7b7f97);
   background: #fff;
-  box-shadow: 0 .3125rem .5625rem 0 rgba(42,46,74,.15)
+  box-shadow: 0 .3125rem .5625rem 0 rgba(42,46,74,.15);
+  margin-bottom: .5rem
 }
 .card-inquires-m__header {
   display: flex;
@@ -7095,9 +7097,9 @@ body:has(header.header) .page {
 }
 .form-bid-inq__block {
   display: grid;
-  grid-template-columns: repeat(3,192fr) 224fr 128fr;
+  grid-template-columns: repeat(3,192fr) 169fr 183fr;
   gap: 2rem;
-  align-items: end;
+  align-items: start;
   padding-top: 2.5rem;
   position: relative
 }
@@ -7105,6 +7107,17 @@ body:has(header.header) .page {
   padding-bottom: 1.875rem;
   border-bottom: .0625rem solid #dddee2;
   margin-bottom: 1.875rem
+}
+.form-bid-inq__price-block {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0 1.25rem
+}
+.form-bid-inq__price-block .form-bid-inq__rate-info {
+  grid-column: 1/-1
+}
+.form-bid-inq__price-block .form-bid-inq__rate-info .form-bid-inq__info-label {
+  max-width: 100%
 }
 .form-bid-inq__del-btn {
   position: absolute;
@@ -7142,10 +7155,28 @@ body:has(header.header) .page {
   display: flex;
   flex-direction: column
 }
+.form-bid-inq__item--pick {
+  grid-column: span 3
+}
+.form-bid-inq__item--price {
+  grid-column: span 2
+}
+.form-bid-inq__item-body {
+  display: flex;
+  gap: 8px 22px;
+  align-items: center;
+  flex-wrap: wrap
+}
+.form-bid-inq__item-body .form-bid-inq__radios {
+  padding-bottom: 0;
+  flex-grow: 0
+}
+.form-bid-inq__item-body .form-bid-inq__field {
+  max-width: 170px
+}
 .form-bid-inq__label {
   line-height: 1.2;
   display: flex;
-  flex-grow: 1;
   align-items: center;
   gap: .625rem
 }
@@ -7154,11 +7185,10 @@ body:has(header.header) .page {
 }
 .form-bid-inq__radios {
   display: flex;
-  gap: .625rem;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: .8125rem;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 1.625rem
 }
 .form-bid-inq__radio {
   color: #2a2e4a
@@ -7219,26 +7249,36 @@ body:has(header.header) .page {
 .form-bid-inq__actions .separator {
   flex-grow: 1
 }
+.form-bid-inq__rates {
+  display: grid;
+  grid-template-columns: 416fr 608fr;
+  gap: 32px
+}
+.form-bid-inq__rates:not(:last-child) {
+  margin-bottom: 1.25rem
+}
 .form-bid-inq__rate-info {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: .3125rem
+  gap: .6875rem
 }
-.form-bid-inq__rate-info:not(:last-child) {
-  margin-bottom: 1.25rem
+.form-bid-inq__rate-info:not(:first-child) {
+  margin-top: 1.0625rem
+}
+.form-bid-inq__rate-info svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0
 }
 .form-bid-inq__rate-info .form-bid-inq__button {
-  border-color: #7b7f97;
-  color: #7b7f97;
   font-size: .8125rem;
+  margin-left: .875rem;
   padding: .3125rem 1.3125rem
 }
 .form-bid-inq__info-label {
   color: #7b7f97;
   font-size: .8125rem;
-  line-height: 1.2;
-  max-width: 15.125rem
+  line-height: 1.2
 }
 .form-bid-inq__title {
   color: #000;
@@ -7303,7 +7343,7 @@ body:has(header.header) .page {
   border-bottom: .0625rem solid #dddee2
 }
 .spoiler-inq__title {
-  padding: 0 1.5625rem 2rem;
+  padding: 0 1.5625rem 1rem;
   font-weight: 500;
   line-height: 1.2;
   display: flex;
@@ -7414,7 +7454,7 @@ body:has(header.header) .page {
 .tabs-inq__navigation {
   display: flex;
   align-items: center;
-  gap: 1.25rem 2.625rem;
+  gap: .3125rem 1.75rem;
   flex-wrap: wrap
 }
 .tabs-inq__navigation:not(:last-child) {
@@ -7425,10 +7465,17 @@ body:has(header.header) .page {
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.4;
+  padding: .4375rem 1.3125rem;
+  border-radius: 1.5rem;
+  border: .0625rem solid transparent;
   transition: all .3s
 }
 .tabs-inq__title._tab-active {
-  color: #2a2e4a
+  color: #2a2e4a;
+  border-color: #998ee0
+}
+.tabs-inq__shipping {
+  padding-bottom: 1.25rem
 }
 .supplier__body:not(:last-child) {
   padding-bottom: 2rem;
@@ -8253,6 +8300,14 @@ body:has(header.header) .page {
 }
 .blank-link::before {
   font-size: 1.125rem
+}
+.shipping-inq__title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2
+}
+.shipping-inq__title:not(:last-child) {
+  margin-bottom: 2rem
 }
 .dashboard__header {
   display: grid;
@@ -14746,6 +14801,9 @@ span.flatpickr-weekday {
   .form-bid-inq__double-block .select {
     flex: 0 0 6.5625rem
   }
+  .form-bid-inq__info-label {
+    max-width: 205px
+  }
   .supplier__info-item--big {
     grid-column: span 2
   }
@@ -14761,6 +14819,11 @@ span.flatpickr-weekday {
   }
   .upload-bid__link:not(:last-child) {
     margin-bottom: 1.1875rem
+  }
+  .shipping-inq__info {
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem .625rem;
+    max-width: 38.625rem
   }
   .inq-dash__header-btn {
     min-width: 8.75rem
@@ -14964,11 +15027,6 @@ span.flatpickr-weekday {
     gap: 2rem
   }
 }
-@media (min-width:81.24875em) {
-  .form-bid-inq__item--info {
-    grid-column: span 2
-  }
-}
 @media (min-width:84.25em) {
   .hero__footer {
     gap: 3.9375rem
@@ -15048,6 +15106,19 @@ span.flatpickr-weekday {
   .form-bid-inq__block {
     grid-template-columns: repeat(3,1fr);
     gap: 1.25rem
+  }
+  .form-bid-inq__price-block {
+    grid-template-columns: 1fr 2fr;
+    gap: 0 1.25rem
+  }
+  .form-bid-inq__item--pick {
+    grid-column: span 2
+  }
+  .form-bid-inq__item--price {
+    grid-column: span 3
+  }
+  .form-bid-inq__item--info {
+    grid-column: span 2
   }
   .progress-stats--agent .table-progress__item.table-progress__item--active,
   .table-progress__item.table-progress__item--active {
@@ -16382,6 +16453,21 @@ span.flatpickr-weekday {
   .form-bid-inq__block>*:not(.form-bid-inq__item--col) {
     grid-column: span 2
   }
+  .form-bid-inq__price-block {
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+  .form-bid-inq__price-block .form-bid-inq__rate-info {
+    margin-top: 0!important
+  }
+  .form-bid-inq__item-body {
+    flex-direction: column;
+    align-items: start
+  }
+  .form-bid-inq__item-body .form-bid-inq__field {
+    width: 100%;
+    max-width: 100%
+  }
   .form-bid-inq__radios {
     justify-content: start;
     gap: 1rem 4.375rem
@@ -16592,6 +16678,12 @@ span.flatpickr-weekday {
   }
   .meas-bid__buttons {
     gap: .625rem
+  }
+  .shipping-inq__title {
+    font-size: 1.125rem
+  }
+  .shipping-inq__title:not(:last-child) {
+    margin-bottom: 16px
   }
   .dashboard__tabs {
     margin: 0 -1.25rem
@@ -17179,8 +17271,12 @@ span.flatpickr-weekday {
     width: 100%;
     justify-content: space-between
   }
+  .form-bid-inq__rate-info {
+    flex-wrap: wrap
+  }
   .form-bid-inq__rate-info .form-bid-inq__button {
-    flex: 0 0 100%
+    flex: 0 0 100%;
+    margin-left: 0
   }
   .updates-inq__fields {
     grid-template-columns: 1fr;
@@ -18048,8 +18144,7 @@ span.flatpickr-weekday {
   .contacts-h__link:hover,
   .inq-dash__type:hover,
   .inquires__tabs-item:hover,
-  .publ-ref__link:hover,
-  .tabs-inq__title:hover {
+  .publ-ref__link:hover {
     text-decoration-color: inherit
   }
   .bid-popup__clear:hover,
@@ -18157,6 +18252,10 @@ span.flatpickr-weekday {
   }
   .form-bid-inq__del-btn:not(:disabled):hover {
     --color: #d50000
+  }
+  .tabs-inq__title:hover:not(._tab-active) {
+    background-color: #998ee0;
+    color: #fff
   }
   .supplier__img-btn:hover {
     color: #5c639b

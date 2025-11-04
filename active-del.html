@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251001081004">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251104171435">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -5386,7 +5386,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="balance-popup-2" aria-hidden="true" class="popup popup--balance popup_show">
+		<div id="balance-popup-2" aria-hidden="true" class="popup popup--balance">
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div class="balance-popup">
@@ -5814,25 +5814,42 @@
 						</button>
 					</div>
 					<div class="profile__body">
-						<div class="profile__header">
-							<div class="profile__nav nav-profile">
-								<a href="#" class="nav-profile__item ">
-									Inquiries 
-								</a>
-								<a href="#" class="nav-profile__item _active">
-									Active delivery
-								</a>
-								<a href="#" class="nav-profile__item">
-									Completed delivery
-								</a>
-							</div>
-							<div data-da=".inquires__content--mobile, 767.98, first" class="profile__orders">
-								Total orders:
-								<span>03</span>
+						<div class="profile__nav nav-profile">
+							<div class="nav-profile__slider splide">
+								<div class="splide__track">
+									<ul class="splide__list">
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item ">
+												Inquiries 
+												<div style="background-color: #F79B39;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _active">
+												Active delivery
+												<div style="background-color: #64DB78;" class="count">3</div>
+											</a>
+										</li>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item">
+												Completed delivery
+												<div class="count">5</div>
+											</a>
+										</li>
+										<div class="separator">
+
+										</div>
+										<li class="splide__slide">
+											<a href="#" class="nav-profile__item _icon-price-list">
+												Price list
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-
 						<div class="profile__inquires inquires inquires--active-del">
+
 							<div class="inquires__content inquires__content--pc">
 								<div style="--card-color: #D50000" class="inquires__card">
 									<div class="inquires__table">
@@ -5916,14 +5933,16 @@
 									<div class="inquires__bid bid-inq">
 										<div data-tabs class="inquires__tabs-inq tabs-inq">
 											<nav data-tabs-titles class="tabs-inq__navigation">
-												<button type="button" class="tabs-inq__title _tab-active">Supplier information</button>
-												<button type="button" class="tabs-inq__title">Measurements</button>
-												<button type="button" class="tabs-inq__title">Invoice</button>
-												<button type="button" class="tabs-inq__title">Updates</button>
-												<button type="button" class="tabs-inq__title">Product information</button>
+												<button data-tabs-title type="button" class="tabs-inq__title _tab-active">Supplier
+													information</button>
+												<button data-tabs-title type="button" class="tabs-inq__title">Measurements</button>
+												<button data-tabs-title type="button" class="tabs-inq__title">Shipment details</button>
+												<button data-tabs-title type="button" class="tabs-inq__title">Invoice</button>
+												<button data-tabs-title type="button" class="tabs-inq__title">Updates</button>
+												<button data-tabs-title type="button" class="tabs-inq__title">Product information</button>
 											</nav>
 											<div data-tabs-body class="tabs-inq__content">
-												<div class="tabs-inq__body">
+												<div data-tabs-item class="tabs-inq__body">
 													<div class="tabs-inq__supplier supplier">
 														<div class="supplier__body">
 															<div class="supplier__info">
@@ -6019,7 +6038,7 @@
 														</form>
 													</div>
 												</div>
-												<div class="tabs-inq__body">
+												<div data-tabs-item class="tabs-inq__body">
 													<div class="tabs-inq__measurements measurements">
 														<div class="measurements__table">
 															<button class="measurements__add button _icon-plus"></button>
@@ -6222,7 +6241,65 @@
 														</div>
 													</div>
 												</div>
-												<div class="tabs-inq__body">
+												<div data-tabs-item class="tabs-inq__body">
+													<div class="tabs-inq__shipping shipping-inq">
+														<h3 class="shipping-inq__title">
+															Private address
+														</h3>
+														<div class="shipping-inq__info supplier__info">
+															<div class="supplier__info-item">
+																<h4>
+																	City
+																</h4>
+																<p>
+																	Los Angeles
+																</p>
+															</div>
+															<div class="supplier__info-item">
+																<h4>
+																	Zip code
+																</h4>
+																<p>
+																	90017
+																</p>
+															</div>
+															<div class="supplier__info-item">
+																<h4>
+																	Street name / number
+																</h4>
+																<p>
+																	1234 Sunset Blvd, Apt 56
+																</p>
+															</div>
+															<div class="supplier__info-item">
+																<h4>
+																	Contact person
+																</h4>
+																<p>
+																	John Carter
+																</p>
+															</div>
+															<div class="supplier__info-item">
+																<h4>
+																	Phone number:
+																</h4>
+																<p>
+																	+86 21 1234 5678
+																</p>
+															</div>
+															<div class="supplier__info-item">
+																<h4>
+																	E-mail
+																</h4>
+																<p>
+																	john.carter@email.com
+																</p>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div data-tabs-item class="tabs-inq__body">
 													<div class="measurements__files files-inq">
 														<form action="#" method="POST" enctype="multipart/form-data" class="files-inq__file-upload file-upload">
 															<div class="file-upload__title">
@@ -6277,7 +6354,7 @@
 														</form>
 													</div>
 												</div>
-												<div class="tabs-inq__body">
+												<div data-tabs-item class="tabs-inq__body">
 													<div class="tabs-inq__updates updates-inq">
 														<div class="updates-inq__tracking tracking-inq">
 															<h2 class="tracking-inq__title">
@@ -6526,7 +6603,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="tabs-inq__body">
+												<div data-tabs-item class="tabs-inq__body">
 													<div class="tabs-inq__updates updates-inq">
 														<div class="updates-inq__fields">
 															<div class="updates-inq__field field">
@@ -6992,6 +7069,66 @@
 																</div>
 															</div>
 														</form>
+													</div>
+												</div>
+											</div>
+										</details>
+										<details class="card-inquires-m__spoiler spoiler-inq">
+											<summary class="spoiler-inq__title _icon-ch-down">Shipment details</summary>
+											<div class="spoiler-inq__body">
+												<div class="tabs-inq__shipping shipping-inq">
+													<h3 class="shipping-inq__title">
+														Private address
+													</h3>
+													<div class="shipping-inq__info supplier__info">
+														<div class="supplier__info-item">
+															<h4>
+																City
+															</h4>
+															<p>
+																Los Angeles
+															</p>
+														</div>
+														<div class="supplier__info-item">
+															<h4>
+																Zip code
+															</h4>
+															<p>
+																90017
+															</p>
+														</div>
+														<div class="supplier__info-item">
+															<h4>
+																Street name / number
+															</h4>
+															<p>
+																1234 Sunset Blvd, Apt 56
+															</p>
+														</div>
+														<div class="supplier__info-item">
+															<h4>
+																Contact person
+															</h4>
+															<p>
+																John Carter
+															</p>
+														</div>
+														<div class="supplier__info-item">
+															<h4>
+																Phone number:
+															</h4>
+															<p>
+																+86 21 1234 5678
+															</p>
+														</div>
+														<div class="supplier__info-item">
+															<h4>
+																E-mail
+															</h4>
+															<p>
+																john.carter@email.com
+															</p>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -7506,7 +7643,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251001081004"></script>
+	<script src="js/app.min.js?_v=20251104171435"></script>
 </body>
 
 </html>
