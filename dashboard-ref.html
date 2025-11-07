@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251104171435">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251107085820">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -4034,54 +4034,53 @@
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div class="article-popup">
+						<button data-close class="article-popup__close-circle close-circle close-circle--big _icon-cross">
+
+						</button>
 						<div class="article-popup__header">
 							<h3 class="article-popup__subtitle">
 								Blog
 							</h3>
-							<ul class="article-popup__tags">
-								<li>
-									<a href="#">#logistics</a>
-								</li>
-								<li>
-									<a href="#">#digital</a>
-								</li>
-								<li>
-									<a href="#">#transform</a>
-								</li>
-							</ul>
-							<div class="separator"></div>
-							<button data-close class="article-popup__close-circle close-circle _icon-cross">
+							<div class="article-popup__tags">
+								<button class="article-popup__tag _active">News</button>
+								<button class="article-popup__tag">Top</button>
+								<button class="article-popup__tag">New</button>
+								<button class="article-popup__tag">3PL</button>
+								<button class="article-popup__tag">Global Trade</button>
+								<button class="article-popup__tag">Amazon</button>
+								<button class="article-popup__tag">Logistics</button>
+							</div>
+						</div>
+						<div class="article-popup__body">
+							<div class="article-popup__image">
+								<img src="img/blog/article.webp" alt="Image">
+								<div class="article-popup__label">
+									News
+								</div>
+								<h2 class="article-popup__title">
+									Container Rates Hold Steady
+								</h2>
+							</div>
+							<div class="article-popup__content">
+								<h3 class="article-popup__subtitle">
+									Subtitle
+								</h3>
+								<div data-simplebar="" class="article-popup__text text">
+									Container rates remain steady as shipping lines and customers avoid panic amid global trade tension.
+									Carriers hold capacity, and shippers delay bookings, hoping for clarity before peak season.Container rates
+									remain steady as shipping lines and customers avoid panic amid global trade tension. Carriers hold
+									capacity,
+									and shippers delay bookings, hoping for clarity before peak season.Container rates remain steady as
+									shipping
+									lines and customers avoid panic amid global trade tension. Carriers hold capacity, and shippers delay
+									bookings, hoping for clarity before peak season. Container rates remain steady as shipping lines and
+									customers avoid panic amid global trade tension. Carriers hold capacity, and shippers delay bookings,
+									hoping
+									for clarity before peak season.
+								</div>
+							</div>
+						</div>
 
-							</button>
-						</div>
-						<div class="article-popup__image">
-							<img src="img/blog/article.webp" alt="Image">
-							<div class="article-popup__label">
-								News
-							</div>
-							<h2 class="article-popup__title">
-								Container Rates Hold Steady
-							</h2>
-						</div>
-						<div class="article-popup__header">
-							<h3 class="article-popup__subtitle">
-								Subtitle
-							</h3>
-							<div class="separator"></div>
-							<div class="article-popup__date">
-								12.03.25
-							</div>
-						</div>
-						<div data-simplebar="" class="article-popup__text text">
-							Container rates remain steady as shipping lines and customers avoid panic amid global trade tension.
-							Carriers hold capacity, and shippers delay bookings, hoping for clarity before peak season.Container rates
-							remain steady as shipping lines and customers avoid panic amid global trade tension. Carriers hold capacity,
-							and shippers delay bookings, hoping for clarity before peak season.Container rates remain steady as shipping
-							lines and customers avoid panic amid global trade tension. Carriers hold capacity, and shippers delay
-							bookings, hoping for clarity before peak season. Container rates remain steady as shipping lines and
-							customers avoid panic amid global trade tension. Carriers hold capacity, and shippers delay bookings, hoping
-							for clarity before peak season.
-						</div>
 						<div class="article-popup__footer">
 							<a href="#" class="article-popup__button button button--purple button--border">Read more</a>
 							<div class="preview-blog__actions">
@@ -4101,11 +4100,13 @@
 		</div>
 		<div id="popup-supplier" aria-hidden="true" class="popup popup--supplier">
 			<div class="popup__wrapper">
-				<div class="popup__content">
+				<div class="popup__content popup__content--bg">
 					<div class="supplier-popup">
-						<button data-close class="supplier-popup__close close-circle _icon-cross"></button>
+						<button data-close class="supplier-popup__close close-circle close-circle--big _icon-cross"></button>
+						<button class="supplier-popup__back back-btn back-btn--border _icon-arrow-bold-left">Back</button>
+
 						<h3 class="supplier-popup__title">
-							Please, fill the below information:
+							Please provide supplier contact information:
 						</h3>
 						<form data-inputs-wrapper action="#" class="supplier-popup__body">
 							<div class="supplier-popup__content">
@@ -4159,7 +4160,7 @@
 								<button data-add-inputs type="button" class="supplier-popup__add add-btn _icon-plus">
 									Add a supplier
 								</button>
-								<button class="supplier-popup__button button">
+								<button class="supplier-popup__button button button--gradient">
 									Accept
 								</button>
 							</div>
@@ -4170,24 +4171,31 @@
 		</div>
 		<div id="supplier-success" aria-hidden="true" class="popup popup--supplier">
 			<div class="popup__wrapper">
-				<div class="popup__content">
+				<div class="popup__content popup__content--bg">
 					<div class="supplier-success">
 						<button data-close class="supplier-success__close close-circle _icon-cross"></button>
 						<div class="supplier-success__body">
-							<div class="supplier-success__label">
+							<div class="supplier-success__icon">
 								<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
-									<circle cx="23" cy="23" r="22" stroke="#2A2E4A" stroke-width="2" />
-									<path d="M15.8125 23.7547L20.3141 28.0313L30.9063 17.9688" stroke="#2A2E4A" stroke-width="2" stroke-linecap="round" />
+									<circle cx="23" cy="23" r="22" stroke="#64DB78" stroke-width="2" />
+									<path d="M15.8125 23.7547L20.3141 28.0313L30.9063 17.9688" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
 								</svg>
+							</div>
+							<div class="supplier-success__label">
 								Thank you!
 							</div>
 							<p class="supplier-success__text">
 								All information has been passed to the carrier, you will now
 								be able to track the shipment under the Active Delivery tab
 							</p>
-							<a href="#" class="supplier-success__button button">
-								Active Delivery
-							</a>
+							<div class="supplier-success__footer">
+								<a href="#" class="supplier-success__button button button--gradient">
+									Back to dasboard
+								</a>
+								<a href="#" class="supplier-success__button button button--border button--purple">
+									Active Delivery
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -4195,8 +4203,9 @@
 		</div>
 		<div id="progress-dash-popup" aria-hidden="true" class="popup popup--progress popup--progress-wider">
 			<div class="popup__wrapper">
-				<div class="popup__content">
+				<div class="popup__content popup__content--bg">
 					<div data-tabs class="agent-dash-popup">
+						<button type="button" class="agent-dash-popup__close close-circle close-circle--big _icon-cross-bold"></button>
 						<div class="agent-dash-popup__progress-stats progress-stats progress-stats--agent">
 							<div class="progress-stats__header">
 								<h3 class="progress-stats__title">
@@ -4221,160 +4230,310 @@
 								<button class="progress-stats__chat-btn chat-btn">
 									Online chat
 								</button>
-								<button type="button" class="agent-dash-popup__close close-circle close-circle--relative _icon-cross-bold"></button>
+
 							</div>
 							<div data-tabs-body class="progress-stats__content">
 								<div data-tabs-item class="progress-stats__body">
-									<div class="progress-stats__table progress-stats__table--active table-progress">
-										<div class="table-progress__wrapper">
-											<div style="--color: #D50000; --light-color: #FFDFDF" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
+									<div class="progress-stats__main main-pr">
+										<div class="main-pr__navigation">
+											<button class="main-pr__nav-btn">
+												Unpaid
+											</button>
+											<button class="main-pr__nav-btn">
+												In the process
+											</button>
+											<button class="main-pr__nav-btn _active">
+												All
+											</button>
+										</div>
+										<div style="--block-color: #D50000" class="main-pr__block">
+											<div class="main-pr__header">
+												<div class="main-pr__info">
+													<h3 class="main-pr__title">
 														ID number: 0001
-													</span>
+													</h3>
+													<div class="main-pr__type">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+															<path d="M2.10156 15.2682H13.7682C14.5967 15.2682 15.2682 14.5967 15.2682 13.7682V4.5043C15.2682 4.34905 15.2321 4.19594 15.1627 4.05708L13.9877 1.70714C13.6489 1.02957 12.9564 0.601562 12.1988 0.601562H3.67096C2.91342 0.601562 2.22089 1.02957 1.88211 1.70714L0.707135 4.05708C0.637708 4.19594 0.601562 4.34905 0.601562 4.5043V13.7682C0.601562 14.5967 1.27314 15.2682 2.10156 15.2682Z" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" />
+															<path d="M1.52344 4.26562H14.3568" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+															<path d="M6.10417 0.601562L5.1875 4.26823V9.76823L7.9375 7.9349L10.6875 9.76823V4.26823L9.77083 0.601562" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+														</svg>
+														Household appliances
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea truck
-													</span>
+												<div class="tracking-progress__labels">
+													<div style="--arrow-color: #64DB78" class="tracking-progress__label tracking-progress__label--big _icon-arrow-bold-left">
+														<span>Pick up from the supplier</span>
+													</div>
+													<div style="--arrow-color: #F79B39" class="tracking-progress__label _icon-arrow-bold-left">
+														Consolidation warehouse
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													send measurements
+												<div class="main-pr__date">
+													09.02.25
 												</div>
-												<p class="active-table-pr__text">
-													Send measurements to the client
-												</p>
-												<a href="#" class="active-table-pr__button button button--border">
-													Online Chat
-												</a>
 											</div>
-											<div style="--color: #D50000; --light-color: #FFDFDF" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+											<div data-tracking-line class="tracking-progress__line">
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea+UPS
-													</span>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													waiting pick-up
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<p class="active-table-pr__text">
-													Complete the pickup step as soon as possible (deadline missed)
-												</p>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item --active">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Final address
+														<span>29.02.25</span>
+													</div>
+												</div>
 											</div>
-											<div style="--color: #D50000; --light-color: #FFDFDF" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0003
-													</span>
+										</div>
+										<div style="--block-color: #D50000" class="main-pr__block">
+											<div class="main-pr__header">
+												<div class="main-pr__info">
+													<h3 class="main-pr__title">
+														ID number: 0001
+													</h3>
+													<div class="main-pr__type">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+															<path d="M2.10156 15.2682H13.7682C14.5967 15.2682 15.2682 14.5967 15.2682 13.7682V4.5043C15.2682 4.34905 15.2321 4.19594 15.1627 4.05708L13.9877 1.70714C13.6489 1.02957 12.9564 0.601562 12.1988 0.601562H3.67096C2.91342 0.601562 2.22089 1.02957 1.88211 1.70714L0.707135 4.05708C0.637708 4.19594 0.601562 4.34905 0.601562 4.5043V13.7682C0.601562 14.5967 1.27314 15.2682 2.10156 15.2682Z" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" />
+															<path d="M1.52344 4.26562H14.3568" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+															<path d="M6.10417 0.601562L5.1875 4.26823V9.76823L7.9375 7.9349L10.6875 9.76823V4.26823L9.77083 0.601562" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+														</svg>
+														Household appliances
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea
-													</span>
+												<div class="tracking-progress__labels">
+													<div style="--arrow-color: #64DB78" class="tracking-progress__label tracking-progress__label--big _icon-arrow-bold-left">
+														<span>Consolidation warehouse / <span class="color-label">Measurements</span> </span>
+													</div>
+													<div style="--arrow-color: #F79B39" class="tracking-progress__label _icon-arrow-bold-left">
+														Consolidation warehouse
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													measurements rejected
+												<div class="main-pr__actions">
+													<a href="#" class="main-pr__download _icon-download">Download</a>
+													<div class="main-pr__buttons">
+														<button class="main-pr__button button button--border">
+															Decline
+														</button>
+														<button class="main-pr__button button button--gradient">
+															Confirm
+														</button>
+													</div>
 												</div>
-												<p class="active-table-pr__text">
-													Check the client’s message — your measurements were rejected (use the online chat to resolve)
-												</p>
 											</div>
-											<div style="--color: #D50000; --light-color: #FFDFDF" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+											<div data-tracking-line class="tracking-progress__line">
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea+UPS
-													</span>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													waiting pick-up
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<p class="active-table-pr__text">
-													Set pickup dates so the client can view them
-												</p>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item --active">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Final address
+														<span>29.02.25</span>
+													</div>
+												</div>
 											</div>
-											<div style="--color: #F79B39; --light-color: #FFE7CE" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+										</div>
+										<div class="main-pr__block">
+											<div class="main-pr__header">
+												<div class="main-pr__info">
+													<h3 class="main-pr__title">
+														ID number: 0001
+													</h3>
+													<div class="main-pr__type">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+															<path d="M2.10156 15.2682H13.7682C14.5967 15.2682 15.2682 14.5967 15.2682 13.7682V4.5043C15.2682 4.34905 15.2321 4.19594 15.1627 4.05708L13.9877 1.70714C13.6489 1.02957 12.9564 0.601562 12.1988 0.601562H3.67096C2.91342 0.601562 2.22089 1.02957 1.88211 1.70714L0.707135 4.05708C0.637708 4.19594 0.601562 4.34905 0.601562 4.5043V13.7682C0.601562 14.5967 1.27314 15.2682 2.10156 15.2682Z" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" />
+															<path d="M1.52344 4.26562H14.3568" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+															<path d="M6.10417 0.601562L5.1875 4.26823V9.76823L7.9375 7.9349L10.6875 9.76823V4.26823L9.77083 0.601562" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+														</svg>
+														Household appliances
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea
-													</span>
+												<div class="tracking-progress__labels">
+													<div style="--arrow-color: #64DB78" class="tracking-progress__label tracking-progress__label--big _icon-arrow-bold-left">
+														<span>Consolidation warehouse / <span class="color-label">Measurements</span> </span>
+													</div>
+													<div style="--arrow-color: #F79B39" class="tracking-progress__label _icon-arrow-bold-left">
+														Consolidation warehouse
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													add number container
+												<div class="main-pr__date">
+													ATA 25.02.25
 												</div>
-												<p class="active-table-pr__text">
-													Fill in missing delivery details
-												</p>
 											</div>
-											<div style="--color: #F79B39; --light-color: #FFE7CE" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+											<div data-tracking-line class="tracking-progress__line">
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea
-													</span>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													add documents
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<p class="active-table-pr__text">
-													Upload missing delivery documents
-												</p>
-											</div>
-											<div style="--color: #64DB78; --light-color: #EEF1F4" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea
-													</span>
+												<div class="tracking-progress__item --active">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													measurements agreed
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<p class="active-table-pr__text">
-													Measurements approved — send the invoice
-													for payment
-												</p>
-											</div>
-											<div style="--color: #64DB78; --light-color: #EEF1F4" class="table-progress__item table-progress__item--active active-table-pr">
-												<div class="active-table-pr__id">
-													<span class="ellipsis">
-														ID number: 0002
-													</span>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__type">
-													<span class="ellipsis">
-														Fast sea
-													</span>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Final address
+														<span>29.02.25</span>
+													</div>
 												</div>
-												<div class="active-table-pr__label">
-													delivery paid
-												</div>
-												<p class="active-table-pr__text">
-													Proceed to the next step — the client has paid
-													for the delivery
-												</p>
 											</div>
 										</div>
 									</div>
@@ -4386,42 +4545,21 @@
 												<div class="table-progress__id">
 													<span class="ellipsis">ID number: 0001</span>
 												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
 												<div class="table-progress__rating _icon-star-fill">
 													5
 												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
+												<div class="table-progress__text --gray">
+													Rate delivery
+												</div>
+												<div class="table-progress__status">
+													Delivered
+												</div>
+												<button class="table-progress__pod _icon-download">Download POD</button>
 											</div>
 											<div class="table-progress__item">
 												<div class="table-progress__id">
 													<span class="ellipsis">ID number: 0001</span>
 												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
 												<button class="table-progress__button">
 													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
 														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
@@ -4431,173 +4569,14 @@
 														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 													</svg>
 												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
+												<div class="table-progress__text">
+													Thank you for your review!
+												</div>
+												<div class="table-progress__status">
+													Delivered
+												</div>
+												<button disabled="" class="table-progress__pod _icon-download">Waiting for POD</button>
 											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>
-											<div class="table-progress__item">
-												<div class="table-progress__id">
-													<span class="ellipsis">ID number: 0001</span>
-												</div>
-												<div class="table-progress__code">
-													<span class="ellipsis">12748947040AA1B678</span>
-												</div>
-												<div class="table-progress__date">
-													2025-31-05
-												</div>
-												<div class="table-progress__rating _icon-star-fill">
-													5
-												</div>
-												<button class="table-progress__button">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-														<path d="M9.88845 2.77734V2.77734C13.8158 2.77734 16.9996 5.9611 16.9996 9.88846V14.4137C16.9996 14.9583 16.9996 15.2307 16.9469 15.4557C16.7735 16.1957 16.1957 16.7735 15.4557 16.9469C15.2307 16.9996 14.9583 16.9996 14.4137 16.9996H9.88845C5.96109 16.9996 2.77734 13.8158 2.77734 9.88845V9.88845" stroke="var(--color, #998EE0)" stroke-width="1.5" />
-														<path d="M7.22266 9L12.556 9" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M3.66797 6.33203L3.66797 0.998698" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M1 3.66797L6.33333 3.66797" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M9.89062 12.5547H12.5573" stroke="var(--color, #998EE0)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</button>
-												<label class="table-progress__upload _icon-pin">
-													<span class="ellipsis">Upload POD</span>
-													<input type="file" name="file" accept="pdf" />
-												</label>
-											</div>aw
 										</div>
 									</div>
 								</div>
@@ -4637,6 +4616,126 @@
 								</ul>
 							</div>
 							<a href="#" class="agent-dash-popup__more">View more</a>
+						</div>
+					</div>
+					<!-- --active to open -->
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--request ">
+						<div class="popup-inq-dash__content">
+							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
+							<div class="popup-inq-dash__request request-pop">
+								<h4 class="request-pop__title title-pop-inq">
+									Are you sure you want to cancel this request?
+								</h4>
+								<div class="request-pop__text">
+									Frequent cancellations may reduce trust and affect future offers
+								</div>
+								<div class="request-pop__footer">
+									<div class="request-pop__id">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M12 5C16.9706 5 21 9.02944 21 14C21 18.9706 16.9706 23 12 23C7.02944 23 3 18.9706 3 14C3 9.02944 7.02944 5 12 5ZM12 7C8.13401 7 5 10.134 5 14C5 17.866 8.13401 21 12 21C15.866 21 19 17.866 19 14C19 10.134 15.866 7 12 7ZM12 9C14.7614 9 17 11.2386 17 14C17 16.7614 14.7614 19 12 19C9.23858 19 7 16.7614 7 14C7 11.2386 9.23858 9 12 9ZM12 10C11.4477 10 11 10.4477 11 11V14L11.0049 14.1025C11.0562 14.6067 11.4823 15 12 15C12.5177 15 12.9438 14.6067 12.9951 14.1025L13 14V11C13 10.4477 12.5523 10 12 10Z" fill="white" />
+											<path d="M17.5 7.5L19 6" stroke="white" stroke-width="2" stroke-linecap="round" />
+											<path d="M10.0681 2.37059C10.1821 2.26427 10.4332 2.17033 10.7825 2.10332C11.1318 2.03632 11.5597 2 12 2C12.4403 2 12.8682 2.03632 13.2175 2.10332C13.5668 2.17033 13.8179 2.26427 13.9319 2.37059" stroke="white" stroke-width="2" stroke-linecap="round" />
+										</svg>
+										ID number: 0001
+									</div>
+									<div class="request-pop__actions">
+										<button class="request-pop__button button-pop-inq button button--border">
+											Cancel
+										</button>
+										<button class="request-pop__button button-pop-inq button">
+											Decline
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--rate ">
+						<div class="popup-inq-dash__content">
+							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
+							<div class="popup-inq-dash__rate rate-pop-inq">
+								<h4 class="rate-pop-inq__title title-pop-inq">
+									How was your delivery experience?
+								</h4>
+								<div class="rating" data-rating="set" data-rating-title>
+									<div class="rating__items">
+										<label class="rating__item">
+											<input class="rating__input" type="radio" name="rating-1" value="1">
+										</label>
+										<label class="rating__item">
+											<input class="rating__input" type="radio" name="rating-1" value="2">
+										</label>
+										<label class="rating__item">
+											<input class="rating__input" type="radio" name="rating-1" value="3">
+										</label>
+										<label class="rating__item">
+											<input class="rating__input" type="radio" name="rating-1" value="4">
+										</label>
+										<label class="rating__item">
+											<input class="rating__input" type="radio" name="rating-1" value="5">
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--rate-success ">
+						<div class="popup-inq-dash__content">
+							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
+							<div class="popup-inq-dash__rate rate-pop-inq">
+								<div class="rate-pop-inq__result _icon-star-fill">4</div>
+								<h4 class="rate-pop-inq__title title-pop-inq">
+									Thank you for your feedback!
+								</h4>
+								<div class="rate-pop-inq__text">
+									Your feedback helps us improve our service
+								</div>
+								<div class="rate-pop-inq__actions">
+									<button class="rate-pop-inq__button button-pop-inq button ">
+										Share more details
+									</button>
+									<button data-close class="rate-pop-inq__button button-pop-inq button button--border">
+										Done
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--feedback ">
+						<div class="popup-inq-dash__content">
+							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
+							<div class="popup-inq-dash__feedback feedback-pop-inq">
+								<h4 class="feedback-pop-inq__title title-pop-inq">
+									Tell us more about your delivery experience
+								</h4>
+								<textarea placeholder="Write your comment here..." class="feedback-pop-inq__textarea"></textarea>
+								<div class="feedback-pop-inq__actions">
+									<button class="feedback-pop-inq__button button-pop-inq button ">
+										Share more details
+									</button>
+									<button data-close class="feedback-pop-inq__button button-pop-inq button button--border">
+										Cancel
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--rate-success popup-inq-dash--feedback-success --active">
+						<div class="popup-inq-dash__content">
+							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
+							<div class="popup-inq-dash__rate rate-pop-inq">
+								<h4 class="rate-pop-inq__title title-pop-inq">
+									Thank you for your feedback!
+								</h4>
+								<div class="rate-pop-inq__text">
+									Your feedback helps us improve our service
+								</div>
+								<div class="rate-pop-inq__actions">
+									<button data-close class="rate-pop-inq__button button-pop-inq button">
+										Done
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -5099,235 +5198,241 @@
 			<div class="popup__wrapper">
 				<div class="popup__content">
 					<div data-calendar-wrapper class="holidays-popup">
-						<div class="holidays-popup__left">
+						<button type="button" data-close class="holidays-popup__close close-circle close-circle--big _icon-cross-bold"></button>
+
+						<div class="holidays-popup__wrapper">
 							<div class="holidays-popup__header">
 								<h3 class="holidays-popup__title">
 									Logistics Holiday Planner
 								</h3>
 							</div>
-							<div class="holidays-dash__slider holidays-dash__slider--popup splide">
-								<div class="splide__track">
-									<ul class="splide__list">
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-01-28" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+							<span class="pc"></span>
+							<div class="holidays-popup__left">
+								<div class="holidays-dash__slider holidays-dash__slider--popup splide">
+									<div class="splide__track">
+										<ul class="splide__list">
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-01-28" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																7 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															7 days
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																Chinese New Year
+															</h3>
+															<div class="item-holidays__period">
+																28 Junuary – 3 February
+															</div>
 														</div>
 													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															Chinese New Year
-														</h3>
-														<div class="item-holidays__period">
-															28 Junuary – 3 February
-														</div>
-													</div>
-												</div>
 
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-04-04" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-04-04" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																3 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															3 days
-														</div>
-													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															The holiday of the dead
-														</h3>
-														<div class="item-holidays__period">
-															4 April – 6 April
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																The holiday of the dead
+															</h3>
+															<div class="item-holidays__period">
+																4 April – 6 April
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-01-28" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-01-28" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																7 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															7 days
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																Chinese New Year
+															</h3>
+															<div class="item-holidays__period">
+																28 Junuary – 3 February
+															</div>
 														</div>
 													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															Chinese New Year
-														</h3>
-														<div class="item-holidays__period">
-															28 Junuary – 3 February
-														</div>
-													</div>
-												</div>
 
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-04-04" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-04-04" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																3 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															3 days
-														</div>
-													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															The holiday of the dead
-														</h3>
-														<div class="item-holidays__period">
-															4 April – 6 April
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																The holiday of the dead
+															</h3>
+															<div class="item-holidays__period">
+																4 April – 6 April
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-01-28" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-01-28" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																7 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															7 days
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																Chinese New Year
+															</h3>
+															<div class="item-holidays__period">
+																28 Junuary – 3 February
+															</div>
 														</div>
 													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															Chinese New Year
-														</h3>
-														<div class="item-holidays__period">
-															28 Junuary – 3 February
-														</div>
-													</div>
-												</div>
 
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-04-04" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-04-04" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																3 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															3 days
-														</div>
-													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															The holiday of the dead
-														</h3>
-														<div class="item-holidays__period">
-															4 April – 6 April
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																The holiday of the dead
+															</h3>
+															<div class="item-holidays__period">
+																4 April – 6 April
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-01-28" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-01-28" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																7 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															7 days
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																Chinese New Year
+															</h3>
+															<div class="item-holidays__period">
+																28 Junuary – 3 February
+															</div>
 														</div>
 													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															Chinese New Year
-														</h3>
-														<div class="item-holidays__period">
-															28 Junuary – 3 February
-														</div>
-													</div>
-												</div>
 
-											</div>
-										</li>
-										<li class="splide__slide">
-											<div data-calendar-goto="2025-04-04" class="item-holidays">
-												<div class="item-holidays__wrapper">
-													<div class="item-holidays__header">
-														<div class="item-holidays__tags">
-															<div class="item-holidays__tag">
-																non-business
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div data-calendar-goto="2025-04-04" class="item-holidays">
+													<div class="item-holidays__wrapper">
+														<div class="item-holidays__header">
+															<div class="item-holidays__tags">
+																<div class="item-holidays__tag">
+																	non-business
+																</div>
+															</div>
+															<div class="item-holidays__days">
+																3 days
 															</div>
 														</div>
-														<div class="item-holidays__days">
-															3 days
-														</div>
-													</div>
-													<div class="item-holidays__body">
-														<h3 class="item-holidays__name">
-															The holiday of the dead
-														</h3>
-														<div class="item-holidays__period">
-															4 April – 6 April
+														<div class="item-holidays__body">
+															<h3 class="item-holidays__name">
+																The holiday of the dead
+															</h3>
+															<div class="item-holidays__period">
+																4 April – 6 April
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
+											</li>
+										</ul>
+									</div>
+									<div class="splide__arrows">
+										<button type="button" class="splide__arrow splide__arrow--prev _icon-ch-left">
+
+										</button>
+										<button type="button" class="splide__arrow splide__arrow--next _icon-ch-right">
+
+										</button>
+									</div>
 								</div>
-								<div class="splide__arrows">
-									<button type="button" class="splide__arrow splide__arrow--prev _icon-ch-left">
-
-									</button>
-									<button type="button" class="splide__arrow splide__arrow--next _icon-ch-right">
-
-									</button>
+								<div class="holidays-popup__label holidays-popup__label--border">
+									During holidays, logistics may operate with limitations or be completely suspended.
 								</div>
 							</div>
-							<div class="holidays-popup__label holidays-popup__label--border">
-								During holidays, logistics may operate with limitations or be completely suspended.
+							<div class="holidays-popup__right">
+
+								<div class="holidays-popup__calendar">
+									<input type="text" data-calendar data-holidays-info='{ "2025-09-09": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-09-10": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-11": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-12": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-13": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-01-27": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-01-28": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-29": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-30": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-31": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-01": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-02": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-03": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-04": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-04-03": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-04-04": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"}, "2025-04-05": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"}, "2025-04-06": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-04-07": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"}}'>
+								</div>
+								<div class="holidays-popup__label">
+									Please plan your orders in advance, taking holiday dates into account, to avoid delivery delays.
+								</div>
 							</div>
 						</div>
-						<div class="holidays-popup__right">
-							<button data-da="{.holidays-popup}, 767.98, first" type="button" data-close class="holidays-popup__close close-circle close-circle--relative _icon-cross-bold"></button>
-							<div class="holidays-popup__calendar">
-								<input type="text" data-calendar data-holidays-info='{ "2025-09-09": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-09-10": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-11": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-12": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-09-13": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-01-27": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-01-28": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-29": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-30": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-01-31": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-01": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-02": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-03": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-02-04": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-04-03": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"},"2025-04-04": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"}, "2025-04-05": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"}, "2025-04-06": { "type": "limited", "note": "Delivery on this day may be limited or delayed", "color": "#D50000"},"2025-04-07": { "type": "high-risk", "note": "Higher risk of delivery delays on this day", "color": "#F79B39"}}'>
-							</div>
-							<div class="holidays-popup__label">
-								Please plan your orders in advance, taking holiday dates into account, to avoid delivery delays.
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -5754,6 +5859,578 @@
 				</div>
 			</div>
 		</div>
+		<div id="big-inq-popup" aria-hidden="true" class="popup popup--big-inq">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="big-inq">
+						<button data-close type="button" class="big-inq__close close-circle close-circle--big _icon-cross-bold"></button>
+						<div class="big-inq__header">
+							<button class="big-inq__button button button--gradient">
+								BidDeliv
+							</button>
+							<div class="big-inq__actions">
+								<button class="big-inq__action-btn _active">
+									Processed
+								</button>
+								<button class="big-inq__action-btn">
+									Finished
+								</button>
+							</div>
+							<button class="big-inq__more">
+								View more
+							</button>
+						</div>
+						<div data-spoilers class="big-inq__spoilers">
+							<details data-open style="--block-color: #F79B39" class="big-inq__item">
+								<summary class="big-inq__summary big-inq-summary _icon-ch-down">
+									<div class="big-inq-summary__wrapper ">
+										<div class="big-inq-summary__body">
+											<h3 class="big-inq-summary__title">
+												ID number: 0001
+											</h3>
+											<div class="big-inq-summary__icons">
+												<img src="img/award.svg" alt="Image" class="big-inq-summary__award">
+												<div class="big-inq-summary__avatars">
+													<div class="animal-avatar">
+														<div class="animal-avatar__icon ">
+															<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 24 24">
+																<path fill="#d1a3aa" style="--accent-color: #7E3A3A80" class="fill" d="M12.012 23.995c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.372-12 12 5.372 12 12 12Z" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.245 6.684c1 0 1.944.214 2.786.595.37-.538.977-.89 1.663-.89 1.13 0 2.046.954 2.046 2.13 0 .643-.273 1.218-.705 1.608.383.765.597 1.62.597 2.519 0 3.292-2.86 5.964-6.387 5.964S5.86 15.94 5.86 12.646c0-.863.197-1.684.549-2.424a2.157 2.157 0 0 1-.818-1.704c0-1.177.916-2.131 2.045-2.131.709 0 1.333.375 1.702.947a6.732 6.732 0 0 1 2.91-.653l-.002.003Z" clip-rule="evenodd" />
+																<path fill="none" stroke="#000" class="stroke" style="--accent-color: #7E3A3A" stroke-miterlimit="22.93" stroke-width=".57" d="M11.793 14.83c.183 0 .331-.273.331-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61ZM12.71 14.83c.184 0 .332-.273.332-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M7.64 10.857c-1.24 0-2.25-1.051-2.25-2.342S6.4 6.172 7.64 6.172s2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M7.644 6.389c1.125 0 2.045.956 2.045 2.13s-.918 2.131-2.045 2.131-2.046-.956-2.046-2.13.918-2.131 2.046-2.131Zm0-.424C6.292 5.965 5.19 7.11 5.19 8.52s1.1 2.555 2.453 2.555 2.452-1.145 2.452-2.555-1.099-2.555-2.452-2.555Z" />
+																<path fill="#ffe8eb" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M7.637 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.172.549-1.172 1.221.527 1.221 1.172 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M16.71 10.857c-1.24 0-2.25-1.051-2.25-2.342s1.01-2.343 2.25-2.343 2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M16.706 6.389c1.126 0 2.046.956 2.046 2.13s-.918 2.131-2.046 2.131-2.045-.956-2.045-2.13.918-2.131 2.045-2.131Zm0-.424c-1.351 0-2.452 1.145-2.452 2.555s1.099 2.555 2.452 2.555S19.16 9.93 19.16 8.52s-1.1-2.555-2.453-2.555Z" />
+																<path fill="#ffe8eb" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M16.7 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.173.549-1.173 1.221.528 1.221 1.173 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.258 18.817c-3.635 0-6.59-2.77-6.59-6.176s2.957-6.176 6.59-6.176 6.59 2.771 6.59 6.176-2.957 6.176-6.59 6.176Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M12.258 6.686c3.517 0 6.387 2.678 6.387 5.964s-2.87 5.964-6.386 5.964-6.387-2.68-6.387-5.964 2.87-5.964 6.386-5.964Zm0-.424c-3.746 0-6.793 2.864-6.793 6.388s3.049 6.388 6.793 6.388 6.794-2.864 6.794-6.388-3.049-6.388-6.793-6.388Z" />
+																<path fill="#de97a0" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.25 17.838c1.353 0 2.456-1.03 2.456-2.292s-1.103-2.292-2.457-2.292-2.456 1.03-2.456 2.292 1.103 2.292 2.457 2.292Z" clip-rule="evenodd" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" d="M11.719 16.193c.162 0 .293-.293.293-.653s-.131-.653-.293-.653-.293.292-.293.653.131.653.293.653Z" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.793 16.193c.16 0 .293-.295.293-.653s-.132-.653-.293-.653-.293.294-.293.653.132.653.293.653Z" clip-rule="evenodd" />
+																<path fill="#4d4d4d" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M9.702 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736ZM14.714 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736Z" clip-rule="evenodd" />
+															</svg>
+														</div>
+														<div class="animal-avatar__status">
+															<img src="img/loading.svg" alt="Loading" class="animal-avatar__loading-svg">
+															<img src="img/loaded.svg" alt="Image" class="animal-avatar__loaded-svg">
+														</div>
+														<img src="img/award.svg" alt="Award" class="animal-avatar__award">
+													</div>
+													<div class="animal-avatar">
+														<div class="animal-avatar__icon ">
+															<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 24 24">
+																<path fill="#d1a3aa" style="--accent-color: #7E3A3A80" class="fill" d="M12.012 23.995c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.372-12 12 5.372 12 12 12Z" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.245 6.684c1 0 1.944.214 2.786.595.37-.538.977-.89 1.663-.89 1.13 0 2.046.954 2.046 2.13 0 .643-.273 1.218-.705 1.608.383.765.597 1.62.597 2.519 0 3.292-2.86 5.964-6.387 5.964S5.86 15.94 5.86 12.646c0-.863.197-1.684.549-2.424a2.157 2.157 0 0 1-.818-1.704c0-1.177.916-2.131 2.045-2.131.709 0 1.333.375 1.702.947a6.732 6.732 0 0 1 2.91-.653l-.002.003Z" clip-rule="evenodd" />
+																<path fill="none" stroke="#000" class="stroke" style="--accent-color: #7E3A3A" stroke-miterlimit="22.93" stroke-width=".57" d="M11.793 14.83c.183 0 .331-.273.331-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61ZM12.71 14.83c.184 0 .332-.273.332-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M7.64 10.857c-1.24 0-2.25-1.051-2.25-2.342S6.4 6.172 7.64 6.172s2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M7.644 6.389c1.125 0 2.045.956 2.045 2.13s-.918 2.131-2.045 2.131-2.046-.956-2.046-2.13.918-2.131 2.046-2.131Zm0-.424C6.292 5.965 5.19 7.11 5.19 8.52s1.1 2.555 2.453 2.555 2.452-1.145 2.452-2.555-1.099-2.555-2.452-2.555Z" />
+																<path fill="#ffe8eb" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M7.637 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.172.549-1.172 1.221.527 1.221 1.172 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M16.71 10.857c-1.24 0-2.25-1.051-2.25-2.342s1.01-2.343 2.25-2.343 2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M16.706 6.389c1.126 0 2.046.956 2.046 2.13s-.918 2.131-2.046 2.131-2.045-.956-2.045-2.13.918-2.131 2.045-2.131Zm0-.424c-1.351 0-2.452 1.145-2.452 2.555s1.099 2.555 2.452 2.555S19.16 9.93 19.16 8.52s-1.1-2.555-2.453-2.555Z" />
+																<path fill="#ffe8eb" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M16.7 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.173.549-1.173 1.221.528 1.221 1.173 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.258 18.817c-3.635 0-6.59-2.77-6.59-6.176s2.957-6.176 6.59-6.176 6.59 2.771 6.59 6.176-2.957 6.176-6.59 6.176Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M12.258 6.686c3.517 0 6.387 2.678 6.387 5.964s-2.87 5.964-6.386 5.964-6.387-2.68-6.387-5.964 2.87-5.964 6.386-5.964Zm0-.424c-3.746 0-6.793 2.864-6.793 6.388s3.049 6.388 6.793 6.388 6.794-2.864 6.794-6.388-3.049-6.388-6.793-6.388Z" />
+																<path fill="#de97a0" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.25 17.838c1.353 0 2.456-1.03 2.456-2.292s-1.103-2.292-2.457-2.292-2.456 1.03-2.456 2.292 1.103 2.292 2.457 2.292Z" clip-rule="evenodd" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" d="M11.719 16.193c.162 0 .293-.293.293-.653s-.131-.653-.293-.653-.293.292-.293.653.131.653.293.653Z" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.793 16.193c.16 0 .293-.295.293-.653s-.132-.653-.293-.653-.293.294-.293.653.132.653.293.653Z" clip-rule="evenodd" />
+																<path fill="#4d4d4d" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M9.702 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736ZM14.714 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736Z" clip-rule="evenodd" />
+															</svg>
+														</div>
+														<div class="animal-avatar__status">
+															<img src="img/loading.svg" alt="Loading" class="animal-avatar__loading-svg">
+															<img src="img/loaded.svg" alt="Image" class="animal-avatar__loaded-svg">
+														</div>
+														<img src="img/award.svg" alt="Award" class="animal-avatar__award">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="big-inq-summary__info">
+											<div class="big-inq-summary__info-item">
+												<b>Quantity:</b>
+												200 boxes
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Gross weight:</b>
+												1200 kg
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Volume:</b>
+												1200 cbm
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Delivery address:</b>
+												1234 Maple Street, Los Angeles, CA 90001, USA
+											</div>
+
+										</div>
+									</div>
+								</summary>
+								<div class="big-inq__body big-inq-body">
+									<div class="big-inq-body__wrapper">
+										<div class="inquires__table inquires__table--more">
+											<table>
+												<thead>
+													<tr>
+														<th>
+															<span>method</span>
+														</th>
+														<th>
+															<span>price</span>
+														</th>
+														<th>
+															<span>document</span>
+														</th>
+														<th>
+															<span>pick-up</span>
+														</th>
+														<th>
+															<span>Additional info:</span>
+														</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<span class="ship">
+																<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																	<g clip-path="url(#clip0_2533_26355)">
+																		<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																		<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																		<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																	</g>
+																	<defs>
+																		<clipPath id="clip0_2533_26355">
+																			<rect width="23" height="24" fill="white" />
+																		</clipPath>
+																	</defs>
+																</svg>
+																Sea truck
+															</span>
+														</td>
+														<td>
+															<span>$3000</span>
+														</td>
+														<td>
+															<span>DDU</span>
+														</td>
+														<td>
+															<span>$300</span>
+														</td>
+														<td>
+															<span>
+																MSDS, CPC
+															</span>
+														</td>
+														<td>
+															<button data-popup="#popup-info" class="button button--border button--purple">Accept</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="ship">
+																<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																	<g clip-path="url(#clip0_2533_26355)">
+																		<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																		<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																		<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																	</g>
+																	<defs>
+																		<clipPath id="clip0_2533_26355">
+																			<rect width="23" height="24" fill="white" />
+																		</clipPath>
+																	</defs>
+																</svg>
+																Fast sea
+															</span>
+														</td>
+														<td>
+															<span>$2800</span>
+														</td>
+														<td>
+															<span>DDP</span>
+														</td>
+														<td>
+															<span>included</span>
+														</td>
+														<td>
+															<span>
+																Custom report
+															</span>
+														</td>
+														<td>
+															<button data-popup="#popup-info" class="button button--border button--purple">Accept</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</details>
+							<details style="--block-color: #D50000" class="big-inq__item">
+								<summary class="big-inq__summary big-inq-summary  _icon-ch-down">
+									<div class="big-inq-summary__wrapper ">
+										<div class="big-inq-summary__body">
+											<h3 class="big-inq-summary__title">
+												ID number: 0001
+											</h3>
+											<div class="big-inq-summary__icons">
+												<img src="img/award.svg" alt="Image" class="big-inq-summary__award">
+												<div class="big-inq-summary__avatars">
+													<div class="animal-avatar">
+														<div class="animal-avatar__icon ">
+															<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 24 24">
+																<path fill="#d1a3aa" style="--accent-color: #7E3A3A80" class="fill" d="M12.012 23.995c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.372-12 12 5.372 12 12 12Z" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.245 6.684c1 0 1.944.214 2.786.595.37-.538.977-.89 1.663-.89 1.13 0 2.046.954 2.046 2.13 0 .643-.273 1.218-.705 1.608.383.765.597 1.62.597 2.519 0 3.292-2.86 5.964-6.387 5.964S5.86 15.94 5.86 12.646c0-.863.197-1.684.549-2.424a2.157 2.157 0 0 1-.818-1.704c0-1.177.916-2.131 2.045-2.131.709 0 1.333.375 1.702.947a6.732 6.732 0 0 1 2.91-.653l-.002.003Z" clip-rule="evenodd" />
+																<path fill="none" stroke="#000" class="stroke" style="--accent-color: #7E3A3A" stroke-miterlimit="22.93" stroke-width=".57" d="M11.793 14.83c.183 0 .331-.273.331-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61ZM12.71 14.83c.184 0 .332-.273.332-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M7.64 10.857c-1.24 0-2.25-1.051-2.25-2.342S6.4 6.172 7.64 6.172s2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M7.644 6.389c1.125 0 2.045.956 2.045 2.13s-.918 2.131-2.045 2.131-2.046-.956-2.046-2.13.918-2.131 2.046-2.131Zm0-.424C6.292 5.965 5.19 7.11 5.19 8.52s1.1 2.555 2.453 2.555 2.452-1.145 2.452-2.555-1.099-2.555-2.452-2.555Z" />
+																<path fill="#ffe8eb" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M7.637 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.172.549-1.172 1.221.527 1.221 1.172 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M16.71 10.857c-1.24 0-2.25-1.051-2.25-2.342s1.01-2.343 2.25-2.343 2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M16.706 6.389c1.126 0 2.046.956 2.046 2.13s-.918 2.131-2.046 2.131-2.045-.956-2.045-2.13.918-2.131 2.045-2.131Zm0-.424c-1.351 0-2.452 1.145-2.452 2.555s1.099 2.555 2.452 2.555S19.16 9.93 19.16 8.52s-1.1-2.555-2.453-2.555Z" />
+																<path fill="#ffe8eb" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M16.7 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.173.549-1.173 1.221.528 1.221 1.173 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.258 18.817c-3.635 0-6.59-2.77-6.59-6.176s2.957-6.176 6.59-6.176 6.59 2.771 6.59 6.176-2.957 6.176-6.59 6.176Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M12.258 6.686c3.517 0 6.387 2.678 6.387 5.964s-2.87 5.964-6.386 5.964-6.387-2.68-6.387-5.964 2.87-5.964 6.386-5.964Zm0-.424c-3.746 0-6.793 2.864-6.793 6.388s3.049 6.388 6.793 6.388 6.794-2.864 6.794-6.388-3.049-6.388-6.793-6.388Z" />
+																<path fill="#de97a0" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.25 17.838c1.353 0 2.456-1.03 2.456-2.292s-1.103-2.292-2.457-2.292-2.456 1.03-2.456 2.292 1.103 2.292 2.457 2.292Z" clip-rule="evenodd" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" d="M11.719 16.193c.162 0 .293-.293.293-.653s-.131-.653-.293-.653-.293.292-.293.653.131.653.293.653Z" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.793 16.193c.16 0 .293-.295.293-.653s-.132-.653-.293-.653-.293.294-.293.653.132.653.293.653Z" clip-rule="evenodd" />
+																<path fill="#4d4d4d" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M9.702 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736ZM14.714 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736Z" clip-rule="evenodd" />
+															</svg>
+														</div>
+														<div class="animal-avatar__status">
+															<img src="img/loading.svg" alt="Loading" class="animal-avatar__loading-svg">
+															<img src="img/loaded.svg" alt="Image" class="animal-avatar__loaded-svg">
+														</div>
+														<img src="img/award.svg" alt="Award" class="animal-avatar__award">
+													</div>
+													<div class="animal-avatar">
+														<div class="animal-avatar__icon ">
+															<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 24 24">
+																<path fill="#d1a3aa" style="--accent-color: #7E3A3A80" class="fill" d="M12.012 23.995c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.372-12 12 5.372 12 12 12Z" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.245 6.684c1 0 1.944.214 2.786.595.37-.538.977-.89 1.663-.89 1.13 0 2.046.954 2.046 2.13 0 .643-.273 1.218-.705 1.608.383.765.597 1.62.597 2.519 0 3.292-2.86 5.964-6.387 5.964S5.86 15.94 5.86 12.646c0-.863.197-1.684.549-2.424a2.157 2.157 0 0 1-.818-1.704c0-1.177.916-2.131 2.045-2.131.709 0 1.333.375 1.702.947a6.732 6.732 0 0 1 2.91-.653l-.002.003Z" clip-rule="evenodd" />
+																<path fill="none" stroke="#000" class="stroke" style="--accent-color: #7E3A3A" stroke-miterlimit="22.93" stroke-width=".57" d="M11.793 14.83c.183 0 .331-.273.331-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61ZM12.71 14.83c.184 0 .332-.273.332-.61s-.148-.61-.331-.61-.332.273-.332.61.149.61.332.61Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M7.64 10.857c-1.24 0-2.25-1.051-2.25-2.342S6.4 6.172 7.64 6.172s2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M7.644 6.389c1.125 0 2.045.956 2.045 2.13s-.918 2.131-2.045 2.131-2.046-.956-2.046-2.13.918-2.131 2.046-2.131Zm0-.424C6.292 5.965 5.19 7.11 5.19 8.52s1.1 2.555 2.453 2.555 2.452-1.145 2.452-2.555-1.099-2.555-2.452-2.555Z" />
+																<path fill="#ffe8eb" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M7.637 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.172.549-1.172 1.221.527 1.221 1.172 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" fill-rule="evenodd" class="fill" style="--accent-color: #7E3A3A" d="M16.71 10.857c-1.24 0-2.25-1.051-2.25-2.342s1.01-2.343 2.25-2.343 2.249 1.052 2.249 2.343-1.01 2.343-2.25 2.343Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M16.706 6.389c1.126 0 2.046.956 2.046 2.13s-.918 2.131-2.046 2.131-2.045-.956-2.045-2.13.918-2.131 2.045-2.131Zm0-.424c-1.351 0-2.452 1.145-2.452 2.555s1.099 2.555 2.452 2.555S19.16 9.93 19.16 8.52s-1.1-2.555-2.453-2.555Z" />
+																<path fill="#ffe8eb" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M16.7 9.74c.645 0 1.172-.55 1.172-1.222s-.527-1.221-1.172-1.221-1.173.549-1.173 1.221.528 1.221 1.173 1.221Z" clip-rule="evenodd" />
+																<path fill="#fbd4d9" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.258 18.817c-3.635 0-6.59-2.77-6.59-6.176s2.957-6.176 6.59-6.176 6.59 2.771 6.59 6.176-2.957 6.176-6.59 6.176Z" clip-rule="evenodd" />
+																<path fill="#fff3f5" class="fill" style="--accent-color: #7E3A3A" d="M12.258 6.686c3.517 0 6.387 2.678 6.387 5.964s-2.87 5.964-6.386 5.964-6.387-2.68-6.387-5.964 2.87-5.964 6.386-5.964Zm0-.424c-3.746 0-6.793 2.864-6.793 6.388s3.049 6.388 6.793 6.388 6.794-2.864 6.794-6.388-3.049-6.388-6.793-6.388Z" />
+																<path fill="#de97a0" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.25 17.838c1.353 0 2.456-1.03 2.456-2.292s-1.103-2.292-2.457-2.292-2.456 1.03-2.456 2.292 1.103 2.292 2.457 2.292Z" clip-rule="evenodd" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" d="M11.719 16.193c.162 0 .293-.293.293-.653s-.131-.653-.293-.653-.293.292-.293.653.131.653.293.653Z" />
+																<path fill="#a16169" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M12.793 16.193c.16 0 .293-.295.293-.653s-.132-.653-.293-.653-.293.294-.293.653.132.653.293.653Z" clip-rule="evenodd" />
+																<path fill="#4d4d4d" class="fill" style="--accent-color: #7E3A3A" fill-rule="evenodd" d="M9.702 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736ZM14.714 10.523c.228 0 .413.33.413.736s-.185.736-.413.736-.413-.329-.413-.736.185-.736.413-.736Z" clip-rule="evenodd" />
+															</svg>
+														</div>
+														<div class="animal-avatar__status">
+															<img src="img/loading.svg" alt="Loading" class="animal-avatar__loading-svg">
+															<img src="img/loaded.svg" alt="Image" class="animal-avatar__loaded-svg">
+														</div>
+														<img src="img/award.svg" alt="Award" class="animal-avatar__award">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="big-inq-summary__info">
+											<div class="big-inq-summary__info-item">
+												<b>Quantity:</b>
+												200 boxes
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Gross weight:</b>
+												1200 kg
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Volume:</b>
+												1200 cbm
+											</div>
+											<div class="big-inq-summary__info-item">
+												<b>Delivery address:</b>
+												1234 Maple Street, Los Angeles, CA 90001, USA
+											</div>
+
+										</div>
+									</div>
+								</summary>
+								<div class="big-inq__body big-inq-body">
+									<div class="big-inq-body__wrapper">
+										<div class="inquires__table inquires__table--more">
+											<table>
+												<thead>
+													<tr>
+														<th>
+															<span>method</span>
+														</th>
+														<th>
+															<span>price</span>
+														</th>
+														<th>
+															<span>document</span>
+														</th>
+														<th>
+															<span>pick-up</span>
+														</th>
+														<th>
+															<span>Additional info:</span>
+														</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<span class="ship">
+																<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																	<g clip-path="url(#clip0_2533_26355)">
+																		<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																		<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																		<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																	</g>
+																	<defs>
+																		<clipPath id="clip0_2533_26355">
+																			<rect width="23" height="24" fill="white" />
+																		</clipPath>
+																	</defs>
+																</svg>
+																Sea truck
+															</span>
+														</td>
+														<td>
+															<span>$3000</span>
+														</td>
+														<td>
+															<span>DDU</span>
+														</td>
+														<td>
+															<span>$300</span>
+														</td>
+														<td>
+															<span>
+																MSDS, CPC
+															</span>
+														</td>
+														<td>
+															<button data-popup="#popup-info" class="button button--border button--purple">Accept</button>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="ship">
+																<svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+																	<g clip-path="url(#clip0_2533_26355)">
+																		<path d="M11.0645 7.22978C11.482 7.22978 11.8921 7.30219 12.2828 7.44807L18.5446 9.76831V8.8941C18.5446 7.47575 17.7266 6.24376 16.5372 5.63787C16.6571 5.40042 16.7257 5.13315 16.7257 4.84884V3.88624C16.7257 3.75314 16.7107 3.62217 16.6807 3.49652H17.8465C18.2319 3.49652 18.5435 3.18559 18.5435 2.80332C18.5435 2.42105 18.2309 2.11012 17.8465 2.11012H13.4572L13.0365 0.521409C12.9551 0.215806 12.6789 0.00390625 12.3631 0.00390625H9.77235C9.45546 0.00390625 9.17926 0.215806 9.09897 0.521409L8.67716 2.11012H4.28785C3.90245 2.11012 3.59091 2.42105 3.59091 2.80332C3.59091 3.18559 3.90352 3.49652 4.28785 3.49652H5.4537C5.42586 3.62323 5.40873 3.75314 5.40873 3.88624V4.84884C5.40873 5.13315 5.47725 5.40148 5.59715 5.63787C4.40775 6.24376 3.58984 7.47575 3.58984 8.8941V9.76725L9.84836 7.44913C10.2391 7.30325 10.6491 7.23085 11.0645 7.23085V7.22978ZM6.80261 4.84671V3.88411C6.80261 3.66902 6.97818 3.49439 7.19443 3.49439H14.9378C15.1541 3.49439 15.3296 3.66902 15.3296 3.88411V4.84671C15.3296 5.06181 15.1541 5.23644 14.9378 5.23644H7.19443C6.97818 5.23644 6.80261 5.06181 6.80261 4.84671Z" fill="var(--color,#998EE0)" />
+																		<path d="M4.27508 19.9171C4.39605 19.9065 4.5181 19.9001 4.64014 19.9001C5.02341 19.9001 5.39917 19.9491 5.75995 20.0449C6.4965 20.2376 7.17203 20.621 7.72551 21.1715C7.76726 21.213 7.81758 21.2226 7.85077 21.2226C7.88395 21.2226 7.93427 21.213 7.97816 21.1715C8.80143 20.3526 9.89661 19.9022 11.0625 19.9022C12.2283 19.9022 13.3246 20.3526 14.1478 21.1715C14.1896 21.213 14.2399 21.2226 14.2731 21.2226C14.3063 21.2226 14.3566 21.213 14.3983 21.1715C14.9507 20.622 15.6263 20.2387 16.3628 20.046C16.7236 19.9501 17.1004 19.9012 17.4848 19.9012C17.6079 19.9012 17.7289 19.9065 17.8498 19.9182C18.307 18.3444 18.9975 16.3478 20.0124 14.1841C20.2565 13.6624 20.2704 13.0565 20.0509 12.5219C19.8293 11.9853 19.3893 11.5615 18.8444 11.3592L11.7915 8.74609C11.7819 8.74183 11.7701 8.73863 11.7605 8.73544V15.9145C11.7605 16.2978 11.4479 16.6077 11.0635 16.6077C10.6792 16.6077 10.3666 16.2967 10.3666 15.9145V8.73438C10.3559 8.73863 10.343 8.74289 10.3313 8.74715L3.27946 11.3602C2.73454 11.5625 2.29454 11.9863 2.074 12.523C1.85346 13.0575 1.86738 13.6634 2.11147 14.1852C3.12422 16.35 3.81581 18.3465 4.27401 19.9182L4.27508 19.9171Z" fill="var(--color,#998EE0)" />
+																		<path d="M22.7955 22.1498C22.5236 21.8793 22.0814 21.8793 21.8095 22.1498C21.5119 22.4458 21.1179 22.6077 20.6972 22.6077C20.2764 22.6077 19.8825 22.4447 19.5849 22.1498C18.4276 20.9987 16.5445 20.9987 15.3872 22.1498C14.7737 22.7599 13.776 22.7599 13.1625 22.1498C12.0053 20.9987 10.1221 20.9987 8.96487 22.1498C8.35143 22.7599 7.35367 22.7599 6.74024 22.1498C6.17926 21.5918 5.43415 21.2852 4.64193 21.2852C3.84971 21.2852 3.10353 21.5918 2.54363 22.1498C2.11647 22.5747 1.49447 22.7184 0.922791 22.5246C0.557729 22.4011 0.16162 22.5949 0.0374349 22.958C-0.0867505 23.3211 0.108092 23.7151 0.473155 23.8386C0.791112 23.9461 1.11656 23.9994 1.4388 23.9983C2.21068 23.9983 2.96115 23.697 3.53069 23.1316C3.8283 22.8355 4.22227 22.6737 4.643 22.6737C5.06373 22.6737 5.4577 22.8366 5.75532 23.1316C6.9126 24.2826 8.79572 24.2826 9.953 23.1316C10.5664 22.5214 11.5642 22.5214 12.1776 23.1316C13.3349 24.2826 15.218 24.2826 16.3753 23.1316C16.9887 22.5214 17.9865 22.5214 18.5999 23.1316C19.1609 23.6895 19.906 23.9962 20.6983 23.9962C21.4905 23.9962 22.2367 23.6895 22.7966 23.1316C23.0685 22.8611 23.0685 22.4213 22.7966 22.1509L22.7955 22.1498Z" fill="var(--color,#998EE0)" />
+																	</g>
+																	<defs>
+																		<clipPath id="clip0_2533_26355">
+																			<rect width="23" height="24" fill="white" />
+																		</clipPath>
+																	</defs>
+																</svg>
+																Fast sea
+															</span>
+														</td>
+														<td>
+															<span>$2800</span>
+														</td>
+														<td>
+															<span>DDP</span>
+														</td>
+														<td>
+															<span>included</span>
+														</td>
+														<td>
+															<span>
+																Custom report
+															</span>
+														</td>
+														<td>
+															<button data-popup="#popup-info" class="button button--border button--purple">Accept</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</details>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="shipping-popup" aria-hidden="true" class="popup popup--shipping">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="shipping-popup">
+						<button data-close class="shipping-popup__close-circle close-circle close-circle--big _icon-cross">
+
+						</button>
+						<h3 class="shipping-popup__title">
+							Please enter additional information based on your shipping address
+						</h3>
+						<div class="shipping-popup__header">
+							<div class="shipping-popup__type-radios type-radios">
+								<label class="type-radios__item">
+									<input checked="" type="radio" name="type">
+									Amazon address
+								</label>
+								<label class="type-radios__item">
+									<input type="radio" name="type">
+									Private address
+								</label>
+							</div>
+							<button class="shipping-popup__chat-btn chat-btn">
+								Online chat
+							</button>
+						</div>
+						<form action="#" data-inputs-wrapper class="shipping-popup__body">
+							<div class="shipping-popup__content">
+								<div data-inputs class="shipping-popup__block">
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Shipment ID
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter Shipment ID">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Amazon Reference ID
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter Reference ID">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Number of boxes:
+										</div>
+										<div class="field__input">
+											<input type="number" placeholder="Enter quantity">
+										</div>
+									</div>
+								</div>
+								<button data-add-inputs type="button" class="shipping-popup__add add-btn _icon-plus">
+									Add additional shipment
+								</button>
+							</div>
+							<div class="shipping-popup__footer">
+								<button class="shipping-popup__button button button--border">
+									Back
+								</button>
+								<button class="shipping-popup__button button button--gradient">
+									Send
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="shipping-private-popup" aria-hidden="true" class="popup popup--shipping">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="shipping-popup">
+						<button data-close class="shipping-popup__close-circle close-circle close-circle--big _icon-cross">
+
+						</button>
+						<h3 class="shipping-popup__title">
+							Please enter additional information based on your shipping address
+						</h3>
+						<div class="shipping-popup__header">
+							<div class="shipping-popup__type-radios type-radios">
+								<label class="type-radios__item">
+									<input checked="" type="radio" name="type">
+									Amazon address
+								</label>
+								<label class="type-radios__item">
+									<input type="radio" name="type">
+									Private address
+								</label>
+							</div>
+							<button class="shipping-popup__chat-btn chat-btn">
+								Online chat
+							</button>
+						</div>
+						<form action="#" data-inputs-wrapper class="shipping-popup__body">
+							<div class="shipping-popup__content">
+								<div data-inputs class="shipping-popup__block shipping-popup__block--private">
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Shipment ID
+										</div>
+										<select data-search>
+											<option value="" selected>Enter city</option>
+											<option value="2">Пункт №2</option>
+											<option value="3">Пункт №3</option>
+											<option value="4">Пункт №4</option>
+										</select>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Zip code*
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter zip code">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Street name / number*
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter street name / number">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Contact person*
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter name contact person">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											Phone number*
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="Enter phone number">
+										</div>
+									</div>
+									<div class="shipping-popup__field field">
+										<div class="field__label">
+											E-mail
+										</div>
+										<div class="field__input">
+											<input type="email" placeholder="Enter e-mail">
+										</div>
+									</div>
+								</div>
+								<button data-add-inputs type="button" class="shipping-popup__add add-btn _icon-plus">
+									Add additional shipment
+								</button>
+							</div>
+							<div class="shipping-popup__footer">
+								<button class="shipping-popup__button button button--border">
+									Back
+								</button>
+								<button class="shipping-popup__button button button--gradient">
+									Send
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		<main class="page">
 			<div class="page__dashboard dashboard">
 				<div class="dashboard__container">
@@ -6155,7 +6832,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251104171435"></script>
+	<script src="js/app.min.js?_v=20251107085820"></script>
 </body>
 
 </html>
