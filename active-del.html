@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251107085820">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251107150352">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -6036,29 +6036,31 @@
 						</div>
 						<form action="#" data-inputs-wrapper class="shipping-popup__body">
 							<div class="shipping-popup__content">
-								<div data-inputs class="shipping-popup__block">
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Shipment ID
+								<div class="shipping-popup__items">
+									<div data-inputs class="shipping-popup__block">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Shipment ID
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter Shipment ID">
+											</div>
 										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter Shipment ID">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Amazon Reference ID
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter Reference ID">
+											</div>
 										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Amazon Reference ID
-										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter Reference ID">
-										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Number of boxes:
-										</div>
-										<div class="field__input">
-											<input type="number" placeholder="Enter quantity">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Number of boxes:
+											</div>
+											<div class="field__input">
+												<input type="number" placeholder="Enter quantity">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -6106,56 +6108,58 @@
 						</div>
 						<form action="#" data-inputs-wrapper class="shipping-popup__body">
 							<div class="shipping-popup__content">
-								<div data-inputs class="shipping-popup__block shipping-popup__block--private">
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Shipment ID
+								<div class="shipping-popup__items">
+									<div data-inputs class="shipping-popup__block shipping-popup__block--private">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Shipment ID
+											</div>
+											<select data-search>
+												<option value="" selected>Enter city</option>
+												<option value="2">Пункт №2</option>
+												<option value="3">Пункт №3</option>
+												<option value="4">Пункт №4</option>
+											</select>
 										</div>
-										<select data-search>
-											<option value="" selected>Enter city</option>
-											<option value="2">Пункт №2</option>
-											<option value="3">Пункт №3</option>
-											<option value="4">Пункт №4</option>
-										</select>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Zip code*
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Zip code*
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter zip code">
+											</div>
 										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter zip code">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Street name / number*
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter street name / number">
+											</div>
 										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Street name / number*
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Contact person*
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter name contact person">
+											</div>
 										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter street name / number">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												Phone number*
+											</div>
+											<div class="field__input">
+												<input type="text" placeholder="Enter phone number">
+											</div>
 										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Contact person*
-										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter name contact person">
-										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											Phone number*
-										</div>
-										<div class="field__input">
-											<input type="text" placeholder="Enter phone number">
-										</div>
-									</div>
-									<div class="shipping-popup__field field">
-										<div class="field__label">
-											E-mail
-										</div>
-										<div class="field__input">
-											<input type="email" placeholder="Enter e-mail">
+										<div class="shipping-popup__field field">
+											<div class="field__label">
+												E-mail
+											</div>
+											<div class="field__input">
+												<input type="email" placeholder="Enter e-mail">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -8320,7 +8324,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251107085820"></script>
+	<script src="js/app.min.js?_v=20251107150352"></script>
 </body>
 
 </html>

@@ -4979,6 +4979,9 @@ body::after {
   gap: 1rem;
   width: 100%
 }
+.shipping-popup__block:not(:last-child) {
+  margin-bottom: 1rem
+}
 .shipping-popup__field .field__label {
   color: #2a2e4a;
   font-size: .875rem;
@@ -6574,6 +6577,7 @@ body:has(header.header) .page {
   line-height: 1.4;
   display: block;
   text-align: center;
+  width: 100%;
   transition: all .3s;
   text-underline-offset: .3125rem;
   text-decoration-thickness: .125rem
@@ -15946,7 +15950,8 @@ span.flatpickr-weekday {
   .inquires__tabs-slider .splide__slide {
     background-color: #f3f5fa;
     overflow: visible!important;
-    padding: 0 .25rem
+    padding: 0 .25rem;
+    display: flex
   }
   .inquires__tabs-slider .splide__slide:first-child {
     border-radius: 1.5rem 0 0 1.5rem
@@ -15957,7 +15962,10 @@ span.flatpickr-weekday {
   .inquires__tabs-item {
     font-size: 1rem;
     padding: .4375rem .25rem;
-    border-radius: 1.5rem
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center
   }
   .inquires__tabs-item._active {
     background-color: #fff;
