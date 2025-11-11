@@ -11731,6 +11731,71 @@
         return indexA - indexB;
     }
     const muuri_module = muuri_module_Grid;
+    const emoji_popover_es = class {
+        constructor(t) {
+            this.opts = t;
+            this.options = Object.assign({}, {
+                container: "body",
+                button: ".e-btn",
+                targetElement: ".e-input",
+                emojiList: [],
+                wrapClassName: "",
+                wrapAnimationClassName: "anim-scale-in"
+            }, t), this.wrapClassName = "emoji-wrap", this.wrapCount = document.querySelectorAll(".emoji-wrap").length + 1, 
+            this.wrapCountClassName = `emoji-wrap-${this.wrapCount}`, this.init(), this.createButtonListener();
+        }
+        init() {
+            const {emojiList: t, container: e, button: s, targetElement: i} = this.options, a = this.createEmojiContainer(), n = this.createEmojiList(t), o = this.createMask();
+            a.appendChild(n), a.appendChild(o);
+            const c = document.querySelector(i), {left: r, top: l, height: m} = c.getClientRects()[0];
+            a.style.top = `${l + m + 12}px`, a.style.left = `${r}px`;
+            document.querySelector(e).appendChild(a);
+        }
+        createButtonListener() {
+            const {button: t} = this.options;
+            document.querySelector(t).addEventListener("click", (() => this.toggle(!0)));
+        }
+        createEmojiContainer() {
+            const {wrapAnimationClassName: t, wrapClassName: e} = this.options, s = document.createElement("div");
+            return s.classList.add(this.wrapClassName), s.classList.add(this.wrapCountClassName), 
+            s.classList.add(t), "" !== e && s.classList.add(e), s;
+        }
+        createEmojiList(t) {
+            const e = document.createElement("div");
+            return e.classList.add("emoji-list"), t.forEach((t => {
+                const s = this.createEmojiItem(t);
+                e.appendChild(s);
+            })), e;
+        }
+        createEmojiItem(t) {
+            const {value: e, label: s} = t, i = document.createElement("div");
+            let a;
+            var n;
+            return n = e, new RegExp("http").test(n) ? (a = document.createElement("img"), a.classList.add("emoji"), 
+            a.classList.add("emoji-img"), a.setAttribute("src", e)) : (a = document.createElement("span"), 
+            a.classList.add("emoji"), a.classList.add("emoji-text"), a.innerText = e), i.classList.add("emoji-item"), 
+            i.appendChild(a), "string" == typeof s && i.setAttribute("title", s), i;
+        }
+        createMask() {
+            const t = document.createElement("div");
+            return t.classList.add("emoji-mask"), t.addEventListener("click", (() => this.toggle(!1))), 
+            t;
+        }
+        toggle(t) {
+            document.querySelector(`.${this.wrapCountClassName}`).style.display = t ? "block" : "none";
+        }
+        onSelect(t) {
+            const e = document.querySelectorAll(`.${this.wrapCountClassName} .emoji-item`), s = this;
+            e.forEach((function(e) {
+                e.addEventListener("click", (function(e) {
+                    const i = e.currentTarget;
+                    let a;
+                    a = i.children[0].classList.contains("emoji-img") ? i.children[0].getAttribute("src") : i.innerText, 
+                    s.toggle(!1), t(a);
+                }));
+            }));
+        }
+    };
     document.querySelectorAll(".bid-inq:not([data-open])")?.forEach((item => {
         _slideUp(item, 0);
     }));
@@ -11744,6 +11809,16 @@
         } else if (!e.target.closest(".mobile-menu") && document.documentElement.classList.contains("menu-open")) {
             bodyUnlock(0);
             document.documentElement.classList.remove("menu-open");
+        }
+        if (e.target.closest("[data-emoji-btn]")) {
+            const btn = e.target.closest("[data-emoji-btn]");
+            const wrapper = btn.closest("[data-emoji-wrapper]");
+            wrapper.classList.toggle("emoji-open");
+        } else if (!e.target.closest("[data-emoji-block]") && document.querySelector("[data-emoji-wrapper]")) {
+            const emojiWrappers = document.querySelectorAll("[data-emoji-wrapper]");
+            emojiWrappers.forEach((wrapper => {
+                wrapper.classList.remove("emoji-open");
+            }));
         }
         if (e.target.closest("[data-chats-toggle]")) {
             window.matchMedia("(max-width: 991.98px)").matches ? bodyLockToggle(0) : null;
@@ -12257,6 +12332,171 @@
             }
         })();
     })();
+    const finnickInputs = document.querySelectorAll(".finnick__input");
+    if (finnickInputs) finnickInputs.forEach((input => {
+        input.addEventListener("focus", (e => {
+            const root = e.target.closest(".finnick");
+            if (root) root.classList.add("--open");
+        }));
+        input.addEventListener("blur", (e => {
+            const root = e.target.closest(".finnick");
+            if (root) root.classList.remove("--open");
+        }));
+    }));
+    const emojiBlocks = document.querySelectorAll("[data-emoji-block]");
+    if (emojiBlocks) emojiBlocks.forEach((emojiBlock => {
+        const picker = new emoji_popover_es({
+            container: "[data-emoji-block]",
+            button: "[data-emoji-btn]",
+            targetElement: "[data-emoji-input]",
+            emojiList: [ {
+                value: "🤣",
+                label: "laugh and cry"
+            }, {
+                value: "😀",
+                label: "grinning face"
+            }, {
+                value: "😁",
+                label: "beaming smile"
+            }, {
+                value: "😂",
+                label: "joy tears"
+            }, {
+                value: "😅",
+                label: "relieved laugh"
+            }, {
+                value: "😊",
+                label: "smiling"
+            }, {
+                value: "😇",
+                label: "innocent"
+            }, {
+                value: "😍",
+                label: "heart eyes"
+            }, {
+                value: "😘",
+                label: "kiss"
+            }, {
+                value: "😎",
+                label: "cool"
+            }, {
+                value: "🤩",
+                label: "star eyes"
+            }, {
+                value: "🤔",
+                label: "thinking"
+            }, {
+                value: "😐",
+                label: "neutral"
+            }, {
+                value: "😴",
+                label: "sleepy"
+            }, {
+                value: "😢",
+                label: "crying"
+            }, {
+                value: "😭",
+                label: "loudly crying"
+            }, {
+                value: "😡",
+                label: "angry"
+            }, {
+                value: "🤯",
+                label: "mind blown"
+            }, {
+                value: "🤝",
+                label: "handshake"
+            }, {
+                value: "👍",
+                label: "thumbs up"
+            }, {
+                value: "👎",
+                label: "thumbs down"
+            }, {
+                value: "👏",
+                label: "clap"
+            }, {
+                value: "🙏",
+                label: "praying"
+            }, {
+                value: "💪",
+                label: "strong"
+            }, {
+                value: "🔥",
+                label: "fire"
+            }, {
+                value: "✨",
+                label: "sparkles"
+            }, {
+                value: "💯",
+                label: "hundred"
+            }, {
+                value: "❤️",
+                label: "heart red"
+            }, {
+                value: "💛",
+                label: "heart yellow"
+            }, {
+                value: "💚",
+                label: "heart green"
+            }, {
+                value: "💙",
+                label: "heart blue"
+            }, {
+                value: "💜",
+                label: "heart purple"
+            }, {
+                value: "🧡",
+                label: "heart orange"
+            }, {
+                value: "🤍",
+                label: "heart white"
+            }, {
+                value: "🤎",
+                label: "heart brown"
+            }, {
+                value: "🤖",
+                label: "robot"
+            }, {
+                value: "🎧",
+                label: "headphones"
+            }, {
+                value: "📎",
+                label: "paperclip"
+            }, {
+                value: "📸",
+                label: "camera"
+            }, {
+                value: "🎉",
+                label: "party"
+            }, {
+                value: "⚙️",
+                label: "gear"
+            }, {
+                value: "🔍",
+                label: "magnifier"
+            }, {
+                value: "🌟",
+                label: "star"
+            }, {
+                value: "⭐",
+                label: "star simple"
+            }, {
+                value: "🌈",
+                label: "rainbow"
+            }, {
+                value: "🍕",
+                label: "pizza"
+            } ]
+        });
+        picker.onSelect((l => {
+            const wrapper = emojiBlock.closest("[data-emoji-wrapper]");
+            if (wrapper) {
+                const input = wrapper.querySelector("[data-emoji-input]");
+                if (input) input.value += l;
+            }
+        }));
+    }));
     window["FLS"] = false;
     addLoadedClass();
     spoilers();
