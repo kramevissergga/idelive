@@ -6038,10 +6038,12 @@ body:has(header.header) .page {
 .finnick__block {
   padding: .625rem;
   border-radius: 1.5rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  background-color: hsla(0,0%,100%,.03);
   display: flex;
   flex-direction: column;
-  flex-grow: 1
+  flex-grow: 1;
+  box-shadow: inset 0 0 10px 0 rgba(0,0,0,.15)
 }
 .finnick__block::before {
   content: "";
