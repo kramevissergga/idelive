@@ -5720,7 +5720,6 @@ body:has(header.header) .page {
   background: linear-gradient(115deg,rgba(255,255,255,.6) 13.92%,rgba(246,246,246,.42) 63.76%);
   backdrop-filter: blur(.53125rem);
   border: .0625rem solid rgba(246,246,246,.15);
-  width: 100%;
   align-self: end;
   border-radius: 1rem;
   overflow: hidden
