@@ -1394,6 +1394,30 @@ body::after {
 .emoji-list {
   justify-content: center
 }
+.blurred-bg {
+  backdrop-filter: blur(3px);
+  background-color: hsla(0,0%,100%,.03);
+  box-shadow: inset 0 0 .625rem 0 rgba(0,0,0,.15)
+}
+.gr-border {
+  position: relative;
+  border-radius: var(--br-radius,1.5rem)
+}
+.gr-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--br-radius,1.5rem);
+  border: .0625rem solid transparent;
+  pointer-events: none;
+  background: linear-gradient(45deg,#f6f6f6 -21.32%,#998ee0 105.48%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude
+}
 .select {
   min-width: 0;
   position: relative;
@@ -5709,7 +5733,8 @@ body:has(header.header) .page {
 .hero__left {
   display: flex;
   flex-direction: column;
-  gap: 2.375rem
+  gap: 2.375rem;
+  min-width: 0
 }
 .hero__left .hero__price-block {
   max-width: 22.875rem;
@@ -5717,12 +5742,11 @@ body:has(header.header) .page {
   align-self: start
 }
 .hero__dashboard {
-  background: linear-gradient(115deg,rgba(255,255,255,.6) 13.92%,rgba(246,246,246,.42) 63.76%);
-  backdrop-filter: blur(.53125rem);
-  border: .0625rem solid rgba(246,246,246,.15);
   align-self: end;
-  border-radius: 1rem;
-  overflow: hidden
+  border-radius: 1.5rem;
+  position: relative;
+  z-index: 2;
+  min-width: 0
 }
 .hero__dashboard img {
   aspect-ratio: 336/198;
@@ -5782,10 +5806,7 @@ body:has(header.header) .page {
 }
 .price-block-h {
   padding: 1.25rem 2.125rem;
-  border-radius: 1rem;
-  border: .0625rem solid rgba(246,246,246,.15);
-  background: linear-gradient(146deg,#fff -4.39%,rgba(246,246,246,.15) 97.76%);
-  backdrop-filter: blur(.5rem);
+  border-radius: 1.5rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -5857,10 +5878,7 @@ body:has(header.header) .page {
   gap: .625rem;
   flex-wrap: wrap;
   padding: 1.5rem 1.0625rem 1.75rem;
-  border-radius: 0 0 1rem 1rem;
-  border: .0625rem solid rgba(246,246,246,.15);
-  background: linear-gradient(145deg,#fff 46.31%,rgba(246,246,246,.15) 97.28%);
-  backdrop-filter: blur(.5rem)
+  --br-radius: 0 0 24px 24px
 }
 .article-hero__title {
   font-weight: 500;
@@ -6036,28 +6054,9 @@ body:has(header.header) .page {
 }
 .finnick__block {
   padding: .625rem;
-  border-radius: 1.5rem;
-  backdrop-filter: blur(10px);
-  background-color: hsla(0,0%,100%,.03);
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  box-shadow: inset 0 0 10px 0 rgba(0,0,0,.15)
-}
-.finnick__block::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 1.5rem;
-  border: .0625rem solid transparent;
-  pointer-events: none;
-  background: linear-gradient(45deg,#f6f6f6 -21.32%,#998ee0 105.48%) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude
+  flex-grow: 1
 }
 .finnick__header {
   display: flex;
@@ -6219,6 +6218,50 @@ body:has(header.header) .page {
 .chat-finnick__message--sent {
   background-color: #e3deff;
   align-self: flex-end
+}
+.dashboard-home {
+  padding: 1.5rem;
+  width: 100%
+}
+.dashboard-home__header {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  justify-content: space-between
+}
+.dashboard-home__title {
+  font-weight: 500;
+  line-height: 1.1
+}
+.dashboard-home__price {
+  line-height: 1.2
+}
+.dashboard-home__body {
+  position: relative
+}
+.chartjs-tooltip {
+  position: absolute;
+  pointer-events: none;
+  border-radius: .5rem;
+  padding: .25rem .5rem;
+  border: .0625rem solid #fff;
+  background-color: hsla(0,0%,100%,.03);
+  box-shadow: inset 0 0 10px 0 rgba(0,0,0,.15);
+  transition: opacity .1s ease;
+  width: -webkit-max-content;
+  width: max-content
+}
+.chartjs-tooltip-title {
+  color: #2a2e4a;
+  font-weight: 500;
+  margin-bottom: .25rem
+}
+.chartjs-tooltip-body {
+  color: #998ee0;
+  font-size: .75rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.0165rem
 }
 @-webkit-keyframes floating {
   100% {
@@ -15446,6 +15489,13 @@ span.flatpickr-weekday {
     position: relative;
     font-size: 1.5037593985vh
   }
+  .hero .blurred-bg {
+    box-shadow: inset 0 0 .9398496241vh 0 rgba(0,0,0,.15)
+  }
+  .hero .gr-border,
+  .hero .gr-border::before {
+    border-radius: var(--br-radius,2.2556390977vh)
+  }
   .hero__container {
     max-width: 126.6917293233vh
   }
@@ -15481,9 +15531,7 @@ span.flatpickr-weekday {
     max-width: 34.3984962406vh
   }
   .hero__dashboard {
-    backdrop-filter: blur(.7988721805vh);
-    border: .0939849624vh solid var(--glass_stroke,rgba(246,246,246,.15));
-    border-radius: 1.5037593985vh
+    border-radius: 2.2556390977vh
   }
   .hero__right {
     gap: 4.6992481203vh
@@ -15512,9 +15560,6 @@ span.flatpickr-weekday {
   }
   .price-block-h {
     padding: 1.8796992481vh 3.1954887218vh;
-    border-radius: 1.5037593985vh;
-    border: .0939849624vh solid rgba(246,246,246,.15);
-    backdrop-filter: blur(.7518796992vh);
     gap: 1.6917293233vh
   }
   .price-block-h--col {
@@ -15546,9 +15591,10 @@ span.flatpickr-weekday {
   .article-hero__body {
     gap: .9398496241vh;
     padding: 2.2556390977vh 1.5977443609vh 2.6315789474vh;
-    border-radius: 0 0 1.5037593985vh 1.5037593985vh;
-    border: .0939849624vh solid rgba(246,246,246,.15);
-    backdrop-filter: blur(.7518796992vh)
+    --br-radius: 0 0 2.2556390977vh 2.2556390977vh
+  }
+  .article-hero__body::before {
+    border-top: none
   }
   .article-hero__title {
     font-size: 1.8796992481vh
@@ -15570,12 +15616,9 @@ span.flatpickr-weekday {
     margin-bottom: .5639097744vh
   }
   .finnick__block {
-    padding: .9398496241vh;
-    border-radius: 2.2556390977vh;
-    backdrop-filter: blur(.7518796992vh)
+    padding: .9398496241vh
   }
   .finnick__block::before {
-    border-radius: 2.2556390977vh;
     border: .0939849624vh solid transparent
   }
   .finnick__header {
@@ -15615,6 +15658,23 @@ span.flatpickr-weekday {
     padding: .5639097744vh;
     border-radius: 1.1278195489vh;
     font-size: 1.3157894737vh
+  }
+  .dashboard-home {
+    padding: 2.2556390977vh
+  }
+  .dashboard-home__header {
+    gap: .9398496241vh
+  }
+  .chartjs-tooltip {
+    border-radius: .7518796992vh;
+    padding: .3759398496vh .7518796992vh
+  }
+  .chartjs-tooltip-title {
+    margin-bottom: .3759398496vh
+  }
+  .chartjs-tooltip-body {
+    font-size: 1.1278195489vh;
+    letter-spacing: -.0248120301vh
   }
   .auth__subtitle-mobile {
     display: none
