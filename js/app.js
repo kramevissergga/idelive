@@ -6123,6 +6123,430 @@
             destroy
         };
     }
+    /*!
+ * @splidejs/splide-extension-auto-scroll
+ * Version  : 0.5.3
+ * License  : MIT
+ * Copyright: 2022 Naotoshi Fujita
+ */
+    function splide_extension_auto_scroll_esm_empty(array) {
+        array.length = 0;
+    }
+    function splide_extension_auto_scroll_esm_slice$1(arrayLike, start, end) {
+        return Array.prototype.slice.call(arrayLike, start, end);
+    }
+    function splide_extension_auto_scroll_esm_apply$1(func) {
+        return func.bind.apply(func, [ null ].concat(splide_extension_auto_scroll_esm_slice$1(arguments, 1)));
+    }
+    function splide_extension_auto_scroll_esm_raf(func) {
+        return requestAnimationFrame(func);
+    }
+    function splide_extension_auto_scroll_esm_typeOf$1(type, subject) {
+        return typeof subject === type;
+    }
+    var splide_extension_auto_scroll_esm_isArray$1 = Array.isArray;
+    splide_extension_auto_scroll_esm_apply$1(splide_extension_auto_scroll_esm_typeOf$1, "function");
+    splide_extension_auto_scroll_esm_apply$1(splide_extension_auto_scroll_esm_typeOf$1, "string");
+    splide_extension_auto_scroll_esm_apply$1(splide_extension_auto_scroll_esm_typeOf$1, "undefined");
+    function splide_extension_auto_scroll_esm_toArray$1(value) {
+        return splide_extension_auto_scroll_esm_isArray$1(value) ? value : [ value ];
+    }
+    function splide_extension_auto_scroll_esm_forEach$1(values, iteratee) {
+        splide_extension_auto_scroll_esm_toArray$1(values).forEach(iteratee);
+    }
+    var splide_extension_auto_scroll_esm_ownKeys$1 = Object.keys;
+    function splide_extension_auto_scroll_esm_forOwn$1(object, iteratee, right) {
+        if (object) {
+            var keys = splide_extension_auto_scroll_esm_ownKeys$1(object);
+            keys = right ? keys.reverse() : keys;
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                if (key !== "__proto__") if (iteratee(object[key], key) === false) break;
+            }
+        }
+        return object;
+    }
+    function splide_extension_auto_scroll_esm_assign$1(object) {
+        splide_extension_auto_scroll_esm_slice$1(arguments, 1).forEach((function(source) {
+            splide_extension_auto_scroll_esm_forOwn$1(source, (function(value, key) {
+                object[key] = source[key];
+            }));
+        }));
+        return object;
+    }
+    var min$1 = Math.min;
+    function splide_extension_auto_scroll_esm_EventBinder() {
+        var listeners = [];
+        function bind(targets, events, callback, options) {
+            forEachEvent(targets, events, (function(target, event, namespace) {
+                var isEventTarget = "addEventListener" in target;
+                var remover = isEventTarget ? target.removeEventListener.bind(target, event, callback, options) : target["removeListener"].bind(target, callback);
+                isEventTarget ? target.addEventListener(event, callback, options) : target["addListener"](callback);
+                listeners.push([ target, event, namespace, callback, remover ]);
+            }));
+        }
+        function unbind(targets, events, callback) {
+            forEachEvent(targets, events, (function(target, event, namespace) {
+                listeners = listeners.filter((function(listener) {
+                    if (listener[0] === target && listener[1] === event && listener[2] === namespace && (!callback || listener[3] === callback)) {
+                        listener[4]();
+                        return false;
+                    }
+                    return true;
+                }));
+            }));
+        }
+        function dispatch(target, type, detail) {
+            var e;
+            var bubbles = true;
+            if (typeof CustomEvent === "function") e = new CustomEvent(type, {
+                bubbles,
+                detail
+            }); else {
+                e = document.createEvent("CustomEvent");
+                e.initCustomEvent(type, bubbles, false, detail);
+            }
+            target.dispatchEvent(e);
+            return e;
+        }
+        function forEachEvent(targets, events, iteratee) {
+            splide_extension_auto_scroll_esm_forEach$1(targets, (function(target) {
+                target && splide_extension_auto_scroll_esm_forEach$1(events, (function(events2) {
+                    events2.split(" ").forEach((function(eventNS) {
+                        var fragment = eventNS.split(".");
+                        iteratee(target, fragment[0], fragment[1]);
+                    }));
+                }));
+            }));
+        }
+        function destroy() {
+            listeners.forEach((function(data) {
+                data[4]();
+            }));
+            splide_extension_auto_scroll_esm_empty(listeners);
+        }
+        return {
+            bind,
+            unbind,
+            dispatch,
+            destroy
+        };
+    }
+    var splide_extension_auto_scroll_esm_EVENT_MOVE = "move";
+    var splide_extension_auto_scroll_esm_EVENT_MOVED = "moved";
+    var splide_extension_auto_scroll_esm_EVENT_UPDATED = "updated";
+    var splide_extension_auto_scroll_esm_EVENT_DRAG = "drag";
+    var splide_extension_auto_scroll_esm_EVENT_DRAGGED = "dragged";
+    var splide_extension_auto_scroll_esm_EVENT_SCROLL = "scroll";
+    var splide_extension_auto_scroll_esm_EVENT_SCROLLED = "scrolled";
+    var splide_extension_auto_scroll_esm_EVENT_DESTROY = "destroy";
+    function splide_extension_auto_scroll_esm_EventInterface(Splide2) {
+        var bus = Splide2 ? Splide2.event.bus : document.createDocumentFragment();
+        var binder = splide_extension_auto_scroll_esm_EventBinder();
+        function on(events, callback) {
+            binder.bind(bus, splide_extension_auto_scroll_esm_toArray$1(events).join(" "), (function(e) {
+                callback.apply(callback, splide_extension_auto_scroll_esm_isArray$1(e.detail) ? e.detail : []);
+            }));
+        }
+        function emit(event) {
+            binder.dispatch(bus, event, splide_extension_auto_scroll_esm_slice$1(arguments, 1));
+        }
+        if (Splide2) Splide2.event.on(splide_extension_auto_scroll_esm_EVENT_DESTROY, binder.destroy);
+        return splide_extension_auto_scroll_esm_assign$1(binder, {
+            bus,
+            on,
+            off: splide_extension_auto_scroll_esm_apply$1(binder.unbind, bus),
+            emit
+        });
+    }
+    function splide_extension_auto_scroll_esm_RequestInterval(interval, onInterval, onUpdate, limit) {
+        var now = Date.now;
+        var startTime;
+        var rate = 0;
+        var id;
+        var paused = true;
+        var count = 0;
+        function update() {
+            if (!paused) {
+                rate = interval ? min$1((now() - startTime) / interval, 1) : 1;
+                onUpdate && onUpdate(rate);
+                if (rate >= 1) {
+                    onInterval();
+                    startTime = now();
+                    if (limit && ++count >= limit) return pause();
+                }
+                splide_extension_auto_scroll_esm_raf(update);
+            }
+        }
+        function start(resume) {
+            !resume && cancel();
+            startTime = now() - (resume ? rate * interval : 0);
+            paused = false;
+            splide_extension_auto_scroll_esm_raf(update);
+        }
+        function pause() {
+            paused = true;
+        }
+        function rewind() {
+            startTime = now();
+            rate = 0;
+            if (onUpdate) onUpdate(rate);
+        }
+        function cancel() {
+            id && cancelAnimationFrame(id);
+            rate = 0;
+            id = 0;
+            paused = true;
+        }
+        function set(time) {
+            interval = time;
+        }
+        function isPaused() {
+            return paused;
+        }
+        return {
+            start,
+            rewind,
+            pause,
+            cancel,
+            set,
+            isPaused
+        };
+    }
+    function splide_extension_auto_scroll_esm_Throttle(func, duration) {
+        var interval;
+        function throttled() {
+            if (!interval) {
+                interval = splide_extension_auto_scroll_esm_RequestInterval(duration || 0, (function() {
+                    func();
+                    interval = null;
+                }), null, 1);
+                interval.start();
+            }
+        }
+        return throttled;
+    }
+    var splide_extension_auto_scroll_esm_CLASS_ACTIVE = "is-active";
+    var splide_extension_auto_scroll_esm_SLIDE = "slide";
+    var splide_extension_auto_scroll_esm_FADE = "fade";
+    function splide_extension_auto_scroll_esm_slice(arrayLike, start, end) {
+        return Array.prototype.slice.call(arrayLike, start, end);
+    }
+    function splide_extension_auto_scroll_esm_apply(func) {
+        return func.bind(null, ...splide_extension_auto_scroll_esm_slice(arguments, 1));
+    }
+    function splide_extension_auto_scroll_esm_typeOf(type, subject) {
+        return typeof subject === type;
+    }
+    function splide_extension_auto_scroll_esm_isObject(subject) {
+        return !splide_extension_auto_scroll_esm_isNull(subject) && splide_extension_auto_scroll_esm_typeOf("object", subject);
+    }
+    const splide_extension_auto_scroll_esm_isArray = Array.isArray;
+    splide_extension_auto_scroll_esm_apply(splide_extension_auto_scroll_esm_typeOf, "function");
+    splide_extension_auto_scroll_esm_apply(splide_extension_auto_scroll_esm_typeOf, "string");
+    const splide_extension_auto_scroll_esm_isUndefined = splide_extension_auto_scroll_esm_apply(splide_extension_auto_scroll_esm_typeOf, "undefined");
+    function splide_extension_auto_scroll_esm_isNull(subject) {
+        return subject === null;
+    }
+    function splide_extension_auto_scroll_esm_toArray(value) {
+        return splide_extension_auto_scroll_esm_isArray(value) ? value : [ value ];
+    }
+    function splide_extension_auto_scroll_esm_forEach(values, iteratee) {
+        splide_extension_auto_scroll_esm_toArray(values).forEach(iteratee);
+    }
+    function splide_extension_auto_scroll_esm_toggleClass(elm, classes, add) {
+        if (elm) splide_extension_auto_scroll_esm_forEach(classes, (name => {
+            if (name) elm.classList[add ? "add" : "remove"](name);
+        }));
+    }
+    const splide_extension_auto_scroll_esm_ownKeys = Object.keys;
+    function splide_extension_auto_scroll_esm_forOwn(object, iteratee, right) {
+        if (object) {
+            let keys = splide_extension_auto_scroll_esm_ownKeys(object);
+            keys = right ? keys.reverse() : keys;
+            for (let i = 0; i < keys.length; i++) {
+                const key = keys[i];
+                if (key !== "__proto__") if (iteratee(object[key], key) === false) break;
+            }
+        }
+        return object;
+    }
+    function splide_extension_auto_scroll_esm_assign(object) {
+        splide_extension_auto_scroll_esm_slice(arguments, 1).forEach((source => {
+            splide_extension_auto_scroll_esm_forOwn(source, ((value, key) => {
+                object[key] = source[key];
+            }));
+        }));
+        return object;
+    }
+    function splide_extension_auto_scroll_esm_removeAttribute(elms, attrs) {
+        splide_extension_auto_scroll_esm_forEach(elms, (elm => {
+            splide_extension_auto_scroll_esm_forEach(attrs, (attr => {
+                elm && elm.removeAttribute(attr);
+            }));
+        }));
+    }
+    function splide_extension_auto_scroll_esm_setAttribute(elms, attrs, value) {
+        if (splide_extension_auto_scroll_esm_isObject(attrs)) splide_extension_auto_scroll_esm_forOwn(attrs, ((value2, name) => {
+            splide_extension_auto_scroll_esm_setAttribute(elms, name, value2);
+        })); else splide_extension_auto_scroll_esm_forEach(elms, (elm => {
+            splide_extension_auto_scroll_esm_isNull(value) || value === "" ? splide_extension_auto_scroll_esm_removeAttribute(elm, attrs) : elm.setAttribute(attrs, String(value));
+        }));
+    }
+    const {min: splide_extension_auto_scroll_esm_min, max: splide_extension_auto_scroll_esm_max, floor: splide_extension_auto_scroll_esm_floor, ceil: splide_extension_auto_scroll_esm_ceil, abs: splide_extension_auto_scroll_esm_abs} = Math;
+    function splide_extension_auto_scroll_esm_clamp(number, x, y) {
+        const minimum = splide_extension_auto_scroll_esm_min(x, y);
+        const maximum = splide_extension_auto_scroll_esm_max(x, y);
+        return splide_extension_auto_scroll_esm_min(splide_extension_auto_scroll_esm_max(minimum, number), maximum);
+    }
+    const splide_extension_auto_scroll_esm_DEFAULTS = {
+        speed: 1,
+        autoStart: true,
+        pauseOnHover: true,
+        pauseOnFocus: true
+    };
+    const splide_extension_auto_scroll_esm_I18N = {
+        startScroll: "Start auto scroll",
+        pauseScroll: "Pause auto scroll"
+    };
+    function AutoScroll(Splide2, Components2, options) {
+        const {on, off, bind, unbind} = splide_extension_auto_scroll_esm_EventInterface(Splide2);
+        const {translate, getPosition, toIndex, getLimit} = Components2.Move;
+        const {setIndex, getIndex} = Components2.Controller;
+        const {orient} = Components2.Direction;
+        const {toggle} = Components2.Elements;
+        const {Live} = Components2;
+        const {root} = Splide2;
+        const throttledUpdateArrows = splide_extension_auto_scroll_esm_Throttle(Components2.Arrows.update, 500);
+        let autoScrollOptions = {};
+        let interval;
+        let stopped;
+        let hovered;
+        let focused;
+        let busy;
+        let currPosition;
+        function setup() {
+            const {autoScroll} = options;
+            autoScrollOptions = splide_extension_auto_scroll_esm_assign({}, splide_extension_auto_scroll_esm_DEFAULTS, splide_extension_auto_scroll_esm_isObject(autoScroll) ? autoScroll : {});
+        }
+        function mount() {
+            if (!Splide2.is(splide_extension_auto_scroll_esm_FADE)) if (!interval && options.autoScroll !== false) {
+                interval = splide_extension_auto_scroll_esm_RequestInterval(0, move);
+                listen();
+                autoStart();
+            }
+        }
+        function destroy() {
+            if (interval) {
+                interval.cancel();
+                interval = null;
+                currPosition = void 0;
+                off([ splide_extension_auto_scroll_esm_EVENT_MOVE, splide_extension_auto_scroll_esm_EVENT_DRAG, splide_extension_auto_scroll_esm_EVENT_SCROLL, splide_extension_auto_scroll_esm_EVENT_MOVED, splide_extension_auto_scroll_esm_EVENT_SCROLLED ]);
+                unbind(root, "mouseenter mouseleave focusin focusout");
+                unbind(toggle, "click");
+            }
+        }
+        function listen() {
+            if (autoScrollOptions.pauseOnHover) bind(root, "mouseenter mouseleave", (e => {
+                hovered = e.type === "mouseenter";
+                autoToggle();
+            }));
+            if (autoScrollOptions.pauseOnFocus) bind(root, "focusin focusout", (e => {
+                focused = e.type === "focusin";
+                autoToggle();
+            }));
+            if (autoScrollOptions.useToggleButton) bind(toggle, "click", (() => {
+                stopped ? play() : pause();
+            }));
+            on(splide_extension_auto_scroll_esm_EVENT_UPDATED, update);
+            on([ splide_extension_auto_scroll_esm_EVENT_MOVE, splide_extension_auto_scroll_esm_EVENT_DRAG, splide_extension_auto_scroll_esm_EVENT_SCROLL ], (() => {
+                busy = true;
+                pause(false);
+            }));
+            on([ splide_extension_auto_scroll_esm_EVENT_MOVED, splide_extension_auto_scroll_esm_EVENT_DRAGGED, splide_extension_auto_scroll_esm_EVENT_SCROLLED ], (() => {
+                busy = false;
+                autoToggle();
+            }));
+        }
+        function update() {
+            const {autoScroll} = options;
+            if (autoScroll !== false) {
+                autoScrollOptions = splide_extension_auto_scroll_esm_assign({}, autoScrollOptions, splide_extension_auto_scroll_esm_isObject(autoScroll) ? autoScroll : {});
+                mount();
+            } else destroy();
+            if (interval && !splide_extension_auto_scroll_esm_isUndefined(currPosition)) translate(currPosition);
+        }
+        function autoStart() {
+            if (autoScrollOptions.autoStart) if (document.readyState === "complete") play(); else bind(window, "load", play);
+        }
+        function play() {
+            if (isPaused()) {
+                interval.start(true);
+                Live.disable(true);
+                focused = hovered = stopped = false;
+                updateButton();
+            }
+        }
+        function pause(stop = true) {
+            if (!stopped) {
+                stopped = stop;
+                updateButton();
+                if (!isPaused()) {
+                    interval.pause();
+                    Live.disable(false);
+                }
+            }
+        }
+        function autoToggle() {
+            if (!stopped) hovered || focused || busy ? pause(false) : play();
+        }
+        function move() {
+            const position = getPosition();
+            const destination = computeDestination(position);
+            if (position !== destination) {
+                translate(destination);
+                updateIndex(currPosition = getPosition());
+            } else {
+                pause(false);
+                if (autoScrollOptions.rewind) Splide2.go(autoScrollOptions.speed > 0 ? 0 : Components2.Controller.getEnd());
+            }
+            throttledUpdateArrows();
+        }
+        function computeDestination(position) {
+            const speed = autoScrollOptions.speed || 1;
+            position += orient(speed);
+            if (Splide2.is(splide_extension_auto_scroll_esm_SLIDE)) position = splide_extension_auto_scroll_esm_clamp(position, getLimit(false), getLimit(true));
+            return position;
+        }
+        function updateIndex(position) {
+            const {length} = Splide2;
+            const index = (toIndex(position) + length) % length;
+            if (index !== getIndex()) {
+                setIndex(index);
+                Components2.Slides.update();
+                Components2.Pagination.update();
+                options.lazyLoad === "nearby" && Components2.LazyLoad.check();
+            }
+        }
+        function updateButton() {
+            if (toggle) {
+                const key = stopped ? "startScroll" : "pauseScroll";
+                splide_extension_auto_scroll_esm_toggleClass(toggle, splide_extension_auto_scroll_esm_CLASS_ACTIVE, !stopped);
+                splide_extension_auto_scroll_esm_setAttribute(toggle, "aria-label", options.i18n[key] || splide_extension_auto_scroll_esm_I18N[key]);
+            }
+        }
+        function isPaused() {
+            return !interval || interval.isPaused();
+        }
+        return {
+            setup,
+            mount,
+            destroy,
+            play,
+            pause,
+            isPaused
+        };
+    }
     document.addEventListener("DOMContentLoaded", (function() {
         var heroSliderEl = document.querySelector(".hero__slider");
         if (heroSliderEl) {
@@ -6304,6 +6728,54 @@
                 updateOnMove: true
             });
             logitalkSlider.mount();
+        }));
+        var stepsAboutSliderEls = document.querySelectorAll(".steps-about__slider");
+        if (stepsAboutSliderEls) stepsAboutSliderEls.forEach((stepsAboutSliderEl => {
+            var stepsAboutSlider = new splide_esm_Splide(stepsAboutSliderEl, {
+                type: "fade",
+                perPage: 1,
+                arrows: true,
+                perMove: 1,
+                pagination: false,
+                updateOnMove: true
+            });
+            var paginationEl = stepsAboutSliderEl.querySelector(".splide__num-pagination");
+            if (paginationEl) {
+                function updatePagination() {
+                    var total = stepsAboutSlider.Components.Controller.getEnd() + 1;
+                    var current = stepsAboutSlider.index + 1;
+                    paginationEl.innerHTML = `<span>${String(current).padStart(2, "0")}</span>/${String(total).padStart(2, "0")}`;
+                }
+                stepsAboutSlider.on("mounted move", updatePagination);
+            }
+            stepsAboutSlider.mount();
+        }));
+        var logosSliderEls = document.querySelectorAll(".logos-slider");
+        if (logosSliderEls) logosSliderEls.forEach((logosSliderEl => {
+            var isReverse = logosSliderEl.classList.contains("logos-slider--reverse");
+            var logosSlider = new splide_esm_Splide(logosSliderEl, {
+                type: "loop",
+                arrows: false,
+                pagination: false,
+                pauseOnHover: true,
+                perPage: 6,
+                gap: 70,
+                autoScroll: {
+                    autoStart: true,
+                    speed: isReverse ? -1 : 1
+                },
+                intersection: {
+                    inView: {
+                        autoScroll: true
+                    },
+                    outView: {
+                        autoScroll: false
+                    }
+                }
+            });
+            logosSlider.mount({
+                AutoScroll
+            });
         }));
     }));
     function isObject_isObject(value) {
