@@ -5747,7 +5747,8 @@ body:has(header.header) .page {
   border-radius: 1.5rem;
   position: relative;
   z-index: 2;
-  min-width: 0
+  min-width: 0;
+  max-width: 22.875rem
 }
 .hero__dashboard img {
   aspect-ratio: 336/198;
@@ -15800,9 +15801,6 @@ span.flatpickr-weekday {
   .hero__content--mobile {
     display: none
   }
-  .hero__dashboard {
-    max-width: 32.5rem
-  }
   .hero__article {
     margin-top: 4.375rem
   }
@@ -15857,7 +15855,8 @@ span.flatpickr-weekday {
     max-width: 34.3984962406vh
   }
   .hero__dashboard {
-    border-radius: 2.2556390977vh
+    border-radius: 2.2556390977vh;
+    max-width: 34.3984962406vh
   }
   .hero__right {
     gap: 4.6992481203vh
