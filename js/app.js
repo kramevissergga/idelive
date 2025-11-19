@@ -6548,9 +6548,9 @@
         };
     }
     document.addEventListener("DOMContentLoaded", (function() {
-        var heroSliderEl = document.querySelector(".hero__slider");
+        let heroSliderEl = document.querySelector(".hero__slider");
         if (heroSliderEl) {
-            var heroSlider = new splide_esm_Splide(heroSliderEl, {
+            let heroSlider = new splide_esm_Splide(heroSliderEl, {
                 perPage: 1,
                 arrows: false,
                 pagination: true,
@@ -6571,9 +6571,9 @@
             });
             heroSlider.mount();
         }
-        var articlesDashSliderEl = document.querySelector(".articles-dash__slider");
+        let articlesDashSliderEl = document.querySelector(".articles-dash__slider");
         if (articlesDashSliderEl) {
-            var articlesDashSlider = new splide_esm_Splide(articlesDashSliderEl, {
+            let articlesDashSlider = new splide_esm_Splide(articlesDashSliderEl, {
                 perPage: 2,
                 arrows: false,
                 pagination: false,
@@ -6598,9 +6598,9 @@
             });
             articlesDashSlider.mount();
         }
-        var blogSliderEls = document.querySelectorAll(".blog__news");
+        let blogSliderEls = document.querySelectorAll(".blog__news");
         if (blogSliderEls) blogSliderEls.forEach((blogSliderEl => {
-            var blogSlider = new splide_esm_Splide(blogSliderEl, {
+            let blogSlider = new splide_esm_Splide(blogSliderEl, {
                 perPage: 2,
                 arrows: false,
                 pagination: true,
@@ -6622,9 +6622,9 @@
             });
             blogSlider.mount();
         }));
-        var navSliderEl = document.querySelector(".nav-profile__slider");
+        let navSliderEl = document.querySelector(".nav-profile__slider");
         if (navSliderEl) {
-            var navSlider = new splide_esm_Splide(navSliderEl, {
+            let navSlider = new splide_esm_Splide(navSliderEl, {
                 perPage: 3,
                 arrows: false,
                 perMove: 1,
@@ -6639,9 +6639,9 @@
             });
             navSlider.mount();
         }
-        var tabsSliderEl = document.querySelector(".inquires__tabs-slider");
+        let tabsSliderEl = document.querySelector(".inquires__tabs-slider");
         if (tabsSliderEl) {
-            navSlider = new splide_esm_Splide(tabsSliderEl, {
+            let navSlider = new splide_esm_Splide(tabsSliderEl, {
                 perPage: 3,
                 arrows: false,
                 perMove: 1,
@@ -6656,10 +6656,10 @@
             });
             navSlider.mount();
         }
-        var holidaysSliderEl = document.querySelectorAll(".holidays-dash__slider");
+        let holidaysSliderEl = document.querySelectorAll(".holidays-dash__slider");
         if (holidaysSliderEl.length) holidaysSliderEl.forEach((holidaysSliderEl => {
             const isPopup = holidaysSliderEl.classList.contains("holidays-dash__slider--popup");
-            var holidaysSlider = new splide_esm_Splide(holidaysSliderEl, {
+            let holidaysSlider = new splide_esm_Splide(holidaysSliderEl, {
                 arrows: true,
                 perMove: 1,
                 omitEnd: true,
@@ -6686,27 +6686,27 @@
                 Grid
             });
         }));
-        var bidSliderEls = document.querySelectorAll(".block-inq__slider");
+        let bidSliderEls = document.querySelectorAll(".block-inq__slider");
         if (bidSliderEls) bidSliderEls.forEach((bidSliderEl => {
-            var bidSlider = new splide_esm_Splide(bidSliderEl, {
+            let bidSlider = new splide_esm_Splide(bidSliderEl, {
                 perPage: 1,
                 arrows: true,
                 perMove: 1,
                 pagination: false,
                 updateOnMove: true
             });
-            var paginationEl = bidSliderEl.querySelector(".splide__num-pagination");
+            let paginationEl = bidSliderEl.querySelector(".splide__num-pagination");
             if (paginationEl) {
                 function updatePagination() {
-                    var total = bidSlider.Components.Controller.getEnd() + 1;
-                    var current = bidSlider.index + 1;
+                    let total = bidSlider.Components.Controller.getEnd() + 1;
+                    let current = bidSlider.index + 1;
                     paginationEl.innerHTML = `<span>${current}</span>/${total}`;
                 }
                 bidSlider.on("mounted move", (function() {
-                    var bar = bidSlider.root.querySelector(".splide__progress");
+                    let bar = bidSlider.root.querySelector(".splide__progress");
                     if (bar) {
-                        var end = bidSlider.Components.Controller.getEnd() + 1;
-                        var rate = Math.min((bidSlider.index + 1) / end, 1);
+                        let end = bidSlider.Components.Controller.getEnd() + 1;
+                        let rate = Math.min((bidSlider.index + 1) / end, 1);
                         bar.style = `--progress: ${String(100 * rate) + "%"}`;
                     }
                     updatePagination();
@@ -6714,9 +6714,9 @@
             }
             bidSlider.mount();
         }));
-        var logitalkSliderEl = document.querySelectorAll(".logitalk__slider");
+        let logitalkSliderEl = document.querySelectorAll(".logitalk__slider");
         if (logitalkSliderEl.length) logitalkSliderEl.forEach((logitalkSliderEl => {
-            var logitalkSlider = new splide_esm_Splide(logitalkSliderEl, {
+            let logitalkSlider = new splide_esm_Splide(logitalkSliderEl, {
                 autoplay: true,
                 interval: 4e3,
                 pauseOnHover: true,
@@ -6729,31 +6729,32 @@
             });
             logitalkSlider.mount();
         }));
-        var stepsAboutSliderEls = document.querySelectorAll(".steps-about__slider");
+        let stepsAboutSliderEls = document.querySelectorAll(".steps-about__slider");
         if (stepsAboutSliderEls) stepsAboutSliderEls.forEach((stepsAboutSliderEl => {
-            var stepsAboutSlider = new splide_esm_Splide(stepsAboutSliderEl, {
+            let stepsAboutSlider = new splide_esm_Splide(stepsAboutSliderEl, {
                 type: "fade",
                 perPage: 1,
                 arrows: true,
                 perMove: 1,
                 pagination: false,
+                drag: false,
                 updateOnMove: true
             });
-            var paginationEl = stepsAboutSliderEl.querySelector(".splide__num-pagination");
+            let paginationEl = stepsAboutSliderEl.querySelector(".splide__num-pagination");
             if (paginationEl) {
                 function updatePagination() {
-                    var total = stepsAboutSlider.Components.Controller.getEnd() + 1;
-                    var current = stepsAboutSlider.index + 1;
+                    let total = stepsAboutSlider.Components.Controller.getEnd() + 1;
+                    let current = stepsAboutSlider.index + 1;
                     paginationEl.innerHTML = `<span>${String(current).padStart(2, "0")}</span>/${String(total).padStart(2, "0")}`;
                 }
                 stepsAboutSlider.on("mounted move", updatePagination);
             }
             stepsAboutSlider.mount();
         }));
-        var logosSliderEls = document.querySelectorAll(".logos-slider");
+        let logosSliderEls = document.querySelectorAll(".logos-slider");
         if (logosSliderEls) logosSliderEls.forEach((logosSliderEl => {
-            var isReverse = logosSliderEl.classList.contains("logos-slider--reverse");
-            var logosSlider = new splide_esm_Splide(logosSliderEl, {
+            let isReverse = logosSliderEl.classList.contains("logos-slider--reverse");
+            let logosSlider = new splide_esm_Splide(logosSliderEl, {
                 type: "loop",
                 arrows: false,
                 pagination: false,
@@ -6775,6 +6776,28 @@
             });
             logosSlider.mount({
                 AutoScroll
+            });
+        }));
+        let teamSliderEl = document.querySelectorAll(".team-ab__slider");
+        if (teamSliderEl.length) teamSliderEl.forEach((teamSliderEl => {
+            let teamSlider = new splide_esm_Splide(teamSliderEl, {
+                arrows: true,
+                perMove: 1,
+                omitEnd: true,
+                pagination: true,
+                gap: 30,
+                updateOnMove: true,
+                grid: {
+                    rows: 2,
+                    cols: 4,
+                    gap: {
+                        row: 30,
+                        col: 30
+                    }
+                }
+            });
+            teamSlider.mount({
+                Grid
             });
         }));
     }));
@@ -7745,6 +7768,111 @@
         new SimpleBar(scrollBlock, {
             autoHide: false
         });
+    }));
+    class ScrollWatcher {
+        constructor(props) {
+            let defaultConfig = {
+                logging: true
+            };
+            this.config = Object.assign(defaultConfig, props);
+            this.observer;
+            !document.documentElement.classList.contains("watcher") ? this.scrollWatcherRun() : null;
+        }
+        scrollWatcherUpdate() {
+            this.scrollWatcherRun();
+        }
+        scrollWatcherRun() {
+            document.documentElement.classList.add("watcher");
+            this.scrollWatcherConstructor(document.querySelectorAll("[data-watch]"));
+        }
+        scrollWatcherConstructor(items) {
+            if (items.length) {
+                this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
+                let uniqParams = uniqArray(Array.from(items).map((function(item) {
+                    if (item.dataset.watch === "navigator" && !item.dataset.watchThreshold) {
+                        let valueOfThreshold;
+                        if (item.clientHeight > 2) {
+                            valueOfThreshold = window.innerHeight / 2 / (item.clientHeight - 1);
+                            if (valueOfThreshold > 1) valueOfThreshold = 1;
+                        } else valueOfThreshold = 1;
+                        item.setAttribute("data-watch-threshold", valueOfThreshold.toFixed(2));
+                    }
+                    return `${item.dataset.watchRoot ? item.dataset.watchRoot : null}|${item.dataset.watchMargin ? item.dataset.watchMargin : "0px"}|${item.dataset.watchThreshold ? item.dataset.watchThreshold : 0}`;
+                })));
+                uniqParams.forEach((uniqParam => {
+                    let uniqParamArray = uniqParam.split("|");
+                    let paramsWatch = {
+                        root: uniqParamArray[0],
+                        margin: uniqParamArray[1],
+                        threshold: uniqParamArray[2]
+                    };
+                    let groupItems = Array.from(items).filter((function(item) {
+                        let watchRoot = item.dataset.watchRoot ? item.dataset.watchRoot : null;
+                        let watchMargin = item.dataset.watchMargin ? item.dataset.watchMargin : "0px";
+                        let watchThreshold = item.dataset.watchThreshold ? item.dataset.watchThreshold : 0;
+                        if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) return item;
+                    }));
+                    let configWatcher = this.getScrollWatcherConfig(paramsWatch);
+                    this.scrollWatcherInit(groupItems, configWatcher);
+                }));
+            } else this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
+        }
+        getScrollWatcherConfig(paramsWatch) {
+            let configWatcher = {};
+            if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if (paramsWatch.root !== "null") this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
+            configWatcher.rootMargin = paramsWatch.margin;
+            if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
+                this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
+                return;
+            }
+            if (paramsWatch.threshold === "prx") {
+                paramsWatch.threshold = [];
+                for (let i = 0; i <= 1; i += .005) paramsWatch.threshold.push(i);
+            } else paramsWatch.threshold = paramsWatch.threshold.split(",");
+            configWatcher.threshold = paramsWatch.threshold;
+            return configWatcher;
+        }
+        scrollWatcherCreate(configWatcher) {
+            console.log(configWatcher);
+            this.observer = new IntersectionObserver(((entries, observer) => {
+                entries.forEach((entry => {
+                    this.scrollWatcherCallback(entry, observer);
+                }));
+            }), configWatcher);
+        }
+        scrollWatcherInit(items, configWatcher) {
+            this.scrollWatcherCreate(configWatcher);
+            items.forEach((item => this.observer.observe(item)));
+        }
+        scrollWatcherIntersecting(entry, targetElement) {
+            if (entry.isIntersecting) {
+                !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null;
+                this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
+            } else {
+                targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
+                this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
+            }
+        }
+        scrollWatcherOff(targetElement, observer) {
+            observer.unobserve(targetElement);
+            this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
+        }
+        scrollWatcherLogging(message) {
+            this.config.logging ? functions_FLS(`[Спостерігач]: ${message}`) : null;
+        }
+        scrollWatcherCallback(entry, observer) {
+            const targetElement = entry.target;
+            this.scrollWatcherIntersecting(entry, targetElement);
+            if (entry.isIntersecting) this.scrollWatcherOff(targetElement, observer);
+            document.dispatchEvent(new CustomEvent("watcherCallback", {
+                detail: {
+                    entry
+                }
+            }));
+        }
+    }
+    document.addEventListener("DOMContentLoaded", (() => {
+        modules_flsModules.watcher = new ScrollWatcher({});
     }));
     let addWindowScrollEvent = false;
     setTimeout((() => {
