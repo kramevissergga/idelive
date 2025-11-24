@@ -1431,6 +1431,17 @@ body::after {
   transform: none;
   pointer-events: all
 }
+.pi-none * {
+  pointer-events: none!important
+}
+.pi-all,
+.pi-all * {
+  pointer-events: all!important
+}
+.select,
+.select * {
+  pointer-events: all!important
+}
 .select {
   min-width: 0;
   position: relative;
