@@ -20704,116 +20704,6 @@
             window.addEventListener("resize", throttleScroll);
         }));
     }));
-    window.addEventListener("load", (() => {
-        const containers = document.querySelectorAll("[data-shuffle-container]");
-        containers.forEach((container => {
-            const direction = container.dataset.shuffleDirection;
-            const maxItems = parseInt(container.dataset.shuffleMaxItems) || 0;
-            const horizontal = direction === "row";
-            container.style.overflow = "hidden";
-            container.style.position = "relative";
-            const grid = new Muuri(container, {
-                items: "[data-shuffle]",
-                layout: {
-                    horizontal,
-                    fillGaps: false
-                },
-                layoutDuration: 500,
-                layoutEasing: "ease",
-                dragEnabled: false,
-                layoutOnResize: true
-            });
-            function updateContainerLimit() {
-                const items = grid.getItems().map((item => item.getElement()));
-                items.forEach(((el, index) => {
-                    if (maxItems && index >= maxItems) el.classList.add("--hidden"); else el.classList.remove("--hidden");
-                }));
-                const limitedItems = maxItems ? items.slice(0, maxItems) : items;
-                const wrapper = container.closest(`[data-shuffle-wrapper]`);
-                if (horizontal) {
-                    let totalWidth = 0;
-                    let maxHeight = 0;
-                    limitedItems.forEach((el => {
-                        const style = window.getComputedStyle(el);
-                        const rect = el.getBoundingClientRect();
-                        totalWidth += rect.width + parseFloat(style.marginRight || 0);
-                        if (rect.height > maxHeight) maxHeight = rect.height;
-                    }));
-                    if (wrapper) {
-                        wrapper.style.maxWidth = Math.ceil(totalWidth) + "px";
-                        wrapper.style.height = Math.ceil(maxHeight) + "px";
-                    } else {
-                        container.style.maxWidth = Math.ceil(totalWidth) + "px";
-                        container.style.height = Math.ceil(maxHeight) + "px";
-                    }
-                } else {
-                    let totalHeight = 0;
-                    let maxWidth = 0;
-                    limitedItems.forEach((el => {
-                        const style = window.getComputedStyle(el);
-                        const rect = el.getBoundingClientRect();
-                        totalHeight += rect.height + parseFloat(style.marginBottom || 0);
-                        if (rect.width > maxWidth) maxWidth = rect.width;
-                    }));
-                    if (wrapper) {
-                        wrapper.style.maxHeight = Math.ceil(totalHeight) + "px";
-                        wrapper.style.width = Math.ceil(maxWidth) + "px";
-                    } else {
-                        container.style.maxHeight = Math.ceil(totalHeight) + "px";
-                        container.style.width = Math.ceil(maxWidth) + "px";
-                    }
-                }
-            }
-            function sortByAttribute() {
-                grid.sort(((a, b) => {
-                    const aVal = parseInt(a.getElement().getAttribute("data-shuffle") || Number.MAX_SAFE_INTEGER, 10);
-                    const bVal = parseInt(b.getElement().getAttribute("data-shuffle") || Number.MAX_SAFE_INTEGER, 10);
-                    return aVal - bVal;
-                }));
-                requestAnimationFrame((() => {
-                    grid.layout();
-                    updateContainerLimit();
-                }));
-            }
-            sortByAttribute();
-            const resizeObserver = new ResizeObserver((() => {
-                requestAnimationFrame((() => {
-                    grid.layout();
-                    updateContainerLimit();
-                }));
-            }));
-            container.querySelectorAll("[data-shuffle]").forEach((el => resizeObserver.observe(el)));
-            resizeObserver.observe(container);
-            const observer = new MutationObserver((mutations => {
-                let shouldSort = false;
-                mutations.forEach((mutation => {
-                    if (mutation.type === "attributes" && mutation.attributeName === "data-shuffle") shouldSort = true;
-                    if (mutation.type === "childList") {
-                        const newItems = Array.from(mutation.addedNodes).filter((node => node.nodeType === 1 && node.hasAttribute("data-shuffle") && node.children.length > 0));
-                        if (newItems.length) {
-                            grid.add(newItems);
-                            newItems.forEach((el => resizeObserver.observe(el)));
-                            shouldSort = true;
-                        }
-                        const removedItems = Array.from(mutation.removedNodes).map((node => grid.getItems().find((item => item.getElement() === node)))).filter((item => item));
-                        if (removedItems.length) {
-                            grid.remove(removedItems, {
-                                removeElements: false
-                            });
-                            shouldSort = true;
-                        }
-                    }
-                }));
-                if (shouldSort) sortByAttribute();
-            }));
-            observer.observe(container, {
-                attributes: true,
-                subtree: true,
-                childList: true,
-                attributeFilter: [ "data-shuffle" ]
-            });
-        }));
-    }));
     function updateProgress() {
         const lines = document.querySelectorAll("[data-tracking-line]");
         lines.forEach((line => {
@@ -21091,6 +20981,7 @@
     function renderFbx01Chart({labels, values, currency}) {
         const els = document.querySelectorAll("[data-dash-chart]");
         if (els) els.forEach((el => {
+            const isBig = el.dataset.dashChart == "big";
             const ctx = el.getContext("2d");
             const currencySymbol = currency === "USD" ? "$" : currency;
             new auto(ctx, {
@@ -21100,9 +20991,9 @@
                     datasets: [ {
                         label: "FBX01",
                         data: values,
-                        backgroundColor: "#FFF",
+                        backgroundColor: isBig ? "#DDDEE2" : "#FFF",
                         hoverBackgroundColor: "#998EE0",
-                        borderRadius: 4,
+                        borderRadius: isBig ? 8 : 4,
                         barPercentage: .8,
                         categoryPercentage: .8
                     } ]
@@ -21127,7 +21018,9 @@
                         x: {
                             ticks: {
                                 color: "#2A2E4A",
-                                font: {
+                                font: isBig ? {
+                                    size: 16
+                                } : {
                                     size: getChartFontSize(),
                                     weight: "bolder"
                                 },
@@ -21137,10 +21030,27 @@
                             },
                             grid: {
                                 display: false
+                            },
+                            border: {
+                                display: false
                             }
                         },
                         y: {
-                            display: false
+                            display: isBig,
+                            ticks: {
+                                color: "#2A2E4A",
+                                font: {
+                                    size: 20
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: "#DDDEE2",
+                                lineWidth: .2
+                            },
+                            border: {
+                                display: false
+                            }
                         }
                     }
                 }
