@@ -14513,6 +14513,9 @@ body:has(header.header) .page {
 .purple {
   color: #998ee0
 }
+.page__data-freight {
+  padding-bottom: 6.25rem
+}
 .data-freight>* {
   position: relative;
   z-index: 2
@@ -14854,7 +14857,8 @@ body:has(header.header) .page {
 .imports-chart {
   padding: 2.625rem 2.625rem 2.625rem 2.375rem;
   box-shadow: 0 4px 17px 0 rgba(42,46,74,.2);
-  border-radius: 2rem
+  border-radius: 2rem;
+  border: .0625rem solid #fff
 }
 .imports-chart__header {
   display: flex;
