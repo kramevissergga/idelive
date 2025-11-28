@@ -1469,6 +1469,11 @@ body::after {
 .select * {
   pointer-events: all!important
 }
+.cols-text {
+  display: grid;
+  grid-template-columns: 250fr 695fr;
+  gap: 1.5rem .625rem
+}
 .select {
   min-width: 0;
   position: relative;
@@ -5308,7 +5313,11 @@ body::after {
 }
 .profile-comp__menu .aside-nav__item {
   padding: .3125rem 1rem;
+  color: #2a2e4a;
   font-size: .875rem
+}
+.profile-comp__menu .aside-nav__item span {
+  color: inherit
 }
 .profile-comp__menu .aside-nav__item:not(:last-child) {
   margin-bottom: .125rem
@@ -5584,6 +5593,46 @@ body::after {
   line-height: 1.2;
   text-underline-offset: .25rem;
   align-self: center
+}
+.header__logo-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%
+}
+.header__logo-light {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+.header__logo-dark {
+  display: none;
+  width: 100%;
+  height: 100%
+}
+.--dark .header__logo-light {
+  display: none
+}
+.--dark .header__logo-dark {
+  display: block
+}
+.--dark .profile-comp__menu .aside-nav__item {
+  color: #070707
+}
+.--dark .profile-comp__menu .aside-nav__item span {
+  color: #070707
+}
+.--dark .profile-comp__menu .aside-nav__item svg {
+  --accent: #070707
+}
+.--dark .profile-comp__label {
+  color: #fff
+}
+.--dark .profile-comp:has(.profile-comp__menu):hover .profile-comp__label {
+  color: #070707
+}
+.--dark .profile-comp:has(.profile-comp__menu):hover .profile-comp__label a {
+  color: #070707
 }
 .footer {
   padding-bottom: 2.1875rem;
@@ -13437,6 +13486,9 @@ body:has(header.header) .page {
 .about__adv:not(:last-child) {
   margin-bottom: 14rem
 }
+.about__adv:not(:last-child).about-adv--faq {
+  margin-bottom: 18.75rem
+}
 .about__value .about-us-h__header {
   flex-direction: row;
   align-items: center;
@@ -13494,7 +13546,7 @@ body:has(header.header) .page {
 .info-about__container {
   display: grid;
   gap: 1.875rem;
-  grid-template-columns: 528fr 750fr;
+  grid-template-columns: 518fr 760fr;
   position: relative;
   z-index: 2
 }
@@ -13832,10 +13884,13 @@ body:has(header.header) .page {
 .adv-spoilers__text {
   line-height: 1.4;
   font-size: 1.25rem;
-  max-width: 44.625rem
+  max-width: 59.0625rem
 }
 .adv-spoilers__text a {
   color: #998ee0
+}
+.adv-spoilers__text b {
+  font-weight: 500
 }
 .about__founder:not(:last-child) {
   margin-bottom: 5.5625rem
@@ -14207,6 +14262,73 @@ body:has(header.header) .page {
 .talents-ab__label {
   font-size: 1.25rem;
   line-height: 1.2
+}
+.dash-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5625rem
+}
+.dash-info__line {
+  display: grid;
+  gap: .875rem
+}
+.dash-info__line:first-child {
+  grid-template-columns: 357fr 380fr
+}
+.dash-info__line:last-child {
+  grid-template-columns: 232fr 254fr 240fr
+}
+.dash-info__item {
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer
+}
+.dash-info__image {
+  -o-object-fit: contain;
+  object-fit: contain
+}
+.dash-info__body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(88,80,136,.9);
+  color: #fff;
+  display: flex;
+  gap: .3125rem;
+  padding: .75rem;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s
+}
+.dash-info__title {
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: 1.3
+}
+.dash-info__title span {
+  font-size: .625rem
+}
+.dash-info__text {
+  font-size: .6875rem;
+  line-height: 1.2
+}
+.why-us-ab__title {
+  font-size: 3rem
+}
+.why-us-ab__title:not(:last-child) {
+  margin-bottom: 2.4375rem
+}
+.why-us-ab__label {
+  font-size: 6.3888888889vw;
+  font-weight: 300;
+  line-height: 1.5;
+  text-transform: capitalize
 }
 .wrapper:has(.dash-ref) {
   position: relative
@@ -17020,6 +17142,11 @@ span.flatpickr-weekday {
 @media (min-width:87.49875em) {
   .account__fields--triple {
     grid-template-columns: repeat(3,1fr)
+  }
+}
+@media (max-width:90em) {
+  .why-us-ab__title {
+    font-size: 3.3333333333vw
   }
 }
 @media (max-width:48em) {
@@ -20493,6 +20620,10 @@ span.flatpickr-weekday {
   .item-team-ab:hover .item-team-ab__body {
     opacity: 1;
     visibility: visible
+  }
+  .dash-info__item:hover .dash-info__body {
+    visibility: visible;
+    opacity: 1
   }
   .set-btn:hover {
     color: #998ee0

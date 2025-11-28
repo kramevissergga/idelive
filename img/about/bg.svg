@@ -12,7 +12,6 @@
 <ellipse cx="335.5" cy="1104.02" rx="405.5" ry="852.87" fill="#E5EAF3" fill-opacity="0.7"/>
 </g>
 <g filter="url(#filter3_f_5161_40470)">
-<ellipse cx="431.5" cy="6167.72" rx="344.5" ry="1109.8" fill="white"/>
 </g>
 <g filter="url(#filter4_f_5161_40470)">
 <ellipse cx="1339.98" cy="675.801" rx="285" ry="1109.8" fill="#E5E9F4"/>
@@ -20,7 +19,6 @@
 <g filter="url(#filter5_f_5161_40470)">
 <ellipse cx="375.693" cy="704.185" rx="375.693" ry="704.185" transform="matrix(0.528659 0.848835 -0.789343 0.613952 1191.69 2817)" fill="white" fill-opacity="0.7"/>
 </g>
-<line x1="1074.5" y1="7496.5" x2="1373.5" y2="7496.5" stroke="white" stroke-width="5" stroke-linecap="round"/>
 </g>
 <defs>
 <filter id="filter0_f_5161_40470" x="445.731" y="4458.74" width="1607.15" height="2390.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

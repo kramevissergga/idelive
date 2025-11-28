@@ -6759,6 +6759,7 @@
                 arrows: false,
                 pagination: false,
                 pauseOnHover: true,
+                drag: false,
                 perPage: 6,
                 gap: 70,
                 autoScroll: {
@@ -6798,6 +6799,33 @@
             });
             teamSlider.mount({
                 Grid
+            });
+        }));
+        let whyUsSliderEls = document.querySelectorAll(".why-us-ab__slider");
+        if (whyUsSliderEls) whyUsSliderEls.forEach((whyUsSliderEl => {
+            let whyUsSlider = new splide_esm_Splide(whyUsSliderEl, {
+                type: "loop",
+                arrows: false,
+                pagination: false,
+                pauseOnHover: false,
+                perPage: 1,
+                drag: false,
+                gap: 5,
+                autoScroll: {
+                    autoStart: true,
+                    speed: 1
+                },
+                intersection: {
+                    inView: {
+                        autoScroll: true
+                    },
+                    outView: {
+                        autoScroll: false
+                    }
+                }
+            });
+            whyUsSlider.mount({
+                AutoScroll
             });
         }));
     }));
