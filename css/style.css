@@ -1474,6 +1474,24 @@ body::after {
   grid-template-columns: 250fr 695fr;
   gap: 1.5rem .625rem
 }
+.progress-bar {
+  height: .5rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #dcdcdc;
+  border-radius: .5rem;
+  width: 100%
+}
+.progress-bar::before {
+  content: "";
+  width: var(--progress);
+  height: 100%;
+  background: #998ee0;
+  border-radius: .5rem;
+  position: absolute;
+  top: 0;
+  left: 0
+}
 .select {
   min-width: 0;
   position: relative;
@@ -2458,11 +2476,14 @@ body::after {
   background: url(img/referal/posting.svg) no-repeat center/cover
 }
 .popup--balance .popup__content {
-  max-width: 66.25rem;
-  padding: 2rem 2rem .5625rem 2rem
+  max-width: 54rem;
+  padding: 1.75rem 1.5625rem
 }
 .popup--balance .popup__content:not(:has(.balance-popup__details)) {
-  background: url(img/referal/balance-bg.svg) no-repeat center/cover
+  background: url(../img/balance-popup/balance.webp) no-repeat center/cover
+}
+.popup--balance-form .popup__content {
+  background-image: url(../img/balance-popup/map.webp)
 }
 .bid-popup--confirm2 .field__input input,
 .bid-popup--confirm2 .select__value {
@@ -4595,7 +4616,7 @@ body::after {
 .point-pay span {
   font-weight: 500
 }
-.balance-popup {
+.balance-popup--form {
   display: grid;
   grid-template-columns: 370fr 544fr;
   gap: 2rem
@@ -4612,32 +4633,47 @@ body::after {
   min-width: 0
 }
 .balance-popup__title:not(:last-child) {
-  margin-bottom: 1.8125rem
+  margin-bottom: 1.375rem
 }
 .balance-popup__details-title:not(:last-child) {
   margin-bottom: 3.25rem
 }
 .balance-popup__current {
-  padding: 2.5rem;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  padding: 2.125rem 2.75rem;
   display: flex;
-  flex-direction: column;
-  gap: 2.3125rem;
+  align-items: center;
   border-radius: 1.5rem;
-  border: .0625rem solid #fff;
-  background: linear-gradient(115deg,rgba(255,255,255,.42) 13.92%,rgba(252,252,252,.6) 29.98%,rgba(255,255,255,.6) 63.76%)
+  gap: 5.3125rem;
+  background: linear-gradient(109deg,#fff 11.33%,rgba(255,255,255,.7) 61.65%)
 }
 .balance-popup__current:not(:last-child) {
-  margin-bottom: 2.875rem
+  margin-bottom: 2rem
 }
 .balance-popup__current span {
   font-size: 3rem;
   font-weight: 500;
   line-height: 1.2
 }
+.balance-popup__current-body {
+  display: flex;
+  flex-direction: column;
+  gap: .9375rem;
+  border-radius: 1.5rem
+}
+.balance-popup__current-label {
+  font-size: 1.5rem;
+  line-height: 1.2
+}
+.balance-popup__current-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1.5625rem;
+  max-width: 13.6875rem
+}
 .balance-popup__point-pay {
-  font-size: 1.5rem
+  font-size: 1.5rem;
+  text-align: left
 }
 .balance-popup__point-pay:not(:last-child) {
   margin-bottom: 1.5rem
@@ -4648,7 +4684,10 @@ body::after {
   gap: 1.25rem 3.125rem
 }
 .balance-popup__actions:not(:last-child) {
-  margin-bottom: 4.375rem
+  margin-bottom: 1.8125rem
+}
+.balance-popup__field {
+  max-width: 18.4375rem
 }
 .balance-popup__field .field__label {
   color: #000;
@@ -4683,6 +4722,9 @@ body::after {
   width: 100%;
   font-size: 1.25rem
 }
+.balance-popup__details .details-payment__field .field__input>input {
+  height: 2.75rem
+}
 .aside-balance-p {
   display: flex;
   flex-direction: column;
@@ -4708,34 +4750,38 @@ body::after {
   background: url(../img/referal/balance-decor.svg) no-repeat center/contain
 }
 .aside-balance-p__point-pay {
-  font-size: 2rem
+  font-size: 1.5rem
 }
 .aside-balance-p__point-pay:not(:last-child) {
-  margin-bottom: 2.3125rem
+  margin-bottom: 1.3125rem
 }
 .aside-balance-p__block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem
+  gap: .75rem
 }
 .aside-balance-p__block:not(:last-child) {
-  margin-bottom: 3rem
+  margin-bottom: .8125rem
 }
 .aside-balance-p__label {
-  font-size: 1.5rem;
   line-height: 1.2;
-  text-align: center
+  text-align: center;
+  font-size: 1.25rem
+}
+.aside-balance-p__label--small {
+  font-size: 1rem
 }
 .aside-balance-p__label b {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500
 }
 .aside-balance-p__image {
   aspect-ratio: 223/321;
   max-width: 15rem;
   width: 100%;
-  margin-bottom: -6.25rem
+  margin-bottom: -6.25rem;
+  margin-top: 1.3125rem
 }
 .big-inq__header {
   display: flex;
@@ -9148,10 +9194,13 @@ body:has(header.header) .page {
 }
 .dashboard__header {
   display: grid;
-  grid-template-columns: 64px 456fr 382fr 349fr;
+  grid-template-columns: 64px 401fr 168fr 289fr 326fr;
   gap: 1.25rem;
   align-items: center;
   justify-content: start
+}
+.dashboard--agent .dashboard__header {
+  grid-template-columns: 42px 456fr 382fr 349fr
 }
 .dashboard__header:not(:last-child) {
   margin-bottom: 1.625rem
@@ -9176,6 +9225,29 @@ body:has(header.header) .page {
 .dashboard__tab._active {
   color: #2a2e4a;
   border-color: #998ee0
+}
+.dashboard__balance {
+  display: inline-flex;
+  width: -webkit-max-content;
+  width: max-content;
+  align-items: center;
+  gap: .625rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: .375rem .875rem .375rem .375rem;
+  align-self: self-start;
+  transition: all .3s
+}
+.dashboard__balance span {
+  font-size: 1rem
+}
+.dashboard__balance img {
+  width: 2.3125rem;
+  height: 2.1875rem;
+  flex-shrink: 0
 }
 .dashboard__prices {
   display: flex;
@@ -9212,7 +9284,7 @@ body:has(header.header) .page {
 }
 .dashboard__stats-item {
   display: flex;
-  gap: .75rem;
+  gap: .375rem;
   align-items: center
 }
 .dashboard__stats-item img {
@@ -9244,9 +9316,9 @@ body:has(header.header) .page {
   gap: .5625rem
 }
 .dashboard__stats-label span {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 400;
-  line-height: 120%
+  line-height: 1.2
 }
 .dashboard__body {
   display: grid;
@@ -16599,7 +16671,7 @@ span.flatpickr-weekday {
     padding-top: 2.375rem
   }
   .balance-popup__title {
-    font-size: 2rem!important
+    font-size: 1.5rem!important
   }
   .profile-comp:has(.profile-comp__menu) {
     position: relative;
@@ -17180,6 +17252,9 @@ span.flatpickr-weekday {
   }
   .form-bid-inq__item--info {
     grid-column: span 2
+  }
+  .dashboard--agent .dashboard__header {
+    grid-template-columns: 42px 456fr 382fr
   }
   .progress-stats--agent .table-progress__item.table-progress__item--active,
   .table-progress__item.table-progress__item--active {
@@ -18162,7 +18237,7 @@ span.flatpickr-weekday {
   .posting-popup__body {
     grid-template-columns: 1fr
   }
-  .balance-popup {
+  .balance-popup--form {
     grid-template-columns: 1fr
   }
   .balance-popup__close {
@@ -18181,7 +18256,7 @@ span.flatpickr-weekday {
   .balance-popup__current {
     padding: 1.5rem;
     font-size: 1.25rem;
-    gap: 1.25rem
+    gap: 1.875rem
   }
   .balance-popup__current:not(:last-child) {
     margin-bottom: 1.5rem
@@ -18189,8 +18264,11 @@ span.flatpickr-weekday {
   .balance-popup__current span {
     font-size: 1.875rem
   }
-  .balance-popup__actions:not(:last-child) {
-    margin-bottom: 1.5rem
+  .balance-popup__current-body {
+    gap: 1.25rem
+  }
+  .balance-popup__current-label {
+    font-size: 1.25rem
   }
   .balance-popup__field .field__label {
     font-size: 1rem
@@ -18207,12 +18285,6 @@ span.flatpickr-weekday {
   }
   .aside-balance-p {
     padding: 1.5rem 1.5rem 0
-  }
-  .aside-balance-p__point-pay:not(:last-child) {
-    margin-bottom: 1.5rem
-  }
-  .aside-balance-p__block:not(:last-child) {
-    margin-bottom: 1.5rem
   }
   .big-inq-summary__wrapper {
     flex-direction: column
@@ -19517,6 +19589,10 @@ span.flatpickr-weekday {
   .actions-dash-popup__details .actions-dash__label {
     font-size: .875rem
   }
+  .balance-popup__current {
+    flex-direction: column;
+    align-items: stretch
+  }
   .big-inq__header:not(:last-child) {
     margin-bottom: 1.25rem
   }
@@ -20407,6 +20483,10 @@ span.flatpickr-weekday {
   }
   .dashboard__tab:hover {
     color: #2a2e4a
+  }
+  .dashboard__balance:hover {
+    color: #fff;
+    background-color: #998ee0
   }
   .menu-dash__item:hover {
     background-color: #998ee0
