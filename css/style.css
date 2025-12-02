@@ -9244,9 +9244,12 @@ body:has(header.header) .page {
 .dashboard__balance span {
   font-size: 1rem
 }
-.dashboard__balance img {
+.dashboard__balance img,
+.dashboard__balance video {
   width: 2.3125rem;
   height: 2.1875rem;
+  -o-object-fit: contain;
+  object-fit: contain;
   flex-shrink: 0
 }
 .dashboard__prices {
