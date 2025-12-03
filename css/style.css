@@ -13678,7 +13678,22 @@ body:has(header.header) .page {
 }
 .steps-about {
   position: relative;
+  max-width: 122.625rem;
+  margin: 0 auto
+}
+.steps-about::after,
+.steps-about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100vw;
+  height: 100%;
   background-color: #8abee3
+}
+.steps-about::after {
+  left: 100%;
+  background-color: #fff
 }
 .steps-about__title {
   color: #fff;
@@ -13686,10 +13701,6 @@ body:has(header.header) .page {
   max-width: 34.8125rem;
   position: relative;
   z-index: 3
-}
-.steps-about__slider {
-  max-width: 90rem;
-  margin: 0 auto
 }
 .steps-about__slider .splide__slide {
   display: flex
@@ -13718,29 +13729,12 @@ body:has(header.header) .page {
 }
 .steps-about__item {
   position: relative;
-  aspect-ratio: 1440/993;
+  aspect-ratio: 1962/1059;
   min-height: -webkit-min-content;
   min-height: min-content;
   display: flex;
   width: 100%;
   padding: 4.375rem 0
-}
-.steps-about__item::after,
-.steps-about__item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(90deg,#8abee3,transparent);
-  width: 6.25rem;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none
-}
-.steps-about__item::after {
-  left: auto;
-  right: 0;
-  background: linear-gradient(-90deg,#8abee3,transparent)
 }
 .steps-about__image {
   -webkit-user-select: none;
@@ -17217,6 +17211,25 @@ span.flatpickr-weekday {
 @media (min-width:87.49875em) {
   .account__fields--triple {
     grid-template-columns: repeat(3,1fr)
+  }
+}
+@media (min-width:122.625em) {
+  .steps-about__item::after,
+  .steps-about__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg,#8abee3,transparent);
+    width: 6.25rem;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none
+  }
+  .steps-about__item::after {
+    left: auto;
+    right: 0;
+    background: linear-gradient(-90deg,#fff,transparent)
   }
 }
 @media (max-width:90em) {
