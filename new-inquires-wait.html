@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251204044557">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251205105037">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -6171,6 +6171,202 @@
 				</div>
 			</div>
 		</div>
+		<div id="tr-history-popup" aria-hidden="true" class="popup popup--tr-history">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="tr-history-popup">
+						<div class="tr-history-popup__header">
+							<h3 class="tr-history-popup__title">
+								Transaction History
+							</h3>
+							<button data-close class="tr-history-popup__close-circle close-circle close-circle--big _icon-cross">
+
+							</button>
+						</div>
+						<div class="tr-history-popup__table">
+							<table>
+								<thead>
+									<tr>
+										<th style="text-align: left;">
+											ID transaction:
+										</th>
+										<th>
+											Amount Paid:
+										</th>
+										<th>
+											Points
+										</th>
+										<th>
+											Status:
+										</th>
+										<th>
+											Date:
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style="text-align: left;">
+											<a href="#">TX-982341</a>
+										</td>
+										<td>
+											$20
+										</td>
+										<td>
+											200 pst
+										</td>
+										<td>
+											<div class="tr-history-popup__status --active">Processing</div>
+										</td>
+										<td>
+											<div class="tr-history-popup__date">
+												14 Feb 2025
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align: left;">
+											<a href="#">TX-982341</a>
+										</td>
+										<td>
+											$20
+										</td>
+										<td>
+											200 pst
+										</td>
+										<td>
+											<div class="tr-history-popup__status">Processing</div>
+										</td>
+										<td>
+											<div class="tr-history-popup__date">
+												14 Feb 2025
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align: left;">
+											<a href="#">TX-982341</a>
+										</td>
+										<td>
+											$20
+										</td>
+										<td>
+											200 pst
+										</td>
+										<td>
+											<div class="tr-history-popup__status">Processing</div>
+										</td>
+										<td>
+											<div class="tr-history-popup__date">
+												14 Feb 2025
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align: left;">
+											<a href="#">TX-982341</a>
+										</td>
+										<td>
+											$20
+										</td>
+										<td>
+											200 pst
+										</td>
+										<td>
+											<div class="tr-history-popup__status">Processing</div>
+										</td>
+										<td>
+											<div class="tr-history-popup__date">
+												14 Feb 2025
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align: left;">
+											<a href="#">TX-982341</a>
+										</td>
+										<td>
+											$20
+										</td>
+										<td>
+											200 pst
+										</td>
+										<td>
+											<div class="tr-history-popup__status">Processing</div>
+										</td>
+										<td>
+											<div class="tr-history-popup__date">
+												14 Feb 2025
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tr-history-popup__footer">
+							<div class="tr-history-popup__pagination pagination">
+								<ul>
+									<li>
+										<a href="#" class="_icon-ch-left">
+
+										</a>
+									</li>
+									<li>
+										<a class="_active" href="#">
+											1
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											2
+										</a>
+									</li>
+									<li>
+										<a href="#" class="_icon-ch-right">
+
+										</a>
+									</li>
+								</ul>
+							</div>
+							<a href="#" class="tr-history-popup__more">
+								View more
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="payment-success" aria-hidden="true" class="popup popup--supplier popup--payment-success">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="supplier-success">
+						<button data-close class="supplier-success__close close-circle _icon-cross"></button>
+						<div class="supplier-success__body">
+							<div class="supplier-success__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+									<circle cx="23" cy="23" r="22" stroke="#64DB78" stroke-width="2" />
+									<path d="M15.8125 23.7547L20.3141 28.0313L30.9063 17.9688" stroke="#64DB78" stroke-width="2" stroke-linecap="round" />
+								</svg>
+							</div>
+							<div class="supplier-success__label">
+								Payment successful
+							</div>
+							<p class="supplier-success__text">
+								Payment is being processed, please wait for points to be credited
+							</p>
+							<div class="supplier-success__footer">
+								<a href="#" class="supplier-success__button button button--gradient">
+									Back to dasboard
+								</a>
+								<a href="#" class="supplier-success__button button button--border button--purple">
+									Transaction history
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<header class="header">
 			<div data-center-parent class="header__container">
 				<button data-menu-toggle type="button" class="header__icon _icon-menu"><span></span></button>
@@ -6756,7 +6952,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251204044557"></script>
+	<script src="js/app.min.js?_v=20251205105037"></script>
 </body>
 
 </html>

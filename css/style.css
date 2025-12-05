@@ -2551,6 +2551,11 @@ body::after {
 .popup--balance-form .popup__content {
   background-image: url(../img/balance-popup/map.webp)
 }
+.popup--tr-history .popup__content {
+  max-width: 54rem;
+  padding: 1.9375rem 2.625rem 3rem;
+  border-radius: 1.5rem
+}
 .bid-popup--confirm2 .field__input input,
 .bid-popup--confirm2 .select__value {
   min-height: 3rem
@@ -4251,6 +4256,9 @@ body::after {
 .supplier-success__label:not(:last-child) {
   margin-bottom: 1.5rem
 }
+.popup--payment-success .supplier-success__label:not(:last-child) {
+  margin-bottom: 2.625rem
+}
 .supplier-success__text {
   font-size: 1.25rem;
   text-align: center;
@@ -4258,6 +4266,12 @@ body::after {
 }
 .supplier-success__text:not(:last-child) {
   margin-bottom: 2rem
+}
+.popup--payment-success .supplier-success__text {
+  max-width: 22rem
+}
+.popup--payment-success .supplier-success__text:not(:last-child) {
+  margin-bottom: 4.125rem
 }
 .supplier-success__footer {
   display: grid;
@@ -5234,6 +5248,91 @@ body::after {
   min-height: 35.25rem;
   padding: 2.375rem 4.125rem 2.625rem
 }
+.tr-history-popup__header {
+  padding-right: 3.125rem
+}
+.tr-history-popup__header:not(:last-child) {
+  margin-bottom: 3.625rem
+}
+.tr-history-popup__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2
+}
+.tr-history-popup__table table {
+  width: 100%
+}
+.tr-history-popup__table:not(:last-child) {
+  margin-bottom: 4.625rem
+}
+.tr-history-popup__table th {
+  color: #998ee0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  padding-bottom: 1.25rem
+}
+.tr-history-popup__table td {
+  line-height: 1.2;
+  text-align: center
+}
+.tr-history-popup__table td a {
+  transition: all .3s;
+  text-decoration-thickness: .0625rem;
+  text-underline-offset: .1875rem
+}
+.tr-history-popup__table td,
+.tr-history-popup__table th {
+  padding-left: .625rem;
+  padding-right: .625rem
+}
+.tr-history-popup__table td:first-child,
+.tr-history-popup__table th:first-child {
+  padding-left: 0
+}
+.tr-history-popup__table td:last-child,
+.tr-history-popup__table th:last-child {
+  padding-right: 0
+}
+.tr-history-popup__table tbody td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: .0625rem solid #dcdcdc
+}
+.tr-history-popup__table tbody tr:first-child td {
+  border-top: .0625rem solid #dcdcdc
+}
+.tr-history-popup__status {
+  font-weight: 500
+}
+.tr-history-popup__status.--active {
+  color: #0aaa25;
+  font-style: italic
+}
+.tr-history-popup__date {
+  font-size: 16px;
+  text-transform: capitalize
+}
+.tr-history-popup__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem
+}
+.tr-history-popup__pagination {
+  gap: .5rem!important
+}
+.tr-history-popup__pagination li a {
+  width: 1.375rem!important;
+  height: 1.375rem!important
+}
+.tr-history-popup__more {
+  color: #998ee0;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: all .3s
+}
 [data-showmore-button] span:last-child {
   display: none
 }
@@ -5275,7 +5374,8 @@ body::after {
 .contacts-h__link,
 .inq-dash__type,
 .inquires__tabs-item,
-.publ-ref__link {
+.publ-ref__link,
+.tr-history-popup__table td a {
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color .3s
@@ -16748,6 +16848,9 @@ span.flatpickr-weekday {
   .start-popup__items {
     margin: 0 -1.25rem
   }
+  .supplier-success__button {
+    min-width: 16.875rem
+  }
   .actions-dash-popup__verif {
     max-width: 21.3125rem
   }
@@ -18271,6 +18374,12 @@ span.flatpickr-weekday {
   }
   .supplier-popup__title:not(:last-child) {
     margin-bottom: 1.25rem
+  }
+  .popup--payment-success .supplier-success__label:not(:last-child) {
+    margin-bottom: 1.25rem
+  }
+  .popup--payment-success .supplier-success__text:not(:last-child) {
+    margin-bottom: 1.875rem
   }
   .agent-dash-popup__progress-stats .progress-stats__header {
     flex-wrap: wrap
@@ -20453,13 +20562,20 @@ span.flatpickr-weekday {
   .main-pr__download:hover {
     color: #2a2e4a
   }
+  .tr-history-popup__table td a:hover {
+    color: #998ee0
+  }
+  .tr-history-popup__more:hover {
+    color: #3f456e
+  }
   .actions-dash-popup__codes-label a:hover,
   .auth__link:hover,
   .breadcrumbs ul li a:hover,
   .contacts-h__link:hover,
   .inq-dash__type:hover,
   .inquires__tabs-item:hover,
-  .publ-ref__link:hover {
+  .publ-ref__link:hover,
+  .tr-history-popup__table td a:hover {
     text-decoration-color: inherit
   }
   .adv-spoilers__text a:hover,
