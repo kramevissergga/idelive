@@ -2496,7 +2496,7 @@ body::after {
   padding: 2.5rem 1.25rem
 }
 .popup--start .popup__content {
-  max-width: 53.875rem;
+  max-width: 54.0625rem;
   padding: 0
 }
 .popup--calc .popup__content {
@@ -3715,7 +3715,7 @@ body::after {
   align-self: self-start
 }
 .start-popup__logo:not(:last-child) {
-  margin-bottom: 6.875rem
+  margin-bottom: .625rem
 }
 .start-popup__wrapper {
   max-width: 19.3125rem;
@@ -3762,13 +3762,16 @@ body::after {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 2.625rem 3.875rem 3.875rem;
+  padding: 2rem 2.625rem 2.625rem;
   background: linear-gradient(165deg,#fff 39.21%,rgba(246,246,246,.15) 77.81%);
   backdrop-filter: blur(2.5px)
 }
 .start-popup__close-circle {
   color: #2a2e4a;
-  z-index: 5
+  z-index: 5;
+  width: 30px;
+  height: 30px;
+  font-size: .5625rem
 }
 .start-popup__list:not(:last-child) {
   margin-bottom: 4.125rem
@@ -3806,7 +3809,7 @@ body::after {
 .start-popup__text {
   line-height: 1.4;
   text-align: center;
-  flex-grow: 1
+  max-width: 17.0625rem
 }
 .start-popup__text p:not(:last-child) {
   margin-bottom: 1.25rem
@@ -3817,7 +3820,7 @@ body::after {
 .start-popup__label {
   color: #998ee0;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.625rem;
   font-weight: 500;
   line-height: 1.2
 }
@@ -3873,9 +3876,16 @@ body::after {
 }
 .start-popup__footer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem
+  gap: 1rem;
+  flex-wrap: wrap
+}
+.start-popup__footer-block {
+  display: flex;
+  flex-direction: column;
+  gap: .8125rem;
+  align-items: center;
+  flex-grow: 1
 }
 .start-popup__footer-label {
   color: #7b7f97;
@@ -3884,8 +3894,7 @@ body::after {
   line-height: 1.2
 }
 .start-popup__button {
-  width: 100%;
-  max-width: 19.75rem
+  width: 100%
 }
 .item-serv-popup {
   padding: .0625rem;
@@ -16843,7 +16852,8 @@ span.flatpickr-weekday {
   .start-popup__label {
     flex-grow: 1;
     display: flex;
-    align-items: center
+    align-items: center;
+    font-size: 1.25rem
   }
   .start-popup__items {
     margin: 0 -1.25rem
@@ -18346,9 +18356,6 @@ span.flatpickr-weekday {
   }
   .start-popup__aside {
     padding: 1.25rem
-  }
-  .start-popup__logo:not(:last-child) {
-    margin-bottom: 1.875rem
   }
   .start-popup__info {
     text-align: center;
