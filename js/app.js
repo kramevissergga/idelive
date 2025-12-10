@@ -20971,10 +20971,6 @@
             }
         }));
     }));
-    function getChartFontSize() {
-        const screenWidth = window.innerWidth;
-        if (screenWidth >= 768) return window.innerHeight * .011278195489; else return 12;
-    }
     const externalTooltipHandler = context => {
         const {chart, tooltip} = context;
         let tooltipEl = chart.canvas.parentNode.querySelector(".chartjs-tooltip");
@@ -21049,7 +21045,7 @@
                                 font: isBig ? {
                                     size: 16
                                 } : {
-                                    size: getChartFontSize(),
+                                    size: 12,
                                     weight: "bolder"
                                 },
                                 maxRotation: 0,
