@@ -6560,11 +6560,10 @@
                     right: 64
                 },
                 breakpoints: {
-                    369.98: {
-                        gap: 10,
+                    499.98: {
                         padding: {
-                            left: 30,
-                            right: 30
+                            left: 20,
+                            right: 100
                         }
                     }
                 }
@@ -20809,14 +20808,24 @@
     const finnickInputs = document.querySelectorAll(".finnick__input");
     if (finnickInputs) finnickInputs.forEach((input => {
         input.addEventListener("focus", (e => {
-            const root = e.target.closest(".finnick");
-            if (root) root.classList.add("--open");
+            const finnickEl = e.target.closest(".finnick");
+            finnickOpen(finnickEl);
         }));
         input.addEventListener("blur", (e => {
-            const root = e.target.closest(".finnick");
-            if (root) root.classList.remove("--open");
+            const finnickEl = e.target.closest(".finnick");
+            finnickClose(finnickEl);
         }));
     }));
+    function finnickOpen(finnickEl) {
+        if (finnickEl) finnickEl.classList.add("--open");
+        finnickEl.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+    function finnickClose(finnickEl) {
+        if (finnickEl) finnickEl.classList.remove("--open");
+    }
     const emojiBlocks = document.querySelectorAll("[data-emoji-block]");
     if (emojiBlocks) emojiBlocks.forEach((emojiBlock => {
         const picker = new emoji_popover_es({
@@ -20971,122 +20980,124 @@
             }
         }));
     }));
-    const externalTooltipHandler = context => {
-        const {chart, tooltip} = context;
-        let tooltipEl = chart.canvas.parentNode.querySelector(".chartjs-tooltip");
-        if (!tooltipEl) {
-            tooltipEl = document.createElement("div");
-            tooltipEl.classList.add("chartjs-tooltip");
-            chart.canvas.parentNode.appendChild(tooltipEl);
-        }
-        if (!tooltip || tooltip.opacity === 0) {
-            tooltipEl.style.opacity = 0;
-            return;
-        }
-        tooltipEl.innerHTML = "";
-        if (tooltip.title && tooltip.title.length) {
-            const titleDiv = document.createElement("div");
-            titleDiv.classList.add("chartjs-tooltip-title");
-            titleDiv.innerHTML = tooltip.title.join("<br>");
-            tooltipEl.appendChild(titleDiv);
-        }
-        if (tooltip.body && tooltip.body.length) tooltip.body.forEach(((b, i) => {
-            const bodyDiv = document.createElement("div");
-            bodyDiv.classList.add("chartjs-tooltip-body");
-            const text = document.createTextNode(b.lines.join(" "));
-            bodyDiv.appendChild(text);
-            tooltipEl.appendChild(bodyDiv);
-        }));
-        chart.canvas.getBoundingClientRect();
-        tooltipEl.style.opacity = 1;
-        tooltipEl.style.left = tooltip.caretX + "px";
-        tooltipEl.style.top = tooltip.caretY + "px";
-    };
-    function renderFbx01Chart({labels, values, currency}) {
-        const els = document.querySelectorAll("[data-dash-chart]");
-        if (els) els.forEach((el => {
-            const isBig = el.dataset.dashChart == "big";
-            const ctx = el.getContext("2d");
-            const currencySymbol = currency === "USD" ? "$" : currency;
-            new auto(ctx, {
-                type: "bar",
-                data: {
-                    labels,
-                    datasets: [ {
-                        label: "FBX01",
-                        data: values,
-                        backgroundColor: isBig ? "#DDDEE2" : "#FFF",
-                        hoverBackgroundColor: "#998EE0",
-                        borderRadius: isBig ? 8 : 4,
-                        barPercentage: .8,
-                        categoryPercentage: .8
-                    } ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: ctx => `${currencySymbol}${Number(ctx.parsed.y).toLocaleString()}`
-                            },
-                            enabled: false,
-                            position: "nearest",
-                            external: externalTooltipHandler
-                        }
+    document.addEventListener("DOMContentLoaded", (() => {
+        const externalTooltipHandler = context => {
+            const {chart, tooltip} = context;
+            let tooltipEl = chart.canvas.parentNode.querySelector(".chartjs-tooltip");
+            if (!tooltipEl) {
+                tooltipEl = document.createElement("div");
+                tooltipEl.classList.add("chartjs-tooltip");
+                chart.canvas.parentNode.appendChild(tooltipEl);
+            }
+            if (!tooltip || tooltip.opacity === 0) {
+                tooltipEl.style.opacity = 0;
+                return;
+            }
+            tooltipEl.innerHTML = "";
+            if (tooltip.title && tooltip.title.length) {
+                const titleDiv = document.createElement("div");
+                titleDiv.classList.add("chartjs-tooltip-title");
+                titleDiv.innerHTML = tooltip.title.join("<br>");
+                tooltipEl.appendChild(titleDiv);
+            }
+            if (tooltip.body && tooltip.body.length) tooltip.body.forEach(((b, i) => {
+                const bodyDiv = document.createElement("div");
+                bodyDiv.classList.add("chartjs-tooltip-body");
+                const text = document.createTextNode(b.lines.join(" "));
+                bodyDiv.appendChild(text);
+                tooltipEl.appendChild(bodyDiv);
+            }));
+            chart.canvas.getBoundingClientRect();
+            tooltipEl.style.opacity = 1;
+            tooltipEl.style.left = tooltip.caretX + "px";
+            tooltipEl.style.top = tooltip.caretY + "px";
+        };
+        function renderFbx01Chart({labels, values, currency}) {
+            const els = document.querySelectorAll("[data-dash-chart]");
+            if (els) els.forEach((el => {
+                const isBig = el.dataset.dashChart == "big";
+                const ctx = el.getContext("2d");
+                const currencySymbol = currency === "USD" ? "$" : currency;
+                new auto(ctx, {
+                    type: "bar",
+                    data: {
+                        labels,
+                        datasets: [ {
+                            label: "FBX01",
+                            data: values,
+                            backgroundColor: isBig ? "#DDDEE2" : "#FFF",
+                            hoverBackgroundColor: "#998EE0",
+                            borderRadius: isBig ? 8 : 4,
+                            barPercentage: .8,
+                            categoryPercentage: .8
+                        } ]
                     },
-                    scales: {
-                        x: {
-                            ticks: {
-                                color: "#2A2E4A",
-                                font: isBig ? {
-                                    size: 16
-                                } : {
-                                    size: 12,
-                                    weight: "bolder"
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => `${currencySymbol}${Number(ctx.parsed.y).toLocaleString()}`
                                 },
-                                maxRotation: 0,
-                                autoSkip: true,
-                                maxTicksLimit: 6
-                            },
-                            grid: {
-                                display: false
-                            },
-                            border: {
-                                display: false
+                                enabled: false,
+                                position: "nearest",
+                                external: externalTooltipHandler
                             }
                         },
-                        y: {
-                            display: isBig,
-                            ticks: {
-                                color: "#2A2E4A",
-                                font: {
-                                    size: 20
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: "#2A2E4A",
+                                    font: isBig ? {
+                                        size: 16
+                                    } : {
+                                        size: 12,
+                                        weight: "bolder"
+                                    },
+                                    maxRotation: 0,
+                                    autoSkip: true,
+                                    maxTicksLimit: 6
+                                },
+                                grid: {
+                                    display: false
+                                },
+                                border: {
+                                    display: false
                                 }
                             },
-                            grid: {
-                                display: true,
-                                color: "#DDDEE2",
-                                lineWidth: .2
-                            },
-                            border: {
-                                display: false
+                            y: {
+                                display: isBig,
+                                ticks: {
+                                    color: "#2A2E4A",
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    color: "#DDDEE2",
+                                    lineWidth: .2
+                                },
+                                border: {
+                                    display: false
+                                }
                             }
                         }
                     }
-                }
-            });
-        }));
-    }
-    renderFbx01Chart({
-        labels: [ "04 JUL", "11 JUL", "18 JUL", "25 JUL", "15 AUG", "22 AUG", "29 SEP", "5 SEP", "12 SEP", "19 SEP", "26 SEP", "3 OCT", "11 OCT", "18 OCT", "01 NOV", "08 NOV" ],
-        values: [ 3124, 2368.8, 2325.2, 2334, 1940.2, 1744, 1724, 2162.6, 2309.2, 2184.6, 1852.8, 1554.4, 1431, 1687.2, 1999, 2958.4 ],
-        barColor: "#998ee0",
-        currency: "USD"
-    });
+                });
+            }));
+        }
+        renderFbx01Chart({
+            labels: [ "04 JUL", "11 JUL", "18 JUL", "25 JUL", "15 AUG", "22 AUG", "29 SEP", "5 SEP", "12 SEP", "19 SEP", "26 SEP", "3 OCT", "11 OCT", "18 OCT", "01 NOV", "08 NOV" ],
+            values: [ 3124, 2368.8, 2325.2, 2334, 1940.2, 1744, 1724, 2162.6, 2309.2, 2184.6, 1852.8, 1554.4, 1431, 1687.2, 1999, 2958.4 ],
+            barColor: "#998ee0",
+            currency: "USD"
+        });
+    }));
     window["FLS"] = false;
     addLoadedClass();
     spoilers();
