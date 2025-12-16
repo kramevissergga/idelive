@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251208192430">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251216101547">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 		</header>
-		<div class="cookies-popup --active">
+		<div class="cookies-popup">
 			<div class="cookies-popup__wrapper">
 				<div class="cookies-popup__header">
 					<div class="cookies-popup__title">
@@ -199,57 +199,74 @@
 										</div>
 									</div>
 								</div>
-								<div class="dash-info__line">
-									<div class="dash-info__item">
-										<img src="img/about/info/items/03.webp" alt="Image" class="dash-info__image ibg">
-										<div class="dash-info__body">
-											<div class="dash-info__title">
-												Container Search Map
-											</div>
-											<p class="dash-info__text">
-												An interactive world map showing real-time container availability and cargo locations across
-												major shipping routes. Users can track their shipments visually, identify container positions
-												in
-												key logistics hubs, and monitor the China-USA corridor traffic that represents AiDeliv's
-												primary
-												service area.
-											</p>
-										</div>
-									</div>
-									<div class="dash-info__item">
-										<img src="img/about/info/items/04.webp" alt="Image" class="dash-info__image ibg">
-										<div class="dash-info__body">
-											<div class="dash-info__title">
-												Holidays Calendar
-											</div>
-											<p class="dash-info__text">
-												A planning tool displaying upcoming non-business days in origin and destination countries.
-												Shows
-												holidays like "The holiday of the dead" (3 days) and Chinese New Year (7 days) with exact
-												dates,
-												helping clients anticipate potential shipping delays and plan logistics around peak closure
-												periods.
-											</p>
-										</div>
-									</div>
-									<div class="dash-info__item">
-										<img src="img/about/info/items/05.webp" alt="Image" class="dash-info__image ibg">
-										<div class="dash-info__body">
-											<div class="dash-info__title">
-												DataFreight <span>(Shanghai Container Index)</span>
-											</div>
-											<p class="dash-info__text">
-												Real-time analytics showing CBM freight pricing trends from the Shanghai Containerized Freight
-												Index. The bar chart displays price fluctuations over time (May-July), with specific values
-												highlighted ($3,124 on July 4th, $1,724.50 currently), enabling clients to identify optimal
-												shipping windows and make data-driven logistics decisions.
-											</p>
-										</div>
+								<div class="dash-info__slider splide">
+									<div class="splide__track">
+										<ul class="splide__list">
+											<li class="splide__slide">
+												<div class="dash-info__item">
+													<img src="img/about/info/items/03.webp" alt="Image" class="dash-info__image ibg">
+													<div class="dash-info__body">
+														<div class="dash-info__title">
+															Container Search Map
+														</div>
+														<p class="dash-info__text">
+															An interactive world map showing real-time container availability and cargo locations
+															across
+															major shipping routes. Users can track their shipments visually, identify container
+															positions
+															in
+															key logistics hubs, and monitor the China-USA corridor traffic that represents AiDeliv's
+															primary
+															service area.
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div class="dash-info__item">
+													<img src="img/about/info/items/04.webp" alt="Image" class="dash-info__image ibg">
+													<div class="dash-info__body">
+														<div class="dash-info__title">
+															Holidays Calendar
+														</div>
+														<p class="dash-info__text">
+															A planning tool displaying upcoming non-business days in origin and destination
+															countries.
+															Shows
+															holidays like "The holiday of the dead" (3 days) and Chinese New Year (7 days) with
+															exact
+															dates,
+															helping clients anticipate potential shipping delays and plan logistics around peak
+															closure
+															periods.
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="splide__slide">
+												<div class="dash-info__item">
+													<img src="img/about/info/items/05.webp" alt="Image" class="dash-info__image ibg">
+													<div class="dash-info__body">
+														<div class="dash-info__title">
+															DataFreight <span>(Shanghai Container Index)</span>
+														</div>
+														<p class="dash-info__text">
+															Real-time analytics showing CBM freight pricing trends from the Shanghai Containerized
+															Freight
+															Index. The bar chart displays price fluctuations over time (May-July), with specific
+															values
+															highlighted ($3,124 on July 4th, $1,724.50 currently), enabling clients to identify
+															optimal
+															shipping windows and make data-driven logistics decisions.
+														</p>
+													</div>
+												</div>
+											</li>
+										</ul>
 									</div>
 								</div>
-
 							</div>
-							<div class="info-about__text text">
+							<div class="info-about__text text pc">
 								<p>
 									AiDeliv isn’t another freight forwarder — it’s the world’s first live logistics exchange, where every
 									shipment gains the same leverage, transparency, and opportunity as the giants
@@ -260,119 +277,126 @@
 
 				</div>
 				<div class="about__steps steps-about">
-
-					<div class="steps-about__slider splide">
-						<div class="splide__track">
-							<ul class="splide__list">
-								<li class="splide__slide">
-									<div class="steps-about__item">
-										<div class="steps-about__container">
-											<img src="img/about/steps/01.webp" alt="Image" class="steps-about__image bg-image">
-											<h2 class="steps-about__title title-about">
-												Your Shipment, Amplified by Collective Power
-											</h2>
-											<div class="steps-about__block block-steps blurred-bg">
-												<div class="block-steps__header">
-													<h3 class="block-steps__title">
-														List Your Cargo
-													</h3>
-													<div class="block-steps__label">
-														Step 1
+					<div class="steps-about__container --mobile">
+						<h2 class="steps-about__title title-about mobile">
+							Your Shipment, Amplified by Collective Power
+						</h2>
+						<div class="steps-about__slider splide">
+							<div class="splide__num-pagination"></div>
+							<div class="splide__track">
+								<ul class="splide__list">
+									<li class="splide__slide">
+										<div class="steps-about__item">
+											<div class="steps-about__container --pc">
+												<img src="img/about/steps/01.webp" alt="Image" class="steps-about__image bg-image">
+												<h2 class="steps-about__title title-about pc">
+													Your Shipment, Amplified by Collective Power
+												</h2>
+												<div class="steps-about__block block-steps blurred-bg">
+													<div class="block-steps__header">
+														<h3 class="block-steps__title">
+															List Your Cargo
+														</h3>
+														<div class="block-steps__label">
+															Step 1
+														</div>
 													</div>
+													<p class="block-steps__text">
+														Describe your shipment — origin, destination, and specs — in under two minutes. Your load
+														becomes part of a shared marketplace of global freight demand
+													</p>
 												</div>
-												<p class="block-steps__text">
-													Describe your shipment — origin, destination, and specs — in under two minutes. Your load
-													becomes part of a shared marketplace of global freight demand
-												</p>
 											</div>
-										</div>
 
-									</div>
-								</li>
-								<li class="splide__slide">
-									<div class="steps-about__item">
-										<div class="steps-about__container">
-											<img src="img/about/steps/02.webp" alt="Image" class="steps-about__image bg-image">
-											<h2 class="steps-about__title title-about">
-												Your Shipment, Amplified by Collective Power
-											</h2>
-											<div class="steps-about__block block-steps blurred-bg">
-												<div class="block-steps__header">
-													<h3 class="block-steps__title">
-														Watch Carriers
-														Compete
-													</h3>
-													<div class="block-steps__label">
-														Step 2
+										</div>
+									</li>
+									<li class="splide__slide">
+										<div class="steps-about__item">
+											<div class="steps-about__container --pc">
+												<img src="img/about/steps/02.webp" alt="Image" class="steps-about__image bg-image">
+												<h2 class="steps-about__title title-about pc">
+													Your Shipment, Amplified by Collective Power
+												</h2>
+												<div class="steps-about__block block-steps blurred-bg">
+													<div class="block-steps__header">
+														<h3 class="block-steps__title">
+															Watch Carriers
+															Compete
+														</h3>
+														<div class="block-steps__label">
+															Step 2
+														</div>
 													</div>
+													<p class="block-steps__text">
+														Leading logistics providers join 24-hour reverse auctions, each required to lower bids by
+														1.5%
+														or more to stay in play
+													</p>
 												</div>
-												<p class="block-steps__text">
-													Leading logistics providers join 24-hour reverse auctions, each required to lower bids by 1.5%
-													or more to stay in play
-												</p>
 											</div>
-										</div>
 
-									</div>
-								</li>
-								<li class="splide__slide">
-									<div class="steps-about__item">
-										<div class="steps-about__container">
-											<img src="img/about/steps/03.webp" alt="Image" class="steps-about__image bg-image">
-											<h2 class="steps-about__title title-about">
-												Your Shipment, Amplified by Collective Power
-											</h2>
-											<div class="steps-about__block block-steps blurred-bg">
-												<div class="block-steps__header">
-													<h3 class="block-steps__title">
-														Get the Smart Match
-													</h3>
-													<div class="block-steps__label">
-														Step 3
+										</div>
+									</li>
+									<li class="splide__slide">
+										<div class="steps-about__item">
+											<div class="steps-about__container --pc">
+												<img src="img/about/steps/03.webp" alt="Image" class="steps-about__image bg-image">
+												<h2 class="steps-about__title title-about pc">
+													Your Shipment, Amplified by Collective Power
+												</h2>
+												<div class="steps-about__block block-steps blurred-bg">
+													<div class="block-steps__header">
+														<h3 class="block-steps__title">
+															Get the Smart Match
+														</h3>
+														<div class="block-steps__label">
+															Step 3
+														</div>
 													</div>
+													<p class="block-steps__text">
+														Describe your shipment — origin, destination, and specs — in under two minutes. Your load
+														becomes part of a shared marketplace of global freight demand
+													</p>
 												</div>
-												<p class="block-steps__text">
-													Describe your shipment — origin, destination, and specs — in under two minutes. Your load
-													becomes part of a shared marketplace of global freight demand
-												</p>
 											</div>
-										</div>
 
-									</div>
-								</li>
-								<li class="splide__slide">
-									<div class="steps-about__item">
-										<div class="steps-about__container">
-											<img src="img/about/steps/04.webp" alt="Image" class="steps-about__image bg-image">
-											<h2 class="steps-about__title title-about">
-												Your Shipment, Amplified by Collective Power
-											</h2>
-											<div class="steps-about__block block-steps blurred-bg">
-												<div class="block-steps__header">
-													<h3 class="block-steps__title">
-														Ship with Confidence
-													</h3>
-													<div class="block-steps__label">
-														Step 4
+										</div>
+									</li>
+									<li class="splide__slide">
+										<div class="steps-about__item">
+											<div class="steps-about__container --pc">
+												<img src="img/about/steps/04.webp" alt="Image" class="steps-about__image bg-image">
+												<h2 class="steps-about__title title-about pc">
+													Your Shipment, Amplified by Collective Power
+												</h2>
+												<div class="steps-about__block block-steps blurred-bg">
+													<div class="block-steps__header">
+														<h3 class="block-steps__title">
+															Ship with Confidence
+														</h3>
+														<div class="block-steps__label">
+															Step 4
+														</div>
 													</div>
+													<p class="block-steps__text">
+														Leading logistics providers join 24-hour reverse auctions, each required to lower bids by
+														1.5%
+														or more to stay in play
+													</p>
 												</div>
-												<p class="block-steps__text">
-													Leading logistics providers join 24-hour reverse auctions, each required to lower bids by 1.5%
-													or more to stay in play
-												</p>
 											</div>
-										</div>
 
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="splide__num-pagination"></div>
-						<div class="splide__arrows arrows-ab blurred-bg">
-							<button class="splide__arrow splide__arrow--prev _icon-ch-left">
-							</button>
-							<button class="splide__arrow splide__arrow--next _icon-ch-right">
-							</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<div class="splide__arrows arrows-ab blurred-bg">
+								<button class="splide__arrow splide__arrow--prev _icon-ch-left">
+								</button>
+								<button class="splide__arrow splide__arrow--next _icon-ch-right">
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -437,7 +461,8 @@
 									<div class="adv-spoilers__text text">
 										<p>
 											When you ship with AiDeliv, your single pallet doesn’t stand alone — it becomes part of a
-											powerful, consolidated network. Carriers don’t evaluate your shipment; they evaluate their entire
+											powerful, consolidated network. Carriers don’t evaluate your shipment; they evaluate their
+											entire
 											relationship with our ecosystem. Mishandling even one pallet risks losing access to hundreds of
 											monthly loads.
 										</p>
@@ -546,7 +571,8 @@
 										<br>
 										<p>
 											<b>Layer 2</b> — Consolidated Volume Leverage: When carriers handle your shipment, they're
-											protecting their relationship with our entire network. One mistake with your cargo could cost them
+											protecting their relationship with our entire network. One mistake with your cargo could cost
+											them
 											access to hundreds of monthly shipments. This fear drives exceptional service.
 										</p>
 										<br>
@@ -579,7 +605,8 @@
 										</p>
 										<br>
 										<p>
-											<b>Automatic Tracking:</b> Every milestone update is pushed instantly — no more asking “Where’s my
+											<b>Automatic Tracking:</b> Every milestone update is pushed instantly — no more asking “Where’s
+											my
 											cargo?”
 										</p>
 										<br>
@@ -594,7 +621,8 @@
 										</p>
 										<br>
 										<p>
-											<b>Smart Notifications:</b> Email, SMS, or WhatsApp alerts — stay informed without staying online.
+											<b>Smart Notifications:</b> Email, SMS, or WhatsApp alerts — stay informed without staying
+											online.
 										</p>
 										<br>
 										<p>
@@ -615,7 +643,7 @@
 						</div>
 						<div class="founder-ab__wrapper">
 							<div class="founder-ab__image">
-								<img src="img/about/founder/image.webp" alt="Image">
+								<img src="img/about/founder/image.webp" class="ibg" alt="Image">
 							</div>
 							<div class="founder-ab__body">
 								<img src="img/about/founder/quote.svg" alt="Image" class="founder-ab__icon">
@@ -669,118 +697,127 @@
 								All articles
 							</a>
 						</div>
-						<div class="articles-ab__items">
-							<div class="articles-ab__item item-article">
-								<a href="#" class="item-article__image">
-									<div class="item-article__tag">
-										About us
-									</div>
-									<img src="img/about/articles/01.webp" alt="Image" class="ibg">
-									<div class="item-article__text">
-										<p>
-											Container rates remain steady as shipping lines and customers avoid panic amid global
-											trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity
-											before peak season.
-										</p>
-									</div>
-								</a>
-								<div class="item-article__body">
-									<h3 class="item-article__title">
-										<a href="#">The Real Cost of Trade Tensions: How Geopolitical Shifts Impact E-Commerce</a>
-									</h3>
-									<div class="item-article__footer">
-										<div class="item-article__actions">
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-heart">
-												</button>
-												145
-											</div>
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-comments">
-												</button>
-												48
-											</div>
-										</div>
-										<div class="item-article__date">
-											17 Mar 2025
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="articles-ab__item item-article">
-								<a href="#" class="item-article__image">
-									<div class="item-article__tag">
-										About us
-									</div>
-									<img src="img/about/articles/02.webp" alt="Image" class="ibg">
-									<div class="item-article__text">
-										<p>
-											Container rates remain steady as shipping lines and customers avoid panic amid global
-											trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity
-											before peak season.
-										</p>
-									</div>
-								</a>
-								<div class="item-article__body">
-									<h3 class="item-article__title">
-										<a href="#">Electronics procurement relocation: From China to nowhere else to go, Vietnam faces
-											tariff turmoil</a>
-									</h3>
-									<div class="item-article__footer">
-										<div class="item-article__actions">
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-heart">
-												</button>
-												145
-											</div>
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-comments">
-												</button>
-												48
+						<div class="articles-dash__slider splide">
+							<div class="splide__track">
+								<ul class="splide__list">
+									<li class="splide__slide">
+										<div class="item-article">
+											<a href="#" class="item-article__image">
+												<div class="item-article__tag">
+													Amazon
+												</div>
+												<img src="img/dashboard/articles/01.webp" alt="Image" class="ibg">
+												<div class="item-article__text">
+													<p>
+														Container rates remain steady as shipping lines and customers avoid panic amid global
+														trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity
+														before peak season.
+													</p>
+												</div>
+											</a>
+											<div class="item-article__body">
+												<h3 class="item-article__title">
+													<a href="#">Amazon is expanding in China</a>
+												</h3>
+												<div class="item-article__footer">
+													<div class="item-article__actions">
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-heart">
+															</button>
+															145
+														</div>
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-comments">
+															</button>
+															48
+														</div>
+													</div>
+													<div class="item-article__date">
+														12.03.25
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="item-article__date">
-											17 Mar 2025
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="articles-ab__item item-article">
-								<a href="#" class="item-article__image">
-									<div class="item-article__tag">
-										About us
-									</div>
-									<img src="img/about/articles/03.webp" alt="Image" class="ibg">
-									<div class="item-article__text">
-										<p>
-											Container rates remain steady as shipping lines and customers avoid panic amid global
-											trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity
-											before peak season.
-										</p>
-									</div>
-								</a>
-								<div class="item-article__body">
-									<h3 class="item-article__title">
-										<a href="#">How SMEs Can Overcome the Volume Disadvantage in Logistics</a>
-									</h3>
-									<div class="item-article__footer">
-										<div class="item-article__actions">
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-heart">
-												</button>
-												145
+									</li>
+									<li class="splide__slide">
+										<div class="item-article">
+											<a href="#" class="item-article__image">
+												<div class="item-article__tag">
+													News
+												</div>
+												<img src="img/dashboard/articles/02.webp" alt="Image" class="ibg">
+												<div class="item-article__text">
+													<p>
+														UPS Q2 revenue slid 2.7 % year‑over‑year to $21.2 billion, with EPS of $1.55—falling
+														short of expectations. Weak Amazon parcel volume and rising tariff pressure hit growth,
+														prompting the company to withhold full‑year guidance amid macroeconomic uncertainty.
+													</p>
+												</div>
+											</a>
+											<div class="item-article__body">
+												<h3 class="item-article__title">
+													<a href="#">Amazon is expanding in China</a>
+												</h3>
+												<div class="item-article__footer">
+													<div class="item-article__actions">
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-heart">
+															</button>
+															145
+														</div>
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-comments">
+															</button>
+															48
+														</div>
+													</div>
+													<div class="item-article__date">
+														12.03.25
+													</div>
+												</div>
 											</div>
-											<div class="item-article__action-item">
-												<button class="icon-btn _icon-comments">
-												</button>
-												48
+										</div>
+									</li>
+									<li class="splide__slide">
+										<div class="item-article">
+											<a href="#" class="item-article__image">
+												<div class="item-article__tag">
+													Recent
+												</div>
+												<img src="img/dashboard/articles/03.webp" alt="Image" class="ibg">
+												<div class="item-article__text">
+													<p>
+														Small U.S. importers are stuck in planning limbo as rapidly changing tariffs,
+														unpredictable timelines, and rising costs obstruct decision-making and delay shipping
+														planning.
+													</p>
+												</div>
+											</a>
+											<div class="item-article__body">
+												<h3 class="item-article__title">
+													<a href="#">Amazon is expanding in China</a>
+												</h3>
+												<div class="item-article__footer">
+													<div class="item-article__actions">
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-heart">
+															</button>
+															145
+														</div>
+														<div class="item-article__action-item">
+															<button class="icon-btn _icon-comments">
+															</button>
+															48
+														</div>
+													</div>
+													<div class="item-article__date">
+														12.03.25
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="item-article__date">
-											17 Mar 2025
-										</div>
-									</div>
-								</div>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -916,7 +953,8 @@
 													</div>
 												</div>
 												<p class="item-team-ab__text">
-													Karla manages communication, sourcing coordination, and daily collaboration with our regional
+													Karla manages communication, sourcing coordination, and daily collaboration with our
+													regional
 													suppliers, ensuring smooth and reliable partnership performance.
 												</p>
 											</div>
@@ -985,7 +1023,8 @@
 							<img src="img/about/benefits/arrow.svg" alt="Image" class="benefits-ab__icon">
 							<div class="benefits-ab__text">
 								<p>
-									At AiDeliv, we believe global trade should be fair, predictable, and accessible to every entrepreneur
+									At AiDeliv, we believe global trade should be fair, predictable, and accessible to every
+									entrepreneur
 									— not just the giants
 								</p>
 								<p>
@@ -1026,7 +1065,8 @@
 									Empowering Entrepreneurs
 								</h4>
 								<p class="item-benefits__text">
-									We give every business — regardless of size — the same competitive advantage once reserved for global
+									We give every business — regardless of size — the same competitive advantage once reserved for
+									global
 									corporations. Equal opportunity, global reach, real impact.
 								</p>
 							</div>
@@ -1036,7 +1076,8 @@
 									Transparency with Purpose
 								</h4>
 								<p class="item-benefits__text">
-									While rates evolve dynamically, our process remains clear: every decision is data-driven, every result
+									While rates evolve dynamically, our process remains clear: every decision is data-driven, every
+									result
 									traceable, every partner accountable
 								</p>
 							</div>
@@ -1061,12 +1102,14 @@
 									<div class="talents-ab__percentage">
 										60%
 									</div>
-									<div class="talents-ab__title">
-										of AiDeliv talents
-										operate worldwide —
-									</div>
-									<div class="talents-ab__label">
-										because great logistics has no borders
+									<div class="talents-ab__body">
+										<div class="talents-ab__title">
+											of AiDeliv talents
+											operate worldwide —
+										</div>
+										<div class="talents-ab__label">
+											because great logistics has no borders
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1094,7 +1137,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1105,7 +1149,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1116,7 +1161,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1127,7 +1173,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1138,7 +1185,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1149,7 +1197,8 @@
 								<div class="adv-spoilers__body">
 									<div class="adv-spoilers__text text">
 										<p>
-											Utilizing accurate data and analysis enables businesses to make strategically important decisions,
+											Utilizing accurate data and analysis enables businesses to make strategically important
+											decisions,
 											improving efficiency and competitiveness.
 										</p>
 									</div>
@@ -1183,7 +1232,8 @@
 								Proprietary Technology
 							</h2>
 							<div class="tech-ab__text">
-								Our reverse auction technology represents a fundamental innovation in freight procurement. Protected by
+								Our reverse auction technology represents a fundamental innovation in freight procurement. Protected
+								by
 								pending U.S. patent application, AiDeliv system creates genuine carrier competition — something
 								previously impossible for small businesses.
 							</div>
@@ -1294,7 +1344,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251208192430"></script>
+	<script src="js/app.min.js?_v=20251216101547"></script>
 </body>
 
 </html>

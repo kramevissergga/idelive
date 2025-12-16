@@ -6770,6 +6770,14 @@
                     outView: {
                         autoScroll: false
                     }
+                },
+                breakpoints: {
+                    991.98: {
+                        perPage: 5
+                    },
+                    767.98: {
+                        perPage: 4
+                    }
                 }
             });
             logosSlider.mount({
@@ -6791,6 +6799,41 @@
                     gap: {
                         row: 30,
                         col: 30
+                    }
+                },
+                breakpoints: {
+                    1199.98: {
+                        grid: {
+                            rows: 2,
+                            cols: 3,
+                            gap: {
+                                row: 30,
+                                col: 30
+                            }
+                        }
+                    },
+                    899.98: {
+                        grid: {
+                            rows: 2,
+                            cols: 2,
+                            gap: {
+                                row: 30,
+                                col: 30
+                            }
+                        }
+                    },
+                    499.98: {
+                        grid: {
+                            rows: 1,
+                            cols: 1,
+                            gap: {
+                                row: 30,
+                                col: 30
+                            }
+                        },
+                        padding: {
+                            right: 50
+                        }
                     }
                 }
             });
@@ -6824,6 +6867,26 @@
             whyUsSlider.mount({
                 AutoScroll
             });
+        }));
+        let infoAbSliderEls = document.querySelectorAll(".dash-info__slider");
+        if (infoAbSliderEls) infoAbSliderEls.forEach((infoAbSliderEl => {
+            let infoAbSlider = new splide_esm_Splide(infoAbSliderEl, {
+                pagination: true,
+                gap: 20,
+                perPage: 1,
+                destroy: true,
+                arrows: false,
+                padding: {
+                    left: 60,
+                    right: 60
+                },
+                breakpoints: {
+                    599.98: {
+                        destroy: false
+                    }
+                }
+            });
+            infoAbSlider.mount();
         }));
     }));
     function isObject_isObject(value) {
