@@ -5380,6 +5380,7 @@ body::after {
 .actions-dash-popup__codes-label a,
 .auth__link,
 .breadcrumbs ul li a,
+.button a,
 .contacts-h__link,
 .inq-dash__type,
 .inquires__tabs-item,
@@ -5448,11 +5449,6 @@ body::after {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
   max-width: 31.25rem;
   --gr-color-1: #fff;
   --gr-color-2: rgba(246, 246, 246, 0.15);
@@ -5514,7 +5510,7 @@ body::after {
 }
 .header__button {
   font-size: 1rem;
-  padding: .8125rem .625rem;
+  padding: .8125rem .875rem;
   min-width: 9.125rem
 }
 .profile-comp {
@@ -6032,7 +6028,7 @@ body:has(header.header) .page {
   margin-bottom: 2.625rem
 }
 .hero__title {
-  font-weight: 300;
+  font-weight: 400;
   text-align: center
 }
 .hero__title:not(:last-child) {
@@ -6041,7 +6037,8 @@ body:has(header.header) .page {
 .hero__text {
   text-align: center;
   line-height: 1.3;
-  max-width: 42.6875rem
+  max-width: 42.6875rem;
+  font-size: 1.5rem
 }
 .hero__text:not(:last-child) {
   margin-bottom: 1.5rem
@@ -6518,7 +6515,7 @@ body:has(header.header) .page {
 }
 .finnick__input {
   color: #7b7f97;
-  font-size: .8125rem;
+  font-size: 1rem;
   line-height: 1.2;
   margin: -.25rem 0;
   flex-grow: 1
@@ -6545,11 +6542,11 @@ body:has(header.header) .page {
   background-color: #e3deff;
   align-self: flex-end
 }
-.chat-finnick__message:not(:first-child) {
+.chat-finnick__message:not(.--pinned) {
   opacity: 0;
   visibility: hidden
 }
-.--open .chat-finnick__message:not(:first-child) {
+.--open .chat-finnick__message:not(.--pinned) {
   opacity: 1;
   visibility: visible
 }
@@ -17212,6 +17209,11 @@ span.flatpickr-weekday {
   .header__menu ul {
     padding: .75rem 1.375rem;
     border-radius: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     background: linear-gradient(208deg,var(--gr-color-1) 5.99%,var(--gr-color-2) 178.59%)
   }
   .account__bar {
@@ -18709,6 +18711,9 @@ span.flatpickr-weekday {
   }
   .contacts-footer__title {
     font-size: 1.5rem
+  }
+  .hero__text {
+    font-size: 1rem
   }
   .hero__slider {
     margin: 0 -1.25rem
@@ -20864,6 +20869,7 @@ span.flatpickr-weekday {
   .actions-dash-popup__codes-label a:hover,
   .auth__link:hover,
   .breadcrumbs ul li a:hover,
+  .button a:hover,
   .contacts-h__link:hover,
   .inq-dash__type:hover,
   .inquires__tabs-item:hover,
