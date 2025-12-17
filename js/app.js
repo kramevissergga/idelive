@@ -6777,6 +6777,12 @@
                     },
                     767.98: {
                         perPage: 4
+                    },
+                    499.98: {
+                        perPage: 3
+                    },
+                    399.98: {
+                        perPage: 2
                     }
                 }
             });
@@ -6873,20 +6879,60 @@
             let infoAbSlider = new splide_esm_Splide(infoAbSliderEl, {
                 pagination: true,
                 gap: 20,
-                perPage: 1,
+                perPage: 2,
                 destroy: true,
                 arrows: false,
                 padding: {
-                    left: 60,
-                    right: 60
+                    left: 20,
+                    right: 100
                 },
                 breakpoints: {
-                    599.98: {
+                    799.98: {
                         destroy: false
+                    },
+                    599.98: {
+                        padding: {
+                            left: 20,
+                            right: 30
+                        }
+                    },
+                    549.98: {
+                        perPage: 1,
+                        padding: {
+                            left: 60,
+                            right: 60
+                        }
                     }
                 }
             });
             infoAbSlider.mount();
+        }));
+        let portsSliderEl = document.querySelectorAll(".ports-freight__slider");
+        if (portsSliderEl.length) portsSliderEl.forEach((portsSliderEl => {
+            let portsSlider = new splide_esm_Splide(portsSliderEl, {
+                arrows: false,
+                perMove: 1,
+                pagination: true,
+                destroy: true,
+                gap: 20,
+                updateOnMove: true,
+                grid: {
+                    rows: 5,
+                    cols: 1,
+                    gap: {
+                        row: 20,
+                        col: 20
+                    }
+                },
+                breakpoints: {
+                    899.98: {
+                        destroy: false
+                    }
+                }
+            });
+            portsSlider.mount({
+                Grid
+            });
         }));
     }));
     function isObject_isObject(value) {
@@ -20894,7 +20940,9 @@
                             x: {
                                 ticks: {
                                     color: "#2A2E4A",
-                                    font: isBig ? {
+                                    font: isBig ? window.matchMedia("(max-width: 991.98px)").matches ? {
+                                        size: 10
+                                    } : {
                                         size: 16
                                     } : {
                                         size: 12,
@@ -20915,7 +20963,9 @@
                                 display: isBig,
                                 ticks: {
                                     color: "#2A2E4A",
-                                    font: {
+                                    font: window.matchMedia("(max-width: 991.98px)").matches ? {
+                                        size: 14
+                                    } : {
                                         size: 20
                                     }
                                 },

@@ -294,315 +294,229 @@
 
 		</div>
 		<main class="page">
-			<div class="page__docs docs">
-				<div class="docs__grid-container">
-					<div class="docs__wrapper">
-						<div class="docs__aside aside-profile">
-							<div class="aside-profile__label">
-								Welcome back, <span>Roland</span>
-							</div>
-							<div class="aside-profile__aside-nav aside-nav">
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#dashboard"></use>
-									</svg>
-									<span>Dashboard</span>
-								</a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#notifications"></use>
-									</svg>
-									<span>Notifications</span>
+			<div class="page__account account">
+				<div class="account__wrapper">
+					<div class="account__aside aside-profile">
+						<div class="aside-profile__label">
+							Welcome back, <span>Roland</span>
+						</div>
+						<div class="aside-profile__aside-nav aside-nav">
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#dashboard"></use>
+								</svg>
+								<span>Dashboard</span>
+							</a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#notifications"></use>
+								</svg>
+								<span>Notifications</span>
 
-								</a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#cargo"></use>
-									</svg>
-									<span>Cargo</span>
-								</a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#documents"></use>
-									</svg>
-									<span>Documents</span></a>
-								<a href="#" class="aside-nav__item _active">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#messages"></use>
-									</svg>
-									<span>Messages</span>
-									<div class="count">1</div>
-								</a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#profile"></use>
-									</svg>
-									<span>Profile</span></a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#settings"></use>
-									</svg>
-									<span>Settings</span></a>
-								<a href="#" class="aside-nav__item">
-									<svg class="sprite">
-										<use xlink:href="img/icons.svg#payment"></use>
-									</svg>
-									<span>Payment</span></a>
+							</a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#cargo"></use>
+								</svg>
+								<span>Cargo</span>
+							</a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#documents"></use>
+								</svg>
+								<span>Documents</span></a>
+							<a href="#" class="aside-nav__item _active">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#messages"></use>
+								</svg>
+								<span>Messages</span>
+								<div class="count">1</div>
+							</a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#profile"></use>
+								</svg>
+								<span>Profile</span></a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#settings"></use>
+								</svg>
+								<span>Settings</span></a>
+							<a href="#" class="aside-nav__item">
+								<svg class="sprite">
+									<use xlink:href="img/icons.svg#payment"></use>
+								</svg>
+								<span>Payment</span></a>
+						</div>
+						<button class="aside-profile__logout logout-btn _icon-upload">
+							Log out
+						</button>
+					</div>
+					<div class="account__body">
+						<div class="account__main">
+							<div class="account__header">
+								<div class="account__profile-info pr-info-acc">
+									<div class="pr-info-acc__image">
+										<img src="img/users/01.webp" alt="Image" class="ibg">
+									</div>
+									<div class="pr-info-acc__body">
+										<h3 class="pr-info-acc__title">
+											Zhang Ming
+										</h3>
+										<div class="pr-info-acc__label pr-info-acc__label--bold">
+											Example Transport Ltd.
+										</div>
+										<div class="pr-info-acc__label">
+											Los Angeles, California, USA
+										</div>
+									</div>
+								</div>
+								<div class="account__actions">
+									<button class="account__edit _icon-edit"><span>Edit</span><span>Save</span></button>
+									<div class="account__type-label">
+										Please select a profile type and complete all required information for verification
+									</div>
+									<div class="account__type-items">
+										<label class="account__type-item _sprite-user">
+											Individual
+											<input type="radio" name="acc-type">
+										</label>
+										<label class="account__type-item _sprite-legal">
+											Legal Entity
+											<input type="radio" name="acc-type" checked>
+										</label>
+									</div>
+								</div>
+
 							</div>
-							<button class="aside-profile__logout logout-btn _icon-upload">
-								Log out
+							<div class="account__mob-actions">
+								<div class="account__bar">
+									<div style="--progress: 88%" class="account__bar-line">
+									</div>
+									88%
+								</div>
+								<button class="account__mob-edit button button--purple">
+									Edit profile
+								</button>
+							</div>
+							<div class="account__block">
+								<div class="account__b-header">
+									<h3 class="account__b-title">
+										Authorized Rep*
+									</h3>
+									<button class="account__edit _icon-edit"><span>Edit</span><span>Save</span></button>
+								</div>
+								<div class="account__fields account__fields--triple">
+									<div class="account__field field">
+										<div class="field__label">
+											Legal Business name
+										</div>
+										<div class="field__info-label ">
+											Richards&co
+										</div>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Email
+										</div>
+										<div class="field__info-label">
+											emily.carter@example.com
+										</div>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Phone number
+										</div>
+										<div class="field__info-label">
+											+1 (415) 555-1234
+										</div>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Business type
+										</div>
+										<select data-class-modif="triangle">
+											<option value="1" selected>LLC (Limited Liability Company)</option>
+											<option value="2">LLC (Limited Liability Company)</option>
+											<option value="3">LLC (Limited Liability Company)</option>
+											<option value="4">LLC (Limited Liability Company)</option>
+										</select>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Registered business address
+										</div>
+										<div class="field__info-label">
+											4567 Sunset Boulevard, Los Angeles,
+											CA 90028
+										</div>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Mailing Address
+										</div>
+										<div class="field__info-label">
+											4567 Sunset Boulevard, Los Angeles,
+											CA 90028
+										</div>
+									</div>
+									<div class="account__field field">
+										<div class="field__label">
+											Website
+										</div>
+										<div class="field__info-label">
+											richardsandco.com
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="account__mob-save button button--purple">
+								Edit profile
 							</button>
 						</div>
-						<div class="docs__body">
-							<div class="docs__header">
-								<h1 class="docs__title">
-									Payment documents
-								</h1>
-								<div class="docs__filters">
-									<select>
-										<option value="1" selected>All</option>
-										<option value="2">Some</option>
-										<option value="3">Other</option>
-									</select>
-									<select>
-										<option value="" selected>Mounts</option>
-										<option value="2">January</option>
-										<option value="3">February</option>
-										<option value="4">March</option>
-										<option value="5">April</option>
-									</select>
-									<select>
-										<option value="" selected>Year</option>
-										<option value="2">2025</option>
-										<option value="3">2026</option>
-										<option value="4">2027</option>
-										<option value="5">2028</option>
-										<option value="6">2029</option>
-									</select>
-									<select>
-										<option value="" selected>Whole period</option>
-										<option value="2">1 day</option>
-										<option value="3">2 days</option>
-										<option value="4">3 days</option>
-										<option value="5">4 days</option>
-										<option value="6">5 days</option>
-									</select>
-								</div>
-							</div>
-							<div class="docs__items">
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-								<div class="docs__item">
-									<a href="#" class="docs__pdf _icon-arrow-bold-left">
-										PDF
-									</a>
-									<div class="docs__date">
-										2025-31-05
-									</div>
-									<div class="docs__info">
-										12748947040AA1B678
-										<span>Household appliances</span>
-									</div>
-									<div class="docs__paid">
-										Paid<span>: 2025-31-05</span>
-									</div>
-									<div class="docs__price">$ 3000</div>
-									<button class="docs__remove _icon-cross">
-
-									</button>
-									<button class="docs__remove-mobile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M9.5 14.5L9.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M14.5 14.5L14.5 11.5" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#7B7F97" stroke-linecap="round" />
-											<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#7B7F97" stroke-linecap="round" />
-										</svg>
-									</button>
-								</div>
-							</div>
-							<div class="docs__footer section-footer">
-								<a href="#" class="section-footer__more button button--border">
-									See more
-								</a>
-								<div class="section-footer__pagination pagination">
-									<ul>
-										<li>
-											<a href="#" class="_icon-ch-left">
-
-											</a>
-										</li>
-										<li>
-											<a class="_active" href="#">
-												1
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												2
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												3
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												4
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												5
-											</a>
-										</li>
-										<li>
-											<a href="#" class="_icon-ch-right">
-
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="docs__total">
-								Total invoice value: <span>73 000 00 $</span>
+					</div>
+					<div class="account__completed completed-account">
+						<h2 class="completed-account__title">
+							Complete your profile
+						</h2>
+						<!-- Міняти data-value -->
+						<div data-value="88" class="completed-account__circle-progress circle-progress">
+							<svg viewBox="0 0 100 100">
+								<circle stroke="#E6E6E6" stroke-width="10" cx="50" cy="50" r="45" fill="none" />
+								<circle class="progress--circle" stroke="#998EE0" stroke-width="10" cx="50" cy="50" r="45" fill="none" pathLength="100" />
+							</svg>
+							<div class="circle-progress__value">
+								<p>0%</p>
 							</div>
 						</div>
+						<ul class="completed-account__list">
+							<li class="_active">
+								Setup account
+							</li>
+							<li class="_active">
+								Upload your photo
+							</li>
+							<li class="_active">
+								Representative info
+							</li class="_active">
+							<li class="_active">
+								Company info
+							</li>
+							<li class="_active">
+								Beneficiary info
+							</li>
+							<li class="_active">
+								Photos workplace
+							</li>
+							<li class="_active">
+								Contact info
+							</li>
+						</ul>
+						<p data-da=".account__mob-actions, 1199.98, first" class="completed-account__text">
+							Fill out your profile completely to receive orders that fit your capabilities and work with trusted
+							partners!
+						</p>
 					</div>
-
 				</div>
 			</div>
 		</main>
