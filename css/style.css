@@ -17522,6 +17522,9 @@ span.flatpickr-weekday {
   }
 }
 @media (max-width:99.99875em) {
+  .account__fields {
+    grid-template-columns: repeat(3,1fr)
+  }
   .account__fields--triple {
     grid-template-columns: repeat(2,1fr)
   }
@@ -17530,6 +17533,12 @@ span.flatpickr-weekday {
   .block-inq__table td,
   .block-inq__table th {
     font-size: .875rem
+  }
+  .account__wrapper {
+    grid-template-columns: 16rem 1fr 16rem
+  }
+  .completed-account {
+    padding: 2rem 1.25rem 2rem 1.25rem
   }
 }
 @media (max-width:81.24875em) {
@@ -19953,6 +19962,10 @@ span.flatpickr-weekday {
     align-items: center;
     gap: 4rem
   }
+  .account__fields {
+    grid-template-columns: 1fr;
+    gap: 1rem
+  }
   .docs__header:not(:last-child) {
     margin-bottom: 2.5rem
   }
@@ -20236,10 +20249,6 @@ span.flatpickr-weekday {
   }
   .dashboard__holidays:not(:last-child) {
     margin-bottom: 2.25rem
-  }
-  .account__fields {
-    grid-template-columns: 1fr;
-    gap: 1rem
   }
   .blog__news .splide__slide {
     padding-bottom: .625rem
