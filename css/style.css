@@ -517,6 +517,11 @@ body::after {
   font-size: 14px;
   font-weight: 400
 }
+.field__dir {
+  display: flex;
+  gap: .625rem;
+  align-items: center
+}
 .field__input {
   position: relative;
   border: .0625rem solid #7b7f97;
@@ -6678,8 +6683,7 @@ body:has(header.header) .page {
 }
 .auth__header {
   display: flex;
-  flex-direction: column;
-  gap: 2rem
+  flex-direction: column
 }
 .auth__header:not(:last-child) {
   margin-bottom: 1.5rem
@@ -6712,6 +6716,14 @@ body:has(header.header) .page {
   line-height: 1.4
 }
 .auth__subtitle:not(:last-child) {
+  margin-bottom: 6.5rem
+}
+.auth__aside-subtitle {
+  color: #7756ff;
+  font-size: 1.25rem;
+  line-height: 1.4
+}
+.auth__aside-subtitle:not(:last-child) {
   margin-bottom: 6.5rem
 }
 .auth__other {
@@ -6757,30 +6769,25 @@ body:has(header.header) .page {
   flex-shrink: 0
 }
 .auth__form:not(:last-child) {
-  margin-bottom: 3.75rem
-}
-.auth--forgot .auth__form:not(:last-child) {
-  margin-bottom: 2rem
-}
-.auth--reset .auth__form:not(:last-child) {
-  margin-bottom: 1.5rem
+  margin-bottom: 2.5rem
 }
 .auth__fields {
   display: flex;
   flex-direction: column;
-  gap: .5rem
+  gap: .9375rem
 }
 .auth__fields:not(:last-child) {
-  margin-bottom: 3.75rem
+  margin-bottom: 1.5rem
 }
 .auth--forgot .auth__fields:not(:last-child) {
   margin-bottom: 1rem
 }
-.auth--reset .auth__fields:not(:last-child) {
-  margin-bottom: 2.5rem
-}
 .auth__field input {
+  height: 2.625rem;
   font-size: .875rem
+}
+.auth__field .select__value {
+  height: 2.625rem
 }
 .auth__next {
   min-width: 10rem;
@@ -18950,15 +18957,6 @@ span.flatpickr-weekday {
   .auth__form:not(:last-child) {
     margin-bottom: 1.5rem
   }
-  .auth--forgot .auth__form:not(:last-child) {
-    margin-bottom: 2.5rem
-  }
-  .auth--reset .auth__form:not(:last-child) {
-    margin-bottom: 2.5rem
-  }
-  .auth__fields:not(:last-child) {
-    margin-bottom: 2rem
-  }
   .auth--forgot .auth__fields:not(:last-child) {
     margin-bottom: 1.5rem
   }
@@ -20536,6 +20534,9 @@ span.flatpickr-weekday {
   }
 }
 @media (max-width:24.99875em) {
+  .field__dir {
+    gap: .3125rem
+  }
   .form-popup__pages {
     font-size: 1.125rem
   }

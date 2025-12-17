@@ -5,7 +5,7 @@
 	<title>Sign Up - iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251217113549">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251217142412">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -40,81 +40,101 @@
 							<h1 class="auth__title">
 								Sign up
 							</h1>
-							<p class="auth__subtitle-mobile">
-								Welcome to the world's first transportation exchange resource!
+							<p class="auth__aside-subtitle">
+								Initial Registration
 							</p>
 						</div>
 						<form action="#" class="auth__form">
 							<div class="auth__fields">
-								<div class="auth__type ">
-									<div class="auth__type-label">
-										Select the type of user to register
-									</div>
-									<div class="auth__type-radios type-radios">
-										<label class="type-radios__item">
-											<input checked type="radio" name="type">
-											Customer
-										</label>
-										<label class="type-radios__item">
-											<input type="radio" name="type">
-											Partner
-										</label>
-									</div>
-								</div>
 								<div class="auth__field field">
 									<label for="name" class="field__label">
-										Company name*
+										Full name *
 									</label>
 									<div class="field__input">
-										<input placeholder="Enter company name" type="text" id="name" name="name">
+										<input placeholder="Enter your name" type="text" id="name" name="name">
 									</div>
 								</div>
 								<div class="auth__field field">
 									<label for="certif" class="field__label">
-										Business Registration Certificate*
+										Email address *
 									</label>
 									<div class="field__input">
-										<input type="number" placeholder="Enter certificate number" id="certif" name="certif">
+										<input type="email" placeholder="Enter your email" id="email" name="email">
+									</div>
+								</div>
+								<div class="auth__field field">
+									<label for="certif" class="field__label">
+										Social media link / company website *
+									</label>
+									<div class="field__input">
+										<input type="text" placeholder="Enter your social media link or website" id="website" name="website">
 									</div>
 								</div>
 								<div class="auth__field field">
 									<label class="field__label">
-										What countries do you work with?*
+										Product categories you plan to work with
+										*
 									</label>
 									<select name="form[]" data-search data-tags multiple data-class-modif="multi">
-										<option value="" selected>Enter the countries you work with</option>
-										<option data-asset="img/flag.svg" value="1">Bahamas</option>
-										<option data-asset="img/flag.svg" value="2">Bahrain</option>
-										<option data-asset="img/flag.svg" value="3">Bangladesh</option>
-										<option data-asset="img/flag.svg" value="4">Barbados</option>В
+										<option value="" selected>Category</option>
+										<option value="1">Toys</option>
+										<option value="2">Home</option>
+										<option value="3">Tech</option>
+										<option value="4">Shoes</option>
 									</select>
 								</div>
 								<div class="auth__field field">
-									<label class="field__label">
-										What products do you work with?*
+									<label for="certif" class="field__label">
+										Preferred shipping directions, from and to *
 									</label>
-									<select name="form[]" data-search data-tags multiple data-class-modif="multi">
-										<option value="" selected>Enter the products you work with</option>
-										<option value="1">Electronic devices</option>
-										<option value="2">Emergency supplies</option>
-										<option value="4">Envelopes</option>
-										<option value="5">Toys</option>
-										<option value="6">Digital devices</option>
-										<option value="7">Clothing</option>
-										<option value="8">Building materials</option>
-									</select>
+									<div class="field__dir">
+										<div class="field__text">
+											From
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="New York, USA" id="from" name="from">
+										</div>
+										<div class="field__text">
+											To
+										</div>
+										<div class="field__input">
+											<input type="text" placeholder="London, UK" id="to" name="to">
+										</div>
+									</div>
+
 								</div>
+								<label class="auth__checkbox checkbox">
+									<span class="icon"></span>
+									I agree to the terms of service
+									<input type="checkbox">
+								</label>
 							</div>
-							<button class="auth__next button">
-								Next step
+							<button class="auth__button button">
+								Confirm
 							</button>
 						</form>
+						<div class="auth__social social-auth">
+							<div class="social-auth__label">
+								<span>Or Sign in with</span>
+							</div>
+							<div class="social-auth__items">
+								<a href="#" class="social-auth__item">
+									<img src="img/auth/social/01.svg" alt="Image" class="ibg ibg--contain">
+								</a>
+								<a href="#" class="social-auth__item">
+									<img src="img/auth/social/03.svg" alt="Image" class="ibg ibg--contain">
+								</a>
+								<a href="#" class="social-auth__item">
+									<img src="img/auth/social/04.svg" alt="Image" class="ibg ibg--contain">
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</main>
 	</div>
-	<script src="js/app.min.js?_v=20251217113549"></script>
+	<script src="js/app.min.js?_v=20251217142412"></script>
 </body>
 
 </html>
