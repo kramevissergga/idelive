@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20251217113549">
+	<link rel="stylesheet" href="css/style.min.css?_v=20251218103612">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -5471,7 +5471,6 @@
 		<div id="ref-terms-popup" aria-hidden="true" class="popup popup--ref-terms">
 			<div class="popup__wrapper">
 				<div class="popup__content">
-
 					<div class="ref-terms-popup">
 						<button data-close type="button" class="ref-terms-popup__close close-circle _icon-cross-bold"></button>
 						<div class="ref-terms-popup__header">
@@ -6653,8 +6652,87 @@
 				</div>
 			</div>
 		</div>
+		<div id="how-to-popup" aria-hidden="true" class="popup popup--supplier popup--how-to">
+			<div class="popup__wrapper">
+				<div class="popup__content popup__content--bg">
+					<div class="how-to-popup">
+						<button data-close type="button" class="how-to-popup__close close-circle _icon-cross-bold"></button>
+						<h3 class="how-to-popup__title title-ref title-ref">
+							How it works
+						</h3>
+						<div class="how-to-popup__items">
+							<div class="how-to-popup__item">
+								<h4 class="how-to-popup__bl-title title-ref">
+									1. Share your referral link
+								</h4>
+								<div class="how-to-popup__text text">
+									<p>
+										You can:
+									</p>
+									<ul>
+										<li>
+											create a post with AI-generated image and text directly on AiDeliv and publish it to social media
+										</li>
+										<li>
+											or copy your referral link and share it with friends or partners
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="how-to-popup__item">
+								<h4 class="how-to-popup__bl-title title-ref">
+									2.They join AiDeliv
+								</h4>
+								<div class="how-to-popup__text text">
+									<p>
+										When someone:
+									</p>
+									<ul>
+										<li>
+											follows your referral link
+										</li>
+										<li>
+											registers on the platform
+										</li>
+										<li>
+											starts placing transportation orders
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="how-to-popup__item">
+								<h4 class="how-to-popup__bl-title title-ref">
+									3. You earn automatically
+								</h4>
+								<div class="how-to-popup__text text">
+									<p>
+										You receive 0.5% from the order amount of every user who joined via your referral link.
+									</p>
+									<br>
+									<p>
+										Bonuses are calculated automatically and added to your balance.
+									</p>
+								</div>
+							</div>
+							<div class="how-to-popup__item">
+								<h4 class="how-to-popup__bl-title title-ref">
+									Summary
+								</h4>
+								<div class="how-to-popup__text text">
+									<p>
+										Share a link → User registers → Places orders
+										→ You earn 0.5%
+									</p>
+								</div>
+								<img src="img/coins.webp" alt="Image" class="how-to-popup__coins">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<main class="page">
-			<div class="page__dashboard dashboard">
+			<div class="page__dashboard dashboard dashboard--agent">
 				<div class="dashboard__container">
 					<div class="dashboard__header">
 						<div class="dashboard__menu _icon-dashboard menu-dash">
@@ -6755,62 +6833,68 @@
 										</h2>
 										<a href="#" class="publ-ref__button">View for editing</a>
 									</div>
-									<a href="#" class="publ-ref__link">https://aideliv.app/ref/ABC123</a>
-									<div class="publ-ref__image">
-										<img src="img/referal/publication.webp" alt="Image" class="ibg">
-										<button class="publ-ref__edit-btn _icon-edit">Edit</button>
-									</div>
-									<div class="publ-ref__desc">
+									<div class="publ-ref__wrapper">
 										<div class="publ-ref__header">
-											<h3 class="publ-ref__desc-title title-ref">
-												Description
-											</h3>
-											<button class="publ-ref__edit-btn _icon-edit">Edit</button>
-										</div>
-										<div data-simplebar class="publ-ref__text-wrapper">
-											<div class="publ-ref__text text">
-												<p>
-													Container rates remain steady as shipping lines and customers avoid panic amid global trade
-													tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity before peak
-													season.Container rates remain steady as shipping lines and customers avoid panic amid global
-													trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity before
-													peak season.Container rates remain steady as shipping lines and customers avoid panic amid
-													global trade tension. Carriers hold capacity, and shippers delay bookings, hoping for clarity
-													before peak season. Container rates remain steady as shipping lines and customers avoid panic
-													amid global trade tension. Carriers hold capacity, and shippers delay bookings, hoping for
-													clarity before peak season.
-												</p>
+											<a href="#" class="publ-ref__link">https://aideliv.app/ref/ABC123</a>
+											<div class="publ-ref__actions">
+												<button class="publ-ref__ac-btn blurred-bg _sprite-arrow-down">
+
+												</button>
+												<button class="publ-ref__ac-btn blurred-bg _sprite-ai">
+													Generate Image
+												</button>
 											</div>
 										</div>
 
+										<div class="publ-ref__image">
+											<img src="img/referal/publication.webp" alt="Image" class="ibg">
+										</div>
+										<div class="publ-ref__desc">
+											<div class="publ-ref__header">
+												<h3 class="publ-ref__desc-title title-ref">
+													Description
+												</h3>
+												<div class="publ-ref__actions">
+													<button class="publ-ref__ac-btn blurred-bg">
+														Clear all
+													</button>
+													<button class="publ-ref__ac-btn blurred-bg _sprite-copy">
+
+													</button>
+													<button class="publ-ref__ac-btn blurred-bg _sprite-ai">
+														Generate Text
+													</button>
+												</div>
+											</div>
+											<div data-simplebar class="publ-ref__text-wrapper">
+												<div class="publ-ref__text text">
+													<p>
+														With AiDeliv you can track deliveries, view today’s market rates, automate routine tasks,
+														and stay ahead of logistics trends. Use my link to create your account and explore the
+														platform.
+													</p>
+												</div>
+											</div>
+										</div>
 									</div>
-
-
 								</div>
 								<div class="dash-ref__share share-ref">
-									<div class="share-ref__body">
+									<div class="share-ref__info">
 										<h2 class="share-ref__title title-ref">
 											Share the referral link on social media
 										</h2>
-										<div class="share-ref__info">
-											<div class="share-ref__label">
-												You can edit the description before publishing. <br>
-												Select the social networks where you want to share the link.
-											</div>
-											<button class="share-ref__set-btn set-btn _icon-settings">
-
-											</button>
+										<div class="share-ref__label">
+											You can edit the description before publishing. <br>
+											Use the Ai assistant's capabilities to generate an image and post.
 										</div>
+										<a href="#" class="share-ref__link">How it works?</a>
+									</div>
+									<div class="share-ref__body">
 										<div class="share-ref__checks checks-ref">
 											<h3 class="checks-ref__title title-ref">
 												Select a social network for publication
 											</h3>
 											<div class="checks-ref__items">
-												<label class="checks-ref__checkbox checkbox">
-													<span class="icon"></span>
-													Select all
-													<input type="checkbox">
-												</label>
 												<label class="checks-ref__checkbox checkbox">
 													<span class="icon"></span>
 													LinkedIn
@@ -6821,68 +6905,36 @@
 													X
 													<input type="checkbox">
 												</label>
-												<label class="checks-ref__checkbox checkbox">
-													<span class="icon"></span>
-													Facebook
-													<input type="checkbox">
-												</label>
 											</div>
-
 										</div>
-										<div class="share-ref__buttons">
-											<button class="share-ref__button button button--purple">
-												Publish
-											</button>
-											<button class="share-ref__link-button button button--border button--purple">
-												<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-													<path d="M14.5 10L10.5 14" stroke="var(--color,#998EE0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-													<path d="M16.5 13L18.5 11C19.8807 9.61929 19.8807 7.38071 18.5 6C17.1193 4.61929 14.8807 4.61929 13.5 6L11.5 8M8.5 11L6.5 13C5.11929 14.3807 5.11929 16.6193 6.5 18C7.88071 19.3807 10.1193 19.3807 11.5 18L13.5 16" stroke="var(--color,#998EE0)" stroke-width="2" stroke-linecap="round" />
-												</svg>
-												Copy link
-											</button>
-										</div>
+										<ul class="share-ref__social">
+											<li>
+												<a href="#">
+													<img class="ibg ibg--contain" src="img/referal/social/01.svg" alt="Image">
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="img/referal/social/02.svg" alt="Image">
+												</a>
+											</li>
+										</ul>
 									</div>
-									<ul class="share-ref__social">
-										<li>
-											<a href="#">
-												<img class="ibg ibg--contain" src="img/referal/social/01.svg" alt="Image">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="img/referal/social/02.svg" alt="Image">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="img/referal/social/03.svg" alt="Image">
-											</a>
-										</li>
-									</ul>
+									<div class="share-ref__buttons">
+										<button class="share-ref__button button button--purple">
+											Publish
+										</button>
+										<button class="share-ref__link-button button button--border button--purple">
+											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+												<path d="M14.5 10L10.5 14" stroke="var(--color,#998EE0)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+												<path d="M16.5 13L18.5 11C19.8807 9.61929 19.8807 7.38071 18.5 6C17.1193 4.61929 14.8807 4.61929 13.5 6L11.5 8M8.5 11L6.5 13C5.11929 14.3807 5.11929 16.6193 6.5 18C7.88071 19.3807 10.1193 19.3807 11.5 18L13.5 16" stroke="var(--color,#998EE0)" stroke-width="2" stroke-linecap="round" />
+											</svg>
+											Copy link
+										</button>
+									</div>
 								</div>
 							</div>
 							<div class="dash-ref__bottom">
-								<div class="dash-ref__balance balance-ref">
-									<div class="balance-ref__header">
-										<h2 class="balance-ref__title title-ref">
-											My Balance
-										</h2>
-										<div class="balance-ref__points">
-											1 points = $1
-										</div>
-									</div>
-									<div class="balance-ref__text">
-										You can withdraw funds to your own account
-									</div>
-									<div class="balance-ref__label">
-										<span>
-											25 points = $25
-										</span>
-									</div>
-									<button class="balance-ref__button button button--gradient">
-										Withdraw
-									</button>
-								</div>
 								<div class="dash-ref__history history-ref">
 									<h2 class="history-ref__title title-ref">
 										Referral History
@@ -6967,95 +7019,97 @@
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
-		</main>
-		<footer class="footer">
-			<div class="footer__container">
-				<div class="footer__body">
-					<div class="footer__logo">
-						<svg xmlns="http://www.w3.org/2000/svg" width="304" height="50" viewBox="0 0 304 50" fill="none">
-							<path d="M48.5589 50L39.9502 36.792C37.9611 33.7441 37.0307 30.0367 37.6831 26.4375C38.3354 22.8383 40.4421 19.5201 43.5541 17.4557L69.7651 0L74.8875 7.85776L44.9764 27.8751L56.3334 44.8119L48.5589 49.9892V50Z" fill="var(--color,#2A2E4A)" />
-							<path d="M26.3394 0L34.948 13.208C36.9371 16.2559 37.8675 19.9633 37.2152 23.5625C36.5414 27.2698 34.4561 30.4799 31.3442 32.5443L5.12243 50L0 42.1422L29.9112 22.1249L18.5541 5.18807L26.3394 0Z" fill="var(--color,#2A2E4A)" />
-							<path d="M104.116 3.25H110.201L125.568 46.7325H119.056L107.132 11.2591L95.208 46.7325H88.6953L104.116 3.25ZM96.8548 30.0334H117.387L118.307 35.6862H95.9352L96.8548 30.0334Z" fill="var(--color,#2A2E4A)" />
-							<path d="M125.57 21.297V15.4388H134.543C136.671 15.4388 138.36 16.0765 139.612 17.3303C140.863 18.5949 141.483 20.3026 141.483 22.4535V46.7402H135.526V21.2862H125.57V21.297ZM141.857 2.32812V9.90487H135.216V2.32812H141.857Z" fill="var(--color,#2A2E4A)" />
-							<path d="M245.75 21.297V15.4388H254.722C256.85 15.4388 258.54 16.0765 259.791 17.3303C261.042 18.5949 261.663 20.3026 261.663 22.4535V46.7402H255.706V21.2862H245.75V21.297ZM262.048 2.32812V9.90487H255.407V2.32812H262.048Z" fill="var(--color,#2A2E4A)" />
-							<path d="M151.578 3.25H164.24C168.132 3.25 171.629 4.09306 174.72 5.76837C177.811 7.44369 180.259 9.92964 182.067 13.2262C183.874 16.5228 184.772 20.4463 184.772 24.9967C184.772 29.547 183.874 33.4813 182.067 36.7671C180.259 40.0637 177.811 42.5496 174.72 44.2249C171.629 45.9002 168.132 46.7433 164.24 46.7433H151.578V3.25ZM171.095 39.3503C173.244 38.237 174.955 36.4753 176.228 34.065C177.5 31.6655 178.131 28.6391 178.131 24.9967C178.131 21.3542 177.5 18.3278 176.228 15.9283C174.955 13.5289 173.244 11.7671 171.095 10.643C168.945 9.51892 166.539 8.96768 163.876 8.96768H157.973V41.0256H163.876C166.539 41.0256 168.945 40.4636 171.095 39.3503Z" fill="var(--color,#2A2E4A)" />
-							<path d="M199.385 45.0115C197.054 43.5199 195.246 41.5312 193.974 39.0452C192.701 36.5593 192.07 33.8463 192.07 30.9064C192.07 27.9665 192.669 25.286 193.856 22.8649C195.043 20.4438 196.765 18.5199 199.021 17.0932C201.278 15.6665 203.941 14.9531 207.01 14.9531C210.079 14.9531 212.72 15.6233 214.913 16.9743C217.105 18.3254 218.773 20.1196 219.918 22.3785C221.062 24.6375 221.639 27.1127 221.639 29.804C221.639 30.6795 221.596 31.4793 221.522 32.2251H195.524V27.5666H215.629C215.426 25.1671 214.571 23.2648 213.073 21.8814C211.576 20.4979 209.555 19.7953 207.021 19.7953C205.096 19.7953 203.449 20.2169 202.069 21.0707C200.7 21.9246 199.652 23.1784 198.936 24.8321C198.219 26.4858 197.856 28.4961 197.856 30.8632C197.856 33.0141 198.262 34.9488 199.086 36.6673C199.909 38.3859 201.053 39.7262 202.529 40.6773C204.005 41.6284 205.684 42.104 207.566 42.104C209.822 42.104 211.662 41.6284 213.095 40.6773C214.528 39.7262 215.469 38.3535 215.918 36.5809H221.885C221.351 39.8126 219.789 42.3958 217.212 44.3414C214.635 46.2869 211.416 47.2597 207.566 47.2597C204.454 47.2597 201.727 46.5139 199.396 45.0223L199.385 45.0115Z" fill="var(--color,#2A2E4A)" />
-							<path d="M223.378 7.54862V2.32812H232.286C234.457 2.32812 236.157 2.94421 237.387 4.18718C238.617 5.43016 239.226 7.14871 239.226 9.34283V46.7402H233.259V7.54862H223.367H223.378Z" fill="var(--color,#2A2E4A)" />
-							<path d="M270.016 15.4375H276.165L284.891 39.1729L293.617 15.4375H299.831L287.843 46.7497H281.939L270.016 15.4375Z" fill="var(--color,#2A2E4A)" />
-						</svg>
-					</div>
-					<div class="footer__contacts contacts-footer">
-						<div class="contacts-footer__header">
-							<h3 class="contacts-footer__title">
-								Get in touch
-							</h3>
-							<ul class="contacts-footer__social">
-								<li>
-									<a href="#">
-										Facebook
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										Instagram
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										Telegram
-									</a>
-								</li>
-							</ul>
-						</div>
-						<form action="#" class="contacts-footer__form">
-							<input type="email" name="email" placeholder="Enter your email">
-							<button class="button">Subscribe</button>
-						</form>
-					</div>
-				</div>
-				<ul class="footer__menu">
-					<li>
-						<a href="#">
-							DataFreight
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							LogiTalk
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							SmartWarehouse
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							ChainTrust
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							GovConnect
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							Contact us
-						</a>
-					</li>
-				</ul>
-				<div class="footer__copy">
-					© 2025 AiDeliv, Inc. All rights reserved. Patent Pending. AiDeliv™ and the AiDeliv logo are trademarks of AiDeliv,
-					Inc.
-				</div>
-			</div>
-		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20251217113549"></script>
+	</main>
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__body">
+				<div class="footer__logo">
+					<svg xmlns="http://www.w3.org/2000/svg" width="304" height="50" viewBox="0 0 304 50" fill="none">
+						<path d="M48.5589 50L39.9502 36.792C37.9611 33.7441 37.0307 30.0367 37.6831 26.4375C38.3354 22.8383 40.4421 19.5201 43.5541 17.4557L69.7651 0L74.8875 7.85776L44.9764 27.8751L56.3334 44.8119L48.5589 49.9892V50Z" fill="var(--color,#2A2E4A)" />
+						<path d="M26.3394 0L34.948 13.208C36.9371 16.2559 37.8675 19.9633 37.2152 23.5625C36.5414 27.2698 34.4561 30.4799 31.3442 32.5443L5.12243 50L0 42.1422L29.9112 22.1249L18.5541 5.18807L26.3394 0Z" fill="var(--color,#2A2E4A)" />
+						<path d="M104.116 3.25H110.201L125.568 46.7325H119.056L107.132 11.2591L95.208 46.7325H88.6953L104.116 3.25ZM96.8548 30.0334H117.387L118.307 35.6862H95.9352L96.8548 30.0334Z" fill="var(--color,#2A2E4A)" />
+						<path d="M125.57 21.297V15.4388H134.543C136.671 15.4388 138.36 16.0765 139.612 17.3303C140.863 18.5949 141.483 20.3026 141.483 22.4535V46.7402H135.526V21.2862H125.57V21.297ZM141.857 2.32812V9.90487H135.216V2.32812H141.857Z" fill="var(--color,#2A2E4A)" />
+						<path d="M245.75 21.297V15.4388H254.722C256.85 15.4388 258.54 16.0765 259.791 17.3303C261.042 18.5949 261.663 20.3026 261.663 22.4535V46.7402H255.706V21.2862H245.75V21.297ZM262.048 2.32812V9.90487H255.407V2.32812H262.048Z" fill="var(--color,#2A2E4A)" />
+						<path d="M151.578 3.25H164.24C168.132 3.25 171.629 4.09306 174.72 5.76837C177.811 7.44369 180.259 9.92964 182.067 13.2262C183.874 16.5228 184.772 20.4463 184.772 24.9967C184.772 29.547 183.874 33.4813 182.067 36.7671C180.259 40.0637 177.811 42.5496 174.72 44.2249C171.629 45.9002 168.132 46.7433 164.24 46.7433H151.578V3.25ZM171.095 39.3503C173.244 38.237 174.955 36.4753 176.228 34.065C177.5 31.6655 178.131 28.6391 178.131 24.9967C178.131 21.3542 177.5 18.3278 176.228 15.9283C174.955 13.5289 173.244 11.7671 171.095 10.643C168.945 9.51892 166.539 8.96768 163.876 8.96768H157.973V41.0256H163.876C166.539 41.0256 168.945 40.4636 171.095 39.3503Z" fill="var(--color,#2A2E4A)" />
+						<path d="M199.385 45.0115C197.054 43.5199 195.246 41.5312 193.974 39.0452C192.701 36.5593 192.07 33.8463 192.07 30.9064C192.07 27.9665 192.669 25.286 193.856 22.8649C195.043 20.4438 196.765 18.5199 199.021 17.0932C201.278 15.6665 203.941 14.9531 207.01 14.9531C210.079 14.9531 212.72 15.6233 214.913 16.9743C217.105 18.3254 218.773 20.1196 219.918 22.3785C221.062 24.6375 221.639 27.1127 221.639 29.804C221.639 30.6795 221.596 31.4793 221.522 32.2251H195.524V27.5666H215.629C215.426 25.1671 214.571 23.2648 213.073 21.8814C211.576 20.4979 209.555 19.7953 207.021 19.7953C205.096 19.7953 203.449 20.2169 202.069 21.0707C200.7 21.9246 199.652 23.1784 198.936 24.8321C198.219 26.4858 197.856 28.4961 197.856 30.8632C197.856 33.0141 198.262 34.9488 199.086 36.6673C199.909 38.3859 201.053 39.7262 202.529 40.6773C204.005 41.6284 205.684 42.104 207.566 42.104C209.822 42.104 211.662 41.6284 213.095 40.6773C214.528 39.7262 215.469 38.3535 215.918 36.5809H221.885C221.351 39.8126 219.789 42.3958 217.212 44.3414C214.635 46.2869 211.416 47.2597 207.566 47.2597C204.454 47.2597 201.727 46.5139 199.396 45.0223L199.385 45.0115Z" fill="var(--color,#2A2E4A)" />
+						<path d="M223.378 7.54862V2.32812H232.286C234.457 2.32812 236.157 2.94421 237.387 4.18718C238.617 5.43016 239.226 7.14871 239.226 9.34283V46.7402H233.259V7.54862H223.367H223.378Z" fill="var(--color,#2A2E4A)" />
+						<path d="M270.016 15.4375H276.165L284.891 39.1729L293.617 15.4375H299.831L287.843 46.7497H281.939L270.016 15.4375Z" fill="var(--color,#2A2E4A)" />
+					</svg>
+				</div>
+				<div class="footer__contacts contacts-footer">
+					<div class="contacts-footer__header">
+						<h3 class="contacts-footer__title">
+							Get in touch
+						</h3>
+						<ul class="contacts-footer__social">
+							<li>
+								<a href="#">
+									Facebook
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Instagram
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Telegram
+								</a>
+							</li>
+						</ul>
+					</div>
+					<form action="#" class="contacts-footer__form">
+						<input type="email" name="email" placeholder="Enter your email">
+						<button class="button">Subscribe</button>
+					</form>
+				</div>
+			</div>
+			<ul class="footer__menu">
+				<li>
+					<a href="#">
+						DataFreight
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						LogiTalk
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						SmartWarehouse
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						ChainTrust
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						GovConnect
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						Contact us
+					</a>
+				</li>
+			</ul>
+			<div class="footer__copy">
+				© 2025 AiDeliv, Inc. All rights reserved. Patent Pending. AiDeliv™ and the AiDeliv logo are trademarks of AiDeliv,
+				Inc.
+			</div>
+		</div>
+	</footer>
+	</div>
+	<script src="js/app.min.js?_v=20251218103612"></script>
 </body>
 
 </html>
