@@ -9309,11 +9309,12 @@ body:has(header.header) .page {
   display: grid;
   grid-template-columns: 12.1875rem 1fr;
   gap: 2.0625rem;
-  align-items: start;
   min-width: 0
 }
 .meas-bid__main {
-  min-width: 0
+  min-width: 0;
+  display: flex;
+  flex-direction: column
 }
 .meas-bid__main .meas-bid__title:not(:last-child) {
   margin-bottom: 1.5rem
@@ -9321,7 +9322,7 @@ body:has(header.header) .page {
 .meas-bid__body {
   display: grid;
   grid-template-columns: 303fr 255fr;
-  gap: 2rem
+  gap: 1.25rem 2rem
 }
 .meas-bid__title {
   font-size: .875rem;
@@ -9364,11 +9365,25 @@ body:has(header.header) .page {
   justify-content: start;
   gap: 1rem;
   align-items: center;
-  transition: color .3s
+  transition: color .3s;
+  margin-top: auto
 }
 .meas-bid__download::before {
   font-size: 1.5rem;
   color: #998ee0
+}
+.meas-bid__msg .field__label {
+  display: flex;
+  gap: .625rem;
+  align-items: center
+}
+.meas-bid__msg .field__label:not(:last-child) {
+  margin-bottom: .25rem
+}
+.meas-bid__msg .field__label svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0
 }
 .meas-bid__msg-btn {
   font-size: 1.0625rem;
@@ -9388,6 +9403,24 @@ body:has(header.header) .page {
 .meas-bid__info {
   min-width: 0;
   grid-column: span 2
+}
+.meas-bid__error {
+  min-width: 0;
+  grid-column: span 2;
+  padding: .625rem;
+  border-radius: .75rem;
+  border: .0625rem solid #7b7f97;
+  display: flex;
+  gap: .8125rem;
+  align-items: center;
+  color: #7b7f97;
+  font-size: .75rem;
+  line-height: 1.2
+}
+.meas-bid__error svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0
 }
 .meas-bid__details {
   display: flex;
@@ -9413,16 +9446,19 @@ body:has(header.header) .page {
 }
 .meas-bid__field .field__input textarea {
   font-size: .875rem;
-  height: 3.375rem;
+  height: 4.125rem;
   overflow-y: auto;
   line-height: 1
 }
 .meas-bid__actions {
-  min-width: 0
+  min-width: 0;
+  display: flex;
+  flex-direction: column
 }
 .meas-bid__actions-label {
   color: #7b7f97;
   font-size: .875rem;
+  flex-grow: 1;
   line-height: 1.2
 }
 .meas-bid__actions-label:not(:last-child) {
@@ -14161,9 +14197,6 @@ body:has(header.header) .page {
   max-width: 8rem;
   width: 100%;
   aspect-ratio: 128/42;
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
-  opacity: .4;
   transition: all .3s
 }
 .quote-about {
@@ -14905,7 +14938,7 @@ body:has(header.header) .page {
   font-size: .75rem
 }
 .publ-ref__image {
-  aspect-ratio: 592/288;
+  aspect-ratio: 600/350;
   border-radius: .75rem;
   overflow: hidden;
   position: relative
@@ -17361,7 +17394,7 @@ span.flatpickr-weekday {
     bottom: 0
   }
   .logitalk__finnick .finnick__decor {
-    left: 50%;
+    left: 20%;
     top: -7.375rem;
     -webkit-transform: translate(-50%,0) rotate(-10deg);
     transform: translate(-50%,0) rotate(-10deg)
@@ -19454,6 +19487,9 @@ span.flatpickr-weekday {
   }
   .meas-bid__download {
     gap: .8125rem
+  }
+  .meas-bid__error:not(:last-child) {
+    margin-bottom: .625rem
   }
   .meas-bid__actions-label:not(:last-child) {
     margin-bottom: .625rem
@@ -21664,11 +21700,6 @@ span.flatpickr-weekday {
   }
   .arrows-ab .splide__arrow:hover::before {
     color: #998ee0
-  }
-  .logos-about__item:hover {
-    opacity: 1;
-    -webkit-filter: grayscale(0);
-    filter: grayscale(0)
   }
   .adv-spoilers__title:hover {
     color: #998ee0
