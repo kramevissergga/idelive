@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20260105075015">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260107114401">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -2435,9 +2435,12 @@
 				</div>
 			</div>
 		</div>
-		<div id="popup-form" aria-hidden="true" class="popup  popup--form">
+		<div id="popup-form" aria-hidden="true" class="popup popup--form">
 			<div class="popup__wrapper">
 				<div class="popup__content">
+					<button data-close class="close-circle _icon-cross">
+
+					</button>
 					<div data-tabs class="tabs">
 						<div class="form-popup__header">
 							<div data-tabs-titles class="form-popup__orders">
@@ -2552,6 +2555,23 @@
 														</label>
 													</div>
 												</div>
+												<div class="shipping-form__radios">
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Fast sea
+													</label>
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Regular sea
+													</label>
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Both options
+													</label>
+												</div>
 												<div class="shipping-form__body">
 													<div class="shipping-form__field field">
 														<div class="shipping-form__label label-form">
@@ -2641,6 +2661,7 @@
 																</div>
 															</div>
 														</div>
+
 														<div class="cargo-form__block cargo-form__block--details">
 															<div class="cargo-form__wrapper">
 																<div class="cargo-form__label label-form">
@@ -2723,20 +2744,19 @@
 																</div>
 															</div>
 														</div>
-														<div class="cargo-form__error">
-															To continue, please enter the total volume or box size.
-														</div>
 														<div class="cargo-form__tip">
 															*You can add more SKUs during step 4
 														</div>
 													</div>
 												</div>
-												<div class="cargo-form__actions">
-													<button data-add-inputs="" type="button" class="cargo-form__add add-btn _icon-plus">Add dimensions
-														and
-														product</button>
-													<button type="reset" class="cargo-form__clear">Clear all</button>
-												</div>
+												<!--
+										<div class="cargo-form__actions">
+											<button data-add-inputs="" type="button" class="cargo-form__add add-btn _icon-plus">Add dimensions
+												and
+												product</button>
+											<button type="reset" class="cargo-form__clear">Clear all</button>
+										</div>
+										-->
 											</div>
 											<div class="form-popup__footer">
 												<button data-tabs-back type="button" class="form-popup__back">
@@ -2755,10 +2775,12 @@
 
 														</div>
 														<div class="field__input">
-															<label class="file-input _icon-pin">
+															<div class="file-input">
+																<label class="file-input__input _icon-pin">
+																	<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
+																</label>
 																Attach invoice, packing list
-																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-															</label>
+															</div>
 														</div>
 													</div>
 													<div class="addresses-form__field field">
@@ -2798,10 +2820,10 @@
 												</div>
 												<div class="addresses-form__footer">
 													<div class="addresses-form__footer-label">
-														Do you want to add additional delivery address? 
+														Do you want to add new sizes, products or additional delivery address? 
 													</div>
 													<button class="addresses-form__button button button--purple button--border _icon-plus">
-														<span>Add <span class="pc-only">dimensions and product</span></span>
+														Add dimensions and additional address
 													</button>
 												</div>
 											</div>
@@ -2932,9 +2954,11 @@
 															</div>
 														</div>
 													</div>
-													<button class="files-form__clear">
-														Clear all downloaded files
-													</button>
+													<!--
+											<button class="files-form__clear">
+												Clear all downloaded files
+											</button>
+											-->
 												</div>
 
 											</div>
@@ -3346,6 +3370,23 @@
 														</label>
 													</div>
 												</div>
+												<div class="shipping-form__radios">
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Fast sea
+													</label>
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Regular sea
+													</label>
+													<label class="shipping-form__radiobox radiobox">
+														<span class="icon"></span>
+														<input type="radio" name="ship-type-1">
+														Both options
+													</label>
+												</div>
 												<div class="shipping-form__body">
 													<div class="shipping-form__field field">
 														<div class="shipping-form__label label-form">
@@ -3468,20 +3509,15 @@
 																</div>
 															</div>
 														</div>
-														<div class="cargo-form__error">
-															To continue, please enter the total volume or box size.
-														</div>
+														<!--
+												<div class="cargo-form__error">
+													To continue, please enter the total volume or box size.
+												</div>
+												-->
 														<div class="cargo-form__tip">
 															*You can add more SKUs during step 4
 														</div>
 													</div>
-												</div>
-
-												<div class="cargo-form__actions">
-													<button data-add-inputs="" type="button" class="cargo-form__add add-btn _icon-plus">Add dimensions
-														and
-														product</button>
-													<button type="reset" class="cargo-form__clear">Clear all</button>
 												</div>
 											</div>
 
@@ -3499,19 +3535,25 @@
 												<div class="addresses-form__block">
 													<div class="addresses-form__field field">
 														<div class="field__label label-form">Invoice, packing list
-															<button type="button" class="info-btn">
-																<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-																	<rect x="0.5" y="0.5" width="17" height="17" rx="8.5" stroke="var(--color, #D7D1FF)" />
-																	<path d="M9 12V11.3279C9 10.6425 9.36158 10.008 9.95122 9.65854L10.6121 9.26688C11.4725 8.75707 12 7.83122 12 6.83121V6.83121C12 5.26758 10.7324 4 9.16879 4H8.66667C7.19391 4 6 5.19391 6 6.66667V6.66667" stroke="var(--color, #D7D1FF)" stroke-linecap="round" />
-																	<circle cx="9" cy="13.5" r="0.5" fill="var(--color, #D7D1FF)" />
-																</svg>
-															</button>
+															<div class="info-form">
+																<button type="button" class="info-form__btn">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+																		<rect x="0.5" y="0.5" width="17" height="17" rx="8.5" stroke="var(--color,#7B7F97)" />
+																		<path d="M8.10606 3H9.89394V5.87635L9.45455 10.8338H8.54545L8.10606 5.87635V3ZM9.00758 14C8.71465 14 8.47222 13.9108 8.2803 13.7324C8.09343 13.5491 8 13.3088 8 13.0115C8 12.7191 8.09343 12.4813 8.2803 12.298C8.47222 12.1146 8.71465 12.023 9.00758 12.023C9.2904 12.023 9.52525 12.1146 9.71212 12.298C9.90404 12.4813 10 12.7191 10 13.0115C10 13.3088 9.90657 13.5491 9.7197 13.7324C9.53283 13.9108 9.29545 14 9.00758 14Z" fill="var(--color,#7B7F97)" />
+																	</svg>
+																</button>
+																<div class="info-form__content">
+																	Minimum weight for shipment is 100 kg. <br>
+																	*It may be less, but it is counted as 100 kg.
+																</div>
+															</div>
 														</div>
 														<div class="field__input">
-															<label class="file-input _icon-pin">
+															<div class="file-input">
+																<button class="file-input__remove _sprite-remove"></button>
 																Attach invoice, packing list
 																<input type="file" name="myImage" accept="image.webp, image.webp, image.webp" />
-															</label>
+															</div>
 														</div>
 													</div>
 													<div class="addresses-form__field field">
@@ -3551,10 +3593,10 @@
 												</div>
 												<div class="addresses-form__footer">
 													<div class="addresses-form__footer-label">
-														Do you want to add additional delivery address? 
+														Do you want to add new sizes, products or additional delivery address? 
 													</div>
 													<button class="addresses-form__button button button--purple button--border _icon-plus">
-														<span>Add <span class="pc-only">dimensions and product</span></span>
+														Add dimensions and additional address
 													</button>
 												</div>
 											</div>
@@ -3605,9 +3647,11 @@
 															documentation is missing.
 														</p>
 													</div>
-													<button class="files-form__clear">
-														Clear all downloaded files
-													</button>
+													<!--
+											<button class="files-form__clear">
+												Clear all downloaded files
+											</button>
+											-->
 												</div>
 
 											</div>
@@ -3622,6 +3666,14 @@
 										</div>
 										<div data-tabs-item class="form-popup__body">
 											<div class="form-popup__review review-form">
+												<div class="review-form__warn">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+														<rect x="0.5" y="0.5" width="17" height="17" rx="8.5" stroke="#D50000" />
+														<path d="M8.10606 3H9.89394V5.87635L9.45455 10.8338H8.54545L8.10606 5.87635V3ZM9.00758 14C8.71465 14 8.47222 13.9108 8.2803 13.7324C8.09343 13.5491 8 13.3088 8 13.0115C8 12.7191 8.09343 12.4813 8.2803 12.298C8.47222 12.1146 8.71465 12.023 9.00758 12.023C9.2904 12.023 9.52525 12.1146 9.71212 12.298C9.90404 12.4813 10 12.7191 10 13.0115C10 13.3088 9.90657 13.5491 9.7197 13.7324C9.53283 13.9108 9.29545 14 9.00758 14Z" fill="#D50000" />
+													</svg>
+													Please note! You have entered a weight/volume that is less than the minimum required. Shipping
+													costs will be calculated based on the minimum: 100 kg / 1 cbm.
+												</div>
 												<div data-spoilers class="review-form__items">
 													<details class="review-form__item">
 														<summary class="review-form__details details-review details-review--shipping">
@@ -7109,7 +7161,7 @@
 		</div>
 	</footer>
 	</div>
-	<script src="js/app.min.js?_v=20260105075015"></script>
+	<script src="js/app.min.js?_v=20260107114401"></script>
 </body>
 
 </html>
