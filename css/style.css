@@ -17565,7 +17565,7 @@ span.flatpickr-weekday {
     grid-template-columns: 1fr 1fr 1fr
   }
   .logitalk__finnick {
-    height: 12.5rem
+    height: 15.625rem
   }
   .logitalk__finnick .finnick__wrapper {
     left: auto;
@@ -21225,7 +21225,7 @@ span.flatpickr-weekday {
 }
 @media (max-width:76.87375em)and (min-width:61.99875em) {
   .logitalk__finnick.--open .finnick__wrapper {
-    width: calc(100% + 2.5rem)!important
+    width: 21.875rem!important
   }
 }
 @media (max-width:81.24875em)and (min-width:61.99875em) {
