@@ -20427,6 +20427,9 @@
     document.querySelectorAll(".rates-inquires__body")?.forEach((item => {
         _slideUp(item, 0);
     }));
+    document.querySelectorAll("[data-hid-block]")?.forEach((item => {
+        _slideUp(item, 0);
+    }));
     document.addEventListener("click", (e => {
         if (e.target.closest("[data-menu-toggle]")) {
             bodyLockToggle(0);
@@ -20488,6 +20491,16 @@
             if (block) {
                 _slideToggle(block);
                 btn.classList.toggle("_active");
+            }
+        }
+        if (e.target.closest("[data-hid-open]")) {
+            const btn = e.target.closest("[data-hid-open]");
+            const container = btn.closest("[data-hid-wrapper]");
+            const block = container.querySelector("[data-hid-block]");
+            if (block) {
+                _slideToggle(block);
+                btn.classList.toggle("--active");
+                container.classList.toggle("--open");
             }
         }
         if (e.target.closest("[data-add-inputs]")) {

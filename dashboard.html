@@ -5,7 +5,7 @@
 	<title>iDelive</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="css/style.min.css?_v=20260107114401">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260114053436">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -4284,7 +4284,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="progress-dash-popup" aria-hidden="true" class="popup popup--progress popup--progress-wider">
+		<div id="progress-dash-popup" aria-hidden="true" class="popup popup--progress popup--progress-wider popup_show">
 			<div class="popup__wrapper">
 				<div class="popup__content popup__content--bg">
 					<div data-tabs class="agent-dash-popup">
@@ -4329,101 +4329,7 @@
 												All
 											</button>
 										</div>
-										<div style="--block-color: #D50000" class="main-pr__block">
-											<div class="main-pr__header">
-												<div class="main-pr__info">
-													<h3 class="main-pr__title">
-														ID number: 0001
-													</h3>
-													<div class="main-pr__type">
-														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-															<path d="M2.10156 15.2682H13.7682C14.5967 15.2682 15.2682 14.5967 15.2682 13.7682V4.5043C15.2682 4.34905 15.2321 4.19594 15.1627 4.05708L13.9877 1.70714C13.6489 1.02957 12.9564 0.601562 12.1988 0.601562H3.67096C2.91342 0.601562 2.22089 1.02957 1.88211 1.70714L0.707135 4.05708C0.637708 4.19594 0.601562 4.34905 0.601562 4.5043V13.7682C0.601562 14.5967 1.27314 15.2682 2.10156 15.2682Z" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" />
-															<path d="M1.52344 4.26562H14.3568" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-															<path d="M6.10417 0.601562L5.1875 4.26823V9.76823L7.9375 7.9349L10.6875 9.76823V4.26823L9.77083 0.601562" stroke="#7B7F97" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-														</svg>
-														Household appliances
-													</div>
-												</div>
-												<div class="tracking-progress__labels">
-													<div style="--arrow-color: #64DB78" class="tracking-progress__label tracking-progress__label--big _icon-arrow-bold-left">
-														<span>Pick up from the supplier</span>
-													</div>
-													<div style="--arrow-color: #F79B39" class="tracking-progress__label _icon-arrow-bold-left">
-														Consolidation warehouse
-													</div>
-												</div>
-												<div class="main-pr__date">
-													09.02.25
-												</div>
-											</div>
-											<div data-tracking-line class="tracking-progress__line">
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item --active">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Final address
-														<span>29.02.25</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div style="--block-color: #D50000" class="main-pr__block">
+										<div data-hid-wrapper class="main-pr__block">
 											<div class="main-pr__header">
 												<div class="main-pr__info">
 													<h3 class="main-pr__title">
@@ -4446,86 +4352,165 @@
 														Consolidation warehouse
 													</div>
 												</div>
-												<div class="main-pr__actions">
-													<a href="#" class="main-pr__download _icon-download">Download</a>
-													<div class="main-pr__buttons">
-														<button class="main-pr__button button button--border">
+												<div class="main-pr__details">
+													<div class="main-pr__date">
+														09.02.25
+													</div>
+													<button data-hid-open class="main-pr__open _icon-ch-down">
+														Open measurements
+													</button>
+												</div>
+
+											</div>
+											<div data-tracking-line class="tracking-progress__line">
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info --accent">
+														Pick up from the supplier
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item --active">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Container loading
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+												<div class="tracking-progress__item ">
+													<div class="tracking-progress__icon">
+													</div>
+													<div class="tracking-progress__info">
+														Final address
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+											</div>
+											<div data-hid-block class="main-pr__body body-main-pr">
+												<div class="body-main-pr__table">
+													<table>
+														<tbody>
+															<tr>
+																<td class="label">Declared:</td>
+																<td rowspan="2" class="label">Quantity:</td>
+																<td>1200</td>
+																<td rowspan="2">CBM</td>
+																<td>1400</td>
+																<td rowspan="2">KG:</td>
+																<td>2000</td>
+																<td rowspan="2" class="label">Price:</td>
+																<td>$ 1430</td>
+															</tr>
+															<tr>
+																<td class="red-text label">Warehouse</td>
+																<td class="red-text">1300</td>
+																<td class="red-text">1600</td>
+																<td class="red-text">2300</td>
+																<td class="red-text price-box">$ 1650</td>
+															</tr>
+														</tbody>
+
+													</table>
+												</div>
+												<div class="body-main-pr__info">
+													<div class="body-main-pr__images">
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<span>+2</span>
+													</div>
+													<div class="body-main-pr__msg">
+														<div class="body-main-pr__msg-label _sprite-msg">
+															Message from the carrier company
+														</div>
+														<div class="body-main-pr__msg-text">
+															Measurements are different from stated, please see our measurements.
+														</div>
+													</div>
+												</div>
+												<div class="body-main-pr__footer">
+													<div class="body-main-pr__file file-main-pr">
+														<div class="file-main-pr__label _icon-file">
+															Measurements.doc
+														</div>
+														<button class="file-main-pr__button _icon-download"></button>
+													</div>
+													<div class="body-main-pr__buttons">
+														<button class="body-main-pr__button button button--border">
 															Decline
 														</button>
-														<button class="main-pr__button button button--gradient">
+														<button class="body-main-pr__button button button--gradient">
 															Confirm
 														</button>
 													</div>
 												</div>
 											</div>
-											<div data-tracking-line class="tracking-progress__line">
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item --active">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
-													</div>
-												</div>
-												<div class="tracking-progress__item ">
-													<div class="tracking-progress__icon">
-													</div>
-													<div class="tracking-progress__info">
-														Final address
-														<span>29.02.25</span>
-													</div>
-												</div>
-											</div>
 										</div>
-										<div class="main-pr__block">
+										<div style="--block-color: #D50000" data-hid-wrapper class="main-pr__block">
 											<div class="main-pr__header">
 												<div class="main-pr__info">
 													<h3 class="main-pr__title">
@@ -4548,17 +4533,31 @@
 														Consolidation warehouse
 													</div>
 												</div>
-												<div class="main-pr__date">
-													ATA 25.02.25
+												<div class="main-pr__details">
+													<div class="main-pr__date">
+														09.02.25
+													</div>
+													<button style="--active-color: #FFDFDF" data-hid-open class="main-pr__open _icon-ch-down">
+														Open measurements
+													</button>
+													<div class="main-pr__file file-main-pr">
+														<div class="file-main-pr__label _icon-file">
+															Measurements.doc
+														</div>
+														<button class="file-main-pr__button _icon-download"></button>
+													</div>
 												</div>
+
 											</div>
 											<div data-tracking-line class="tracking-progress__line">
 												<div class="tracking-progress__item">
 													<div class="tracking-progress__icon">
 													</div>
-													<div class="tracking-progress__info">
-														Container loading
-														<span>29.02.25</span>
+													<div class="tracking-progress__info --accent">
+														Pick up from the supplier
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item">
@@ -4566,7 +4565,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item">
@@ -4574,7 +4575,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item">
@@ -4582,7 +4585,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item --active">
@@ -4590,7 +4595,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item ">
@@ -4598,7 +4605,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item ">
@@ -4606,7 +4615,9 @@
 													</div>
 													<div class="tracking-progress__info">
 														Container loading
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
 													</div>
 												</div>
 												<div class="tracking-progress__item ">
@@ -4614,7 +4625,74 @@
 													</div>
 													<div class="tracking-progress__info">
 														Final address
-														<span>29.02.25</span>
+													</div>
+													<div class="tracking-progress__date">
+														29.02.25
+													</div>
+												</div>
+											</div>
+											<div data-hid-block class="main-pr__body body-main-pr">
+												<div class="body-main-pr__table">
+													<table>
+														<tbody>
+															<tr>
+																<td class="label">Declared:</td>
+																<td rowspan="2" class="label">Quantity:</td>
+																<td>1200</td>
+																<td rowspan="2">CBM</td>
+																<td>1400</td>
+																<td rowspan="2">KG:</td>
+																<td>2000</td>
+																<td rowspan="2" class="label">Price:</td>
+																<td>$ 1430</td>
+															</tr>
+															<tr>
+																<td class="red-text label">Warehouse</td>
+																<td class="red-text">1300</td>
+																<td class="red-text">1600</td>
+																<td class="red-text">2300</td>
+																<td class="red-text price-box">$ 1650</td>
+															</tr>
+														</tbody>
+
+													</table>
+												</div>
+												<div class="body-main-pr__info">
+													<div class="body-main-pr__images">
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<div class="body-main-pr__image">
+															<img class="ibg" src="img/inquires/box.webp" alt="Image">
+														</div>
+														<span>+2</span>
+													</div>
+													<div class="body-main-pr__warn warn-block _sprite-warn">
+
+														Please note! You have entered a weight/volume that is less than the minimum required. Shipping
+														costs will be calculated based on the minimum: 100 kg / 1 cbm.
+													</div>
+												</div>
+												<div class="body-main-pr__footer">
+
+													<div class="body-main-pr__msg">
+														<div class="body-main-pr__msg-label _sprite-msg">
+															Message from the carrier company
+														</div>
+														<div class="body-main-pr__msg-text">
+															Measurements are different from stated, please see our measurements.
+														</div>
+													</div>
+													<div class="body-main-pr__buttons">
+														<button class="body-main-pr__button button button--border">
+															Decline
+														</button>
+														<button class="body-main-pr__button button button--gradient">
+															Confirm
+														</button>
 													</div>
 												</div>
 											</div>
@@ -4803,7 +4881,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--rate-success popup-inq-dash--feedback-success --active">
+					<div class="agent-dash-popup__popup popup-inq-dash popup-inq-dash--rate-success popup-inq-dash--feedback-success">
 						<div class="popup-inq-dash__content">
 							<button class="popup-inq-dash__cross-btn _icon-cross"></button>
 							<div class="popup-inq-dash__rate rate-pop-inq">
@@ -8653,7 +8731,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20260107114401"></script>
+	<script src="js/app.min.js?_v=20260114053436"></script>
 </body>
 
 </html>
