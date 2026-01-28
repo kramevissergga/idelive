@@ -3154,7 +3154,9 @@ body::after {
   flex-grow: 1;
   display: flex;
   align-items: center;
-  gap: 1.125rem 1.5rem
+  flex-wrap: wrap;
+  gap: 1.125rem 1.5rem;
+  padding-right: 7.5rem
 }
 .form-popup__order {
   color: #2a2e4a;
@@ -18763,7 +18765,8 @@ span.flatpickr-weekday {
     padding: 3.4375rem 1.25rem
   }
   .popup--form .popup__content {
-    padding: 2rem
+    padding: 2rem;
+    padding-top: 3.75rem
   }
   .popup--progress .popup__content {
     padding-left: 1.25rem
@@ -18772,7 +18775,8 @@ span.flatpickr-weekday {
     padding: 3.125rem 1.875rem 1.875rem
   }
   .form-popup__switch {
-    right: 2rem
+    right: 2rem;
+    top: 3.75rem
   }
   .agent-dash-popup__progress-stats .table-progress__item {
     padding: .75rem .625rem;
@@ -19353,7 +19357,8 @@ span.flatpickr-weekday {
     padding: 1.25rem 1.25rem 3.75rem
   }
   .popup--form .popup__content {
-    padding: 1.25rem
+    padding: 1.25rem;
+    padding-top: 3.75rem
   }
   .popup--article .popup__content {
     padding: 2rem
@@ -19506,7 +19511,6 @@ span.flatpickr-weekday {
     padding-right: 9.375rem
   }
   .form-popup__switch {
-    top: .875rem;
     right: 1.25rem
   }
   .form-popup__shipping:not(:last-child) {
