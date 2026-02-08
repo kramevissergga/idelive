@@ -7022,7 +7022,7 @@ body:has(header.header) .page {
   align-items: start
 }
 .about-us-h__arrow {
-  align-self: center;
+  align-self: self-end;
   flex-shrink: 0;
   width: 4.875rem;
   height: 2.3125rem
@@ -7032,10 +7032,10 @@ body:has(header.header) .page {
   height: 100%
 }
 .about-us-h__items {
-  display: flex;
   position: relative;
   gap: 2.1875rem;
-  flex-grow: 1
+  display: grid;
+  grid-template-columns: repeat(3,1fr)
 }
 .about-us-h__bg {
   position: absolute;
@@ -7095,6 +7095,7 @@ body:has(header.header) .page {
 .about-us-h__item h3 {
   font-size: 1.5rem;
   color: #998ee0;
+  font-weight: 500;
   line-height: 1.2
 }
 .about-us-h__item p {
@@ -18107,8 +18108,8 @@ span.flatpickr-weekday {
   .hero__article {
     margin-top: 2.1875rem
   }
-  .about-us-h__content {
-    min-height: 24.6875rem
+  .about-us-h__arrow {
+    margin-bottom: .5rem
   }
   .about-us-h__item img:not(:last-child) {
     margin-bottom: 1.875rem
@@ -18906,8 +18907,9 @@ span.flatpickr-weekday {
   }
   .about-us-h__items {
     min-height: 0;
-    flex-direction: column;
-    gap: 2rem
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 0 auto
   }
   .about-us-h__bg {
     left: 0;
