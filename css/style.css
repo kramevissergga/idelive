@@ -10873,28 +10873,17 @@ body:has(header.header) .page {
 .tracking-progress__line:not(:has(.tracking-progress__item.--active)) .tracking-progress__item:first-child {
   z-index: 2
 }
-.tracking-progress__item.--active::after,
-.tracking-progress__line:not(:has(.tracking-progress__item.--active)) .tracking-progress__item:first-child::after {
-  content: "";
+.tracking-progress__status {
   width: 1.4375rem;
   height: 1.5rem;
   position: absolute;
   bottom: calc(100% + .375rem);
   left: 50%;
   z-index: -1;
+  -o-object-fit: contain;
+  object-fit: contain;
   -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-mask-image: url(../img/inquires/bid-ship-op.svg);
-  mask-image: url(../img/inquires/bid-ship-op.svg);
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  background-color: #998ee0
-}
-.tracking-progress__line:not(:has(.tracking-progress__item.--active)) .tracking-progress__item:first-child::after {
-  background-color: #7b7f97
-}
-.tracking-progress__item.--final::after {
-  background-color: #2a2e4a
+  transform: translateX(-50%)
 }
 .tracking-progress__date {
   font-size: .6875rem;
