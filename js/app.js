@@ -6934,6 +6934,52 @@
                 Grid
             });
         }));
+        let howAuSliderEl = document.querySelectorAll(".how-au__slider");
+        if (howAuSliderEl.length) howAuSliderEl.forEach((sliderEl => {
+            let paginationWrapper = sliderEl.parentElement.querySelector(".splide__step-pagination");
+            const howAuSlider = new splide_esm_Splide(sliderEl, {
+                arrows: true,
+                perMove: 1,
+                pagination: false,
+                gap: 20,
+                updateOnMove: true,
+                breakpoints: {
+                    767.98: {
+                        destroy: false
+                    }
+                }
+            });
+            const createCustomPagination = () => {
+                if (!paginationWrapper) return;
+                paginationWrapper.innerHTML = "";
+                paginationWrapper.classList.add("splide__step-pagination");
+                const slides = sliderEl.querySelectorAll(".splide__slide:not(.splide__slide--clone)");
+                slides.forEach(((_, index) => {
+                    const li = document.createElement("li");
+                    li.classList.add("splide__step-pagination-item");
+                    li.textContent = `Step ${index + 1}`;
+                    li.addEventListener("click", (() => {
+                        howAuSlider.go(index);
+                    }));
+                    paginationWrapper.appendChild(li);
+                }));
+                updateActiveStep(howAuSlider.index);
+            };
+            const updateActiveStep = index => {
+                const steps = paginationWrapper.querySelectorAll("li");
+                steps.forEach(((step, i) => {
+                    step.classList.toggle("--active", i === index);
+                }));
+            };
+            howAuSlider.on("mounted move", (() => {
+                updateActiveStep(howAuSlider.index);
+            }));
+            howAuSlider.on("overflow", (isOverflow => {
+                if (isOverflow) paginationWrapper.style.display = "flex"; else paginationWrapper.style.display = "none";
+            }));
+            howAuSlider.mount();
+            createCustomPagination();
+        }));
     }));
     function isObject_isObject(value) {
         var type = typeof value;
@@ -21002,6 +21048,64 @@
             barColor: "#998ee0",
             currency: "USD"
         });
+    }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const wrappers = document.querySelectorAll("[data-how-wrapper]");
+        wrappers.forEach((wrapper => {
+            const items = wrapper.querySelectorAll("[data-how-item]");
+            const pagination = wrapper.querySelector("[data-how-pagination]");
+            const btnPrev = wrapper.querySelector("[data-how-arrow-prev]");
+            const btnNext = wrapper.querySelector("[data-how-arrow-next]");
+            let currentIndex = 0;
+            const total = items.length;
+            function updateSlider() {
+                items.forEach(((item, index) => {
+                    item.className = item.className.replace(/\border-\d+\b/g, "").trim();
+                    let order = (index - currentIndex + total) % total + 1;
+                    item.classList.add(`order-${order}`);
+                }));
+                const dots = pagination.querySelectorAll("li");
+                dots.forEach(((dot, index) => {
+                    dot.classList.toggle("--active", index === currentIndex);
+                }));
+            }
+            function createPagination() {
+                if (!pagination) return;
+                pagination.innerHTML = "";
+                for (let i = 0; i < total; i++) {
+                    const li = document.createElement("li");
+                    li.textContent = `Step ${i + 1}`;
+                    li.addEventListener("click", (e => {
+                        e.stopPropagation();
+                        currentIndex = i;
+                        updateSlider();
+                    }));
+                    pagination.appendChild(li);
+                }
+            }
+            function initEvents() {
+                items.forEach(((item, index) => {
+                    item.style.cursor = "pointer";
+                    item.addEventListener("click", (() => {
+                        currentIndex = index;
+                        updateSlider();
+                    }));
+                }));
+                btnNext?.addEventListener("click", (e => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % total;
+                    updateSlider();
+                }));
+                btnPrev?.addEventListener("click", (e => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + total) % total;
+                    updateSlider();
+                }));
+            }
+            createPagination();
+            initEvents();
+            updateSlider();
+        }));
     }));
     window["FLS"] = false;
     addLoadedClass();
